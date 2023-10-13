@@ -1,0 +1,31 @@
+query LongServiceAwardModels($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $skip: IntType = "0")  {
+  allLongServiceAwardModels(filter: {title: {isBlank: "false"}}, orderBy: _createdAt_DESC, first: "9", locale: $locale, fallbackLocales: $fallbackLocale, skip: $skip) {
+    _publishedAt
+    slug
+    id
+    title
+    awards {
+      award
+    }
+    seoTags {
+      description
+      image {
+        responsiveImage {
+          srcSet
+          webpSrcSet
+          sizes
+          src
+          width
+          height
+          aspectRatio
+          alt
+          title
+          bgColor
+          base64
+        }
+      }
+    }
+  _allPostsMeta(locale: $locale, filter: {title: {isBlank: "false"}}) {
+    count
+  }
+}
