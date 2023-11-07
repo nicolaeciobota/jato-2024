@@ -2,9 +2,9 @@ import {
   CollectionMetadata,
   PostRecord,
   SiteLocale,
-} from '@/graphql/generated';
-import PageIndicatorList from './PageIndicatorList';
-import SingleBlog from './SingleBlog';
+} from "@/graphql/generated";
+import PageIndicatorList from "./PageIndicatorList";
+import SingleAward from "./SingleAward";
 
 type Props = {
   data: PostRecord[];

@@ -1,8 +1,8 @@
-import { AuthorQuery, PostRecord, SiteLocale } from '@/graphql/generated';
-import SingleBlog from './SingleBlog';
-import { Image as DatoImage } from 'react-datocms';
-import { notFound } from 'next/navigation';
-import ReactMarkdown from 'react-markdown';
+import { AuthorQuery, PostRecord, SiteLocale } from "@/graphql/generated";
+import SingleBlog from "./SingleAward";
+import { Image as DatoImage } from "react-datocms";
+import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
 
 type Props = {
   data: AuthorQuery;

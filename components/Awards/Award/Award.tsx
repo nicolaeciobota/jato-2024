@@ -1,6 +1,6 @@
-import SharePost from '@/components/LongService/Award/ShareAward';
-import TagButton from '@/components/LongService/AwardButton';
-import QuoteBlock from '@/components/LongService/Award/StructuredTextBlocks/QuoteBlock';
+import SharePost from '@/components/Awards/Award/ShareAward';
+import TagButton from '@/components/Awards/TagButton';
+import QuoteBlock from '@/components/Awards/Award/StructuredTextBlocks/QuoteBlock';
 import transformDate from '@/utils/transformDate';
 import {
   isBlockquote,
@@ -16,7 +16,7 @@ import {
 import NewsletterCTABlock from '@/components/Blog/Post/StructuredTextBlocks/NewsletterCTABlock';
 import CTABlock from '@/components/Blog/Post/StructuredTextBlocks/CTABlock';
 import DateIcon from '@/components/Blog/svgs/DateIcon';
-import SingleBlog from '@/components/LongService/SingleBlog';
+import SingleBlog from '@/components/Awards/SingleAward';
 import Link from 'next/link';
 import {
   AppCtaRecord,
@@ -32,12 +32,13 @@ import { notFound } from 'next/navigation';
 import React from 'react';
 import Highlighter from '@/components/Common/Highlighter';
 import CTAAppBlock from './StructuredTextBlocks/CTAAppBlock';
+
 type Props = {
   data: PostQuery;
   lng: SiteLocale;
 };
 
-const Award = ({ data, lng }: Props) => {
+const Post = ({ data, lng }: Props) => {
   if (!data.post) notFound();
   return (
     <section className="mt-40 pb-[120px]">
@@ -264,4 +265,4 @@ const Award = ({ data, lng }: Props) => {
   );
 };
 
-export default Award;
+export default Post;

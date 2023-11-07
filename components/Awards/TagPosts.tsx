@@ -1,19 +1,19 @@
-import { PostRecord, SiteLocale, AwardQuery } from '@/graphql/generated';
-import SingleAward from './SingleBlog';
-import { notFound } from 'next/navigation';
+import { PostRecord, SiteLocale, TagQuery } from "@/graphql/generated";
+import SingleBlog from "./SingleAward";
+import { notFound } from "next/navigation";
 
 type Props = {
-  data: AwardQuery;
+  data: TagQuery;
   lng: SiteLocale;
 };
 
 const TagPosts = ({ data, lng }: Props) => {
-  if (!data.award) {
+  if (!data.tag) {
     notFound();
   }
   return (
     <section className="py-[32px]">
-      <div className='flex width-full justify-center items-center gap-4'>
+      <div className="width-full flex items-center justify-center gap-4">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -40,12 +40,12 @@ const TagPosts = ({ data, lng }: Props) => {
 
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-center">
-          {data.tag['_allReferencingPosts'].map((post) => (
+          {data.tag["_allReferencingPosts"].map((post) => (
             <div
               key={post.id}
               className="mb-10 w-full px-4 md:w-2/3 lg:w-1/2 xl:w-1/3"
             >
-              <SingleAward blog={post as AwardRecord} locale={lng} />
+              <SingleBlog blog={post as PostRecord} locale={lng} />
             </div>
           ))}
         </div>
@@ -56,4 +56,4 @@ const TagPosts = ({ data, lng }: Props) => {
   );
 };
 
-export default AwardAwards;
+export default TagPosts;
