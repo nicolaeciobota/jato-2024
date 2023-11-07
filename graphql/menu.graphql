@@ -15,10 +15,6 @@ query Menu($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
           slug
         }
       }
-      ... on LinkRecord {
-        name
-        externalLinks
-      }
       ... on MenuDropdownRecord {
         id
         title
