@@ -429,9 +429,9 @@ export type AwardCategoryRecord = RecordInterface & {
   _allReferencingAwardNominations: Array<AwardNominationRecord>;
   /** Returns meta information regarding a record collection */
   _allReferencingAwardNominationsMeta: CollectionMetadata;
-  _allReferencingWinners: Array<WinnerRecord>;
+  _allReferencingAwards: Array<AwardRecord>;
   /** Returns meta information regarding a record collection */
-  _allReferencingWinnersMeta: CollectionMetadata;
+  _allReferencingAwardsMeta: CollectionMetadata;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
@@ -472,22 +472,22 @@ export type AwardCategoryRecord_AllReferencingAwardNominationsMetaArgs = {
 
 
 /** Record of type 🏵️ Award Category (award_category) */
-export type AwardCategoryRecord_AllReferencingWinnersArgs = {
+export type AwardCategoryRecord_AllReferencingAwardsArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  filter?: InputMaybe<WinnerModelFilter>;
+  filter?: InputMaybe<AwardModelFilter>;
   first?: InputMaybe<Scalars['IntType']['input']>;
   locale?: InputMaybe<SiteLocale>;
-  orderBy?: InputMaybe<Array<InputMaybe<WinnerModelOrderBy>>>;
+  orderBy?: InputMaybe<Array<InputMaybe<AwardModelOrderBy>>>;
   skip?: InputMaybe<Scalars['IntType']['input']>;
-  through?: InputMaybe<InverseRelationshipFilterBetweenWinnerAndAwardCategory>;
+  through?: InputMaybe<InverseRelationshipFilterBetweenAwardAndAwardCategory>;
 };
 
 
 /** Record of type 🏵️ Award Category (award_category) */
-export type AwardCategoryRecord_AllReferencingWinnersMetaArgs = {
-  filter?: InputMaybe<WinnerModelFilter>;
+export type AwardCategoryRecord_AllReferencingAwardsMetaArgs = {
+  filter?: InputMaybe<AwardModelFilter>;
   locale?: InputMaybe<SiteLocale>;
-  through?: InputMaybe<InverseRelationshipFilterBetweenWinnerAndAwardCategory>;
+  through?: InputMaybe<InverseRelationshipFilterBetweenAwardAndAwardCategory>;
 };
 
 
@@ -495,6 +495,62 @@ export type AwardCategoryRecord_AllReferencingWinnersMetaArgs = {
 export type AwardCategoryRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
+
+/** Linking fields */
+export enum AwardModelFieldsReferencingAwardCategoryModel {
+  AwardCategory = 'award_category'
+}
+
+export type AwardModelFilter = {
+  AND?: InputMaybe<Array<InputMaybe<AwardModelFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<AwardModelFilter>>>;
+  _createdAt?: InputMaybe<CreatedAtFilter>;
+  _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
+  _isValid?: InputMaybe<BooleanFilter>;
+  _locales?: InputMaybe<LocalesFilter>;
+  _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _publishedAt?: InputMaybe<PublishedAtFilter>;
+  _status?: InputMaybe<StatusFilter>;
+  _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _updatedAt?: InputMaybe<UpdatedAtFilter>;
+  awardName?: InputMaybe<StringFilter>;
+  category?: InputMaybe<LinkFilter>;
+  description?: InputMaybe<TextFilter>;
+  htmlCommentSectionEmbed?: InputMaybe<TextFilter>;
+  id?: InputMaybe<ItemIdFilter>;
+  jobTitle?: InputMaybe<StringFilter>;
+  name?: InputMaybe<StringFilter>;
+  picture?: InputMaybe<FileFilter>;
+  slug?: InputMaybe<SlugFilter>;
+  winnerGallery?: InputMaybe<GalleryFilter>;
+};
+
+export enum AwardModelOrderBy {
+  CreatedAtAsc = '_createdAt_ASC',
+  CreatedAtDesc = '_createdAt_DESC',
+  FirstPublishedAtAsc = '_firstPublishedAt_ASC',
+  FirstPublishedAtDesc = '_firstPublishedAt_DESC',
+  IsValidAsc = '_isValid_ASC',
+  IsValidDesc = '_isValid_DESC',
+  PublicationScheduledAtAsc = '_publicationScheduledAt_ASC',
+  PublicationScheduledAtDesc = '_publicationScheduledAt_DESC',
+  PublishedAtAsc = '_publishedAt_ASC',
+  PublishedAtDesc = '_publishedAt_DESC',
+  StatusAsc = '_status_ASC',
+  StatusDesc = '_status_DESC',
+  UnpublishingScheduledAtAsc = '_unpublishingScheduledAt_ASC',
+  UnpublishingScheduledAtDesc = '_unpublishingScheduledAt_DESC',
+  UpdatedAtAsc = '_updatedAt_ASC',
+  UpdatedAtDesc = '_updatedAt_DESC',
+  AwardNameAsc = 'awardName_ASC',
+  AwardNameDesc = 'awardName_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  JobTitleAsc = 'jobTitle_ASC',
+  JobTitleDesc = 'jobTitle_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC'
+}
 
 /** Linking fields */
 export enum AwardNominationModelFieldsReferencingAwardCategoryModel {
@@ -604,6 +660,89 @@ export type AwardNominationRecord = RecordInterface & {
 
 /** Record of type ⚜️Award Nomination (award_nomination) */
 export type AwardNominationRecord_SeoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+/** Record of type 🏆 Award (award) */
+export type AwardRecord = RecordInterface & {
+  __typename?: 'AwardRecord';
+  _allDescriptionLocales?: Maybe<Array<StringMultiLocaleField>>;
+  _allJobTitleLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _allNameLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _isValid: Scalars['BooleanType']['output'];
+  _locales: Array<SiteLocale>;
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  awardName: Scalars['String']['output'];
+  category: AwardCategoryRecord;
+  description?: Maybe<Scalars['String']['output']>;
+  htmlCommentSectionEmbed?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ItemId']['output'];
+  jobTitle: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  picture: ImageFileField;
+  slug?: Maybe<Scalars['String']['output']>;
+  winnerGallery: Array<ImageFileField>;
+};
+
+
+/** Record of type 🏆 Award (award) */
+export type AwardRecord_AllDescriptionLocalesArgs = {
+  markdown?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** Record of type 🏆 Award (award) */
+export type AwardRecord_AllJobTitleLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type 🏆 Award (award) */
+export type AwardRecord_AllNameLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type 🏆 Award (award) */
+export type AwardRecord_SeoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type 🏆 Award (award) */
+export type AwardRecordDescriptionArgs = {
+  locale?: InputMaybe<SiteLocale>;
+  markdown?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** Record of type 🏆 Award (award) */
+export type AwardRecordHtmlCommentSectionEmbedArgs = {
+  markdown?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** Record of type 🏆 Award (award) */
+export type AwardRecordJobTitleArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type 🏆 Award (award) */
+export type AwardRecordNameArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
 
@@ -3035,6 +3174,14 @@ export type IntegerFilter = {
 };
 
 /** Specifies how to filter by linking fields */
+export type InverseRelationshipFieldFilterBetweenAwardAndAwardCategory = {
+  /** Filter linking records that reference current record in at least one of the specified fields */
+  anyIn?: InputMaybe<Array<AwardModelFieldsReferencingAwardCategoryModel>>;
+  /** Filter linking records that do not reference current record in any of the specified fields */
+  notIn?: InputMaybe<Array<AwardModelFieldsReferencingAwardCategoryModel>>;
+};
+
+/** Specifies how to filter by linking fields */
 export type InverseRelationshipFieldFilterBetweenAwardNominationAndAwardCategory = {
   /** Filter linking records that reference current record in at least one of the specified fields */
   anyIn?: InputMaybe<Array<AwardNominationModelFieldsReferencingAwardCategoryModel>>;
@@ -3082,12 +3229,12 @@ export type InverseRelationshipFieldFilterBetweenTalkAndStage = {
   notIn?: InputMaybe<Array<TalkModelFieldsReferencingStageModel>>;
 };
 
-/** Specifies how to filter by linking fields */
-export type InverseRelationshipFieldFilterBetweenWinnerAndAwardCategory = {
-  /** Filter linking records that reference current record in at least one of the specified fields */
-  anyIn?: InputMaybe<Array<WinnerModelFieldsReferencingAwardCategoryModel>>;
-  /** Filter linking records that do not reference current record in any of the specified fields */
-  notIn?: InputMaybe<Array<WinnerModelFieldsReferencingAwardCategoryModel>>;
+/** Specifies how to filter linking records */
+export type InverseRelationshipFilterBetweenAwardAndAwardCategory = {
+  /** Specifies how to filter by linking fields */
+  fields?: InputMaybe<InverseRelationshipFieldFilterBetweenAwardAndAwardCategory>;
+  /** Specifies how to filter by linking locales */
+  locales?: InputMaybe<LinkingLocalesFilter>;
 };
 
 /** Specifies how to filter linking records */
@@ -3138,14 +3285,6 @@ export type InverseRelationshipFilterBetweenTalkAndStage = {
   locales?: InputMaybe<LinkingLocalesFilter>;
 };
 
-/** Specifies how to filter linking records */
-export type InverseRelationshipFilterBetweenWinnerAndAwardCategory = {
-  /** Specifies how to filter by linking fields */
-  fields?: InputMaybe<InverseRelationshipFieldFilterBetweenWinnerAndAwardCategory>;
-  /** Specifies how to filter by linking locales */
-  locales?: InputMaybe<LinkingLocalesFilter>;
-};
-
 /** Specifies how to filter by ID */
 export type ItemIdFilter = {
   /** Search the record with the specified ID */
@@ -3170,7 +3309,7 @@ export type JsonFilter = {
   exists?: InputMaybe<Scalars['BooleanType']['input']>;
 };
 
-export type LayoutModelMenuField = LinkRecord | MenuDropdownRecord | MenuItemRecord;
+export type LayoutModelMenuField = MenuDropdownRecord | MenuItemRecord;
 
 export type LayoutModelNotificationField = {
   __typename?: 'LayoutModelNotificationField';
@@ -3424,8 +3563,6 @@ export type LocalesFilter = {
   notIn?: InputMaybe<Array<SiteLocale>>;
 };
 
-export type MenuDropdownModelItemsField = LinkRecord | MenuItemRecord;
-
 /** Block of type 🔽 Menu Dropdown (menu_dropdown) */
 export type MenuDropdownRecord = RecordInterface & {
   __typename?: 'MenuDropdownRecord';
@@ -3443,7 +3580,7 @@ export type MenuDropdownRecord = RecordInterface & {
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
-  items: Array<MenuDropdownModelItemsField>;
+  items: Array<MenuItemRecord>;
   title: Scalars['String']['output'];
 };
 
@@ -3477,74 +3614,6 @@ export type MenuItemRecord = RecordInterface & {
 
 /** Block of type ➡️ Menu Item (menu_item) */
 export type MenuItemRecord_SeoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-export type MenuLinkModelFilter = {
-  AND?: InputMaybe<Array<InputMaybe<MenuLinkModelFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<MenuLinkModelFilter>>>;
-  _createdAt?: InputMaybe<CreatedAtFilter>;
-  _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
-  _isValid?: InputMaybe<BooleanFilter>;
-  _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
-  _publishedAt?: InputMaybe<PublishedAtFilter>;
-  _status?: InputMaybe<StatusFilter>;
-  _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
-  _updatedAt?: InputMaybe<UpdatedAtFilter>;
-  id?: InputMaybe<ItemIdFilter>;
-  linkTitle?: InputMaybe<StringFilter>;
-  menuLinkAdrress?: InputMaybe<StringFilter>;
-};
-
-export enum MenuLinkModelOrderBy {
-  CreatedAtAsc = '_createdAt_ASC',
-  CreatedAtDesc = '_createdAt_DESC',
-  FirstPublishedAtAsc = '_firstPublishedAt_ASC',
-  FirstPublishedAtDesc = '_firstPublishedAt_DESC',
-  IsValidAsc = '_isValid_ASC',
-  IsValidDesc = '_isValid_DESC',
-  PublicationScheduledAtAsc = '_publicationScheduledAt_ASC',
-  PublicationScheduledAtDesc = '_publicationScheduledAt_DESC',
-  PublishedAtAsc = '_publishedAt_ASC',
-  PublishedAtDesc = '_publishedAt_DESC',
-  StatusAsc = '_status_ASC',
-  StatusDesc = '_status_DESC',
-  UnpublishingScheduledAtAsc = '_unpublishingScheduledAt_ASC',
-  UnpublishingScheduledAtDesc = '_unpublishingScheduledAt_DESC',
-  UpdatedAtAsc = '_updatedAt_ASC',
-  UpdatedAtDesc = '_updatedAt_DESC',
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC',
-  LinkTitleAsc = 'linkTitle_ASC',
-  LinkTitleDesc = 'linkTitle_DESC',
-  MenuLinkAdrressAsc = 'menuLinkAdrress_ASC',
-  MenuLinkAdrressDesc = 'menuLinkAdrress_DESC'
-}
-
-/** Record of type Menu Link (menu_link) */
-export type MenuLinkRecord = RecordInterface & {
-  __typename?: 'MenuLinkRecord';
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
-  _isValid: Scalars['BooleanType']['output'];
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  id: Scalars['ItemId']['output'];
-  linkTitle?: Maybe<Scalars['String']['output']>;
-  menuLinkAdrress?: Maybe<Scalars['String']['output']>;
-};
-
-
-/** Record of type Menu Link (menu_link) */
-export type MenuLinkRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
@@ -4052,13 +4121,13 @@ export type Query = {
   /** Returns meta information regarding a record collection */
   _allAwardNominationsMeta: CollectionMetadata;
   /** Returns meta information regarding a record collection */
+  _allAwardsMeta: CollectionMetadata;
+  /** Returns meta information regarding a record collection */
   _allChangeLogsMeta: CollectionMetadata;
   /** Returns meta information regarding a record collection */
   _allDocumentationPagesMeta: CollectionMetadata;
   /** Returns meta information regarding a record collection */
   _allLegalPagesMeta: CollectionMetadata;
-  /** Returns meta information regarding a record collection */
-  _allMenuLinksMeta: CollectionMetadata;
   /** Returns meta information regarding a record collection */
   _allPagesMeta: CollectionMetadata;
   /** Returns meta information regarding a record collection */
@@ -4075,10 +4144,10 @@ export type Query = {
   _allTalksMeta: CollectionMetadata;
   /** Returns meta information regarding a record collection */
   _allTestimonialsMeta: CollectionMetadata;
+  /** Returns meta information regarding a record collection */
+  _allTopMenuLinksMeta: CollectionMetadata;
   /** Returns meta information regarding an assets collection */
   _allUploadsMeta: CollectionMetadata;
-  /** Returns meta information regarding a record collection */
-  _allWinnersMeta: CollectionMetadata;
   /** Returns the single instance record */
   _site: Site;
   /** Returns a collection of records */
@@ -4088,13 +4157,13 @@ export type Query = {
   /** Returns a collection of records */
   allAwardNominations: Array<AwardNominationRecord>;
   /** Returns a collection of records */
+  allAwards: Array<AwardRecord>;
+  /** Returns a collection of records */
   allChangeLogs: Array<ChangeLogRecord>;
   /** Returns a collection of records */
   allDocumentationPages: Array<DocumentationPageRecord>;
   /** Returns a collection of records */
   allLegalPages: Array<LegalPageRecord>;
-  /** Returns a collection of records */
-  allMenuLinks: Array<MenuLinkRecord>;
   /** Returns a collection of records */
   allPages: Array<PageRecord>;
   /** Returns a collection of records */
@@ -4111,12 +4180,14 @@ export type Query = {
   allTalks: Array<TalkRecord>;
   /** Returns a collection of records */
   allTestimonials: Array<TestimonialRecord>;
+  /** Returns a collection of records */
+  allTopMenuLinks: Array<TopMenuLinkRecord>;
   /** Returns a collection of assets */
   allUploads: Array<FileField>;
-  /** Returns a collection of records */
-  allWinners: Array<WinnerRecord>;
   /** Returns a specific record */
   author?: Maybe<AuthorRecord>;
+  /** Returns a specific record */
+  award?: Maybe<AwardRecord>;
   /** Returns a specific record */
   awardCategory?: Maybe<AwardCategoryRecord>;
   /** Returns a specific record */
@@ -4131,8 +4202,6 @@ export type Query = {
   layout?: Maybe<LayoutRecord>;
   /** Returns a specific record */
   legalPage?: Maybe<LegalPageRecord>;
-  /** Returns a specific record */
-  menuLink?: Maybe<MenuLinkRecord>;
   /** Returns a specific record */
   page?: Maybe<PageRecord>;
   /** Returns a specific record */
@@ -4149,10 +4218,10 @@ export type Query = {
   talk?: Maybe<TalkRecord>;
   /** Returns a specific record */
   testimonial?: Maybe<TestimonialRecord>;
+  /** Returns a specific record */
+  topMenuLink?: Maybe<TopMenuLinkRecord>;
   /** Returns a specific asset */
   upload?: Maybe<FileField>;
-  /** Returns a specific record */
-  winner?: Maybe<WinnerRecord>;
 };
 
 
@@ -4178,6 +4247,13 @@ export type Query_AllAwardNominationsMetaArgs = {
 
 
 /** The query root for this schema */
+export type Query_AllAwardsMetaArgs = {
+  filter?: InputMaybe<AwardModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** The query root for this schema */
 export type Query_AllChangeLogsMetaArgs = {
   filter?: InputMaybe<ChangeLogModelFilter>;
   locale?: InputMaybe<SiteLocale>;
@@ -4194,13 +4270,6 @@ export type Query_AllDocumentationPagesMetaArgs = {
 /** The query root for this schema */
 export type Query_AllLegalPagesMetaArgs = {
   filter?: InputMaybe<LegalPageModelFilter>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** The query root for this schema */
-export type Query_AllMenuLinksMetaArgs = {
-  filter?: InputMaybe<MenuLinkModelFilter>;
   locale?: InputMaybe<SiteLocale>;
 };
 
@@ -4262,15 +4331,15 @@ export type Query_AllTestimonialsMetaArgs = {
 
 
 /** The query root for this schema */
-export type Query_AllUploadsMetaArgs = {
-  filter?: InputMaybe<UploadFilter>;
+export type Query_AllTopMenuLinksMetaArgs = {
+  filter?: InputMaybe<TopMenuLinkModelFilter>;
   locale?: InputMaybe<SiteLocale>;
 };
 
 
 /** The query root for this schema */
-export type Query_AllWinnersMetaArgs = {
-  filter?: InputMaybe<WinnerModelFilter>;
+export type Query_AllUploadsMetaArgs = {
+  filter?: InputMaybe<UploadFilter>;
   locale?: InputMaybe<SiteLocale>;
 };
 
@@ -4316,6 +4385,17 @@ export type QueryAllAwardNominationsArgs = {
 
 
 /** The query root for this schema */
+export type QueryAllAwardsArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<AwardModelFilter>;
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<AwardModelOrderBy>>>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+};
+
+
+/** The query root for this schema */
 export type QueryAllChangeLogsArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   filter?: InputMaybe<ChangeLogModelFilter>;
@@ -4344,17 +4424,6 @@ export type QueryAllLegalPagesArgs = {
   first?: InputMaybe<Scalars['IntType']['input']>;
   locale?: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<LegalPageModelOrderBy>>>;
-  skip?: InputMaybe<Scalars['IntType']['input']>;
-};
-
-
-/** The query root for this schema */
-export type QueryAllMenuLinksArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  filter?: InputMaybe<MenuLinkModelFilter>;
-  first?: InputMaybe<Scalars['IntType']['input']>;
-  locale?: InputMaybe<SiteLocale>;
-  orderBy?: InputMaybe<Array<InputMaybe<MenuLinkModelOrderBy>>>;
   skip?: InputMaybe<Scalars['IntType']['input']>;
 };
 
@@ -4448,6 +4517,17 @@ export type QueryAllTestimonialsArgs = {
 
 
 /** The query root for this schema */
+export type QueryAllTopMenuLinksArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<TopMenuLinkModelFilter>;
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<TopMenuLinkModelOrderBy>>>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+};
+
+
+/** The query root for this schema */
 export type QueryAllUploadsArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   filter?: InputMaybe<UploadFilter>;
@@ -4459,22 +4539,20 @@ export type QueryAllUploadsArgs = {
 
 
 /** The query root for this schema */
-export type QueryAllWinnersArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  filter?: InputMaybe<WinnerModelFilter>;
-  first?: InputMaybe<Scalars['IntType']['input']>;
-  locale?: InputMaybe<SiteLocale>;
-  orderBy?: InputMaybe<Array<InputMaybe<WinnerModelOrderBy>>>;
-  skip?: InputMaybe<Scalars['IntType']['input']>;
-};
-
-
-/** The query root for this schema */
 export type QueryAuthorArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   filter?: InputMaybe<AuthorModelFilter>;
   locale?: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<AuthorModelOrderBy>>>;
+};
+
+
+/** The query root for this schema */
+export type QueryAwardArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<AwardModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<AwardModelOrderBy>>>;
 };
 
 
@@ -4534,15 +4612,6 @@ export type QueryLegalPageArgs = {
   filter?: InputMaybe<LegalPageModelFilter>;
   locale?: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<LegalPageModelOrderBy>>>;
-};
-
-
-/** The query root for this schema */
-export type QueryMenuLinkArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  filter?: InputMaybe<MenuLinkModelFilter>;
-  locale?: InputMaybe<SiteLocale>;
-  orderBy?: InputMaybe<Array<InputMaybe<MenuLinkModelOrderBy>>>;
 };
 
 
@@ -4619,20 +4688,20 @@ export type QueryTestimonialArgs = {
 
 
 /** The query root for this schema */
+export type QueryTopMenuLinkArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<TopMenuLinkModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<TopMenuLinkModelOrderBy>>>;
+};
+
+
+/** The query root for this schema */
 export type QueryUploadArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   filter?: InputMaybe<UploadFilter>;
   locale?: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<UploadOrderBy>>>;
-};
-
-
-/** The query root for this schema */
-export type QueryWinnerArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  filter?: InputMaybe<WinnerModelFilter>;
-  locale?: InputMaybe<SiteLocale>;
-  orderBy?: InputMaybe<Array<InputMaybe<WinnerModelOrderBy>>>;
 };
 
 export type QuestionModelAnswerBlocksField = CtaButtonWithImageRecord | NewsletterSubscriptionRecord;
@@ -4890,6 +4959,7 @@ export type SpeakerModelFilter = {
   _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
   _updatedAt?: InputMaybe<UpdatedAtFilter>;
   bio?: InputMaybe<TextFilter>;
+  commentsSectionEmbed?: InputMaybe<TextFilter>;
   id?: InputMaybe<ItemIdFilter>;
   image?: InputMaybe<FileFilter>;
   name?: InputMaybe<StringFilter>;
@@ -4943,6 +5013,7 @@ export type SpeakerRecord = RecordInterface & {
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   bio: Scalars['String']['output'];
+  commentsSectionEmbed?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
   image: ImageFileField;
   name: Scalars['String']['output'];
@@ -4980,6 +5051,12 @@ export type SpeakerRecord_SeoMetaTagsArgs = {
 
 /** Record of type 👩‍🏫 Speaker (speaker) */
 export type SpeakerRecordBioArgs = {
+  markdown?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** Record of type 👩‍🏫 Speaker (speaker) */
+export type SpeakerRecordCommentsSectionEmbedArgs = {
   markdown?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
@@ -5566,6 +5643,74 @@ export type TextFilter = {
   notMatches?: InputMaybe<StringMatchesFilter>;
 };
 
+export type TopMenuLinkModelFilter = {
+  AND?: InputMaybe<Array<InputMaybe<TopMenuLinkModelFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<TopMenuLinkModelFilter>>>;
+  _createdAt?: InputMaybe<CreatedAtFilter>;
+  _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
+  _isValid?: InputMaybe<BooleanFilter>;
+  _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _publishedAt?: InputMaybe<PublishedAtFilter>;
+  _status?: InputMaybe<StatusFilter>;
+  _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _updatedAt?: InputMaybe<UpdatedAtFilter>;
+  id?: InputMaybe<ItemIdFilter>;
+  topMenuLinkTitle?: InputMaybe<StringFilter>;
+  topMenuLinkUrl?: InputMaybe<StringFilter>;
+};
+
+export enum TopMenuLinkModelOrderBy {
+  CreatedAtAsc = '_createdAt_ASC',
+  CreatedAtDesc = '_createdAt_DESC',
+  FirstPublishedAtAsc = '_firstPublishedAt_ASC',
+  FirstPublishedAtDesc = '_firstPublishedAt_DESC',
+  IsValidAsc = '_isValid_ASC',
+  IsValidDesc = '_isValid_DESC',
+  PublicationScheduledAtAsc = '_publicationScheduledAt_ASC',
+  PublicationScheduledAtDesc = '_publicationScheduledAt_DESC',
+  PublishedAtAsc = '_publishedAt_ASC',
+  PublishedAtDesc = '_publishedAt_DESC',
+  StatusAsc = '_status_ASC',
+  StatusDesc = '_status_DESC',
+  UnpublishingScheduledAtAsc = '_unpublishingScheduledAt_ASC',
+  UnpublishingScheduledAtDesc = '_unpublishingScheduledAt_DESC',
+  UpdatedAtAsc = '_updatedAt_ASC',
+  UpdatedAtDesc = '_updatedAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  TopMenuLinkTitleAsc = 'topMenuLinkTitle_ASC',
+  TopMenuLinkTitleDesc = 'topMenuLinkTitle_DESC',
+  TopMenuLinkUrlAsc = 'topMenuLinkUrl_ASC',
+  TopMenuLinkUrlDesc = 'topMenuLinkUrl_DESC'
+}
+
+/** Record of type Top Menu Link (top_menu_link) */
+export type TopMenuLinkRecord = RecordInterface & {
+  __typename?: 'TopMenuLinkRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  id: Scalars['ItemId']['output'];
+  topMenuLinkTitle?: Maybe<Scalars['String']['output']>;
+  topMenuLinkUrl?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** Record of type Top Menu Link (top_menu_link) */
+export type TopMenuLinkRecord_SeoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
 /** Specifies how to filter by upload type */
 export type TypeFilter = {
   /** Search uploads with the specified type */
@@ -5978,141 +6123,6 @@ export type VideoSectionRecordVideoSubheaderArgs = {
   markdown?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-/** Linking fields */
-export enum WinnerModelFieldsReferencingAwardCategoryModel {
-  WinnerCategory = 'winner_category'
-}
-
-export type WinnerModelFilter = {
-  AND?: InputMaybe<Array<InputMaybe<WinnerModelFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<WinnerModelFilter>>>;
-  _createdAt?: InputMaybe<CreatedAtFilter>;
-  _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
-  _isValid?: InputMaybe<BooleanFilter>;
-  _locales?: InputMaybe<LocalesFilter>;
-  _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
-  _publishedAt?: InputMaybe<PublishedAtFilter>;
-  _status?: InputMaybe<StatusFilter>;
-  _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
-  _updatedAt?: InputMaybe<UpdatedAtFilter>;
-  awardName?: InputMaybe<StringFilter>;
-  category?: InputMaybe<LinkFilter>;
-  description?: InputMaybe<TextFilter>;
-  id?: InputMaybe<ItemIdFilter>;
-  jobTitle?: InputMaybe<StringFilter>;
-  name?: InputMaybe<StringFilter>;
-  picture?: InputMaybe<FileFilter>;
-  roomId?: InputMaybe<StringFilter>;
-  slug?: InputMaybe<SlugFilter>;
-  winnerGallery?: InputMaybe<GalleryFilter>;
-};
-
-export enum WinnerModelOrderBy {
-  CreatedAtAsc = '_createdAt_ASC',
-  CreatedAtDesc = '_createdAt_DESC',
-  FirstPublishedAtAsc = '_firstPublishedAt_ASC',
-  FirstPublishedAtDesc = '_firstPublishedAt_DESC',
-  IsValidAsc = '_isValid_ASC',
-  IsValidDesc = '_isValid_DESC',
-  PublicationScheduledAtAsc = '_publicationScheduledAt_ASC',
-  PublicationScheduledAtDesc = '_publicationScheduledAt_DESC',
-  PublishedAtAsc = '_publishedAt_ASC',
-  PublishedAtDesc = '_publishedAt_DESC',
-  StatusAsc = '_status_ASC',
-  StatusDesc = '_status_DESC',
-  UnpublishingScheduledAtAsc = '_unpublishingScheduledAt_ASC',
-  UnpublishingScheduledAtDesc = '_unpublishingScheduledAt_DESC',
-  UpdatedAtAsc = '_updatedAt_ASC',
-  UpdatedAtDesc = '_updatedAt_DESC',
-  AwardNameAsc = 'awardName_ASC',
-  AwardNameDesc = 'awardName_DESC',
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC',
-  JobTitleAsc = 'jobTitle_ASC',
-  JobTitleDesc = 'jobTitle_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  RoomIdAsc = 'roomId_ASC',
-  RoomIdDesc = 'roomId_DESC'
-}
-
-/** Record of type 🏆 Winner (winner) */
-export type WinnerRecord = RecordInterface & {
-  __typename?: 'WinnerRecord';
-  _allDescriptionLocales?: Maybe<Array<StringMultiLocaleField>>;
-  _allJobTitleLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
-  _allNameLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
-  _isValid: Scalars['BooleanType']['output'];
-  _locales: Array<SiteLocale>;
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  awardName: Scalars['String']['output'];
-  category: AwardCategoryRecord;
-  description?: Maybe<Scalars['String']['output']>;
-  id: Scalars['ItemId']['output'];
-  jobTitle: Scalars['String']['output'];
-  name: Scalars['String']['output'];
-  picture: ImageFileField;
-  roomId?: Maybe<Scalars['String']['output']>;
-  slug?: Maybe<Scalars['String']['output']>;
-  winnerGallery: Array<ImageFileField>;
-};
-
-
-/** Record of type 🏆 Winner (winner) */
-export type WinnerRecord_AllDescriptionLocalesArgs = {
-  markdown?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-
-/** Record of type 🏆 Winner (winner) */
-export type WinnerRecord_AllJobTitleLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type 🏆 Winner (winner) */
-export type WinnerRecord_AllNameLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type 🏆 Winner (winner) */
-export type WinnerRecord_SeoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type 🏆 Winner (winner) */
-export type WinnerRecordDescriptionArgs = {
-  locale?: InputMaybe<SiteLocale>;
-  markdown?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-
-/** Record of type 🏆 Winner (winner) */
-export type WinnerRecordJobTitleArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type 🏆 Winner (winner) */
-export type WinnerRecordNameArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
 export type FocalPoint = {
   __typename?: 'focalPoint';
   x: Scalars['FloatType']['output'];
@@ -6196,7 +6206,7 @@ export type MenuQueryVariables = Exact<{
 }>;
 
 
-export type MenuQuery = { __typename?: 'Query', layout?: { __typename?: 'LayoutRecord', logo: { __typename?: 'FileField', url: string, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null }, menu: Array<{ __typename?: 'LinkRecord' } | { __typename?: 'MenuDropdownRecord', id: string, title: string, _modelApiKey: string, items: Array<{ __typename?: 'LinkRecord' } | { __typename?: 'MenuItemRecord', id: string, title: string, _modelApiKey: string, page: { __typename?: 'PageRecord', slug: string } }> } | { __typename?: 'MenuItemRecord', id: string, title: string, _modelApiKey: string, page: { __typename?: 'PageRecord', slug: string } }>, notification?: { __typename?: 'LayoutModelNotificationField', value: unknown } | null } | null, _site: { __typename?: 'Site', locales: Array<SiteLocale> } };
+export type MenuQuery = { __typename?: 'Query', layout?: { __typename?: 'LayoutRecord', logo: { __typename?: 'FileField', url: string, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null }, menu: Array<{ __typename?: 'MenuDropdownRecord', id: string, title: string, _modelApiKey: string, items: Array<{ __typename?: 'MenuItemRecord', id: string, title: string, _modelApiKey: string, page: { __typename?: 'PageRecord', slug: string } }> } | { __typename?: 'MenuItemRecord', id: string, title: string, _modelApiKey: string, page: { __typename?: 'PageRecord', slug: string } }>, notification?: { __typename?: 'LayoutModelNotificationField', value: unknown } | null } | null, _site: { __typename?: 'Site', locales: Array<SiteLocale> } };
 
 export type DatoImage_ResponsiveImageFragment = { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null };
 
