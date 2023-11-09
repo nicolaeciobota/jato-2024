@@ -1,26 +1,28 @@
 "use client";
 
 import { useQuerySubscription } from "react-datocms/use-query-subscription";
-import AuthorPosts from "../AuthorPosts";
+import AwardsPage from "../AwardPage";
 import {
-  AuthorQuery,
-  AuthorQueryVariables,
+  PostsQuery,
+  PostsQueryVariables,
   SiteLocale,
 } from "@/graphql/generated";
 import { TypedDocumentNode } from "@graphql-typed-document-node/core";
 
-export default function RealTimeAuthorPosts({
+export default function RealTimePostsPage({
   locale,
   initialData,
   token,
   query,
+  page,
   variables,
 }: {
   locale: SiteLocale;
   token: string;
-  initialData: AuthorQuery;
-  query: TypedDocumentNode<AuthorQuery, AuthorQueryVariables>;
-  variables: AuthorQueryVariables;
+  initialData: PostsQuery;
+  query: TypedDocumentNode<PostsQuery, PostsQueryVariables>;
+  page: number;
+  variables: PostsQueryVariables;
 }) {
   const { data } = useQuerySubscription({
     query,
@@ -29,7 +31,8 @@ export default function RealTimeAuthorPosts({
     initialData,
     preview: true,
   });
+
   if (!data) return <></>;
 
-  return <AuthorPosts lng={locale} data={data} />;
+  return <AwardsPage lng={locale} data={data} page={page} />;
 }
