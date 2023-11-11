@@ -53,7 +53,7 @@ const SingleAward = ({ award, locale }: Props) => {
                     layout="fill"
                     objectFit="cover"
                     objectPosition="50% 50%"
-                    data={acategory?.picture.responsiveImage}
+                    data={acategory!.picture.responsiveImage}
                   />
                 </div>
               </div>
