@@ -52,7 +52,7 @@ const Award = ({ data, lng }: Props) => {
               <div className="mb-10 flex items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
                 <div className="flex flex-col items-start md:flex-row md:items-center">
                   <Link
-                    href={`/${lng}/awards/acategory/${data.award.acategory?.slug}`}
+                    href={`/${lng}/awards/acategory/${data.award.acategory.slug}`}
                     className="mb-5 mr-10 flex items-center"
                   >
                     <div className="mr-4">
@@ -60,7 +60,7 @@ const Award = ({ data, lng }: Props) => {
                         <DatoImage
                           className="h-full w-full object-cover"
                           data={
-                            data.award.acategory?.picture
+                            data.award.acategory.picture
                               .responsiveImage as ResponsiveImage
                           }
                         />
@@ -68,10 +68,10 @@ const Award = ({ data, lng }: Props) => {
                     </div>
                     <div className="w-full">
                       <h4 className="mb-1 text-base font-medium text-body-color">
-                        <span>{data.award.acategory?.name}</span>
+                        <span>{data.award.acategory.name}</span>
                       </h4>
                       <p className="text-xs text-body-color">
-                        {data.award.acategory?.bio}
+                        {data.award.acategory.bio}
                       </p>
                     </div>
                   </Link>
@@ -239,7 +239,7 @@ const Award = ({ data, lng }: Props) => {
                         return (
                           <TagAwardButton
                             key={atag.id}
-                            tag_award={atag.atag}
+                            atag={atag.atag}
                             lng={lng}
                             slug={atag.slug}
                           />
