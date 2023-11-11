@@ -120,7 +120,7 @@ export type AcategoryRecord = RecordInterface & {
   __typename?: 'AcategoryRecord';
   _allAreaOfInterestLocales?: Maybe<Array<StringMultiLocaleField>>;
   _allBioLocales?: Maybe<Array<StringMultiLocaleField>>;
-  _allDescriptionLocales?: Maybe<Array<StringMultiLocaleField>>;
+  _allDescriptionLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
   _allNameLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
   _allReferencingAwards: Array<AwardRecord>;
   /** Returns meta information regarding a record collection */
@@ -141,7 +141,7 @@ export type AcategoryRecord = RecordInterface & {
   _updatedAt: Scalars['DateTime']['output'];
   areaOfInterest?: Maybe<Scalars['String']['output']>;
   bio?: Maybe<Scalars['String']['output']>;
-  description?: Maybe<Scalars['String']['output']>;
+  description: Scalars['String']['output'];
   id: Scalars['ItemId']['output'];
   name: Scalars['String']['output'];
   picture: ImageFileField;
@@ -6151,7 +6151,7 @@ export type AwardCategoryQueryVariables = Exact<{
 }>;
 
 
-export type AwardCategoryQuery = { __typename?: 'Query', acategory?: { __typename?: 'AcategoryRecord', name: string, bio?: string | null, description?: string | null, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } }, _allReferencingAwards: Array<{ __typename?: 'AwardRecord', _publishedAt?: string | null, slug: string, id: string, title: string, atags: Array<{ __typename?: 'AtagRecord', atag: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, acategory?: { __typename?: 'AcategoryRecord', name: string, bio?: string | null, slug: string, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } } } | null }>, _allReferencingAwardsMeta: { __typename?: 'CollectionMetadata', count: number } } | null };
+export type AwardCategoryQuery = { __typename?: 'Query', acategory?: { __typename?: 'AcategoryRecord', name: string, bio?: string | null, description: string, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } }, _allReferencingAwards: Array<{ __typename?: 'AwardRecord', _publishedAt?: string | null, slug: string, id: string, title: string, atags: Array<{ __typename?: 'AtagRecord', atag: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, acategory?: { __typename?: 'AcategoryRecord', name: string, bio?: string | null, slug: string, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } } } | null }>, _allReferencingAwardsMeta: { __typename?: 'CollectionMetadata', count: number } } | null };
 
 export type AwardsQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
