@@ -60,7 +60,7 @@ const Award = ({ data, lng }: Props) => {
                         <DatoImage
                           className="h-full w-full object-cover"
                           data={
-                            data.award.acategory.picture
+                            data.award.acategory?.picture
                               .responsiveImage as ResponsiveImage
                           }
                         />
@@ -68,10 +68,10 @@ const Award = ({ data, lng }: Props) => {
                     </div>
                     <div className="w-full">
                       <h4 className="mb-1 text-base font-medium text-body-color">
-                        <span>{data.award.acategory.name}</span>
+                        <span>{data.award.acategory?.name}</span>
                       </h4>
                       <p className="text-xs text-body-color">
-                        {data.award.acategory.bio}
+                        {data.award.acategory?.bio}
                       </p>
                     </div>
                   </Link>
