@@ -1,16 +1,17 @@
-'use client';
+"use client";
 
-import { useQuerySubscription } from 'react-datocms/use-query-subscription';
-import Section from './Sections';
+import { useQuerySubscription } from "react-datocms/use-query-subscription";
+import Section from "./Sections";
 import {
   CollectionMetadata,
   PageModelSectionsField,
   PageQuery,
   PageQueryVariables,
   PostRecord,
+  AwardRecord,
   SiteLocale,
-} from '@/graphql/generated';
-import { TypedDocumentNode } from '@graphql-typed-document-node/core';
+} from "@/graphql/generated";
+import { TypedDocumentNode } from "@graphql-typed-document-node/core";
 
 export default function RealTimeSections({
   initialData,
@@ -40,7 +41,9 @@ export default function RealTimeSections({
       locale={locale}
       sections={data.page.sections as Array<PageModelSectionsField>}
       posts={data.allPosts as PostRecord[]}
+      awards={data.allAwards as AwardRecord[]}
       postMeta={data._allPostsMeta as CollectionMetadata}
+      awardMeta={data._allAwardsMeta as CollectionMetadata}
     />
   );
 }
