@@ -34,10 +34,12 @@ import {
   StatsSectionRecord,
   TeamSectionRecord,
   VideoSectionRecord,
+  AwardRecord,
 } from "@/graphql/generated";
 import GradientHero from "../Home/Hero/GradientHero";
 import FeatureCards from "../Home/Features/FeatureCards";
 import PostGridRenderer from "../Blog/PostGridRenderer";
+import AwardGridRenderer from "../Award/AwardGridRenderer";
 import { redirect } from "next/navigation";
 import RightImageHero from "../Home/Hero/RightImageHero";
 import BackgroundImageHero from "../Home/Hero/BackgroundImage";
@@ -65,9 +67,18 @@ type Props = {
   locale: SiteLocale;
   posts: PostRecord[];
   postMeta: CollectionMetadata;
+  awardMeta: CollectionMetadata;
+  awards: AwardRecord[];
 };
 
-export default function Section({ sections, locale, posts, postMeta }: Props) {
+export default function Section({
+  sections,
+  locale,
+  posts,
+  postMeta,
+  awards,
+  awardMeta,
+}: Props) {
   return (
     <>
       {sections.map((section) => {
@@ -429,7 +440,11 @@ export default function Section({ sections, locale, posts, postMeta }: Props) {
           case "all_awards_section":
             const allAwardsSectionRecord = section as AllAwardsSectionRecord;
             return (
-              <PostGridRenderer data={posts} lng={locale} postMeta={postMeta} />
+              <AwardGridRenderer
+                data={awards}
+                lng={locale}
+                awardMeta={awardMeta}
+              />
             );
           case "redirect_section":
             const redirectSectionRecord = section as RedirectSectionRecord;

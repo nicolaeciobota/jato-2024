@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuerySubscription } from "react-datocms/use-query-subscription";
-import AwardsPage from "../AwardPage";
+import AwardsPage from "../AwardsPage";
 import {
   AwardsQuery,
   AwardsQueryVariables,

@@ -9,7 +9,7 @@ import {
 } from "@/graphql/generated";
 import { TypedDocumentNode } from "@graphql-typed-document-node/core";
 
-export default function RealTimeTagPosts({
+export default function RealTimeTagAwards({
   locale,
   initialData,
   token,
