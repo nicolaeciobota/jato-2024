@@ -1,7 +1,9 @@
 import { getFallbackLocale } from "@/app/i18n/settings";
-import AwardCategoryAwards from "@/components/Award/AwardCategoryAwards";
+import AuthorPosts from "@/components/Blog/AuthorPosts";
+import AwardCategory from "@/components/Award/AwardCategoryAwards";
 import RealTimeAwardCategoryAwards from "@/components/Award/RealTime/RealTimeAwardCategoryAwards";
-import { AuthorDocument, SiteLocale } from "@/graphql/generated";
+import RealTimeAuthorPosts from "@/components/Blog/RealTime/RealTimeAuthorPosts";
+import { AwardCategoryDocument, SiteLocale } from "@/graphql/generated";
 import queryDatoCMS from "@/utils/queryDatoCMS";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
@@ -19,7 +21,7 @@ const ACategoryPage = async ({ params }: Params) => {
   const { isEnabled } = draftMode();
 
   const data = await queryDatoCMS(
-    AuthorDocument,
+    AwardCategoryDocument,
     {
       locale: lng,
       fallbackLocale: fallbackLng,
@@ -28,17 +30,17 @@ const ACategoryPage = async ({ params }: Params) => {
     isEnabled
   );
 
-  if (!data.author) notFound();
+  if (!data.acategory) notFound();
 
   return (
     <>
-      {!isEnabled && <AwardCategoryAwards data={data} lng={lng} />}
+      {!isEnabled && <AwardCategory data={data} lng={lng} />}
       {isEnabled && (
         <RealTimeAwardCategoryAwards
           initialData={data}
           locale={lng}
           token={process.env.DATOCMS_READONLY_API_TOKEN || ""}
-          query={AuthorDocument}
+          query={AwardCategoryDocument}
           variables={{
             locale: lng,
             fallbackLocale: fallbackLng,

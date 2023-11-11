@@ -9,7 +9,7 @@ import {
 } from "@/graphql/generated";
 import { TypedDocumentNode } from "@graphql-typed-document-node/core";
 
-export default function RealTimePostsPage({
+export default function RealTimeAwardsPage({
   locale,
   initialData,
   token,

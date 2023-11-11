@@ -1,7 +1,9 @@
 import { getFallbackLocale } from "@/app/i18n/settings";
+import PostsPage from "@/components/Blog/PostsPage";
 import AwardsPage from "@/components/Award/AwardsPage";
 import RealTimeAwardsPage from "@/components/Award/RealTime/RealTimeAwardsPage";
-import { AwardDocument, AwardsDocument, SiteLocale } from "@/graphql/generated";
+import RealTimePostsPage from "@/components/Blog/RealTime/RealTimePostsPage";
+import { AwardsDocument, PostsDocument, SiteLocale } from "@/graphql/generated";
 import queryDatoCMS from "@/utils/queryDatoCMS";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
@@ -13,7 +15,7 @@ type Params = {
   };
 };
 
-const Award = async ({ params }: Params) => {
+const Awards = async ({ params }: Params) => {
   const fallbackLng = await getFallbackLocale();
   const { lng } = params;
   const { isEnabled } = draftMode();
@@ -53,4 +55,4 @@ const Award = async ({ params }: Params) => {
   );
 };
 
-export default Award;
+export default Awards;

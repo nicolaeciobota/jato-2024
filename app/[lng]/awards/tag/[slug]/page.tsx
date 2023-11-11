@@ -1,6 +1,8 @@
 import { getFallbackLocale } from "@/app/i18n/settings";
-import RealTimeTagAwards from "@/components/Award/RealTime/RealTimeTagAward";
+import RealTimeTagPosts from "@/components/Blog/RealTime/RealTimeTagPosts";
+import TagPosts from "@/components/Blog/TagPosts";
 import TagAwards from "@/components/Award/AwardTypeTagAward";
+import RealTimeTagAwards from "@/components/Award/RealTime/RealTimeTagAward";
 import { AwardTagDocument, SiteLocale, TagDocument } from "@/graphql/generated";
 import queryDatoCMS from "@/utils/queryDatoCMS";
 import { draftMode } from "next/headers";
@@ -18,7 +20,7 @@ const TagAwardsPage = async ({ params }: Params) => {
   const { isEnabled } = draftMode();
 
   const data = await queryDatoCMS(
-    TagDocument,
+    AwardTagDocument,
     {
       locale: lng,
       fallbackLocale: fallbackLng,
@@ -35,7 +37,7 @@ const TagAwardsPage = async ({ params }: Params) => {
           initialData={data}
           locale={lng}
           token={process.env.DATOCMS_READONLY_API_TOKEN || ""}
-          query={AwardTagDocument}
+          query={TagDocument}
           variables={{
             locale: lng,
             fallbackLocale: fallbackLng,
