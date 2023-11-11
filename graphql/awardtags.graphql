@@ -4,8 +4,8 @@ query AwardTag(
   $fallbackLocale: [SiteLocale!]
   $skip: IntType = "0"
 ) {
-  tagAward(filter: { slug: { eq: $slug } }, locale: $locale) {
-    awardTag
+  atag(filter: { slug: { eq: $slug } }, locale: $locale) {
+    atag
     _allReferencingAwards(
       filter: { title: { isBlank: "false" } }
       orderBy: _createdAt_DESC
@@ -18,10 +18,10 @@ query AwardTag(
       slug
       id
       title
-      awardTags {
-        awardTag
+      atags {
+        atag
       }
-      seoTagsAwards {
+      seoTags {
         description
         image {
           responsiveImage {
@@ -39,7 +39,7 @@ query AwardTag(
           }
         }
       }
-      categoryAward {
+      acategory {
         name
         bio
         slug

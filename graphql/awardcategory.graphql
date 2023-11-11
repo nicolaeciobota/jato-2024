@@ -4,7 +4,7 @@ query AwardCategory(
   $fallbackLocale: [SiteLocale!]
   $skip: IntType = "0"
 ) {
-  awardCategory(filter: { slug: { eq: $slug } }, locale: $locale) {
+  acategory(filter: { slug: { eq: $slug } }, locale: $locale) {
     name
     picture {
       responsiveImage {
@@ -35,10 +35,10 @@ query AwardCategory(
       slug
       id
       title
-      awardTags {
-        awardTag
+      atags {
+        atag
       }
-      seoTagsAwards {
+      seoTags {
         description
         image {
           responsiveImage {
@@ -56,7 +56,7 @@ query AwardCategory(
           }
         }
       }
-      categoryAward {
+      acategory {
         name
         bio
         slug

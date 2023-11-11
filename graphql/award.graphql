@@ -10,7 +10,7 @@ query Award(
   ) {
     _publishedAt
     title
-    categoryAward {
+    acategory {
       name
       bio
       slug
@@ -30,9 +30,9 @@ query Award(
         }
       }
     }
-    awardTags {
+    atags {
       id
-      awardTag
+      atag
       slug
     }
     content {
@@ -43,10 +43,10 @@ query Award(
         slug
         id
         title
-        awardTags {
-          awardTag
+        atags {
+          atag
         }
-        seoTagsAwards {
+        seoTags {
           description
           image {
             responsiveImage {
@@ -64,7 +64,7 @@ query Award(
             }
           }
         }
-        categoryAward {
+        acategory {
           name
           bio
           picture {
@@ -140,6 +140,24 @@ query Award(
             }
           }
           buttonLabel
+        }
+        ... on GaleryRecord {
+          id
+          imageGalery {
+            id
+            responsiveImage {
+              alt
+              width
+              base64
+              aspectRatio
+              sizes
+              height
+              webpSrcSet
+              title
+              srcSet
+              src
+            }
+          }
         }
       }
     }
