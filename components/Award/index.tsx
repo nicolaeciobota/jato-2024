@@ -10,7 +10,7 @@ type AwardProps = {
   locale: SiteLocale;
 };
 
-const award = ({
+const Award = ({
   awardData,
   awardHeader,
   awardSubheader,
@@ -36,4 +36,4 @@ const award = ({
   );
 };
 
-export default award;
+export default Award;
