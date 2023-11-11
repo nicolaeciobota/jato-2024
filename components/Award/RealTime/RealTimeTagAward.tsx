@@ -1,8 +1,12 @@
 "use client";
 
 import { useQuerySubscription } from "react-datocms/use-query-subscription";
-import TagPosts from "../AwardTypeTagAward";
-import { SiteLocale, TagQuery, TagQueryVariables } from "@/graphql/generated";
+import TagAwards from "../AwardTypeTagAward";
+import {
+  AwardTagQuery,
+  AwardTagQueryVariables,
+  SiteLocale,
+} from "@/graphql/generated";
 import { TypedDocumentNode } from "@graphql-typed-document-node/core";
 
 export default function RealTimeTagPosts({
@@ -14,9 +18,9 @@ export default function RealTimeTagPosts({
 }: {
   locale: SiteLocale;
   token: string;
-  initialData: TagQuery;
-  query: TypedDocumentNode<TagQuery, TagQueryVariables>;
-  variables: TagQueryVariables;
+  initialData: AwardTagQuery;
+  query: TypedDocumentNode<AwardTagQuery, AwardTagQueryVariables>;
+  variables: AwardTagQueryVariables;
 }) {
   const { data } = useQuerySubscription({
     query,
@@ -28,5 +32,5 @@ export default function RealTimeTagPosts({
 
   if (!data) return <></>;
 
-  return <TagPosts lng={locale} data={data} />;
+  return <TagAwards lng={locale} data={data} />;
 }

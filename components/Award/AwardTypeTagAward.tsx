@@ -8,7 +8,7 @@ type Props = {
 };
 
 const TagAwards = ({ data, lng }: Props) => {
-  if (!data.awardTag) {
+  if (!data.atag) {
     notFound();
   }
   return (
@@ -34,13 +34,13 @@ const TagAwards = ({ data, lng }: Props) => {
           />
         </svg>
         <h1 className="my-24 text-center text-2xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
-          {data.tagAward.awardTag}
+          {data.atag.atag}
         </h1>
       </div>
 
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-center">
-          {data.tagAward["_allReferencingAwards"].map((award) => (
+          {data.atag["_allReferencingAwards"].map((award) => (
             <div
               key={award.id}
               className="mb-10 w-full px-4 md:w-2/3 lg:w-1/2 xl:w-1/3"

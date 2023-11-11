@@ -2,8 +2,6 @@ import { AwardRecord, ResponsiveImage, SiteLocale } from "@/graphql/generated";
 import transformDate from "@/utils/transformDate";
 import Link from "next/link";
 import { Image as DatoImage } from "react-datocms";
-import TagAwards from "./AwardTypeTagAward";
-import AwardCategory from "./AwardCategoryAwards";
 
 type Props = {
   award: AwardRecord; //
@@ -11,7 +9,7 @@ type Props = {
 };
 
 const SingleAward = ({ award, locale }: Props) => {
-  const { title, categoryAward, awardTags, _publishedAt, slug } = award;
+  const { title, seoTags, acategory, atags, _publishedAt, slug } = award;
 
   return (
     <>
@@ -21,7 +19,7 @@ const SingleAward = ({ award, locale }: Props) => {
           className="relative block h-[230px] w-full overflow-hidden"
         >
           <span className="absolute right-6 top-6 z-20 inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold capitalize text-white">
-            {TagAwards[0].awardTags}
+            {atags[0].atag}
           </span>
           <div className="relative h-full w-full overflow-hidden">
             <DatoImage
@@ -29,7 +27,7 @@ const SingleAward = ({ award, locale }: Props) => {
               layout="fill"
               objectFit="cover"
               objectPosition="50% 50%"
-              data={image!.responsiveImage as ResponsiveImage}
+              data={seoTags!.image!.responsiveImage as ResponsiveImage}
             />
           </div>
         </Link>
@@ -45,7 +43,7 @@ const SingleAward = ({ award, locale }: Props) => {
           <div className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10" />
           <div className="flex h-full items-center justify-between">
             <Link
-              href={`/${locale}/awards/award_category/${categoryAward.slug}`}
+              href={`/${locale}/awards/award_category/${acategory.slug}`}
               className="mr-5 flex items-center border-r border-body-color border-opacity-10 pr-5 dark:border-white dark:border-opacity-10 xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5"
             >
               <div className="mr-4">
@@ -55,17 +53,15 @@ const SingleAward = ({ award, locale }: Props) => {
                     layout="fill"
                     objectFit="cover"
                     objectPosition="50% 50%"
-                    data={AwardCategory.picture.responsiveImage}
+                    data={acategory.picture.responsiveImage}
                   />
                 </div>
               </div>
               <div className="w-full">
                 <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
-                  {AwardCategory.name}
+                  {acategory.name}
                 </h4>
-                <div className="text-xs text-body-color">
-                  {AwardCategory.bio}
-                </div>
+                <div className="text-xs text-body-color">{acategory.bio}</div>
               </div>
             </Link>
             <div className="inline-block">

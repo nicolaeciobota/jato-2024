@@ -15,10 +15,10 @@ query Awards(
     slug
     id
     title
-    awardTags {
-      awardTag
+    atags {
+      atag
     }
-    seoTagsAwards {
+    seoTags {
       description
       image {
         responsiveImage {
@@ -36,7 +36,7 @@ query Awards(
         }
       }
     }
-    categoryAward {
+    acategory {
       name
       slug
       bio

@@ -3,8 +3,8 @@
 import { useQuerySubscription } from "react-datocms/use-query-subscription";
 import AwardsPage from "../AwardPage";
 import {
-  PostsQuery,
-  PostsQueryVariables,
+  AwardsQuery,
+  AwardsQueryVariables,
   SiteLocale,
 } from "@/graphql/generated";
 import { TypedDocumentNode } from "@graphql-typed-document-node/core";
@@ -19,10 +19,10 @@ export default function RealTimePostsPage({
 }: {
   locale: SiteLocale;
   token: string;
-  initialData: PostsQuery;
-  query: TypedDocumentNode<PostsQuery, PostsQueryVariables>;
+  initialData: AwardsQuery;
+  query: TypedDocumentNode<AwardsQuery, AwardsQueryVariables>;
   page: number;
-  variables: PostsQueryVariables;
+  variables: AwardsQueryVariables;
 }) {
   const { data } = useQuerySubscription({
     query,
