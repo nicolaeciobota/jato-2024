@@ -664,7 +664,7 @@ export type AwardModelFilter = {
   atags?: InputMaybe<LinksFilter>;
   content?: InputMaybe<StructuredTextFilter>;
   id?: InputMaybe<ItemIdFilter>;
-  seoAnalysus?: InputMaybe<JsonFilter>;
+  seoAnalysis?: InputMaybe<JsonFilter>;
   seoTags?: InputMaybe<SeoFilter>;
   slug?: InputMaybe<SlugFilter>;
   title?: InputMaybe<StringFilter>;
@@ -716,7 +716,7 @@ export type AwardRecord = RecordInterface & {
   atags: Array<AtagRecord>;
   content: AwardModelContentField;
   id: Scalars['ItemId']['output'];
-  seoAnalysus?: Maybe<Scalars['JsonField']['output']>;
+  seoAnalysis?: Maybe<Scalars['JsonField']['output']>;
   seoTags?: Maybe<SeoField>;
   slug: Scalars['String']['output'];
   title: Scalars['String']['output'];
