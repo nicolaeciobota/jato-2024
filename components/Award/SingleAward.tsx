@@ -61,7 +61,7 @@ const SingleAward = ({ award, locale }: Props) => {
                 <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
                   {acategory?.name}
                 </h4>
-                <div className="text-xs text-body-color">{acategory?.bio}</div>
+                <div className="text-xs text-body-color">{acategory.bio}</div>
               </div>
             </Link>
             <div className="inline-block">
