@@ -52,7 +52,7 @@ const Award = ({ data, lng }: Props) => {
               <div className="mb-10 flex items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
                 <div className="flex flex-col items-start md:flex-row md:items-center">
                   <Link
-                    href={`/${lng}/awards/author/${data.award.author.slug}`}
+                    href={`/${lng}/awards/acategory/${data.award.acategory.slug}`}
                     className="mb-5 mr-10 flex items-center"
                   >
                     <div className="mr-4">
@@ -60,7 +60,7 @@ const Award = ({ data, lng }: Props) => {
                         <DatoImage
                           className="h-full w-full object-cover"
                           data={
-                            data.award.author.picture
+                            data.award.acategory.picture
                               .responsiveImage as ResponsiveImage
                           }
                         />
@@ -68,10 +68,10 @@ const Award = ({ data, lng }: Props) => {
                     </div>
                     <div className="w-full">
                       <h4 className="mb-1 text-base font-medium text-body-color">
-                        <span>{data.award.author.name}</span>
+                        <span>{data.award.acategory.name}</span>
                       </h4>
                       <p className="text-xs text-body-color">
-                        {data.award.author.bio}
+                        {data.award.acategory.bio}
                       </p>
                     </div>
                   </Link>
@@ -86,10 +86,10 @@ const Award = ({ data, lng }: Props) => {
                 </div>
                 <div className="mb-5">
                   <a
-                    href={`/${lng}/awards/tag/${data.award.tags[0].slug}`}
+                    href={`/${lng}/awards/tag/${data.award.atags[0].slug}`}
                     className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white"
                   >
-                    {data.award.tags[0].tag}
+                    {data.award.atags[0].atag}
                   </a>
                 </div>
               </div>
@@ -235,13 +235,13 @@ const Award = ({ data, lng }: Props) => {
                       Award Tags :
                     </h5>
                     <div className="flex items-center">
-                      {data.award.tags.map((tag) => {
+                      {data.award.atags.map((atag) => {
                         return (
                           <TagAwardButton
-                            key={tag.id}
-                            tag_award={tag_award.tag_award}
+                            key={atag.id}
+                            tag_award={atag.atag}
                             lng={lng}
-                            slug={tag.slug}
+                            slug={atag.slug}
                           />
                         );
                       })}
