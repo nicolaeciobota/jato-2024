@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { PostRecord, SiteLocale } from '@/graphql/generated';
-import transformDate from '@/utils/transformDate';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import Link from 'next/link';
-import { useState } from 'react';
-import { Image as DatoImage } from 'react-datocms';
+import { PostRecord, SiteLocale } from "@/graphql/generated";
+import transformDate from "@/utils/transformDate";
+import { Maybe } from "graphql/jsutils/Maybe";
+import Link from "next/link";
+import { useState } from "react";
+import { Image as DatoImage } from "react-datocms";
 
 type BlogProps = {
   blogData: PostRecord[];
@@ -70,7 +70,7 @@ const CarrouselFeaturedPosts = ({
             </p>
 
             <Link
-              href={'/' + locale + '/posts/' + currentReview.slug}
+              href={"/" + locale + "/posts/" + currentReview.slug}
               className="mt-2 inline-block text-blue-500 underline hover:text-blue-400"
             >
               Read more
@@ -82,15 +82,15 @@ const CarrouselFeaturedPosts = ({
                   layout="fill"
                   objectFit="cover"
                   objectPosition="50% 20%"
-                  data={currentReview.author.picture.responsiveImage}
+                  data={currentReview.author!.picture.responsiveImage}
                 />
               </div>
               <div className="mx-4">
                 <h1 className="text-sm text-gray-700 dark:text-gray-200">
-                  {currentReview.author.name}
+                  {currentReview.author?.name}
                 </h1>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {currentReview.author.bio}
+                  {currentReview.author?.bio}
                 </p>
               </div>
             </div>
