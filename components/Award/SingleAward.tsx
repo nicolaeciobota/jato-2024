@@ -35,7 +35,7 @@ const SingleAward = ({ award, locale }: Props) => {
           <h3>
             <Link
               href={"/" + locale + "/awards/" + slug}
-              className="mb-4 block h-16 text-xl text-black hover:text-primary dark:text-white dark:hover:text-primary"
+              className="dark:text-blue mb-4 block h-16 text-xl text-black hover:text-white dark:hover:text-primary"
             >
               {title}
             </Link>

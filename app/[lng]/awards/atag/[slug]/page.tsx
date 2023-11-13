@@ -37,7 +37,7 @@ const TagAwardsPage = async ({ params }: Params) => {
           initialData={data}
           locale={lng}
           token={process.env.DATOCMS_READONLY_API_TOKEN || ""}
-          query={TagDocument}
+          query={AwardTagDocument}
           variables={{
             locale: lng,
             fallbackLocale: fallbackLng,

@@ -86,7 +86,7 @@ const Award = ({ data, lng }: Props) => {
                 </div>
                 <div className="mb-5">
                   <a
-                    href={`/${lng}/awards/tag/${data.award.atags[0].slug}`}
+                    href={`/${lng}/awards/atag/${data.award.atags[0].slug}`}
                     className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white"
                   >
                     {data.award.atags[0].atag}
