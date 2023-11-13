@@ -1,11 +1,11 @@
-import Footer from '@/components/Footer';
-import ScrollToTop from '@/components/ScrollToTop';
-import 'node_modules/react-modal-video/css/modal-video.css';
-import '@/styles/global.css';
-import { draftMode } from 'next/headers';
-import { SiteLocale } from '@/graphql/generated';
-import getAvailableLocales from '../../i18n/settings';
-import HeaderRenderer from '@/components/Header/HeaderRenderer';
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
+import "node_modules/react-modal-video/css/modal-video.css";
+import "@/styles/global.css";
+import { draftMode } from "next/headers";
+import { SiteLocale } from "@/graphql/generated";
+import getAvailableLocales from "../../i18n/settings";
+import HeaderRenderer from "@/components/Header/HeaderRenderer";
 
 type Params = {
   children: React.ReactNode;
@@ -26,7 +26,6 @@ export default async function RootLayout({
   params: { lng },
 }: Params) {
   const { isEnabled } = draftMode();
-
   return (
     <>
       <HeaderRenderer lng={lng} isDraft={isEnabled} />
