@@ -141,24 +141,6 @@ query Award(
           }
           buttonLabel
         }
-        ... on GaleryRecord {
-          id
-          imageGalery {
-            id
-            responsiveImage {
-              alt
-              width
-              base64
-              aspectRatio
-              sizes
-              height
-              webpSrcSet
-              title
-              srcSet
-              src
-            }
-          }
-        }
       }
     }
   }
