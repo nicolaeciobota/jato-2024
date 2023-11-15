@@ -1,0 +1,77 @@
+query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
+  talk(
+    filter: { slug: { eq: $slug }, title: { isBlank: "false" }, start: {} }
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+    orderBy: _createdAt_ASC
+  ) {
+    _publishedAt
+    title
+    description
+    start
+    end
+    talkSpeakers {
+      name
+      title
+      bio
+      slug
+      picture {
+        responsiveImage(
+          imgixParams: { w: "64", h: "64", fit: crop, auto: format }
+        ) {
+          srcSet
+          webpSrcSet
+          sizes
+          src
+          width
+          height
+          aspectRatio
+          alt
+          title
+          bgColor
+          base64
+        }
+      }
+    }
+    seoTags {
+      description
+      image {
+        responsiveImage {
+          srcSet
+          webpSrcSet
+          sizes
+          src
+          width
+          height
+          aspectRatio
+          alt
+          title
+          bgColor
+          base64
+        }
+      }
+    }
+    talkSpeakers {
+      name
+      bio
+      title
+      picture {
+        responsiveImage(
+          imgixParams: { w: "64", h: "64", fit: crop, auto: format }
+        ) {
+          srcSet
+          webpSrcSet
+          sizes
+          src
+          width
+          height
+          aspectRatio
+          alt
+          title
+          bgColor
+          base64
+        }
+      }
+    }
+  }
+}

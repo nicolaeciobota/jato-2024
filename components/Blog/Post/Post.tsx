@@ -102,7 +102,7 @@ const Post = ({ data, lng }: Props) => {
                       case "ImageBlockRecord":
                         const ImageBlockRecord = record as ImageBlockRecord;
                         return (
-                          <div className="relative mb-16 mt-16 overflow-hidden rounded-md shadow-md sm:h-[300px] md:h-[400px]">
+                          <div className="relative mb-16 mt-16 overflow-hidden rounded-md shadow-md xs:h-[300px] sm:h-[300px] md:h-[400px]">
                             <DatoImage
                               data={ImageBlockRecord.image.responsiveImage}
                               layout="fill"

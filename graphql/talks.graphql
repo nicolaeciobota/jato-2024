@@ -1,0 +1,86 @@
+query Talks(
+  $locale: SiteLocale
+  $fallbackLocale: [SiteLocale!]
+  $skip: IntType = "0"
+) {
+  allTalks(
+    filter: { title: { isBlank: "false" } }
+    orderBy: start_ASC
+    first: "50"
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+    skip: $skip
+  ) {
+    _publishedAt
+    title
+    description
+    start
+    end
+    talkSpeakers {
+      name
+      title
+      bio
+      slug
+      picture {
+        responsiveImage(
+          imgixParams: { w: "64", h: "64", fit: crop, auto: format }
+        ) {
+          srcSet
+          webpSrcSet
+          sizes
+          src
+          width
+          height
+          aspectRatio
+          alt
+          title
+          bgColor
+          base64
+        }
+      }
+    }
+    seoTags {
+      description
+      image {
+        responsiveImage {
+          srcSet
+          webpSrcSet
+          sizes
+          src
+          width
+          height
+          aspectRatio
+          alt
+          title
+          bgColor
+          base64
+        }
+      }
+    }
+    talkSpeakers {
+      name
+      slug
+      bio
+      picture {
+        responsiveImage(
+          imgixParams: { w: "64", h: "64", fit: crop, auto: format }
+        ) {
+          srcSet
+          webpSrcSet
+          sizes
+          src
+          width
+          height
+          aspectRatio
+          alt
+          title
+          bgColor
+          base64
+        }
+      }
+    }
+  }
+  _allTalksMeta(locale: $locale, filter: { title: { isBlank: "false" } }) {
+    count
+  }
+}

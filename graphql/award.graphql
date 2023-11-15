@@ -15,7 +15,9 @@ query Award(
       bio
       slug
       picture {
-        responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
+        responsiveImage(
+          imgixParams: { w: "64", h: "64", fit: crop, auto: format }
+        ) {
           srcSet
           webpSrcSet
           sizes
