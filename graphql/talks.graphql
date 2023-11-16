@@ -38,6 +38,12 @@ query Talks(
           base64
         }
       }
+      _allReferencingTalks {
+        stages {
+          slug
+          name
+        }
+      }
     }
     seoTags {
       description
@@ -59,8 +65,9 @@ query Talks(
     }
     talkSpeakers {
       name
-      slug
+      title
       bio
+      slug
       picture {
         responsiveImage(
           imgixParams: { w: "64", h: "64", fit: crop, auto: format }
@@ -76,6 +83,12 @@ query Talks(
           title
           bgColor
           base64
+        }
+      }
+      _allReferencingTalks {
+        stages {
+          slug
+          name
         }
       }
     }

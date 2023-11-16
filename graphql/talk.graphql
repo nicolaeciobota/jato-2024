@@ -3,7 +3,7 @@ query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
     filter: { slug: { eq: $slug }, title: { isBlank: "false" }, start: {} }
     locale: $locale
     fallbackLocales: $fallbackLocale
-    orderBy: _createdAt_ASC
+    orderBy: start_ASC
   ) {
     _publishedAt
     title
@@ -32,6 +32,13 @@ query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
           base64
         }
       }
+      _allReferencingTalks {
+        stages {
+          name
+          slug
+          id
+        }
+      }
     }
     seoTags {
       description
@@ -53,8 +60,9 @@ query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
     }
     talkSpeakers {
       name
-      bio
       title
+      bio
+      slug
       picture {
         responsiveImage(
           imgixParams: { w: "64", h: "64", fit: crop, auto: format }
@@ -70,6 +78,13 @@ query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
           title
           bgColor
           base64
+        }
+      }
+      _allReferencingTalks {
+        stages {
+          name
+          slug
+          id
         }
       }
     }
