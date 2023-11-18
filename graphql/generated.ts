@@ -5122,6 +5122,7 @@ export type SpeakerModelFilter = {
   _createdAt?: InputMaybe<CreatedAtFilter>;
   _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
   _isValid?: InputMaybe<BooleanFilter>;
+  _locales?: InputMaybe<LocalesFilter>;
   _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
   _publishedAt?: InputMaybe<PublishedAtFilter>;
   _status?: InputMaybe<StatusFilter>;
@@ -5164,14 +5165,18 @@ export enum SpeakerModelOrderBy {
 /** Record of type 👩‍🏫 Speaker (speaker) */
 export type SpeakerRecord = RecordInterface & {
   __typename?: 'SpeakerRecord';
+  _allBioLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _allNameLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
   _allReferencingTalks: Array<TalkRecord>;
   /** Returns meta information regarding a record collection */
   _allReferencingTalksMeta: CollectionMetadata;
+  _allTitleLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
   _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
   _isValid: Scalars['BooleanType']['output'];
+  _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _publishedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -5187,6 +5192,18 @@ export type SpeakerRecord = RecordInterface & {
   slug: Scalars['String']['output'];
   talks: Array<TalkRecord>;
   title: Scalars['String']['output'];
+};
+
+
+/** Record of type 👩‍🏫 Speaker (speaker) */
+export type SpeakerRecord_AllBioLocalesArgs = {
+  markdown?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** Record of type 👩‍🏫 Speaker (speaker) */
+export type SpeakerRecord_AllNameLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
 };
 
 
@@ -5211,6 +5228,12 @@ export type SpeakerRecord_AllReferencingTalksMetaArgs = {
 
 
 /** Record of type 👩‍🏫 Speaker (speaker) */
+export type SpeakerRecord_AllTitleLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type 👩‍🏫 Speaker (speaker) */
 export type SpeakerRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
@@ -5218,7 +5241,22 @@ export type SpeakerRecord_SeoMetaTagsArgs = {
 
 /** Record of type 👩‍🏫 Speaker (speaker) */
 export type SpeakerRecordBioArgs = {
+  locale?: InputMaybe<SiteLocale>;
   markdown?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** Record of type 👩‍🏫 Speaker (speaker) */
+export type SpeakerRecordNameArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type 👩‍🏫 Speaker (speaker) */
+export type SpeakerRecordTitleArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
 };
 
 export type StageModelFilter = {
@@ -5227,6 +5265,7 @@ export type StageModelFilter = {
   _createdAt?: InputMaybe<CreatedAtFilter>;
   _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
   _isValid?: InputMaybe<BooleanFilter>;
+  _locales?: InputMaybe<LocalesFilter>;
   _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
   _publishedAt?: InputMaybe<PublishedAtFilter>;
   _status?: InputMaybe<StatusFilter>;
@@ -5267,6 +5306,7 @@ export enum StageModelOrderBy {
 /** Record of type 🎥 Stage (stage) */
 export type StageRecord = RecordInterface & {
   __typename?: 'StageRecord';
+  _allNameLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
   _allReferencingTalks: Array<TalkRecord>;
   /** Returns meta information regarding a record collection */
   _allReferencingTalksMeta: CollectionMetadata;
@@ -5275,6 +5315,7 @@ export type StageRecord = RecordInterface & {
   _editingUrl?: Maybe<Scalars['String']['output']>;
   _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
   _isValid: Scalars['BooleanType']['output'];
+  _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _publishedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -5288,6 +5329,12 @@ export type StageRecord = RecordInterface & {
   schedule: Array<TalkRecord>;
   slug: Scalars['String']['output'];
   stream: Scalars['String']['output'];
+};
+
+
+/** Record of type 🎥 Stage (stage) */
+export type StageRecord_AllNameLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
 };
 
 
@@ -5313,6 +5360,13 @@ export type StageRecord_AllReferencingTalksMetaArgs = {
 
 /** Record of type 🎥 Stage (stage) */
 export type StageRecord_SeoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type 🎥 Stage (stage) */
+export type StageRecordNameArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
 
@@ -5652,6 +5706,8 @@ export enum TalkModelOrderBy {
 /** Record of type 🕟 Talk (talk) */
 export type TalkRecord = RecordInterface & {
   __typename?: 'TalkRecord';
+  _allDescriptionLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _allTitleLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
@@ -5680,6 +5736,18 @@ export type TalkRecord = RecordInterface & {
 
 
 /** Record of type 🕟 Talk (talk) */
+export type TalkRecord_AllDescriptionLocalesArgs = {
+  markdown?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** Record of type 🕟 Talk (talk) */
+export type TalkRecord_AllTitleLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type 🕟 Talk (talk) */
 export type TalkRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
@@ -5687,7 +5755,15 @@ export type TalkRecord_SeoMetaTagsArgs = {
 
 /** Record of type 🕟 Talk (talk) */
 export type TalkRecordDescriptionArgs = {
+  locale?: InputMaybe<SiteLocale>;
   markdown?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** Record of type 🕟 Talk (talk) */
+export type TalkRecordTitleArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
 };
 
 /** Block of type 👥 Team Section (team_section) */
