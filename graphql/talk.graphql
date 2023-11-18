@@ -1,62 +1,18 @@
 query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
   talk(
-    filter: { slug: { eq: $slug }, title: { isBlank: "false" }, start: {} }
+    filter: { slug: { eq: $slug }, title: { isBlank: "false" } }
     locale: $locale
     fallbackLocales: $fallbackLocale
-    orderBy: start_ASC
   ) {
     _publishedAt
     title
     description
     start
     end
-    talkSpeakers {
+    stages {
+      id
       name
-      title
-      bio
       slug
-      picture {
-        responsiveImage(
-          imgixParams: { w: "64", h: "64", fit: crop, auto: format }
-        ) {
-          srcSet
-          webpSrcSet
-          sizes
-          src
-          width
-          height
-          aspectRatio
-          alt
-          title
-          bgColor
-          base64
-        }
-      }
-      _allReferencingTalks {
-        stages {
-          name
-          slug
-          id
-        }
-      }
-    }
-    seoTags {
-      description
-      image {
-        responsiveImage {
-          srcSet
-          webpSrcSet
-          sizes
-          src
-          width
-          height
-          aspectRatio
-          alt
-          title
-          bgColor
-          base64
-        }
-      }
     }
     talkSpeakers {
       name
@@ -80,13 +36,11 @@ query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
           base64
         }
       }
-      _allReferencingTalks {
-        stages {
-          name
-          slug
-          id
-        }
-      }
+    }
+    dateTags {
+      id
+      eventDate
+      slug
     }
   }
 }

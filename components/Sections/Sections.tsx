@@ -9,6 +9,7 @@ import Video from "../Home/Video";
 import DetailSection from "../Home/Detail/DetailSection";
 import CompactTeam from "../About/CompactTeam";
 import ExpandedTeam from "../About/ExpandedTeam";
+import ExpandedSchedule from "../Schedule/Schedule";
 import FAQAccordion from "../About/FAQAccordion";
 import FAQGrid from "../About/FAQGrid";
 import StatsSection from "../About/StatsSection";
@@ -33,6 +34,7 @@ import {
   SiteLocale,
   StatsSectionRecord,
   TeamSectionRecord,
+  ScheduleRecord,
   VideoSectionRecord,
   AwardRecord,
 } from "@/graphql/generated";
@@ -392,6 +394,19 @@ export default function Section({
                 header={teamSectionRecord.title}
                 subheader={teamSectionRecord.subtitle}
                 members={teamSectionRecord.showcasedMembers}
+                lng={locale}
+              />
+            );
+
+          case "schedule":
+            const scheduleSectionRecord = section as ScheduleRecord;
+            return (
+              <ExpandedSchedule
+                header={scheduleSectionRecord.title}
+                subheader={scheduleSectionRecord.subtitle}
+                members={scheduleSectionRecord.scheduleItems}
+                talks={scheduleSectionRecord.scheduleItems}
+                stages={scheduleSectionRecord.stage}
                 lng={locale}
               />
             );

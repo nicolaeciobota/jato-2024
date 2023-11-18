@@ -6,44 +6,22 @@ query Talks(
   allTalks(
     filter: { title: { isBlank: "false" } }
     orderBy: start_ASC
-    first: "50"
+    first: "30"
     locale: $locale
     fallbackLocales: $fallbackLocale
     skip: $skip
   ) {
     _publishedAt
+    slug
+    id
     title
-    description
-    start
-    end
-    talkSpeakers {
+    dateTags {
+      eventDate
+    }
+    stages {
+      id
       name
-      title
-      bio
       slug
-      picture {
-        responsiveImage(
-          imgixParams: { w: "64", h: "64", fit: crop, auto: format }
-        ) {
-          srcSet
-          webpSrcSet
-          sizes
-          src
-          width
-          height
-          aspectRatio
-          alt
-          title
-          bgColor
-          base64
-        }
-      }
-      _allReferencingTalks {
-        stages {
-          slug
-          name
-        }
-      }
     }
     seoTags {
       description
@@ -66,12 +44,10 @@ query Talks(
     talkSpeakers {
       name
       title
-      bio
       slug
+      bio
       picture {
-        responsiveImage(
-          imgixParams: { w: "64", h: "64", fit: crop, auto: format }
-        ) {
+        responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
           srcSet
           webpSrcSet
           sizes
@@ -83,12 +59,6 @@ query Talks(
           title
           bgColor
           base64
-        }
-      }
-      _allReferencingTalks {
-        stages {
-          slug
-          name
         }
       }
     }

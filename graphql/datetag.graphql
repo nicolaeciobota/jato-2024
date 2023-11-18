@@ -1,0 +1,66 @@
+query Datetag($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!], $skip: IntType = "0") {
+  dateTag(filter: {slug: {eq: $slug}}, locale: $locale) {
+    eventDate
+    _allReferencingTalks(
+      filter: {title: {isBlank: "false"}}
+      orderBy: _createdAt_DESC
+      first: "100"
+      locale: $locale
+      fallbackLocales: $fallbackLocale
+      skip: $skip
+    ) {
+      _publishedAt
+      slug
+      id
+      title
+      dateTags {
+        eventDate
+      }
+      stages {
+        name
+        slug
+      }
+      seoTags {
+        description
+        image {
+          responsiveImage {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
+            alt
+            title
+            bgColor
+            base64
+          }
+        }
+      }
+      talkSpeakers{
+        name
+        bio
+        slug
+        picture {
+          responsiveImage(imgixParams: {w: "64", h: "64", fit: crop}) {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
+            alt
+            title
+            bgColor
+            base64
+          }
+        }
+      }
+    }
+    _allReferencingTalksMeta(locale: $locale, filter: {title: {isBlank: "false"}}) {
+      count
+    }
+  }
+}

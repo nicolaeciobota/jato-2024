@@ -67,6 +67,28 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           }
         }
       }
+      ... on ScheduleRecord {
+        _modelApiKey
+        id
+        title
+        subtitle
+        scheduleItems {
+          title
+          id
+          slug
+          description
+          talkSpeakers {
+            name
+            slug
+            title
+            picture {
+              responsiveImage {
+                ...DatoImage_responsiveImage
+              }
+            }
+          }
+        }
+      }
       ... on FaqSectionRecord {
         _modelApiKey
         displayOptions
@@ -239,7 +261,6 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         id
         _modelApiKey
       }
-
       ... on AllAwardsSectionRecord {
         id
         _modelApiKey
@@ -327,6 +348,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
     count
   }
 }
+
 fragment DatoImage_responsiveImage on ResponsiveImage {
   src
   srcSet
