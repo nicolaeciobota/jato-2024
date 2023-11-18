@@ -1,4 +1,9 @@
-import { ResponsiveImage, SiteLocale, TalkRecord } from "@/graphql/generated";
+import {
+  ResponsiveImage,
+  SiteLocale,
+  StageRecord,
+  TalkRecord,
+} from "@/graphql/generated";
 import transformDate from "@/utils/transformDate";
 import Link from "next/link";
 import { Image as DatoImage } from "react-datocms";
@@ -6,6 +11,7 @@ import { Image as DatoImage } from "react-datocms";
 type Props = {
   talk: TalkRecord; //
   locale: SiteLocale;
+  stage: StageRecord;
 };
 
 const SingleTalk = ({ talk, locale }: Props) => {
@@ -33,11 +39,11 @@ const SingleTalk = ({ talk, locale }: Props) => {
           </div>
         </Link>
         <Link
-          href={"/" + locale + "/stage/" + slug}
+          href={"/" + locale + stages.slug}
           className="relative block h-[230px] w-full overflow-hidden"
         >
           <span className="absolute right-6 top-6 z-20 inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold capitalize text-white">
-            {stages[0].name}
+            {stages[0].slug}
           </span>
           <div className="relative h-full w-full overflow-hidden">
             <DatoImage
