@@ -1,15 +1,22 @@
-import { ResponsiveImage, SiteLocale, TalkRecord } from "@/graphql/generated";
+import {
+  ResponsiveImage,
+  SiteLocale,
+  SpeakerRecord,
+  TalkRecord,
+} from "@/graphql/generated";
 import transformDate from "@/utils/transformDate";
 import Link from "next/link";
 import { Image as DatoImage } from "react-datocms";
+import SpeakerTalks from "./SpeakerTalks";
 
 type Props = {
   talk: TalkRecord; //
   locale: SiteLocale;
+  speakers: Array<SpeakerRecord>;
 };
 
 const SingleTalk = ({ talk, locale }: Props) => {
-  const { title, seoTags, speaker, dateTags, stage, _publishedAt, slug } = talk;
+  const { title, seoTags, dateTags, speaker, stage, _publishedAt, slug } = talk;
 
   return (
     <>
@@ -36,7 +43,7 @@ const SingleTalk = ({ talk, locale }: Props) => {
           className="relative block h-[230px] w-full overflow-hidden"
         >
           <span className="absolute right-6 top-6 z-20 inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold capitalize text-white">
-            {stages[0].slug}
+            {stage?.name}
           </span>
           <div className="relative h-full w-full overflow-hidden">
             <DatoImage
@@ -57,39 +64,39 @@ const SingleTalk = ({ talk, locale }: Props) => {
               {title}
             </Link>
           </h3>
+
           <div className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10" />
-          <div className="flex h-full items-center justify-between">
-            <Link
-              href={`/${locale}/talks/speaker/${speaker?.slug}`}
-              className="mr-5 flex items-center border-r border-body-color border-opacity-10 pr-5 dark:border-white dark:border-opacity-10 xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5"
-            >
-              <div className="mr-4">
-                <div className="relative h-12 w-12 overflow-hidden rounded-full object-contain">
-                  <DatoImage
-                    className="h-full w-full object-cover"
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="50% 50%"
-                    data={speaker.picture.responsiveImage}
-                  />
-                </div>
-              </div>
-              <div className="w-full">
-                <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
-                  {speaker.name}
-                </h4>
-                <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
-                  {speaker.title}
-                </h4>
-                <div className="text-xs text-body-color">{speaker.bio}</div>
-              </div>
-            </Link>
-            <div className="inline-block">
-              <div className="text-xs text-body-color">
-                {transformDate(_publishedAt)}
-              </div>
-            </div>
+          <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 xl:mt-16 xl:grid-cols-3">
+            <ul className="flex flex-wrap">
+              {speaker.map(
+                ({ id, name, title, slug, picture }: SpeakerRecord) => (
+                  <li key={id} className="m-2 w-48">
+                    <Link href={`/${locale}/talks/speakers/${slug}`}>
+                      <div className="flex flex-col items-center">
+                        <DatoImage
+                          className="h-full w-full object-cover"
+                          layout="fill"
+                          objectFit="cover"
+                          objectPosition="50% 50%"
+                          data={picture!.responsiveImage as ResponsiveImage}
+                        />
+                        <strong className="text-lg">{name}</strong>
+                        <p className="text-sm">{title}</p>
+                        <span className="text-blue-500">
+                          View Speaker Profile
+                        </span>
+                      </div>
+                    </Link>
+                  </li>
+                )
+              )}
+            </ul>
           </div>
+        </div>
+      </div>
+      <div className="inline-block">
+        <div className="text-xs text-body-color">
+          {transformDate(_publishedAt)}
         </div>
       </div>
     </>
