@@ -347,8 +347,43 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
   _allAwardsMeta(locale: $locale, filter: { title: { isBlank: "false" } }) {
     count
   }
+  allTalks(
+    filter: { title: { isBlank: "false" } }
+    orderBy: _createdAt_DESC
+    first: "9"
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    _publishedAt
+    slug
+    id
+    title
+    dateTags {
+      eventDate
+    }
+    seoTags {
+      description
+      image {
+        responsiveImage {
+          ...DatoImage_responsiveImage
+        }
+      }
+    }
+    speaker {
+      name
+      slug
+      bio
+      picture {
+        responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
+          ...DatoImage_responsiveImage
+        }
+      }
+    }
+  }
+  _allTalksMeta(locale: $locale, filter: { title: { isBlank: "false" } }) {
+    count
+  }
 }
-
 fragment DatoImage_responsiveImage on ResponsiveImage {
   src
   srcSet

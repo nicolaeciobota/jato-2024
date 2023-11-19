@@ -8,6 +8,7 @@ import {
   PageModelSectionsField,
   AwardRecord,
   PostRecord,
+  TalkRecord,
   SiteLocale,
 } from "@/graphql/generated";
 import { notFound } from "next/navigation";
@@ -46,6 +47,8 @@ export default async function Home({ params: { lng, slug } }: Params) {
           postMeta={data._allPostsMeta as CollectionMetadata}
           awards={data.allAwards as AwardRecord[]}
           awardMeta={data._allAwardsMeta as CollectionMetadata}
+          talks={data.allTalks as TalkRecord[]}
+          talksMeta={data._allTalksMeta as CollectionMetadata}
         />
       )}
       {isEnabled && (
