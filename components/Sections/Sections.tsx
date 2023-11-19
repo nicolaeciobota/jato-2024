@@ -397,19 +397,6 @@ export default function Section({
                 lng={locale}
               />
             );
-
-          case "schedule":
-            const scheduleSectionRecord = section as ScheduleRecord;
-            return (
-              <ExpandedSchedule
-                header={scheduleSectionRecord.title}
-                subheader={scheduleSectionRecord.subtitle}
-                members={scheduleSectionRecord.scheduleItems}
-                talks={scheduleSectionRecord.scheduleItems}
-                stages={scheduleSectionRecord.stage}
-                lng={locale}
-              />
-            );
           case "faq_section":
             const faqSectionRecord = section as FaqSectionRecord;
             if (faqSectionRecord.displayOptions === "accordion")
