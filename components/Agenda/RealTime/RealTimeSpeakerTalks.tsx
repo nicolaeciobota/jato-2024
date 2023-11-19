@@ -1,15 +1,15 @@
 "use client";
 
 import { useQuerySubscription } from "react-datocms/use-query-subscription";
-import AuthorPosts from "../AuthorPosts";
+import SpeakerTalks from "../SpeakerTalks";
 import {
-  AuthorQuery,
-  AuthorQueryVariables,
+  SpeakerQuery,
+  SpeakerQueryVariables,
   SiteLocale,
 } from "@/graphql/generated";
 import { TypedDocumentNode } from "@graphql-typed-document-node/core";
 
-export default function RealTimeAuthorPosts({
+export default function RealTimeSpeakerTalks({
   locale,
   initialData,
   token,
@@ -18,9 +18,9 @@ export default function RealTimeAuthorPosts({
 }: {
   locale: SiteLocale;
   token: string;
-  initialData: AuthorQuery;
-  query: TypedDocumentNode<AuthorQuery, AuthorQueryVariables>;
-  variables: AuthorQueryVariables;
+  initialData: SpeakerQuery;
+  query: TypedDocumentNode<SpeakerQuery, SpeakerQueryVariables>;
+  variables: SpeakerQueryVariables;
 }) {
   const { data } = useQuerySubscription({
     query,
@@ -31,5 +31,5 @@ export default function RealTimeAuthorPosts({
   });
   if (!data) return <></>;
 
-  return <AuthorPosts lng={locale} data={data} />;
+  return <SpeakerTalks lng={locale} data={data} />;
 }

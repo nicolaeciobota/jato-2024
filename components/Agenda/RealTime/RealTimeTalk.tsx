@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useQuerySubscription } from 'react-datocms/use-query-subscription';
-import Post from '../Post/Post';
-import { PostQuery, PostQueryVariables, SiteLocale } from '@/graphql/generated';
-import { TypedDocumentNode } from '@graphql-typed-document-node/core';
+import { useQuerySubscription } from "react-datocms/use-query-subscription";
+import Talk from "../Talk/Talk";
+import { TalkQuery, TalkQueryVariables, SiteLocale } from "@/graphql/generated";
+import { TypedDocumentNode } from "@graphql-typed-document-node/core";
 
-export default function RealTimePost({
+export default function RealTimeTalk({
   locale,
   initialData,
   token,
@@ -14,9 +14,9 @@ export default function RealTimePost({
 }: {
   locale: SiteLocale;
   token: string;
-  initialData: PostQuery;
-  query: TypedDocumentNode<PostQuery>;
-  variables: PostQueryVariables;
+  initialData: TalkQuery;
+  query: TypedDocumentNode<TalkQuery>;
+  variables: TalkQueryVariables;
 }) {
   const { data } = useQuerySubscription({
     query,
@@ -28,5 +28,5 @@ export default function RealTimePost({
 
   if (!data) return <></>;
 
-  return <Post lng={locale} data={data} />;
+  return <Talk lng={locale} data={data} />;
 }

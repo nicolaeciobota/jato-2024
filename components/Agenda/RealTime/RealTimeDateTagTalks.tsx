@@ -1,9 +1,13 @@
-'use client';
+"use client";
 
-import { useQuerySubscription } from 'react-datocms/use-query-subscription';
-import TagPosts from '../TagPosts';
-import { SiteLocale, TagQuery, TagQueryVariables } from '@/graphql/generated';
-import { TypedDocumentNode } from '@graphql-typed-document-node/core';
+import { useQuerySubscription } from "react-datocms/use-query-subscription";
+import DateTagTalks from "../DateTagTalks";
+import {
+  SiteLocale,
+  DatetagQuery,
+  DatetagQueryVariables,
+} from "@/graphql/generated";
+import { TypedDocumentNode } from "@graphql-typed-document-node/core";
 
 export default function RealTimeTagPosts({
   locale,
@@ -14,9 +18,9 @@ export default function RealTimeTagPosts({
 }: {
   locale: SiteLocale;
   token: string;
-  initialData: TagQuery;
-  query: TypedDocumentNode<TagQuery, TagQueryVariables>;
-  variables: TagQueryVariables;
+  initialData: DatetagQuery;
+  query: TypedDocumentNode<DatetagQuery, DatetagQueryVariables>;
+  variables: DatetagQueryVariables;
 }) {
   const { data } = useQuerySubscription({
     query,
@@ -28,5 +32,5 @@ export default function RealTimeTagPosts({
 
   if (!data) return <></>;
 
-  return <TagPosts lng={locale} data={data} />;
+  return <DateTagTalks lng={locale} data={data} />;
 }
