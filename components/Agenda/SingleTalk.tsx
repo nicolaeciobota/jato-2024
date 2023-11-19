@@ -81,7 +81,7 @@ const SingleTalk = ({ talk, locale }: Props) => {
                 <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
                   {speaker.title}
                 </h4>
-                <div className="text-xs text-body-color">{talk.bio}</div>
+                <div className="text-xs text-body-color">{speaker.bio}</div>
               </div>
             </Link>
             <div className="inline-block">
