@@ -2,7 +2,12 @@
 
 import { useQuerySubscription } from "react-datocms/use-query-subscription";
 import Talk from "../Talk/Talk";
-import { TalkQuery, TalkQueryVariables, SiteLocale } from "@/graphql/generated";
+import {
+  SpeakerRecord,
+  TalkQuery,
+  TalkQueryVariables,
+  SiteLocale,
+} from "@/graphql/generated";
 import { TypedDocumentNode } from "@graphql-typed-document-node/core";
 
 export default function RealTimeTalk({
@@ -25,8 +30,15 @@ export default function RealTimeTalk({
     initialData,
     preview: true,
   });
+  if (!data || !data.talk) return <></>;
 
-  if (!data) return <></>;
+  const { title, dateTags } = data.talk;
+  const speakers = data.talk.speakers.map((speaker: SpeakerRecord) => ({
+    id: speaker.id,
+    name: speaker.name,
+    title: speaker.title,
+    picture: speaker.picture,
+  }));
 
-  return <Talk lng={locale} data={data} />;
+  return <Talk speakers={speakers} lng={locale} data={data} />;
 }
