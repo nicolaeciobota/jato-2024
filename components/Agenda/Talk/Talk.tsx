@@ -18,9 +18,10 @@ import React from "react";
 type Props = {
   data: TalkQuery;
   lng: SiteLocale;
+  speaker: Array<SpeakerRecord>;
 };
 
-const Talk = ({ data, lng }: Props) => {
+const Talk = ({ data, lng, speaker }: Props) => {
   if (!data.talk) notFound();
   return (
     <section className="mt-40 pb-[120px]">
@@ -33,30 +34,33 @@ const Talk = ({ data, lng }: Props) => {
               </h2>
               <div className="mb-10 flex items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
                 <div className="flex flex-col items-start md:flex-row md:items-center">
-                  <Link
-                    href={`/${lng}/talks/speaker/${data.talk.speaker?.slug}`}
-                    className="mb-5 mr-10 flex items-center"
-                  >
-                    <div className="mr-4">
-                      <div className="relative h-10 w-10 overflow-hidden rounded-full">
-                        <DatoImage
-                          className="h-full w-full object-cover"
-                          data={
-                            data.talk.speaker!.picture
-                              .responsiveImage as ResponsiveImage
-                          }
-                        />
-                      </div>
-                    </div>
-                    <div className="w-full">
-                      <h4 className="mb-1 text-base font-medium text-body-color">
-                        <span>{data.talk.speaker?.name}</span>
-                      </h4>
-                      <p className="text-xs text-body-color">
-                        {data.talk.speaker?.bio}
-                      </p>
-                    </div>
-                  </Link>
+                  <ul className="flex flex-wrap">
+                    {speaker.map(
+                      ({ id, name, title, slug, picture }: SpeakerRecord) => (
+                        <li key={id} className="m-2 w-48">
+                          <Link href={`/${lng}/talks/speakers/${slug}`}>
+                            <div className="flex flex-col items-center">
+                              <DatoImage
+                                className="h-full w-full object-cover"
+                                layout="fill"
+                                objectFit="cover"
+                                objectPosition="50% 50%"
+                                data={
+                                  picture!.responsiveImage as ResponsiveImage
+                                }
+                              />
+                              <strong className="text-lg">{name}</strong>
+                              <p className="text-sm">{title}</p>
+                              <span className="text-blue-500">
+                                View Speaker Profile
+                              </span>
+                            </div>
+                          </Link>
+                        </li>
+                      )
+                    )}
+                  </ul>
+
                   {data.talk._publishedAt && (
                     <div className="mb-5 flex items-center">
                       <p className="mr-5 flex items-center text-base font-medium text-body-color">
@@ -86,7 +90,7 @@ const Talk = ({ data, lng }: Props) => {
                       return (
                         <DateTagButton
                           key={eventDate.id}
-                          eventDate={eventDate.eventDate}
+                          dateTag={eventDate.eventDate}
                           lng={lng}
                           slug={eventDate.slug}
                         />
