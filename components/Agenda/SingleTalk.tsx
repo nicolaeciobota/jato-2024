@@ -12,7 +12,6 @@ import SpeakerTalks from "./SpeakerTalks";
 type Props = {
   talk: TalkRecord; //
   locale: SiteLocale;
-  speakers: Array<SpeakerRecord>;
 };
 
 const SingleTalk = ({ talk, locale }: Props) => {
