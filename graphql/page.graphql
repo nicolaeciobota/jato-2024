@@ -67,28 +67,6 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           }
         }
       }
-      ... on ScheduleRecord {
-        _modelApiKey
-        id
-        title
-        subtitle
-        scheduleItems {
-          title
-          id
-          slug
-          description
-          speaker {
-            name
-            slug
-            title
-            picture {
-              responsiveImage {
-                ...DatoImage_responsiveImage
-              }
-            }
-          }
-        }
-      }
       ... on FaqSectionRecord {
         _modelApiKey
         displayOptions
@@ -262,6 +240,10 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         _modelApiKey
       }
       ... on AllAwardsSectionRecord {
+        id
+        _modelApiKey
+      }
+      ... on AllTalksSectionRecord {
         id
         _modelApiKey
       }

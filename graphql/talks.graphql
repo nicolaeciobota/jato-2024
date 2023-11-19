@@ -5,8 +5,8 @@ query Talks(
 ) {
   allTalks(
     filter: { title: { isBlank: "false" } }
-    orderBy: start_ASC
-    first: "30"
+    orderBy: _createdAt_DESC
+    first: "50"
     locale: $locale
     fallbackLocales: $fallbackLocale
     skip: $skip

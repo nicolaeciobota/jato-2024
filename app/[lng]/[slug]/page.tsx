@@ -47,6 +47,8 @@ export default async function Home({ params: { lng, slug } }: Params) {
           postMeta={data._allPostsMeta as CollectionMetadata}
           awards={data.allAwards as AwardRecord[]}
           awardMeta={data._allAwardsMeta as CollectionMetadata}
+          talks={data.allTalks as TalkRecord[]}
+          talkMeta={data._allTalksMeta as CollectionMetadata}
         />
       )}
       {isEnabled && (
