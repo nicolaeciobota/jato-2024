@@ -1,4 +1,4 @@
-const SharePost = () => {
+const ShareTalk = () => {
   return (
     <>
       <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md bg-primary bg-opacity-10 text-body-color duration-300 hover:bg-opacity-100 hover:text-white sm:ml-3">
@@ -30,4 +30,4 @@ const SharePost = () => {
   );
 };
 
-export default SharePost;
+export default ShareTalk;

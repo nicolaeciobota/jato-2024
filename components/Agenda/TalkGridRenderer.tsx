@@ -1,28 +1,28 @@
 import {
   CollectionMetadata,
-  PostRecord,
+  TalkRecord,
   SiteLocale,
-} from '@/graphql/generated';
-import PageIndicatorList from './PageIndicatorList';
-import SingleBlog from './SingleBlog';
+} from "@/graphql/generated";
+import PageIndicatorList from "./PageIndicatorList";
+import SingleTalk from "./SingleTalk";
 
 type Props = {
-  data: PostRecord[];
+  data: TalkRecord[];
   lng: SiteLocale;
-  postMeta: CollectionMetadata;
+  talkMeta: CollectionMetadata;
 };
 
-const PostGridRenderer = ({ data, lng, postMeta }: Props) => {
+const talkGridRenderer = ({ data, lng, talkMeta }: Props) => {
   return (
     <section className="mt-4 pb-[120px] pt-[120px]">
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-center">
-          {data.map((post) => (
+          {data.map((talk) => (
             <div
-              key={post.id}
+              key={talk.id}
               className="mb-10 w-full px-4 md:w-2/3 lg:w-1/2 xl:w-1/3"
             >
-              <SingleBlog blog={post as PostRecord} locale={lng} />
+              <SingleTalk talk={talk as TalkRecord} locale={lng} />
             </div>
           ))}
         </div>
@@ -30,11 +30,11 @@ const PostGridRenderer = ({ data, lng, postMeta }: Props) => {
         <div className=" -mx-4 flex flex-wrap">
           <div className="w-full px-4">
             <ul className="flex items-center justify-center pt-8">
-              <PageIndicatorList lng={lng} postCount={postMeta.count} />
-              {9 < postMeta.count && (
+              <PageIndicatorList lng={lng} talkCount={talkMeta.count} />
+              {9 < talkMeta.count && (
                 <li className="mx-1">
                   <a
-                    href={`/${lng}/posts/page/2`}
+                    href={`/${lng}/talks/page/2`}
                     className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
                   >
                     Next
@@ -49,4 +49,4 @@ const PostGridRenderer = ({ data, lng, postMeta }: Props) => {
   );
 };
 
-export default PostGridRenderer;
+export default talkGridRenderer;

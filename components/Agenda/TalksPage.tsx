@@ -1,6 +1,6 @@
-import PageIndicatorList from '@/components/Agenda/PageIndicatorList';
-import SingleTalk from '@/components/Agenda/SingleTalk';
-import { TalkRecord, TalksQuery, SiteLocale } from '@/graphql/generated';
+import PageIndicatorList from "@/components/Agenda/PageIndicatorList";
+import SingleTalk from "@/components/Agenda/SingleTalk";
+import { TalkRecord, TalksQuery, SiteLocale } from "@/graphql/generated";
 
 type Props = {
   data: TalksQuery;
@@ -40,9 +40,9 @@ const TalksPage = ({ data, lng, page }: Props) => {
               </li>
               <PageIndicatorList
                 lng={lng}
-                postCount={data['_allTalksMeta'].count}
+                talkCount={data["_allTalksMeta"].count}
               />
-              {page * 9 <= data['_allTalksMeta'].count && (
+              {page * 9 <= data["_allTalksMeta"].count && (
                 <li className="mx-1">
                   <a
                     href={`/${lng}/talks/page/${page + 1}`}

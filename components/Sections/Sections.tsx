@@ -9,7 +9,6 @@ import Video from "../Home/Video";
 import DetailSection from "../Home/Detail/DetailSection";
 import CompactTeam from "../About/CompactTeam";
 import ExpandedTeam from "../About/ExpandedTeam";
-import ExpandedSchedule from "../Schedule/Schedule";
 import FAQAccordion from "../About/FAQAccordion";
 import FAQGrid from "../About/FAQGrid";
 import StatsSection from "../About/StatsSection";

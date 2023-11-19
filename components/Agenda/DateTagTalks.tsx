@@ -1,19 +1,19 @@
-import { PostRecord, SiteLocale, TagQuery } from '@/graphql/generated';
-import SingleBlog from './SingleBlog';
-import { notFound } from 'next/navigation';
+import { TalkRecord, SiteLocale, DatetagQuery } from "@/graphql/generated";
+import { notFound } from "next/navigation";
+import SingleTalk from "./SingleTalk";
 
 type Props = {
-  data: TagQuery;
+  data: DatetagQuery;
   lng: SiteLocale;
 };
 
-const TagPosts = ({ data, lng }: Props) => {
-  if (!data.tag) {
+const DateTagTalks = ({ data, lng }: Props) => {
+  if (!data.dateTag) {
     notFound();
   }
   return (
     <section className="py-[32px]">
-      <div className='flex width-full justify-center items-center gap-4'>
+      <div className="width-full flex items-center justify-center gap-4">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -34,18 +34,18 @@ const TagPosts = ({ data, lng }: Props) => {
           />
         </svg>
         <h1 className="my-24 text-center text-2xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
-          {data.tag.tag}
+          {data.dateTag.eventDate}
         </h1>
       </div>
 
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-center">
-          {data.tag['_allReferencingPosts'].map((post) => (
+          {data.dateTag["_allReferencingTalks"].map((talk) => (
             <div
-              key={post.id}
+              key={talk.id}
               className="mb-10 w-full px-4 md:w-2/3 lg:w-1/2 xl:w-1/3"
             >
-              <SingleBlog blog={post as PostRecord} locale={lng} />
+              <SingleTalk talk={talk as TalkRecord} locale={lng} />
             </div>
           ))}
         </div>
@@ -56,4 +56,4 @@ const TagPosts = ({ data, lng }: Props) => {
   );
 };
 
-export default TagPosts;
+export default DateTagTalks;
