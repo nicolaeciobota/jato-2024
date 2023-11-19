@@ -343,6 +343,11 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
     dateTags {
       eventDate
     }
+    stage {
+      id
+      name
+      slug
+    }
     seoTags {
       description
       image {
