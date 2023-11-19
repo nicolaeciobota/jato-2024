@@ -350,7 +350,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
   allTalks(
     filter: { title: { isBlank: "false" } }
     orderBy: _createdAt_DESC
-    first: "9"
+    first: "50"
     locale: $locale
     fallbackLocales: $fallbackLocale
   ) {

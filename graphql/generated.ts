@@ -8230,6 +8230,7 @@ export type TalkQueryVariables = Exact<{
 export type TalkQuery = {
   __typename?: "Query";
   talk?: {
+    speakers: any;
     __typename?: "TalkRecord";
     _publishedAt?: string | null;
     title: string;
