@@ -41,7 +41,7 @@ query Talks(
         }
       }
     }
-    talkSpeakers {
+    speaker {
       name
       title
       slug

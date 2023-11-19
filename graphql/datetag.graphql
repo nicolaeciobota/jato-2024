@@ -1,8 +1,13 @@
-query Datetag($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!], $skip: IntType = "0") {
-  dateTag(filter: {slug: {eq: $slug}}, locale: $locale) {
+query Datetag(
+  $slug: String
+  $locale: SiteLocale
+  $fallbackLocale: [SiteLocale!]
+  $skip: IntType = "0"
+) {
+  dateTag(filter: { slug: { eq: $slug } }, locale: $locale) {
     eventDate
     _allReferencingTalks(
-      filter: {title: {isBlank: "false"}}
+      filter: { title: { isBlank: "false" } }
       orderBy: _createdAt_DESC
       first: "100"
       locale: $locale
@@ -38,12 +43,12 @@ query Datetag($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]
           }
         }
       }
-      talkSpeakers{
+      speaker {
         name
         bio
         slug
         picture {
-          responsiveImage(imgixParams: {w: "64", h: "64", fit: crop}) {
+          responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
             srcSet
             webpSrcSet
             sizes
@@ -59,7 +64,10 @@ query Datetag($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]
         }
       }
     }
-    _allReferencingTalksMeta(locale: $locale, filter: {title: {isBlank: "false"}}) {
+    _allReferencingTalksMeta(
+      locale: $locale
+      filter: { title: { isBlank: "false" } }
+    ) {
       count
     }
   }

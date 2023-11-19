@@ -53,7 +53,7 @@ query Speaker(
           }
         }
       }
-      talkSpeakers {
+      speaker {
         name
         title
         bio

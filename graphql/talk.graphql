@@ -14,7 +14,7 @@ query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
       name
       slug
     }
-    talkSpeakers {
+    speaker {
       name
       title
       bio

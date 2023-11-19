@@ -77,7 +77,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           id
           slug
           description
-          talkSpeakers {
+          speaker {
             name
             slug
             title
