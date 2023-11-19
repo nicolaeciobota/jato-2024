@@ -18,7 +18,7 @@ query Talks(
     dateTags {
       eventDate
     }
-    stages {
+    stage {
       id
       name
       slug

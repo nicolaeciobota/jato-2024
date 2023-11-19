@@ -9,7 +9,7 @@ query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
     description
     start
     end
-    stages {
+    stage {
       id
       name
       slug

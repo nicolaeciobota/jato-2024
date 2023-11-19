@@ -9,8 +9,7 @@ type Props = {
 };
 
 const SingleTalk = ({ talk, locale }: Props) => {
-  const { title, seoTags, speaker, dateTags, stages, _publishedAt, slug } =
-    talk;
+  const { title, seoTags, speaker, dateTags, stage, _publishedAt, slug } = talk;
 
   return (
     <>
@@ -33,7 +32,7 @@ const SingleTalk = ({ talk, locale }: Props) => {
           </div>
         </Link>
         <Link
-          href={"/" + locale + "/" + stages?.slug}
+          href={"/" + locale + "/" + stage?.slug}
           className="relative block h-[230px] w-full overflow-hidden"
         >
           <span className="absolute right-6 top-6 z-20 inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold capitalize text-white">
@@ -82,7 +81,7 @@ const SingleTalk = ({ talk, locale }: Props) => {
                 <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
                   {speaker.title}
                 </h4>
-                <div className="text-xs text-body-color">{speaker.bio}</div>
+                <div className="text-xs text-body-color">{talk.bio}</div>
               </div>
             </Link>
             <div className="inline-block">

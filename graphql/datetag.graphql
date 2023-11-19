@@ -21,7 +21,7 @@ query Datetag(
       dateTags {
         eventDate
       }
-      stages {
+      stage {
         name
         slug
       }

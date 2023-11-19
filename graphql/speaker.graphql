@@ -6,6 +6,8 @@ query Speaker(
 ) {
   speaker(filter: { slug: { eq: $slug } }, locale: $locale) {
     name
+    title
+    bio
     picture {
       responsiveImage {
         srcSet
@@ -21,8 +23,6 @@ query Speaker(
         base64
       }
     }
-    title
-    bio
     _allReferencingTalks(
       filter: { title: { isBlank: "false" } }
       orderBy: _createdAt_DESC
@@ -35,6 +35,16 @@ query Speaker(
       slug
       id
       title
+      dateTags {
+        id
+        eventDate
+        slug
+      }
+      stage {
+        id
+        name
+        slug
+      }
       seoTags {
         description
         image {
@@ -75,6 +85,7 @@ query Speaker(
         }
       }
     }
+
     _allReferencingTalksMeta(
       locale: $locale
       filter: { title: { isBlank: "false" } }
