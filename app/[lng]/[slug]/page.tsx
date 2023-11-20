@@ -49,6 +49,10 @@ export default async function Home({ params: { lng, slug } }: Params) {
           awardMeta={data._allAwardsMeta as CollectionMetadata}
           talks={data.allTalks as TalkRecord[]}
           talkMeta={data._allTalksMeta as CollectionMetadata}
+          data={{
+            __typename: undefined,
+            talk: undefined,
+          }}
         />
       )}
       {isEnabled && (
