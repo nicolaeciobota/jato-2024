@@ -19,7 +19,7 @@ import React from "react";
 type Props = {
   data: TalkQuery;
   lng: SiteLocale;
-  speakers: Array<SpeakerRecord>;
+  speakers?: SpeakerRecord[];
 };
 
 const Talk = ({ data, lng, speakers }: Props) => {
@@ -39,7 +39,7 @@ const Talk = ({ data, lng, speakers }: Props) => {
               <div className="mb-10 flex items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
                 <div className="flex flex-col items-start md:flex-row md:items-center">
                   <ul className="flex flex-wrap">
-                    {speakers.map(
+                    {speakers?.map(
                       ({ id, name, title, slug, picture }: SpeakerRecord) => (
                         <li key={id} className="m-2 w-48">
                           <Link href={`/${lng}/talks/speakers/${slug}`}>

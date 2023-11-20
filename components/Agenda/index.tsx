@@ -1,4 +1,4 @@
-import { TalkRecord, SiteLocale } from "@/graphql/generated";
+import { TalkRecord, SiteLocale, SpeakerRecord } from "@/graphql/generated";
 import SectionTitle from "../Common/SectionTitle";
 import SingleTalk from "./SingleTalk";
 import { Maybe } from "graphql/jsutils/Maybe";
@@ -7,6 +7,7 @@ type TalkProps = {
   talkData: TalkRecord[];
   talkHeader: string;
   talkSubheader: Maybe<string>;
+  speakers?: SpeakerRecord[];
   locale: SiteLocale;
 };
 

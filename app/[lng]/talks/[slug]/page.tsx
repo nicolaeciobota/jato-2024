@@ -32,18 +32,7 @@ const TalkDetailsPage = async ({ params: { slug, lng } }: Params) => {
   }
   return (
     <>
-      {!isEnabled && (
-        <Talk
-          data={data}
-          lng={lng}
-          speakers={data.talk.speakers!.map((speaker: SpeakerRecord) => ({
-            id: speaker.id,
-            name: speaker.name,
-            title: speaker.title,
-            picture: speaker.picture,
-          }))}
-        />
-      )}
+      {!isEnabled && <Talk data={data} lng={lng} />}
       {isEnabled && (
         <RealTimeTalk
           initialData={data}
