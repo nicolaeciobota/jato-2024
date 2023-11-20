@@ -68,10 +68,7 @@ import BigImageVerticalFeatures from "../Home/Features/BigImageVerticalFeatures"
 import Changelog from "../Changelog";
 import TalkGridRenderer from "../Agenda/TalkGridRenderer";
 import Talk from "../Agenda";
-import CarrouselFeaturedTalks from "../Stage/Featured Talks/CarrouselFeaturedTalks";
-import FullImageFeaturedTalks from "../Stage/Featured Talks/FullImageFeaturedTalks";
-import MinimalistFeaturedTalksGrid from "../Stage/Featured Talks/MinimalistFeaturedTalksGrid";
-import ModernTalkCards from "../Stage/Featured Talks/ModernTalkCards";
+
 
 type Props = {
   sections: Array<PageModelSectionsField>;
@@ -388,98 +385,6 @@ export default function Section({
                     blogHeader={featuredPostsSectionRecord.featuredPostsHeader}
                     blogSubheader={
                       featuredPostsSectionRecord.featuredPostsSubheader
-                    }
-                  />
-                );
-            }
-          case "featured_talks_section":
-            const featuredTalksSectionRecord =
-              section as FeaturedTalksSectionRecord;
-            switch (featuredTalksSectionRecord.displayOptions) {
-              case "modern_cards":
-                return (
-                  <ModernTalkCards
-                    locale={locale}
-                    talkData={featuredTalksSectionRecord.featuredTalks}
-                    talkHeader={featuredTalksSectionRecord.featuredTalksHeader}
-                    talkSubheader={
-                      featuredTalksSectionRecord.featuredTalksSubheader
-                    }
-                    speaker={data.talk?.speakers!.map(
-                      (speaker: SpeakerRecord) => ({
-                        id: speaker.id,
-                        name: speaker.name,
-                        title: speaker.title,
-                        picture: speaker.picture,
-                      })
-                    )}
-                  />
-                );
-              case "carrousel":
-                return (
-                  <CarrouselFeaturedTalks
-                    locale={locale}
-                    talkData={featuredTalksSectionRecord.featuredTalks}
-                    talkHeader={featuredTalksSectionRecord.featuredTalksHeader}
-                    talkSubheader={
-                      featuredTalksSectionRecord.featuredTalksSubheader
-                    }
-                    speaker={data.talk?.speakers!.map(
-                      (speaker: SpeakerRecord) => ({
-                        id: speaker.id,
-                        name: speaker.name,
-                        title: speaker.title,
-                        picture: speaker.picture,
-                      })
-                    )}
-                  />
-                );
-              case "minimalist_grid":
-                return (
-                  <MinimalistFeaturedTalksGrid
-                    locale={locale}
-                    talkData={featuredTalksSectionRecord.featuredTalks}
-                    talkHeader={featuredTalksSectionRecord.featuredTalksHeader}
-                    talkSubheader={
-                      featuredTalksSectionRecord.featuredTalksSubheader
-                    }
-                    speaker={data.talk?.speakers!.map(
-                      (speaker: SpeakerRecord) => ({
-                        id: speaker.id,
-                        name: speaker.name,
-                        title: speaker.title,
-                        picture: speaker.picture,
-                      })
-                    )}
-                  />
-                );
-              case "full_image_card":
-                return (
-                  <FullImageFeaturedTalks
-                    locale={locale}
-                    talkData={featuredTalksSectionRecord.featuredTalks}
-                    talkHeader={featuredTalksSectionRecord.featuredTalksHeader}
-                    talkSubheader={
-                      featuredTalksSectionRecord.featuredTalksSubheader
-                    }
-                    speaker={data.talk?.speakers!.map(
-                      (speaker: SpeakerRecord) => ({
-                        id: speaker.id,
-                        name: speaker.name,
-                        title: speaker.title,
-                        picture: speaker.picture,
-                      })
-                    )}
-                  />
-                );
-              default:
-                return (
-                  <Talk
-                    locale={locale}
-                    talkData={featuredTalksSectionRecord.featuredTalks}
-                    talkHeader={featuredTalksSectionRecord.featuredTalksHeader}
-                    talkSubheader={
-                      featuredTalksSectionRecord.featuredTalksSubheader
                     }
                   />
                 );

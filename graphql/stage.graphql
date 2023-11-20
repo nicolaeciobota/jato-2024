@@ -1,0 +1,85 @@
+query Stage(
+  $slug: String
+  $locale: SiteLocale
+  $fallbackLocale: [SiteLocale!]
+) {
+  stage(
+    filter: { slug: { eq: $slug }, name: { isBlank: "false" } }
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    _publishedAt
+    name
+    talk {
+      _publishedAt
+      title
+      description
+      start
+      end
+      dateTags {
+        id
+        eventDate
+        slug
+      }
+      speaker {
+        name
+        title
+        bio
+        slug
+        picture {
+          responsiveImage(
+            imgixParams: { w: "64", h: "64", fit: crop, auto: format }
+          ) {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
+            alt
+            title
+            bgColor
+            base64
+          }
+        }
+      }
+    }
+
+    content {
+      value
+      links {
+        _publishedAt
+        __typename
+        slug
+        id
+        name
+        seoTags {
+          description
+          image {
+            responsiveImage {
+              srcSet
+              webpSrcSet
+              sizes
+              src
+              width
+              height
+              aspectRatio
+              alt
+              title
+              bgColor
+              base64
+            }
+          }
+        }
+      }
+
+      blocks {
+        ... on StreamPlayerRecord {
+          id
+          videoPlayer(markdown: true)
+        }
+      }
+    }
+  }
+}
