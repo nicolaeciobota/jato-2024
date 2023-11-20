@@ -46,7 +46,7 @@ export default function RealTimeSections({
       posts={data.allPosts as PostRecord[]}
       awards={data.allAwards as AwardRecord[]}
       talks={data.allTalks as TalkRecord[]}
-      stages={data.stages as StageRecord[]}
+      stages={data.allStages as StageRecord[]}
       postMeta={data._allPostsMeta as CollectionMetadata}
       awardMeta={data._allAwardsMeta as CollectionMetadata}
       talkMeta={data._allTalksMeta as CollectionMetadata}

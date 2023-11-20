@@ -41,6 +41,9 @@ import {
   SpeakerRecord,
   TalkQuery,
   AllStagesSectionRecord,
+  StagesQuery,
+  StageQuery,
+  StageRecord,
 } from "@/graphql/generated";
 import GradientHero from "../Home/Hero/GradientHero";
 import FeatureCards from "../Home/Features/FeatureCards";
@@ -71,7 +74,6 @@ import TalkGridRenderer from "../Agenda/TalkGridRenderer";
 import Talk from "../Agenda";
 import StageGridRenderer from "../Stage/StageGridRenderer";
 
-
 type Props = {
   sections: Array<PageModelSectionsField>;
   locale: SiteLocale;
@@ -81,6 +83,8 @@ type Props = {
   awards: AwardRecord[];
   talks: TalkRecord[];
   talkMeta: CollectionMetadata;
+  stages: StageRecord[];
+  stageMeta: CollectionMetadata;
   data: TalkQuery;
 };
 
@@ -91,6 +95,8 @@ export default function Section({
   postMeta,
   awards,
   awardMeta,
+  stages,
+  stageMeta,
   talks,
   talkMeta,
   data,
@@ -467,10 +473,14 @@ export default function Section({
             return (
               <TalkGridRenderer data={talks} lng={locale} talkMeta={talkMeta} />
             );
-            case "all_stages_section":
+          case "all_stages_section":
             const allStagesSectionRecord = section as AllStagesSectionRecord;
             return (
-              <StageGridRenderer data={stages} lng={locale} stageMeta={stageMeta} />
+              <StageGridRenderer
+                data={stages}
+                lng={locale}
+                stageMeta={stageMeta}
+              />
             );
 
           case "redirect_section":
