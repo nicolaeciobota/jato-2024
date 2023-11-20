@@ -22,23 +22,17 @@ export default function RealTimeTalk({
   initialData: TalkQuery;
   query: TypedDocumentNode<TalkQuery>;
   variables: TalkQueryVariables;
+  speakers: Array<SpeakerRecord>;
 }) {
   const { data } = useQuerySubscription({
     query,
+
     variables,
     token,
     initialData,
     preview: true,
   });
-  if (!data || !data.talk) return <></>;
+  if (!data) return <></>;
 
-  const { title, dateTags } = data.talk;
-  const speakers = data.talk.speakers.map((speaker: SpeakerRecord) => ({
-    id: speaker.id,
-    name: speaker.name,
-    title: speaker.title,
-    picture: speaker.picture,
-  }));
-
-  return <Talk speakers={speakers} lng={locale} data={data} />;
+  return <Talk lng={locale} data={data} />;
 }
