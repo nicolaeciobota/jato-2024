@@ -10,6 +10,7 @@ import {
   PostRecord,
   AwardRecord,
   TalkRecord,
+  SpeakerRecord,
   SiteLocale,
 } from "@/graphql/generated";
 import { TypedDocumentNode } from "@graphql-typed-document-node/core";
@@ -47,6 +48,10 @@ export default function RealTimeSections({
       postMeta={data._allPostsMeta as CollectionMetadata}
       awardMeta={data._allAwardsMeta as CollectionMetadata}
       talkMeta={data._allTalksMeta as CollectionMetadata}
+      data={{
+        __typename: undefined,
+        talk: undefined,
+      }}
     />
   );
 }

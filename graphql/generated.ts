@@ -1428,6 +1428,39 @@ export type FeaturedStageRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
+/** Block of type 📰 Featured talks section (featured_talks_section) */
+export type FeaturedTalksSectionRecord = RecordInterface & {
+  __typename?: "FeaturedTalksSectionRecord";
+  _createdAt: Scalars["DateTime"]["output"];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars["String"]["output"]>;
+  _firstPublishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  _isValid: Scalars["BooleanType"]["output"];
+  _modelApiKey: Scalars["String"]["output"];
+  _publicationScheduledAt?: Maybe<Scalars["DateTime"]["output"]>;
+  _publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars["DateTime"]["output"]>;
+  _updatedAt: Scalars["DateTime"]["output"];
+  displayOptions: Scalars["String"]["output"];
+  featuredTalks: Array<TalkRecord>;
+  featuredTalksHeader: Scalars["String"]["output"];
+  featuredTalksSubheader?: Maybe<Scalars["String"]["output"]>;
+  id: Scalars["ItemId"]["output"];
+};
+
+/** Block of type 📰 Featured talks section (featured_talks_section) */
+export type FeaturedTalksSectionRecord_SeoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+/** Block of type 📰 Featured talks section (featured_talks_section) */
+export type FeaturedTalksSectionRecordFeaturedTalksSubheaderArgs = {
+  markdown?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
 export type FileField = FileFieldInterface & {
   __typename?: "FileField";
   _createdAt: Scalars["DateTime"]["output"];

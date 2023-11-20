@@ -74,9 +74,9 @@ const SingleTalk = ({ talk, locale }: Props) => {
               {title}
             </Link>
           </h3>
-          <p>{description}</p>
-          <p>{start}</p>
-          <p>{end}</p>
+          <p>{talk.description}</p>
+          <p>{talk.start}</p>
+          <p>{talk.end}</p>
 
           <div className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10" />
           <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 xl:mt-16 xl:grid-cols-3">
