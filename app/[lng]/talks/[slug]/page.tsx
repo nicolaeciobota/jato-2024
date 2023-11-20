@@ -4,12 +4,7 @@ import { notFound } from "next/navigation";
 import { draftMode } from "next/headers";
 import Talk from "@/components/Agenda/Talk/Talk";
 import RealTimeTalk from "@/components/Agenda/RealTime/RealTimeTalk";
-import {
-  SpeakerRecord,
-  PostDocument,
-  SiteLocale,
-  TalkDocument,
-} from "@/graphql/generated";
+import { SpeakerRecord, SiteLocale, TalkDocument } from "@/graphql/generated";
 
 type Params = {
   params: {
@@ -35,24 +30,26 @@ const TalkDetailsPage = async ({ params: { slug, lng } }: Params) => {
   if (!data.talk) {
     notFound();
   }
-
-  const { title, dateTags } = data.talk;
-  const speakers = data.talk.speakers.map((speaker: SpeakerRecord) => ({
-    id: speaker.id,
-    name: speaker.name,
-    title: speaker.title,
-    picture: speaker.picture,
-  }));
-
   return (
     <>
-      {!isEnabled && <Talk speakers={speakers} data={data} lng={lng} />}
+      {!isEnabled && (
+        <Talk
+          data={data}
+          lng={lng}
+          speakers={data.talk.speakers!.map((speaker: SpeakerRecord) => ({
+            id: speaker.id,
+            name: speaker.name,
+            title: speaker.title,
+            picture: speaker.picture,
+          }))}
+        />
+      )}
       {isEnabled && (
         <RealTimeTalk
           initialData={data}
           locale={lng}
           token={process.env.DATOCMS_READONLY_API_TOKEN || ""}
-          query={PostDocument}
+          query={TalkDocument}
           variables={{ slug, locale: lng, fallbackLocale: [fallbackLng] }}
         />
       )}

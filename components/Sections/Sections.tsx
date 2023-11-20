@@ -36,6 +36,8 @@ import {
   ScheduleRecord,
   VideoSectionRecord,
   AwardRecord,
+  AllTalksSectionRecord,
+  TalkRecord,
 } from "@/graphql/generated";
 import GradientHero from "../Home/Hero/GradientHero";
 import FeatureCards from "../Home/Features/FeatureCards";
@@ -62,6 +64,7 @@ import MinimalCardsFeature from "../Home/Features/MinimalCardsFeature";
 import BigImageHorizontalFeatures from "../Home/Features/BigImageHorizontalFeatures";
 import BigImageVerticalFeatures from "../Home/Features/BigImageVerticalFeatures";
 import Changelog from "../Changelog";
+import TalkGridRenderer from "../Agenda/TalkGridRenderer";
 
 type Props = {
   sections: Array<PageModelSectionsField>;
@@ -70,6 +73,8 @@ type Props = {
   postMeta: CollectionMetadata;
   awardMeta: CollectionMetadata;
   awards: AwardRecord[];
+  talks: TalkRecord[];
+  talkMeta: CollectionMetadata;
 };
 
 export default function Section({
@@ -79,6 +84,8 @@ export default function Section({
   postMeta,
   awards,
   awardMeta,
+  talks,
+  talkMeta,
 }: Props) {
   return (
     <>
@@ -447,6 +454,12 @@ export default function Section({
                 awardMeta={awardMeta}
               />
             );
+          case "all_talks_section":
+            const allTalksSectionRecord = section as AllTalksSectionRecord;
+            return (
+              <TalkGridRenderer data={talks} lng={locale} talkMeta={talkMeta} />
+            );
+
           case "redirect_section":
             const redirectSectionRecord = section as RedirectSectionRecord;
             redirect(`/${locale}/${redirectSectionRecord.slugToRedirectTo}`);

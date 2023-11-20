@@ -12,7 +12,7 @@ type Props = {
   talkMeta: CollectionMetadata;
 };
 
-const talkGridRenderer = ({ data, lng, talkMeta }: Props) => {
+const TalkGridRenderer = ({ data, lng, talkMeta }: Props) => {
   return (
     <section className="mt-4 pb-[120px] pt-[120px]">
       <div className="container">
@@ -49,4 +49,4 @@ const talkGridRenderer = ({ data, lng, talkMeta }: Props) => {
   );
 };
 
-export default talkGridRenderer;
+export default TalkGridRenderer;
