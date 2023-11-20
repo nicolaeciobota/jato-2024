@@ -370,6 +370,29 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
   _allTalksMeta(locale: $locale, filter: { title: { isBlank: "false" } }) {
     count
   }
+  allStages(
+    filter: { name: { isBlank: "false" } }
+    orderBy: _createdAt_DESC
+    first: "50"
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    _publishedAt
+    slug
+    id
+    name
+    seoTags {
+      description
+      image {
+        responsiveImage {
+          ...DatoImage_responsiveImage
+        }
+      }
+    }
+  }
+  _allStagesMeta(locale: $locale, filter: { name: { isBlank: "false" } }) {
+    count
+  }
 }
 fragment DatoImage_responsiveImage on ResponsiveImage {
   src
