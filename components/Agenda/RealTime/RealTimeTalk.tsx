@@ -22,7 +22,6 @@ export default function RealTimeTalk({
   initialData: TalkQuery;
   query: TypedDocumentNode<TalkQuery>;
   variables: TalkQueryVariables;
-  speakers: Array<SpeakerRecord>;
 }) {
   const { data } = useQuerySubscription({
     query,
