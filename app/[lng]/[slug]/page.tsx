@@ -10,6 +10,7 @@ import {
   PostRecord,
   TalkRecord,
   SiteLocale,
+  StageRecord,
 } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 import { getFallbackLocale } from "@/app/i18n/settings";
@@ -49,6 +50,8 @@ export default async function Home({ params: { lng, slug } }: Params) {
           awardMeta={data._allAwardsMeta as CollectionMetadata}
           talks={data.allTalks as TalkRecord[]}
           talkMeta={data._allTalksMeta as CollectionMetadata}
+          stages={data.allStages as StageRecord[]}
+          stageMeta={data._allStagesMeta as CollectionMetadata}
           data={{
             __typename: undefined,
             talk: undefined,
