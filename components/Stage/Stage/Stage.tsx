@@ -20,6 +20,9 @@ import {
   StreamPlayerRecord,
   ResponsiveImage,
   SiteLocale,
+  TalkRecord,
+  SpeakerRecord,
+  TalkQuery,
 } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -29,10 +32,20 @@ import CTAAppBlock from "./StructuredTextBlocks/CTAAppBlock";
 type Props = {
   data: StageQuery;
   lng: SiteLocale;
+  talks: TalkRecord[];
+  talk: TalkQuery[];
+  speakers: SpeakerRecord[];
 };
 
-const Stage = ({ data, lng }: Props) => {
+const Stage = ({ talks, speakers, data, lng }: Props) => {
   if (!data.stage) notFound();
+  const stageSpeakers = (speakers || []).map((speaker: SpeakerRecord) => ({
+    id: speaker.id,
+    name: speaker.name,
+    title: speaker.title,
+    picture: speaker.picture,
+  }));
+
   return (
     <section className="mt-40 pb-[120px]">
       <div className="container">
@@ -136,6 +149,13 @@ const Stage = ({ data, lng }: Props) => {
                 ]}
               />
             </div>
+            <ul className="flex flex-wrap">
+              {talks?.map(({ id, title, description, speaker }: TalkRecord) => (
+                <li key={id} className="m-2 w-48">
+                  {title} {description}
+                </li>
+              ))}
+            </ul>
             <div className="mb-5">
               <h5 className="mb-3 text-sm font-medium text-body-color sm:text-right">
                 Share this stage :
