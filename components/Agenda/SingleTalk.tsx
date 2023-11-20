@@ -84,7 +84,7 @@ const SingleTalk = ({ talk, locale }: Props) => {
               {speaker.map(
                 ({ id, name, title, slug, picture }: SpeakerRecord) => (
                   <li key={id} className="m-2 w-48">
-                    <Link href={`/${locale}/talks/speakers/${slug}`}>
+                    <Link href={`/${locale}/talks/speaker/${slug}`}>
                       <div className="flex flex-col items-center">
                         <DatoImage
                           className="h-full w-full object-cover"
