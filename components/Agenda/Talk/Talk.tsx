@@ -61,7 +61,7 @@ const Talk = ({ data, lng }: Props) => {
                         href={`/${lng}/talks/speakers/${member.slug}`}
                         passHref
                       >
-                        <a className="mb-5 mr-10 flex items-center">
+                        <div className="mb-5 mr-10 flex items-center">
                           <div className="mr-4">
                             <div className="relative h-10 w-10 overflow-hidden rounded-full">
                               <DatoImage
@@ -78,29 +78,160 @@ const Talk = ({ data, lng }: Props) => {
                               <span>{member.name}</span>
                             </h4>
                             <p className="text-xs text-body-color">
-                              {member.bio}
+                              {member.title}
                             </p>
                           </div>
-                        </a>
+                        </div>
                       </Link>
                     );
                   })}
                 </div>
 
-                <div className="mb-5 flex items-center">
-                  <p className="mr-5 flex items-center text-base font-medium text-body-color">
-                    {DateIcon}
-                  </p>
-                </div>
-              </div>
-              <div className="container">
-                <div className="mb-5">
-                  <a
-                    href={`/${lng}/talks/tag/${dateTags[0].slug}`}
-                    className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white"
-                  >
-                    {dateTags[0].eventDate}
-                  </a>
+                <div>
+                  <StructuredText
+                    data={data.talk.content as any}
+                    renderNode={Highlighter}
+                    renderBlock={({ record }: any) => {
+                      switch (record.__typename) {
+                        case "ImageBlockRecord":
+                          const ImageBlockRecord = record as ImageBlockRecord;
+                          return (
+                            <div className="relative mb-16 mt-16 overflow-hidden rounded-md shadow-md xs:h-[300px] sm:h-[300px] md:h-[400px]">
+                              <DatoImage
+                                data={ImageBlockRecord.image.responsiveImage}
+                                layout="fill"
+                                objectFit="cover"
+                                objectPosition="50% 50%"
+                              />
+                            </div>
+                          );
+                        case "NewsletterSubscriptionRecord":
+                          const NewsletterSubscriptionRecord =
+                            record as NewsletterSubscriptionRecord;
+                          return (
+                            <NewsletterCTABlock
+                              title={NewsletterSubscriptionRecord.title}
+                              subtitle={NewsletterSubscriptionRecord.subtitle}
+                              buttonLabel={
+                                NewsletterSubscriptionRecord.buttonLabel
+                              }
+                            />
+                          );
+                        case "CtaButtonWithImageRecord":
+                          const CtaButtonWithImageRecord =
+                            record as CtaButtonWithImageRecord;
+                          return (
+                            <CTABlock
+                              title={CtaButtonWithImageRecord.title}
+                              subtitle={CtaButtonWithImageRecord.subtitle}
+                              buttonLabel={CtaButtonWithImageRecord.buttonLabel}
+                              image={CtaButtonWithImageRecord.image}
+                            />
+                          );
+                        case "AppCtaRecord":
+                          const appCtaRecord = record as AppCtaRecord;
+                          return (
+                            <CTAAppBlock
+                              title={appCtaRecord.title}
+                              text={appCtaRecord.text}
+                              googleURL={appCtaRecord.googlePlayUrl}
+                              appleURL={appCtaRecord.appstoreUrl}
+                            />
+                          );
+                        default:
+                          return null;
+                      }
+                    }}
+                    renderLinkToRecord={({
+                      record,
+                      children,
+                      transformedMeta,
+                    }) => {
+                      switch (record.__typename) {
+                        case "PostRecord":
+                          return (
+                            <Link
+                              {...transformedMeta}
+                              href={`/${lng}/posts/${record.slug}`}
+                              className="text-base font-medium leading-relaxed text-body-color underline sm:text-lg sm:leading-relaxed"
+                            >
+                              {children}
+                            </Link>
+                          );
+                        default:
+                          return null;
+                      }
+                    }}
+                    renderInlineRecord={({ record }) => {
+                      switch (record.__typename) {
+                        case "PostRecord":
+                          const PostRecord = record as TalkRecord;
+                          return (
+                            <Link
+                              key={PostRecord.id}
+                              href={`/${lng}/posts/${record.slug}`}
+                              className="underline"
+                            >
+                              {PostRecord.title}
+                            </Link>
+                          );
+                        default:
+                          return null;
+                      }
+                    }}
+                    customNodeRules={[
+                      renderNodeRule(isHeading, ({ children, key }) => {
+                        return (
+                          <h3
+                            className="mb-4 mt-9 text-xl font-bold text-black dark:text-white sm:text-2xl lg:text-xl xl:text-2xl"
+                            key={key}
+                          >
+                            {children}
+                          </h3>
+                        );
+                      }),
+                      renderNodeRule(isParagraph, ({ children, key }) => {
+                        return (
+                          <div
+                            className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed"
+                            key={key}
+                          >
+                            {children}
+                          </div>
+                        );
+                      }),
+                      renderNodeRule(isLink, ({ node, children, key }) => {
+                        const attributeObject =
+                          node.meta?.reduce((acc: any, { id, value }) => {
+                            acc[id] = value;
+                            return acc;
+                          }, {}) || {};
+
+                        return (
+                          <a
+                            className="text-base font-medium leading-relaxed text-body-color underline sm:text-lg sm:leading-relaxed"
+                            href={node.url}
+                            key={key}
+                            {...attributeObject}
+                          >
+                            {children}
+                          </a>
+                        );
+                      }),
+                      renderNodeRule(isBlockquote, ({ children, key }) => {
+                        return <QuoteBlock text={children} />;
+                      }),
+                    ]}
+                  />
+                  <div className="mt-16 items-center justify-between sm:flex"></div>
+                  <div className="mb-5">
+                    <h5 className="mb-3 text-sm font-medium text-body-color sm:text-right">
+                      Share this post :
+                    </h5>
+                    <div className="flex items-center sm:justify-end">
+                      <ShareTalk />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -110,5 +241,3 @@ const Talk = ({ data, lng }: Props) => {
     </section>
   );
 };
-
-export default Talk;
