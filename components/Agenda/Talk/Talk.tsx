@@ -58,7 +58,7 @@ const Talk = ({ data, lng }: Props) => {
                     return (
                       <Link
                         key={member.slug}
-                        href={`/${lng}/talk/speakers/${member.slug}`}
+                        href={`/${lng}/talks/speakers/${member.slug}`}
                         passHref
                       >
                         <a className="mb-5 mr-10 flex items-center">
@@ -96,7 +96,7 @@ const Talk = ({ data, lng }: Props) => {
               <div className="container">
                 <div className="mb-5">
                   <a
-                    href={`/${lng}/talk/tag/${dateTags[0].slug}`}
+                    href={`/${lng}/talks/tag/${dateTags[0].slug}`}
                     className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white"
                   >
                     {dateTags[0].eventDate}
