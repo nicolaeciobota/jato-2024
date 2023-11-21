@@ -53,24 +53,26 @@ const Talk = ({ data, lng }: Props) => {
               <div className="mb-10 flex items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
                 <div className="flex flex-col items-start md:flex-row md:items-center">
                   {/* Destructure speaker once */}
-                  {speaker && (
+                  {speaker && speaker.length > 0 && (
                     <Link
-                      href={`/${lng}/talk/speaker/${speaker.slug}`}
+                      href={`/${lng}/talk/speaker/${(speaker as any).slug}`}
                       className="mb-5 mr-10 flex items-center"
                     >
                       <div className="mr-4">
                         <div className="relative h-10 w-10 overflow-hidden rounded-full">
                           <DatoImage
                             className="h-full w-full object-cover"
-                            data={speaker.picture.responsiveImage}
+                            data={(speaker as any).picture!.responsiveImage}
                           />
                         </div>
                       </div>
                       <div className="w-full">
                         <h4 className="mb-1 text-base font-medium text-body-color">
-                          <span>{speaker.name}</span>
+                          <span>{(speaker as any).name}</span>
                         </h4>
-                        <p className="text-xs text-body-color">{speaker.bio}</p>
+                        <p className="text-xs text-body-color">
+                          {(speaker as any).bio}
+                        </p>
                       </div>
                     </Link>
                   )}
