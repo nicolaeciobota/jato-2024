@@ -35,7 +35,7 @@ const SingleTalk = ({ talk, locale }: Props) => {
           Start time: {start} - End time: {end}
         </p>
         <h3 className="mb-2 text-xl font-bold">{title}</h3>
-        <p className="mb-4 text-base">{description}</p>
+        <p className="mb-4 text-base">Description: {description}</p>
         <div className="mb-4">
           <h4 className="mb-2 text-sm font-semibold">Speakers:</h4>
           <div className="flex flex-wrap items-center">
