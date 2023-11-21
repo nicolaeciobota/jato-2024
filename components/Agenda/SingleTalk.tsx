@@ -34,7 +34,9 @@ const SingleTalk = ({ talk, locale }: Props) => {
         <p className="mb-2 text-xs text-gray-500">
           Start time: {talk.start} - End time: {end}
         </p>
-        <h3 className="mb-2 text-xl font-bold">{title}</h3>
+        <Link href={"/" + locale + "/talks/" + slug}>
+          <h3 className="mb-2 text-xl font-bold">{title}</h3>
+        </Link>
         <p className="mb-4 text-base">Description: {talk.description}</p>
         <div className="mb-4">
           <h4 className="mb-2 text-sm font-semibold">Speakers:</h4>
