@@ -11,7 +11,6 @@ import {
   ResponsiveImage,
   SiteLocale,
   TalkQuery,
-  SpeakerQuery,
 } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -19,10 +18,9 @@ import React from "react";
 type Props = {
   data: TalkQuery;
   lng: SiteLocale;
-  speakers: SpeakerRecord[];
 };
 
-const Talk = ({ data, lng, speakers }: Props) => {
+const Talk = ({ data, lng }: Props) => {
   if (!data.talk) notFound();
   return (
     <section className="mt-8 pb-8 sm:mt-16 sm:pb-[120px]">
@@ -40,31 +38,6 @@ const Talk = ({ data, lng, speakers }: Props) => {
               <p className="mb-6 text-sm">{data.talk.end}</p>
 
               <div className="mb-8 flex flex-col items-start border-b border-body-color border-opacity-10 dark:border-white dark:border-opacity-10 sm:mb-10 sm:flex-row sm:items-center">
-                <ul className="mb-4 flex flex-wrap sm:mb-0">
-                  {speakers.map(
-                    ({ id, name, title, slug, picture }: SpeakerRecord) => (
-                      <li key={id} className="m-2 w-48">
-                        <Link href={`/${lng}/talks/speakers/${slug}`}>
-                          <div className="flex flex-col items-center">
-                            <DatoImage
-                              className="h-full w-full rounded-md object-cover"
-                              layout="fill"
-                              objectFit="cover"
-                              objectPosition="50% 50%"
-                              data={picture!.responsiveImage as ResponsiveImage}
-                            />
-                            <strong className="text-lg">{name}</strong>
-                            <p className="text-sm">{title}</p>
-                            <span className="text-blue-500">
-                              View Speaker Profile
-                            </span>
-                          </div>
-                        </Link>
-                      </li>
-                    )
-                  )}
-                </ul>
-
                 {data.talk._publishedAt && (
                   <div className="flex items-center">
                     <p className="mr-5 flex items-center text-sm font-medium text-body-color">
