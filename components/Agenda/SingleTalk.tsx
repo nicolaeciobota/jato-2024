@@ -38,20 +38,18 @@ const SingleTalk = ({ talk, locale }: Props) => {
         <p className="mb-4 text-base">{description}</p>
         <div className="mb-4">
           <h4 className="mb-2 text-sm font-semibold">Speakers:</h4>
-          <div className="mb-2 mr-4 flex items-center">
+          <div className="flex flex-wrap items-center">
             {speaker.map(
               ({ id, name, title, slug, picture }: SpeakerRecord) => (
                 <div key={id} className="mb-2 mr-4 flex items-center">
                   <Link href={`/${locale}/talks/speaker/${slug}`}>
-                    <div className="flex flex-col items-center">
-                      <DatoImage
-                        className="mr-2 h-10 w-10 rounded-full"
-                        layout="fill"
-                        objectFit="cover"
-                        objectPosition="50% 50%"
-                        data={picture!.responsiveImage as ResponsiveImage}
-                      />
-                    </div>
+                    <DatoImage
+                      className="mr-2 h-10 w-10 rounded-full"
+                      layout="fill"
+                      objectFit="cover"
+                      objectPosition="50% 50%"
+                      data={picture!.responsiveImage as ResponsiveImage}
+                    />
                     <p className="text-xs font-medium">{name}</p>
                     <p className="text-xs text-gray-500">{title}</p>
                   </Link>
