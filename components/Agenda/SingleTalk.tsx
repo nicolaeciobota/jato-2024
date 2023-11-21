@@ -5,7 +5,6 @@ import {
   TalkRecord,
 } from "@/graphql/generated";
 import transformDate from "@/utils/transformDate";
-import { formatTime, getDayOfWeek } from "@/utils/eventHour";
 import Link from "next/link";
 import { Image as DatoImage } from "react-datocms";
 import SpeakerTalks from "./SpeakerTalks";
@@ -28,17 +27,12 @@ const SingleTalk = ({ talk, locale }: Props) => {
     _publishedAt,
     slug,
   } = talk;
-  // Format start and end times
-  const formattedStartTime = formatTime(start);
-  const formattedEndTime = formatTime(end);
-  // Get the day of the week from the eventDate
-  const eventDayOfWeek = getDayOfWeek(dateTags[0].eventDate);
 
   return (
     <>
       <div className="rounded-md bg-white p-6 shadow-md">
         <p className="mb-2 text-xs text-gray-500">
-          Start time: {formattedStartTime} - End time: {formattedEndTime}
+          Start time: {start} - End time: {end}
         </p>
         <h3 className="mb-2 text-xl font-bold">{title}</h3>
         <p className="mb-4 text-base">{description}</p>
@@ -63,7 +57,9 @@ const SingleTalk = ({ talk, locale }: Props) => {
             )}
           </div>
         </div>
-        <p className="text-xs text-gray-500">{eventDayOfWeek}</p>
+        <p className="text-xs text-gray-500">
+          {transformDate(dateTags[0].eventDate)}
+        </p>
       </div>
     </>
   );
