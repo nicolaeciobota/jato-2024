@@ -241,3 +241,4 @@ const Talk = ({ data, lng }: Props) => {
     </section>
   );
 };
+export default Talk;
