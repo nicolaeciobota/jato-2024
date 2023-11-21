@@ -24,6 +24,7 @@ import {
   ImageBlockRecord,
   NewsletterSubscriptionRecord,
   TalkQuery,
+  SpeakerRecord,
   TalkRecord,
   ResponsiveImage,
   SiteLocale,
@@ -32,6 +33,15 @@ import { notFound } from "next/navigation";
 import React from "react";
 import Highlighter from "@/components/Common/Highlighter";
 import CTAAppBlock from "./StructuredTextBlocks/CTAAppBlock";
+interface SpeakerData {
+  name: string;
+  title: string;
+  bio: string;
+  slug: string;
+  picture: {
+    responsiveImage: ResponsiveImage; // Update with the actual type
+  };
+}
 
 type Props = {
   data: TalkQuery;
@@ -41,6 +51,8 @@ type Props = {
 const Talk = ({ data, lng }: Props) => {
   if (!data.talk) notFound();
   const { title, speaker, _publishedAt, dateTags } = data.talk;
+  // Check if speaker array exists and is not empty
+  const firstSpeaker = speaker?.[0];
   return (
     <section className="mt-40 pb-[120px]">
       <div className="container">
@@ -53,38 +65,43 @@ const Talk = ({ data, lng }: Props) => {
               <div className="mb-10 flex items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
                 <div className="flex flex-col items-start md:flex-row md:items-center">
                   {/* Destructure speaker once */}
-                  {speaker && speaker.length > 0 && (
+                  {firstSpeaker && (
                     <Link
-                      href={`/${lng}/talk/speaker/${(speaker as any).slug}`}
+                      href={`/${lng}/talk/speaker/${firstSpeaker.slug}`}
                       className="mb-5 mr-10 flex items-center"
                     >
                       <div className="mr-4">
                         <div className="relative h-10 w-10 overflow-hidden rounded-full">
                           <DatoImage
                             className="h-full w-full object-cover"
-                            data={(speaker as any).picture!.responsiveImage}
+                            data={
+                              firstSpeaker.picture!
+                                .responsiveImage as ResponsiveImage
+                            }
                           />
                         </div>
                       </div>
                       <div className="w-full">
                         <h4 className="mb-1 text-base font-medium text-body-color">
-                          <span>{(speaker as any).name}</span>
+                          <span>{firstSpeaker.name}</span>
                         </h4>
                         <p className="text-xs text-body-color">
-                          {(speaker as any).bio}
+                          {firstSpeaker.bio}
                         </p>
                       </div>
                     </Link>
                   )}
-                  {speaker && _publishedAt && (
-                    <div className="mb-5 flex items-center">
-                      <p className="mr-5 flex items-center text-base font-medium text-body-color">
-                        {DateIcon}
-                        {transformDate(_publishedAt)}
-                      </p>
-                    </div>
-                  )}
                 </div>
+                {speaker && _publishedAt && (
+                  <div className="mb-5 flex items-center">
+                    <p className="mr-5 flex items-center text-base font-medium text-body-color">
+                      {DateIcon}
+                      {transformDate(_publishedAt)}
+                    </p>
+                  </div>
+                )}
+              </div>
+              <div className="container">
                 <div className="mb-5">
                   <a
                     href={`/${lng}/talk/tag/${dateTags[0].slug}`}

@@ -53,11 +53,6 @@ query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
         dateTags {
           eventDate
         }
-        stage {
-          id
-          name
-          slug
-        }
         seoTags {
           description
           image {
@@ -156,6 +151,18 @@ query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
           buttonLabel
         }
       }
+    }
+    _allReferencingTalksMeta(
+      locale: $locale
+      filter: { title: { isBlank: "false" } }
+    ) {
+      count
+    }
+    _allReferencingSpeakersMeta(
+      locale: $locale
+      filter: { name: { isBlank: "false" } }
+    ) {
+      count
     }
   }
 }
