@@ -58,7 +58,7 @@ const Talk = ({ data, lng }: Props) => {
                     return (
                       <Link
                         key={member.slug}
-                        href={`/${lng}/talks/speakers/${member.slug}`}
+                        href={`/${lng}/talks/speaker/${member.slug}`}
                         passHref
                       >
                         <div className="mb-5 mr-10 flex items-center">
