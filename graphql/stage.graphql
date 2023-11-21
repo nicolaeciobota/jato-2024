@@ -1,6 +1,7 @@
 query Stage(
   $slug: String
   $locale: SiteLocale
+  $skip: IntType = "0"
   $fallbackLocale: [SiteLocale!]
 ) {
   stage(
@@ -10,12 +11,18 @@ query Stage(
   ) {
     _publishedAt
     name
-    talk {
+    _allReferencingTalks(
+      filter: { title: { isBlank: "false" } }
+      orderBy: _createdAt_DESC
+      first: "100"
+      locale: $locale
+      fallbackLocales: $fallbackLocale
+      skip: $skip
+    ) {
       _publishedAt
+      slug
+      id
       title
-      description
-      start
-      end
       dateTags {
         id
         eventDate
@@ -43,9 +50,14 @@ query Stage(
             base64
           }
         }
+        _allReferencingTalksMeta(
+          locale: $locale
+          filter: { title: { isBlank: "false" } }
+        ) {
+          count
+        }
       }
     }
-
     content {
       value
       links {
@@ -73,7 +85,6 @@ query Stage(
           }
         }
       }
-
       blocks {
         ... on StreamPlayerRecord {
           id

@@ -87,7 +87,7 @@ const SingleTalk = ({ talk, locale }: Props) => {
                     <Link href={`/${locale}/talks/speaker/${slug}`}>
                       <div className="flex flex-col items-center">
                         <DatoImage
-                          className="h-full w-full object-cover"
+                          className="h-full w-2/6 rounded-full"
                           layout="fill"
                           objectFit="cover"
                           objectPosition="50% 50%"

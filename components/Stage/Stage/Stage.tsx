@@ -28,24 +28,16 @@ import { notFound } from "next/navigation";
 import React from "react";
 import Highlighter from "@/components/Common/Highlighter";
 import CTAAppBlock from "./StructuredTextBlocks/CTAAppBlock";
+import SingleTalk from "@/components/Agenda/SingleTalk";
 
 type Props = {
   data: StageQuery;
   lng: SiteLocale;
   talks: TalkRecord[];
-  talk: TalkQuery[];
-  speakers: SpeakerRecord[];
 };
 
-const Stage = ({ talks, speakers, data, lng }: Props) => {
+const Stage = ({ data, lng }: Props) => {
   if (!data.stage) notFound();
-  const stageSpeakers = (speakers || []).map((speaker: SpeakerRecord) => ({
-    id: speaker.id,
-    name: speaker.name,
-    title: speaker.title,
-    picture: speaker.picture,
-  }));
-
   return (
     <section className="mt-40 pb-[120px]">
       <div className="container">
@@ -149,13 +141,7 @@ const Stage = ({ talks, speakers, data, lng }: Props) => {
                 ]}
               />
             </div>
-            <ul className="flex flex-wrap">
-              {talks?.map(({ id, title, description, speaker }: TalkRecord) => (
-                <li key={id} className="m-2 w-48">
-                  {title} {description}
-                </li>
-              ))}
-            </ul>
+
             <div className="mb-5">
               <h5 className="mb-3 text-sm font-medium text-body-color sm:text-right">
                 Share this stage :
@@ -166,6 +152,20 @@ const Stage = ({ talks, speakers, data, lng }: Props) => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="container">
+        <div className="-mx-4 flex flex-wrap justify-center">
+          {data.stage._allReferencingTalks.map((talk) => (
+            <div
+              key={talk.id}
+              className="mb-10 w-full px-4 md:w-2/3 lg:w-1/2 xl:w-1/3"
+            >
+              <SingleTalk talk={talk as TalkRecord} locale={lng} />
+            </div>
+          ))}
+        </div>
+
+        <div className=" -mx-4 flex flex-wrap"></div>
       </div>
     </section>
   );

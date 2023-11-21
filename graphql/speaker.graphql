@@ -85,7 +85,6 @@ query Speaker(
         }
       }
     }
-
     _allReferencingTalksMeta(
       locale: $locale
       filter: { title: { isBlank: "false" } }
