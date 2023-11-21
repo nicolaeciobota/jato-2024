@@ -36,12 +36,13 @@ import CTAAppBlock from "./StructuredTextBlocks/CTAAppBlock";
 type Props = {
   data: TalkQuery;
   lng: SiteLocale;
-  members: Array<SpeakerRecord>;
 };
 
-const Talk = ({ data, lng, members }: Props) => {
+const Talk = ({ data, lng }: Props) => {
   if (!data.talk) notFound();
   const { title, speaker, _publishedAt, dateTags } = data.talk;
+  // Assuming data.talk.speaker contains the array of speakers
+  const members = (speaker as SpeakerRecord[]) || [];
   return (
     <section className="mt-40 pb-[120px]">
       <div className="container">
