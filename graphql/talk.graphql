@@ -152,17 +152,5 @@ query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
         }
       }
     }
-    _allReferencingTalksMeta(
-      locale: $locale
-      filter: { title: { isBlank: "false" } }
-    ) {
-      count
-    }
-    _allReferencingSpeakersMeta(
-      locale: $locale
-      filter: { name: { isBlank: "false" } }
-    ) {
-      count
-    }
   }
 }

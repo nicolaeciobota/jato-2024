@@ -32,7 +32,7 @@ const TalkDetailsPage = async ({ params: { slug, lng } }: Params) => {
   }
   return (
     <>
-      {!isEnabled && <Talk data={data} lng={lng} />}
+      {!isEnabled && <Talk data={data} lng={lng} members={[]} />}
       {isEnabled && (
         <RealTimeTalk
           initialData={data}
