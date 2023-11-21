@@ -33,7 +33,6 @@ import SingleTalk from "@/components/Agenda/SingleTalk";
 type Props = {
   data: StageQuery;
   lng: SiteLocale;
-  talks: TalkRecord[];
 };
 
 const Stage = ({ data, lng }: Props) => {

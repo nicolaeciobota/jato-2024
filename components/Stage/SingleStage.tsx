@@ -1,18 +1,15 @@
-import {
-  SiteLocale,
-  StageRecord,
-} from "@/graphql/generated";
+import { SiteLocale, StageRecord } from "@/graphql/generated";
 import transformDate from "@/utils/transformDate";
 import Link from "next/link";
 import { Image as DatoImage } from "react-datocms";
 
 type Props = {
-  stage: StageRecord; //
+  data: StageRecord; //
   locale: SiteLocale;
 };
 
-const SingleStage = ({ stage, locale }: Props) => {
-  const { name, _publishedAt, slug } = stage;
+const SingleStage = ({ data, locale }: Props) => {
+  const { name, _publishedAt, slug } = data;
 
   return (
     <>
