@@ -18,6 +18,9 @@ query Datetag(
       slug
       id
       title
+      description
+      start
+      end
       dateTags {
         eventDate
       }

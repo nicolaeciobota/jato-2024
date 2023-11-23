@@ -23,6 +23,9 @@ query Stage(
       slug
       id
       title
+      description
+      start
+      end
       dateTags {
         id
         eventDate

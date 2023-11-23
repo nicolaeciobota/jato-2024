@@ -35,6 +35,9 @@ query Speaker(
       slug
       id
       title
+      description
+      start
+      end
       dateTags {
         id
         eventDate
