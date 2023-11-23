@@ -28,7 +28,12 @@ export default function agendaTime(dateStr: string, format: string = "full") {
   } else if (format === "time") {
     return timeFormatted;
   } else if (format === "full") {
-    return { day: dayFormatted, date: dateFormatted, time: timeFormatted };
+    return {
+      day: dayFormatted,
+      date: dateFormatted,
+      time: timeFormatted,
+      year: date.getFullYear(),
+    };
   } else {
     // Handle invalid format
     return "Invalid format";
