@@ -5,6 +5,7 @@ import {
   TalkRecord,
 } from "@/graphql/generated";
 import transformDate from "@/utils/transformDate";
+import agendaTime from "@/utils/agendaTime";
 import Link from "next/link";
 import { Image as DatoImage } from "react-datocms";
 import SpeakerTalks from "./SpeakerTalks";
@@ -31,8 +32,11 @@ const SingleTalk = ({ talk, locale }: Props) => {
   return (
     <>
       <div className="rounded-md bg-white p-6 shadow-md">
+        <h3>{`${agendaTime(start)} day`}</h3>
+        <p>{`${agendaTime(start)} date`}</p>
         <p className="mb-2 text-xs text-gray-500">
-          Start time: {transformDate(start)} - End time: {transformDate(end)}
+          Start time: {`${agendaTime(start)} time`} - End time:{" "}
+          {`${agendaTime(end)} time`}
         </p>
         <Link href={"/" + locale + "/talks/" + slug}>
           <h3 className="mb-2 text-xl font-bold">{title}</h3>
