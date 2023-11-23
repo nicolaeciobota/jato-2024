@@ -11,6 +11,7 @@ query Stage(
   ) {
     _publishedAt
     name
+    streamKey
     _allReferencingTalks(
       filter: { title: { isBlank: "false" } }
       orderBy: _createdAt_DESC
@@ -58,40 +59,6 @@ query Stage(
           filter: { title: { isBlank: "false" } }
         ) {
           count
-        }
-      }
-    }
-    content {
-      value
-      links {
-        _publishedAt
-        __typename
-        slug
-        id
-        name
-        seoTags {
-          description
-          image {
-            responsiveImage {
-              srcSet
-              webpSrcSet
-              sizes
-              src
-              width
-              height
-              aspectRatio
-              alt
-              title
-              bgColor
-              base64
-            }
-          }
-        }
-      }
-      blocks {
-        ... on StreamPlayerRecord {
-          id
-          videoPlayer(markdown: true)
         }
       }
     }

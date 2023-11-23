@@ -15,6 +15,7 @@ query Stages(
     slug
     id
     name
+    streamKey
     seoTags {
       description
       image {
