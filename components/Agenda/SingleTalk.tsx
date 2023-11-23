@@ -28,15 +28,31 @@ const SingleTalk = ({ talk, locale }: Props) => {
     _publishedAt,
     slug,
   } = talk;
-
+  const startTime = agendaTime(start, "full");
+  const endTime = agendaTime(end, "full");
   return (
     <>
       <div className="rounded-md bg-white p-6 shadow-md">
-        <h3>{`${agendaTime(start)} day`}</h3>
-        <p>{`${agendaTime(start)} date`}</p>
+        {/* Display only the day */}
+        <p>{`Start day: ${
+          typeof startTime === "string" ? startTime : startTime.day
+        }`}</p>
+        <p>{`End day: ${
+          typeof endTime === "string" ? endTime : endTime.day
+        }`}</p>
+
+        {/* Display only the date */}
+        <p>{`Start date: ${
+          typeof startTime === "string" ? startTime : startTime.date
+        }`}</p>
+        <p>{`End date: ${
+          typeof endTime === "string" ? endTime : endTime.date
+        }`}</p>
+
         <p className="mb-2 text-xs text-gray-500">
-          Start time: {`${agendaTime(start)} time`} - End time:{" "}
-          {`${agendaTime(end)} time`}
+          Start time:{" "}
+          {typeof startTime === "string" ? startTime : startTime.time} - End
+          time: {typeof endTime === "string" ? endTime : endTime.time}
         </p>
         <Link href={"/" + locale + "/talks/" + slug}>
           <h3 className="mb-2 text-xl font-bold">{title}</h3>
