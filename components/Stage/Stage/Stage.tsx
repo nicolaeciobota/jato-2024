@@ -1,5 +1,4 @@
 import ShareStage from "@/components/Stage/Stage/ShareStage";
-import QuoteBlock from "@/components/Stage/Stage/StructuredTextBlocks/QuoteBlock";
 import transformDate from "@/utils/transformDate";
 import {
   isBlockquote,
@@ -25,8 +24,6 @@ import {
 } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 import React from "react";
-import Highlighter from "@/components/Common/Highlighter";
-import CTAAppBlock from "./StructuredTextBlocks/CTAAppBlock";
 import SingleTalk from "@/components/Agenda/SingleTalk";
 
 type Props = {

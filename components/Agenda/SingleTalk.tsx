@@ -82,7 +82,7 @@ const SingleTalk = ({ talk, locale }: Props) => {
         <p className="text-xs text-gray-500">
           {transformDate(dateTags[0].eventDate)}
         </p>
-        <Link href={`/${locale}/stage/${stage.slug}`}>{stage.name}</Link>
+        <Link href={`/${locale}/stage/${stage.name}`}>{stage.name}</Link>
       </div>
     </>
   );
