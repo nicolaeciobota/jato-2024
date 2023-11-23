@@ -19,6 +19,16 @@ query Stage(
       description
       start
       end
+      stage {
+        id
+        name
+        slug
+      }
+      dateTags {
+        id
+        eventDate
+        slug
+      }
       speaker {
         name
         title
