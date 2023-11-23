@@ -40,7 +40,7 @@ type Props = {
 
 const Talk = ({ data, lng }: Props) => {
   if (!data.talk) notFound();
-  const { title, speaker, _publishedAt, dateTags } = data.talk;
+  const { title, speaker, _publishedAt, dateTags, start, end } = data.talk;
   // Assuming data.talk.speaker contains the array of speakers
   const members = (speaker as SpeakerRecord[]) || [];
   return (
@@ -51,6 +51,10 @@ const Talk = ({ data, lng }: Props) => {
             <div>
               <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight">
                 {title}
+              </h2>
+              <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight">
+                {start}
+                {end}
               </h2>
               <div className="mb-10 flex items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
                 <div className="flex flex-col items-start md:flex-row md:items-center">
@@ -223,15 +227,6 @@ const Talk = ({ data, lng }: Props) => {
                       }),
                     ]}
                   />
-                  <div className="mt-16 items-center justify-between sm:flex"></div>
-                  <div className="mb-5">
-                    <h5 className="mb-3 text-sm font-medium text-body-color sm:text-right">
-                      Share this post :
-                    </h5>
-                    <div className="flex items-center sm:justify-end">
-                      <ShareTalk />
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
