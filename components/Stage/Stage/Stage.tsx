@@ -18,7 +18,7 @@ type Props = {
   lng: SiteLocale;
 };
 
-const Post = ({ data, lng }: Props) => {
+const Stage = ({ data, lng }: Props) => {
   if (!data.stage) notFound();
   return (
     <section className="mt-40 pb-[120px]">
@@ -38,4 +38,4 @@ const Post = ({ data, lng }: Props) => {
   );
 };
 
-export default Post;
+export default Stage;
