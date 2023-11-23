@@ -34,19 +34,6 @@ const Post = ({ data, lng }: Props) => {
           </div>
         </div>
       </div>
-      talks array for stage
-      <div className="container">
-        <div className="-mx-4 flex flex-wrap justify-center">
-          {data.stage._allReferencingTalks.map((talk) => (
-            <div
-              key={talk.id}
-              className="mb-10 w-full px-4 md:w-2/3 lg:w-1/2 xl:w-1/3"
-            >
-              <SingleTalk talk={talk as TalkRecord} locale={lng} />
-            </div>
-          ))}
-        </div>
-      </div>
     </section>
   );
 };

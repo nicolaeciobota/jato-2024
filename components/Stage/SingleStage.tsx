@@ -9,7 +9,7 @@ type Props = {
 };
 
 const SingleStage = ({ stage, locale }: Props) => {
-  const { name, _publishedAt, slug, streamKey } = stage;
+  const { name, _publishedAt, slug } = stage;
 
   return (
     <>
