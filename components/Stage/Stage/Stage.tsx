@@ -12,7 +12,6 @@ import {
   StructuredText,
   renderNodeRule,
 } from "react-datocms";
-import StreamPlayerBlock from "./StructuredTextBlocks/StreamPlayerBlock";
 import Link from "next/link";
 import {
   StageQuery,
@@ -49,19 +48,6 @@ const Stage = ({ data, lng }: Props) => {
               <StructuredText
                 data={data.stage.content as any}
                 renderNode={Highlighter}
-                renderBlock={({ record }: any) => {
-                  switch (record.__typename) {
-                    case "StreamPlayerRecord":
-                      const StreamPlayerRecord = record as StreamPlayerRecord;
-                      return (
-                        <StreamPlayerBlock
-                          videoPlayer={StreamPlayerRecord.videoPlayer}
-                        />
-                      );
-                    default:
-                      return null;
-                  }
-                }}
                 renderLinkToRecord={({ record, children, transformedMeta }) => {
                   switch (record.__typename) {
                     case "StageRecord":
