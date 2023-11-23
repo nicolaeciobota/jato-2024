@@ -32,12 +32,12 @@ const SingleTalk = ({ talk, locale }: Props) => {
     <>
       <div className="rounded-md bg-white p-6 shadow-md">
         <p className="mb-2 text-xs text-gray-500">
-          Start time: {start} - End time: {end}
+          Start time: {talk.start} - End time: {talk.end}
         </p>
         <Link href={"/" + locale + "/talks/" + slug}>
           <h3 className="mb-2 text-xl font-bold">{title}</h3>
         </Link>
-        <p className="mb-4 text-base">Description: {description}</p>
+        <p className="mb-4 text-base">Description: {talk.description}</p>
         <div className="mb-4">
           <h4 className="mb-2 text-sm font-semibold">Speakers:</h4>
           <div className="flex flex-wrap items-center">
@@ -62,7 +62,7 @@ const SingleTalk = ({ talk, locale }: Props) => {
         <p className="text-xs text-gray-500">
           {transformDate(dateTags[0].eventDate)}
         </p>
-        <Link href={`/stage/${stage.slug}`}>{stage.name}</Link>
+        <Link href={`/${locale}/stage/${stage.slug}`}>{stage.name}</Link>
       </div>
     </>
   );
