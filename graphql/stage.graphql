@@ -12,14 +12,7 @@ query Stage(
     _publishedAt
     name
     streamKey
-    _allReferencingTalks(
-      filter: { title: { isBlank: "false" } }
-      orderBy: _createdAt_DESC
-      first: "100"
-      locale: $locale
-      fallbackLocales: $fallbackLocale
-      skip: $skip
-    ) {
+    talk {
       _publishedAt
       slug
       id
@@ -27,11 +20,6 @@ query Stage(
       description
       start
       end
-      dateTags {
-        id
-        eventDate
-        slug
-      }
       speaker {
         name
         title
@@ -54,11 +42,49 @@ query Stage(
             base64
           }
         }
-        _allReferencingTalksMeta(
-          locale: $locale
-          filter: { title: { isBlank: "false" } }
-        ) {
-          count
+      }
+      _allReferencingTalks(
+        filter: { title: { isBlank: "false" } }
+        orderBy: _createdAt_DESC
+        first: "100"
+        locale: $locale
+        fallbackLocales: $fallbackLocale
+        skip: $skip
+      ) {
+        _publishedAt
+        slug
+        id
+        title
+        description
+        start
+        end
+        dateTags {
+          id
+          eventDate
+          slug
+        }
+        speaker {
+          name
+          title
+          bio
+          slug
+          picture {
+            responsiveImage(
+              imgixParams: { w: "64", h: "64", fit: crop, auto: format }
+            ) {
+              srcSet
+              webpSrcSet
+              sizes
+              src
+              width
+              height
+              aspectRatio
+              alt
+              title
+              bgColor
+              base64
+            }
+          }
         }
       }
     }
