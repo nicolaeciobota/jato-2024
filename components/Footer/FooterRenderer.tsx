@@ -28,7 +28,7 @@ const Footer = ({ data, lng }: Props) => {
                   <Image
                     src={data.layout.footerLogo.url}
                     alt="logo"
-                    className="w-full"
+                    className="w-80"
                     width={data.layout.footerLogo.width || 60}
                     height={data.layout.footerLogo.height || 60}
                   />
