@@ -362,6 +362,8 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
     speaker {
       name
       slug
+      jobTitle
+      id
       bio
       picture {
         responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {

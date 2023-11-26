@@ -7,12 +7,13 @@ export default function agendaTime(dateStr: string, format: string = "full") {
     date
   );
 
-  // Format for date in "DD/MM" format
+  // Format for date in "DD/MM/YY" format
   const dayOfMonth = date.getDate();
   const month = date.getMonth() + 1; // Months are zero-based
+  const yearLastTwoDigits = date.getFullYear().toString().slice(-2);
   const dateFormatted = `${String(dayOfMonth).padStart(2, "0")}/${String(
     month
-  ).padStart(2, "0")}`;
+  ).padStart(2, "0")}/${yearLastTwoDigits}`;
 
   // Format for time
   const hours = date.getHours();

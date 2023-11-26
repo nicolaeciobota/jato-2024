@@ -31,8 +31,9 @@ query Stage(
       }
       speaker {
         name
-        title
+        jobTitle
         bio
+        id
         slug
         picture {
           responsiveImage(

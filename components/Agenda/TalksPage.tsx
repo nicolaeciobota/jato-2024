@@ -14,10 +14,7 @@ const TalksPage = ({ data, lng, page }: Props) => {
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-center">
           {data.allTalks.map((talk) => (
-            <div
-              key={talk.id}
-              className="mb-8 w-full px-4 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
-            >
+            <div key={talk.id} className="w-full">
               <SingleTalk talk={talk as TalkRecord} locale={lng} />
             </div>
           ))}

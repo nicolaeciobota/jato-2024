@@ -46,9 +46,9 @@ query Talks(
     }
     speaker {
       name
-      title
+      jobTitle
       slug
-      bio
+      id
       picture {
         responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
           srcSet

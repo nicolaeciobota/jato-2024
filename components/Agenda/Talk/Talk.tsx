@@ -82,7 +82,7 @@ const Talk = ({ data, lng }: Props) => {
                               <span>{member.name}</span>
                             </h4>
                             <p className="text-xs text-body-color">
-                              {member.title}
+                              {member.jobTitle}
                             </p>
                           </div>
                         </div>

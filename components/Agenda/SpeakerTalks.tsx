@@ -30,7 +30,7 @@ const SpeakerTalks = ({ data, lng }: Props) => {
                 {data.speaker.name}
               </h1>{" "}
               <h2 className="text-2xl capitalize text-gray-800 dark:text-white lg:text-2xl">
-                {data.speaker.title}
+                {data.speaker.jobTitle}
               </h2>
               <p className="text-base text-body-color">{data.speaker.bio}</p>
               <div className="mt-4 max-w-2xl text-gray-500 dark:text-gray-300">

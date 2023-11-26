@@ -1,10 +1,10 @@
 import { getFallbackLocale } from "@/app/i18n/settings";
-import { SiteLocale, StagesDocument } from "@/graphql/generated";
+import StagesPage from "@/components/Stage/StagesPage";
+import RealTimeStagesPage from "@/components/Stage/RealTime/RealTimeStagesPage";
+import { StagesDocument, SiteLocale } from "@/graphql/generated";
 import queryDatoCMS from "@/utils/queryDatoCMS";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
-import StagesPage from "@/components/Stage/StagesPage";
-import RealTimeStagesPage from "@/components/Stage/RealTime/RealTimeStagesPage";
 
 type Params = {
   params: {

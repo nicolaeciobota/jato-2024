@@ -6,8 +6,9 @@ query Speaker(
 ) {
   speaker(filter: { slug: { eq: $slug } }, locale: $locale) {
     name
-    title
+    jobTitle
     bio
+    id
     picture {
       responsiveImage {
         srcSet
@@ -68,8 +69,8 @@ query Speaker(
       }
       speaker {
         name
-        title
-        bio
+        jobTitle
+        id
         slug
         picture {
           responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {

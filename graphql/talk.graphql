@@ -16,9 +16,10 @@ query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
     }
     speaker {
       name
-      title
+      jobTitle
       bio
       slug
+      id
       picture {
         responsiveImage(
           imgixParams: { w: "64", h: "64", fit: crop, auto: format }
@@ -74,7 +75,8 @@ query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
         speaker {
           name
           bio
-          title
+          jobTitle
+          id
           slug
           picture {
             responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {

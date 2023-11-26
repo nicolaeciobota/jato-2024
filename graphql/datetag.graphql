@@ -49,6 +49,8 @@ query Datetag(
       speaker {
         name
         bio
+        jobTitle
+        id
         slug
         picture {
           responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
