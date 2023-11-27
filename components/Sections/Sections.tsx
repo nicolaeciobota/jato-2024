@@ -15,8 +15,10 @@ import StatsSection from "../About/StatsSection";
 import AboutIntro from "../About/AboutIntro";
 import CompactSpeaker from "../Speakers/CompactSpeaker";
 import ExpandedSpeaker from "../Speakers/ExpandedSpeaker";
+import SpeakersIntro from "../Speakers/SpeakersIntro";
 import {
   AboutIntroRecord,
+  SpeakersIntroRecord,
   AllPostsSectionRecord,
   AllAwardsSectionRecord,
   BrandSectionRecord,
@@ -474,6 +476,16 @@ export default function Section({
                 introduction={aboutIntroSectionRecord.introductionText}
                 images={aboutIntroSectionRecord.images}
                 preHeader={aboutIntroSectionRecord.preHeader}
+              />
+            );
+          case "speakers_intro":
+            const speakersIntroSectionRecord = section as SpeakersIntroRecord;
+            return (
+              <SpeakersIntro
+                header={speakersIntroSectionRecord.header}
+                subheader={speakersIntroSectionRecord.subheader}
+                introduction={speakersIntroSectionRecord.introductionText}
+                preHeader={speakersIntroSectionRecord.preHeader}
               />
             );
           case "all_posts_section":

@@ -21,6 +21,16 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           }
         }
       }
+      ... on SpeakersIntroRecord {
+        id
+        _modelApiKey
+        preHeader
+        header
+        subheader
+        introductionText {
+          value
+        }
+      }
       ... on ChangelogSectionRecord {
         id
         _modelApiKey

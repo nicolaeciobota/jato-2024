@@ -1,42 +1,37 @@
-'use client';
+"use client";
 
-import {
-  AboutIntroModelIntroductionTextField,
-  ImageFileField,
-} from '@/graphql/generated';
-import { isHeading, isParagraph } from 'datocms-structured-text-utils';
-import { Maybe } from 'graphql/jsutils/Maybe';
+import { SpeakersIntroModelIntroductionTextField } from "@/graphql/generated";
+import { isHeading, isParagraph } from "datocms-structured-text-utils";
+import { Maybe } from "graphql/jsutils/Maybe";
 import {
   Image as DatoImage,
   ResponsiveImageType,
   StructuredText,
   renderNodeRule,
-} from 'react-datocms';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
-import React from 'react';
-import Highlighter from '../Common/Highlighter';
+} from "react-datocms";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import React from "react";
+import Highlighter from "../Common/Highlighter";
 
 type Props = {
   header: string;
   subheader: Maybe<string>;
-  images: ImageFileField[];
-  introduction: Maybe<AboutIntroModelIntroductionTextField>;
+  introduction: Maybe<SpeakersIntroModelIntroductionTextField>;
   preHeader: Maybe<string>;
 };
 
-const AboutIntro = ({
+const SpeakersIntro = ({
   header,
   subheader,
-  images,
   introduction,
   preHeader,
 }: Props) => {
   let [firstWord, ...restOfTheStringArray] = header.split(/\s+/);
-  const restOfTheString = restOfTheStringArray.join(' ');
+  const restOfTheString = restOfTheStringArray.join(" ");
   const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '600%']);
-  const x = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "600%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
     <div className="mx-auto mt-16 px-4 py-12 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 lg:py-20">
@@ -77,60 +72,19 @@ const AboutIntro = ({
               />
             </motion.svg>
             <span className="relative text-gray-700">{firstWord}</span>
-          </span>{' '}
+          </span>{" "}
           {restOfTheString}
         </h2>
         <div className="text-base text-gray-700 md:text-lg">
-          <ReactMarkdown>{subheader || ''}</ReactMarkdown>
+          <ReactMarkdown>{subheader || ""}</ReactMarkdown>
         </div>
       </motion.div>
-      <div className="grid max-w-screen-lg gap-8 sm:mx-auto lg:grid-cols-2">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ ease: 'easeOut', duration: 0.5, delay: 0.6 }}
-          className="grid grid-cols-2 gap-5 shadow-2xl drop-shadow-2xl"
-        >
-          <div className="relative z-50 col-span-2 h-56 w-full rounded object-cover shadow-lg">
-            {
-              // I can narrow down the type of the data prop to ResponsiveImageType because i know from
-              // Dato's validation that the array will have exactly 3 images
-            }
-            <DatoImage
-              key={images[0].id}
-              data={images[0].responsiveImage as ResponsiveImageType}
-              className="h-full w-full object-contain"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="50% 50%"
-            />
-          </div>
-          <div className="relative h-48 w-full rounded object-cover shadow-lg">
-            <DatoImage
-              key={images[1].id}
-              data={images[1].responsiveImage as ResponsiveImageType}
-              className="h-full w-full object-contain"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="50% 50%"
-            />
-          </div>
-          <div className="relative h-48 w-full rounded object-cover shadow-lg">
-            <DatoImage
-              key={images[2].id}
-              data={images[2].responsiveImage as ResponsiveImageType}
-              className="h-full w-full object-contain"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="50% 50%"
-            />
-          </div>
-        </motion.div>
+      <div className="w-full">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ ease: 'easeOut', duration: 0.3, delay: 1 }}
-          className="z-0 flex flex-col justify-center"
+          transition={{ ease: "easeOut", duration: 0.3, delay: 1 }}
+          className="z-0 justify-center"
         >
           {introduction && (
             <StructuredText
@@ -163,4 +117,4 @@ const AboutIntro = ({
   );
 };
 
-export default AboutIntro;
+export default SpeakersIntro;

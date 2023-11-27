@@ -5,7 +5,7 @@ query SpeakerPage($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
     fallbackLocales: $fallbackLocale
   ) {
     sections {
-      ... on AboutIntroRecord {
+      ... on SpeakersIntroRecord {
         id
         _modelApiKey
         preHeader
@@ -13,22 +13,6 @@ query SpeakerPage($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
         subheader
         introductionText {
           value
-        }
-        images {
-          id
-          responsiveImage {
-            srcSet
-            webpSrcSet
-            sizes
-            src
-            width
-            height
-            aspectRatio
-            alt
-            title
-            bgColor
-            base64
-          }
         }
       }
       ... on StatsSectionRecord {
