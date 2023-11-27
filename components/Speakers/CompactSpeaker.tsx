@@ -35,7 +35,7 @@ const CompactSpeaker = ({ header, subheader, speakersSection, lng }: Props) => {
                 key={member.id}
                 className="group flex transform flex-col items-center rounded-xl p-8 transition-colors duration-300 hover:bg-primary/90"
               >
-                <div className="relative h-32 w-32 overflow-hidden rounded-full object-cover ring-4 ring-gray-300">
+                <div className="relative h-80 w-80 overflow-hidden rounded-md object-cover ring-4 ring-gray-300">
                   <DatoImage
                     layout="fill"
                     objectFit="cover"
@@ -48,7 +48,7 @@ const CompactSpeaker = ({ header, subheader, speakersSection, lng }: Props) => {
                   {member.name}
                 </h1>
 
-                <h3 className="mt-2 capitalize text-gray-500 group-hover:text-gray-300 dark:text-gray-300">
+                <h3 className="mt-2 text-xl capitalize text-gray-500 group-hover:text-gray-300 dark:text-gray-300">
                   {member.jobTitle}
                 </h3>
               </Link>
