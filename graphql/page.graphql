@@ -67,6 +67,25 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           }
         }
       }
+      ... on SpeakerSectionRecord {
+        _modelApiKey
+        id
+        displayOptions
+        title
+        subtitle
+        showcasedSpeakers {
+          name
+          id
+          slug
+          bio
+          jobTitle
+          picture {
+            responsiveImage {
+              ...DatoImage_responsiveImage
+            }
+          }
+        }
+      }
       ... on FaqSectionRecord {
         _modelApiKey
         displayOptions

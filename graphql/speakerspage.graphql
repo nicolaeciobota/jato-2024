@@ -1,0 +1,93 @@
+query SpeakerPage($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
+  page(
+    filter: { label: { eq: "Speakers" } }
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    sections {
+      ... on AboutIntroRecord {
+        id
+        _modelApiKey
+        preHeader
+        header
+        subheader
+        introductionText {
+          value
+        }
+        images {
+          id
+          responsiveImage {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
+            alt
+            title
+            bgColor
+            base64
+          }
+        }
+      }
+      ... on StatsSectionRecord {
+        _modelApiKey
+        id
+        title
+        subtitle
+        statistic {
+          id
+          label
+          quantity
+          icon {
+            url
+          }
+        }
+      }
+      ... on SpeakerSectionRecord {
+        _modelApiKey
+        id
+        displayOptions
+        title
+        subtitle
+        showcasedSpeakers {
+          name
+          id
+          slug
+          bio
+          jobTitle
+          picture {
+            responsiveImage {
+              srcSet
+              webpSrcSet
+              sizes
+              src
+              width
+              height
+              aspectRatio
+              alt
+              title
+              bgColor
+              base64
+            }
+          }
+        }
+      }
+      ... on FaqSectionRecord {
+        _modelApiKey
+        displayOptions
+        id
+        title
+        subtitle
+        questions {
+          question
+          id
+          answer {
+            value
+          }
+        }
+      }
+    }
+  }
+}

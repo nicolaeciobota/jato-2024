@@ -13,6 +13,8 @@ import FAQAccordion from "../About/FAQAccordion";
 import FAQGrid from "../About/FAQGrid";
 import StatsSection from "../About/StatsSection";
 import AboutIntro from "../About/AboutIntro";
+import CompactSpeaker from "../Speakers/CompactSpeaker";
+import ExpandedSpeaker from "../Speakers/ExpandedSpeaker";
 import {
   AboutIntroRecord,
   AllPostsSectionRecord,
@@ -44,6 +46,7 @@ import {
   StagesQuery,
   StageQuery,
   StageRecord,
+  SpeakerSectionRecord,
 } from "@/graphql/generated";
 import GradientHero from "../Home/Hero/GradientHero";
 import FeatureCards from "../Home/Features/FeatureCards";
@@ -414,6 +417,25 @@ export default function Section({
                 header={teamSectionRecord.title}
                 subheader={teamSectionRecord.subtitle}
                 members={teamSectionRecord.showcasedMembers}
+                lng={locale}
+              />
+            );
+          case "speaker_section":
+            const speakerSectionRecord = section as SpeakerSectionRecord;
+            if (speakerSectionRecord.displayOptions === "compact")
+              return (
+                <CompactSpeaker
+                  header={speakerSectionRecord.title}
+                  subheader={speakerSectionRecord.subtitle}
+                  speakersSection={speakerSectionRecord.showcasedSpeakers}
+                  lng={locale}
+                />
+              );
+            return (
+              <ExpandedSpeaker
+                header={speakerSectionRecord.title}
+                subheader={speakerSectionRecord.subtitle}
+                speakersSection={speakerSectionRecord.showcasedSpeakers}
                 lng={locale}
               />
             );

@@ -54,7 +54,7 @@ const SingleTalk = ({ talk, locale }: Props) => {
             {` ${typeof startTime === "string" ? startTime : startTime.time} -`}
             {` ${typeof endTime === "string" ? endTime : endTime.time}`}
           </p>
-          <h3 className="text-md absolute right-0 top-0 inline-flex  -translate-y-full items-center justify-center  px-3 py-1 font-semibold tracking-wide text-dark  dark:text-white">
+          <p className=" absolute top-10 inline-flex -translate-y-1/2 items-center justify-center px-3  py-1 text-sm font-semibold tracking-wide text-dark  dark:text-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="1em"
@@ -65,7 +65,7 @@ const SingleTalk = ({ talk, locale }: Props) => {
             </svg>
             {`${typeof startTime === "string" ? startTime : startTime.day} - `}
             {` ${typeof startTime === "string" ? startTime : startTime.date}`}
-          </h3>
+          </p>
           <p className="mt-4 flex-1 leading-6 text-slate-700">{description}</p>
           <span className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10" />
           <ul className="flex flex-wrap justify-between">
