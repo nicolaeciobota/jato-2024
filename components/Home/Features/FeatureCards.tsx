@@ -40,8 +40,9 @@ const FeatureCards = ({
           {/* Items */}
           <div className="mx-auto grid max-w-sm items-start gap-6 md:max-w-2xl md:grid-cols-2 lg:max-w-none lg:grid-cols-3">
             {/* 1st item */}
-            console.log(feature.featureLink);
+
             {features.map((feature) => {
+              console.log(feature.featureLink);
               return (
                 <div
                   key={feature.id}
