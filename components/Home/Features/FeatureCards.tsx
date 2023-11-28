@@ -1,7 +1,8 @@
-import { FeatureRecord } from '@/graphql/generated';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { Image as DatoImage } from 'react-datocms';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import { FeatureRecord, SiteLocale } from "@/graphql/generated";
+import { Maybe } from "graphql/jsutils/Maybe";
+import Link from "next/link";
+import { Image as DatoImage } from "react-datocms";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 type Props = {
   features: FeatureRecord[];
@@ -14,6 +15,7 @@ const FeatureCards = ({
   featuresHeader,
   featuresSubheader,
 }: Props) => {
+  const lng = SiteLocale;
   return (
     <section className="relative">
       {/* Section background (needs .relative class on parent and next sibling elements) */}
@@ -30,7 +32,7 @@ const FeatureCards = ({
               {featuresHeader}
             </h1>
             <div className="text-xl text-gray-600">
-              <ReactMarkdown>{featuresSubheader || ''}</ReactMarkdown>
+              <ReactMarkdown>{featuresSubheader || ""}</ReactMarkdown>
             </div>
           </div>
 
@@ -43,23 +45,25 @@ const FeatureCards = ({
                   key={feature.id}
                   className="relative flex h-64 flex-col items-center justify-center rounded bg-white p-6 shadow-xl"
                 >
-                  <div className="relative -mt-1 mb-2 flex h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-primary bg-opacity-5">
-                    <DatoImage
-                      data={feature.featureIcon.responsiveImage}
-                      className="h-full w-full object-contain"
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="50% 50%"
-                    />
-                  </div>
-                  <h4 className="mb-1 text-xl font-bold leading-snug tracking-tight">
-                    {feature.featureTitle}
-                  </h4>
-                  <div className="text-center text-gray-600">
-                    <ReactMarkdown>
-                      {feature.featureDescription || ''}
-                    </ReactMarkdown>
-                  </div>
+                  <Link href={`/${lng}/${feature.featureLink}`}>
+                    <div className="relative -mt-1 mb-2 flex h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-primary bg-opacity-5">
+                      <DatoImage
+                        data={feature.featureIcon.responsiveImage}
+                        className="h-full w-full object-contain"
+                        layout="fill"
+                        objectFit="cover"
+                        objectPosition="50% 50%"
+                      />
+                    </div>
+                    <h4 className="mb-1 text-xl font-bold leading-snug tracking-tight">
+                      {feature.featureTitle}
+                    </h4>
+                    <div className="text-center text-gray-600">
+                      <ReactMarkdown>
+                        {feature.featureDescription || ""}
+                      </ReactMarkdown>
+                    </div>
+                  </Link>
                 </div>
               );
             })}

@@ -18,7 +18,6 @@ const TalkGridRenderer = ({ data, lng, talkMeta }: Props) => {
       <div className="container ">
         <div className="-mx-4 flex h-full flex-wrap justify-between">
           {data.map((talk) => {
-            console.log("Talk Data:", talk);
             return (
               <div
                 key={talk.id}

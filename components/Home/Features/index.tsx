@@ -1,7 +1,7 @@
-import { FeatureRecord } from '@/graphql/generated';
-import SectionTitle from '../../Common/SectionTitle';
-import SingleFeature from './SingleFeature';
-import { Maybe } from 'graphql/jsutils/Maybe';
+import { FeatureRecord } from "@/graphql/generated";
+import SectionTitle from "../../Common/SectionTitle";
+import SingleFeature from "./SingleFeature";
+import { Maybe } from "graphql/jsutils/Maybe";
 
 type Props = {
   features: FeatureRecord[];

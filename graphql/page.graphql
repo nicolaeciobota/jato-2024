@@ -257,6 +257,9 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           id
           featureTitle
           featureDescription
+          featureLink{
+            slug
+          }
           featureIcon {
             responsiveImage {
               ...DatoImage_responsiveImage

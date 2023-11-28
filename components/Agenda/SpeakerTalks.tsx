@@ -16,7 +16,7 @@ const SpeakerTalks = ({ data, lng }: Props) => {
       <section className="px-auto mx-auto mb-8 flex items-center justify-center bg-white px-16 dark:bg-gray-900">
         <div className="py-10">
           <div className="flex flex-col items-center justify-center gap-8 p-4 text-center md:flex-row md:text-start">
-            <div className="relative aspect-square w-96 overflow-hidden rounded-xl drop-shadow-xl">
+            <div className="relative aspect-square w-56 overflow-hidden rounded-xl drop-shadow-xl md:w-72 lg:w-96">
               <DatoImage
                 className="h-full w-full object-cover"
                 layout="fill"

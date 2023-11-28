@@ -1,7 +1,7 @@
-import SvgRenderer from '../../Common/SvgRenderer';
-import { FeatureRecord } from '@/graphql/generated';
-import { Image as DatoImage } from 'react-datocms';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import SvgRenderer from "../../Common/SvgRenderer";
+import { FeatureRecord } from "@/graphql/generated";
+import { Image as DatoImage } from "react-datocms";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 type Props = {
   feature: FeatureRecord;
@@ -26,7 +26,7 @@ const SingleFeature = ({ feature }: Props) => {
           {featureTitle}
         </h3>
         <div className="pr-[10px] text-base font-medium leading-relaxed text-body-color">
-          <ReactMarkdown>{featureDescription || ''}</ReactMarkdown>
+          <ReactMarkdown>{featureDescription || ""}</ReactMarkdown>
         </div>
       </div>
     </div>
