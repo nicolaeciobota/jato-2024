@@ -36,7 +36,7 @@ const SingleTalk = ({ talk, locale }: Props) => {
 
   return (
     <>
-      <div className="flex h-full flex-col shadow-lg">
+      <div className="flex h-full flex-col  shadow-lg">
         <div className="relative flex flex-1 flex-col rounded-2xl border border-slate-200 bg-white p-8 py-16">
           <p className="text-md absolute top-0 inline-flex -translate-y-1/2 items-center justify-center rounded-full bg-primary px-3 py-1 font-semibold tracking-wide text-white shadow-md">
             <svg
