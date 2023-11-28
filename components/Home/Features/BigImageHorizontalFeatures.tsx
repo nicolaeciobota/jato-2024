@@ -31,13 +31,14 @@ const BigImageHorizontalFeatures = ({
 
         <div className="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-2 xl:grid-cols-2 xl:gap-8">
           {features.map((feature) => {
+            console.log(feature.featureLink);
             return (
               <div
                 key={feature.id}
                 className="group flex flex-col items-center overflow-hidden rounded-lg border md:flex-row"
               >
                 {" "}
-                <Link href={`/${lng}/${feature.featureLink}`}>
+                <Link href={`/${lng}/${String(feature.featureLink)}`}>
                   <div className="relative block h-48 w-full shrink-0 self-start overflow-hidden bg-gray-100 md:h-full md:w-32 lg:w-48">
                     <div className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110">
                       <DatoImage
