@@ -106,6 +106,25 @@ query Award(
             }
           }
         }
+        ... on GalleryRecord {
+          id
+          __typename
+          imageGallery {
+            id
+            responsiveImage {
+              srcSet
+              webpSrcSet
+              sizes
+              src
+              width
+              height
+              aspectRatio
+              alt
+              title
+              base64
+            }
+          }
+        }
         ... on AppCtaRecord {
           id
           __typename

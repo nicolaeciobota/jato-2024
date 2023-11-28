@@ -17,11 +17,13 @@ import NewsletterCTABlock from "@/components/Award/Award/StructuredTextBlocks/Ne
 import CTABlock from "@/components/Award/Award/StructuredTextBlocks/CTABlock";
 import DateIcon from "@/components/Award/svgs/DateIcon";
 import SingleAward from "../SingleAward";
+
 import Link from "next/link";
 import {
   AppCtaRecord,
   CtaButtonWithImageRecord,
   ImageBlockRecord,
+  GalleryRecord,
   NewsletterSubscriptionRecord,
   AwardQuery,
   AwardRecord,
@@ -29,9 +31,10 @@ import {
   SiteLocale,
 } from "@/graphql/generated";
 import { notFound } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import Highlighter from "@/components/Common/Highlighter";
 import CTAAppBlock from "./StructuredTextBlocks/CTAAppBlock";
+import GalleryBlock from "./StructuredTextBlocks/GalleryBlock";
 
 type Props = {
   data: AwardQuery;
@@ -111,6 +114,9 @@ const Award = ({ data, lng }: Props) => {
                             />
                           </div>
                         );
+                      case "GalleryRecord":
+                        const galleryRecord = record as GalleryRecord;
+                        return <GalleryBlock galleryRecord={[galleryRecord]} />;
                       case "NewsletterSubscriptionRecord":
                         const NewsletterSubscriptionRecord =
                           record as NewsletterSubscriptionRecord;
