@@ -15,7 +15,6 @@ const BigImageVerticalFeatures = ({
   featuresHeader,
   featuresSubheader,
 }: Props) => {
-  const lng = SiteLocale;
   return (
     <div className="bg-white py-6 sm:py-8 lg:py-12">
       <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
@@ -31,40 +30,36 @@ const BigImageVerticalFeatures = ({
 
         <div className="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8">
           {features.map((feature) => {
-            console.log(feature.featureLink);
             return (
               <div
                 key={feature.id}
                 className="group flex flex-col overflow-hidden rounded-lg border bg-white"
               >
                 {" "}
-                <Link href={`/${lng}/${String(feature.featureLink)}`}>
-                  <div className="group relative block h-48 overflow-hidden bg-gray-100 md:h-64">
-                    <div className="absolute inset-0 h-full w-full overflow-hidden object-cover object-center transition duration-200 group-hover:scale-110">
-                      <DatoImage
-                        className="h-full w-full object-cover"
-                        layout="fill"
-                        objectFit="cover"
-                        objectPosition="50% 50%"
-                        data={feature.featureIcon.responsiveImage}
-                      />
-                    </div>
+                <div className="group relative block h-48 overflow-hidden bg-gray-100 md:h-64">
+                  <div className="absolute inset-0 h-full w-full overflow-hidden object-cover object-center transition duration-200 group-hover:scale-110">
+                    <DatoImage
+                      className="h-full w-full object-cover"
+                      layout="fill"
+                      objectFit="cover"
+                      objectPosition="50% 50%"
+                      data={feature.featureIcon.responsiveImage}
+                    />
                   </div>
-
-                  <div className="flex flex-1 flex-col p-4 sm:p-6">
-                    <h2 className="mb-2 text-lg font-semibold text-gray-800">
-                      <div className="transition duration-100 group-hover:text-primary">
-                        {feature.featureTitle}
-                      </div>
-                    </h2>
-
-                    <div className="mb-8 text-gray-500">
-                      <ReactMarkdown>
-                        {feature.featureDescription || ""}
-                      </ReactMarkdown>
+                </div>
+                <div className="flex flex-1 flex-col p-4 sm:p-6">
+                  <h2 className="mb-2 text-lg font-semibold text-gray-800">
+                    <div className="transition duration-100 group-hover:text-primary">
+                      {feature.featureTitle}
                     </div>
+                  </h2>
+
+                  <div className="mb-8 text-gray-500">
+                    <ReactMarkdown>
+                      {feature.featureDescription || ""}
+                    </ReactMarkdown>
                   </div>
-                </Link>
+                </div>
               </div>
             );
           })}
