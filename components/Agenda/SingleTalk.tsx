@@ -38,10 +38,6 @@ const SingleTalk = ({ talk, locale }: Props) => {
     <>
       <div className="flex h-full flex-col shadow-lg">
         <div className="relative flex flex-1 flex-col rounded-2xl border border-slate-200 bg-white p-8 py-16">
-          <h4 className="-mx-6 items-center rounded-lg bg-slate-100 px-8 py-2 text-xl font-semibold uppercase leading-5">
-            {title}
-          </h4>
-
           <p className="text-md absolute top-0 inline-flex -translate-y-1/2 items-center justify-center rounded-full bg-primary px-3 py-1 font-semibold tracking-wide text-white shadow-md">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +50,7 @@ const SingleTalk = ({ talk, locale }: Props) => {
             {` ${typeof startTime === "string" ? startTime : startTime.time} -`}
             {` ${typeof endTime === "string" ? endTime : endTime.time}`}
           </p>
-          <p className=" absolute top-10 inline-flex -translate-y-1/2 items-center justify-center px-3  py-1 text-sm font-semibold tracking-wide text-dark  dark:text-white">
+          <p className=" mb-5 flex text-sm font-semibold tracking-wide  text-dark dark:text-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="1em"
@@ -65,7 +61,10 @@ const SingleTalk = ({ talk, locale }: Props) => {
             </svg>
             {`${typeof startTime === "string" ? startTime : startTime.day} - `}
             {` ${typeof startTime === "string" ? startTime : startTime.date}`}
-          </p>
+          </p>{" "}
+          <h4 className="-mx-6 items-center rounded-lg bg-slate-100 px-8 py-2 text-xl font-semibold uppercase leading-5">
+            {title}
+          </h4>
           <p className="mt-4 flex-1 leading-6 text-slate-700">{description}</p>
           <span className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10" />
           <ul className="flex flex-wrap justify-between">
@@ -101,7 +100,6 @@ const SingleTalk = ({ talk, locale }: Props) => {
               );
             })}
           </ul>
-
           <Link href={`/${locale}/stage/${stage.slug}`} className="mt-5">
             <button className="flex w-full items-center justify-center rounded-md bg-primary p-3 text-sm  font-bold text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
               <svg
