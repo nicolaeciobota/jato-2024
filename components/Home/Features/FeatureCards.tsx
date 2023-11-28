@@ -16,6 +16,7 @@ const FeatureCards = ({
   featuresSubheader,
 }: Props) => {
   const lng = SiteLocale;
+
   return (
     <section className="relative">
       {/* Section background (needs .relative class on parent and next sibling elements) */}
@@ -39,13 +40,14 @@ const FeatureCards = ({
           {/* Items */}
           <div className="mx-auto grid max-w-sm items-start gap-6 md:max-w-2xl md:grid-cols-2 lg:max-w-none lg:grid-cols-3">
             {/* 1st item */}
+            console.log(feature.featureLink);
             {features.map((feature) => {
               return (
                 <div
                   key={feature.id}
                   className="relative flex h-64 flex-col items-center justify-center rounded bg-white p-6 shadow-xl"
                 >
-                  <Link href={`/${lng}/${feature.featureLink}`}>
+                  <Link href={`/${lng}/${String(feature.featureLink)}`}>
                     <div className="relative -mt-1 mb-2 flex h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-primary bg-opacity-5">
                       <DatoImage
                         data={feature.featureIcon.responsiveImage}
