@@ -1,4 +1,3 @@
-"use client";
 import { primaryColor } from "@/app/i18n/settings";
 import { JSXElementConstructor, ReactElement } from "react";
 
