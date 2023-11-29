@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { Image as DatoImage } from "react-datocms";
 import { GalleryRecord, ImageFileField } from "@/graphql/generated";
