@@ -116,7 +116,9 @@ const Award = ({ data, lng }: Props) => {
                         );
                       case "GalleryRecord":
                         const galleryRecord = record as GalleryRecord;
-                        return <GalleryBlock galleryRecord={[galleryRecord]} />;
+                        return (
+                          <GalleryBlock galleryRecords={[galleryRecord]} />
+                        );
                       case "NewsletterSubscriptionRecord":
                         const NewsletterSubscriptionRecord =
                           record as NewsletterSubscriptionRecord;
