@@ -35,6 +35,8 @@ const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity;
 };
 
+// ... (imports remain the same)
+
 const GalleryBlock: React.FC<Props> = ({ galleryRecords }) => {
   const [[page, direction], setPage] = useState([0, 0]);
 
@@ -72,6 +74,20 @@ const GalleryBlock: React.FC<Props> = ({ galleryRecords }) => {
               objectPosition="50% 20%"
               data={image.responsiveImage}
             />
+            <div className="absolute left-0 top-0 flex h-full w-full items-center justify-between">
+              <div
+                className="prev cursor-pointer pl-2 text-white"
+                onClick={() => paginate(-1)}
+              >
+                {"‣"}
+              </div>
+              <div
+                className="next cursor-pointer pr-2 text-white"
+                onClick={() => paginate(1)}
+              >
+                {"‣"}
+              </div>
+            </div>
           </motion.div>
         )
       );
@@ -89,12 +105,6 @@ const GalleryBlock: React.FC<Props> = ({ galleryRecords }) => {
       <AnimatePresence initial={false} custom={direction}>
         {images[imageIndex]}
       </AnimatePresence>
-      <div className="next" onClick={() => paginate(1)}>
-        {"‣"}
-      </div>
-      <div className="prev" onClick={() => paginate(-1)}>
-        {"‣"}
-      </div>
     </>
   );
 };
