@@ -37,6 +37,8 @@ const swipePower = (offset: number, velocity: number) => {
 
 // ... (imports remain the same)
 
+// ... (imports remain the same)
+
 const GalleryBlock: React.FC<Props> = ({ galleryRecords }) => {
   const [[page, direction], setPage] = useState([0, 0]);
 
@@ -48,9 +50,9 @@ const GalleryBlock: React.FC<Props> = ({ galleryRecords }) => {
             key={`${index}-${imageIndex}`}
             className="relative h-72 w-full overflow-hidden rounded-xl lg:mx-6 lg:h-96 lg:w-1/2"
             layout
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0, x: direction > 0 ? 1000 : -1000 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction < 0 ? 1000 : -1000 }}
             transition={{
               x: { type: "spring", stiffness: 300, damping: 30 },
               opacity: { duration: 0.2 },
