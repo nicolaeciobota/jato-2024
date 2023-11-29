@@ -38,27 +38,47 @@ const swipePower = (offset: number, velocity: number) => {
 const GalleryBlock: React.FC<Props> = ({ galleryRecords }) => {
   const [[page, direction], setPage] = useState([0, 0]);
 
-  let images = galleryRecords.map((record: GalleryRecord, index: number) => {
-    if (record.imageGallery) {
-      const image = record.imageGallery[0]; // Assuming you want the first image, adjust as needed
-      return (
-        <div
-          key={index}
-          className="relative h-72 w-full overflow-hidden rounded-xl object-cover lg:mx-6 lg:h-96 lg:w-1/2"
-        >
-          <DatoImage
-            layout="fill"
-            objectFit="cover"
-            objectPosition="50% 20%"
-            data={image.responsiveImage}
-          />
-        </div>
-      );
-    }
-    return null;
-  });
+  let images = galleryRecords
+    .map((record: GalleryRecord, index: number) => {
+      return record.imageGallery?.map(
+        (image: ImageFileField, imageIndex: number) => (
+          <motion.div
+            key={`${index}-${imageIndex}`}
+            className="relative h-72 w-full overflow-hidden rounded-xl lg:mx-6 lg:h-96 lg:w-1/2"
+            layout
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 },
+            }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={1}
+            onDragEnd={(e, { offset, velocity }) => {
+              const swipe = swipePower(offset.x, velocity.x);
 
-  const imageIndex = wrap(0, galleryRecords.length, page);
+              if (swipe < -swipeConfidenceThreshold) {
+                paginate(1);
+              } else if (swipe > swipeConfidenceThreshold) {
+                paginate(-1);
+              }
+            }}
+          >
+            <DatoImage
+              layout="fill"
+              objectFit="cover"
+              objectPosition="50% 20%"
+              data={image.responsiveImage}
+            />
+          </motion.div>
+        )
+      );
+    })
+    .flat(); // Flatten the array to remove nested arrays
+
+  const imageIndex = wrap(0, images.length, page);
 
   const paginate = (newDirection: number) => {
     setPage([page + newDirection, newDirection]);
@@ -67,31 +87,7 @@ const GalleryBlock: React.FC<Props> = ({ galleryRecords }) => {
   return (
     <>
       <AnimatePresence initial={false} custom={direction}>
-        <motion.img
-          key={page}
-          src={(images[imageIndex] as any)?.props.children.props.data.src}
-          custom={direction}
-          variants={variants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{
-            x: { type: "spring", stiffness: 300, damping: 30 },
-            opacity: { duration: 0.2 },
-          }}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={1}
-          onDragEnd={(e, { offset, velocity }) => {
-            const swipe = swipePower(offset.x, velocity.x);
-
-            if (swipe < -swipeConfidenceThreshold) {
-              paginate(1);
-            } else if (swipe > swipeConfidenceThreshold) {
-              paginate(-1);
-            }
-          }}
-        />
+        {images[imageIndex]}
       </AnimatePresence>
       <div className="next" onClick={() => paginate(1)}>
         {"‣"}
