@@ -35,26 +35,19 @@ const swipePower = (offset: number, velocity: number) => {
 
 const GalleryBlock: React.FC<Props> = ({ galleryRecords }) => {
   const [[page, direction], setPage] = useState([0, 0]);
-  const [activeThumbnail, setActiveThumbnail] = useState(0);
 
   const paginate = (newDirection: number) => {
     const nextPage =
       (page + newDirection + galleryRecords.length) % galleryRecords.length;
     setPage([nextPage, newDirection]);
-    setActiveThumbnail(nextPage);
-  };
-
-  const handleThumbnailClick = (index: number) => {
-    setPage([index, index - page]);
-    setActiveThumbnail(index);
   };
 
   const thumbnails = galleryRecords.map(
     (record: GalleryRecord, index: number) => (
       <div
         key={index}
-        className={`thumbnail ${index === activeThumbnail ? "active" : ""}`}
-        onClick={() => handleThumbnailClick(index)}
+        className="thumbnail"
+        onClick={() => paginate(index - page)}
       >
         <DatoImage
           className="h-full w-full"
