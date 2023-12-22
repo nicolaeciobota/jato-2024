@@ -36,7 +36,7 @@ export default async function RootLayout({
         b={data.layout?.mainColor.blue || 108}
       />
       {children}
-      <ScrollToTop lng={lng} isDraft={isEnabled} />
+      {/* <ScrollToTop lng={lng} isDraft={isEnabled} /> */}
     </>
   );
 }

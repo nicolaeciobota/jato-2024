@@ -53,7 +53,8 @@ const Header = ({ lng, data }: Props) => {
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [notificationStrip, setNotificationStrip] = useState(
-    !isEmptyDocument(data.layout?.notification)
+    // !isEmptyDocument(data.layout?.notification)
+    false
   );
 
   const navbarToggleHandler = () => {
@@ -95,15 +96,15 @@ const Header = ({ lng, data }: Props) => {
         />
       )}
       <header
-        className={`header left-0 z-40 flex w-full items-center bg-transparent ${
+        className={`header left-0 z-40 w-full flex items-center bg-transparent ${
           sticky
             ? "fixed top-0 z-50 bg-white bg-opacity-80 shadow-sticky backdrop-blur-sm transition"
             : `absolute ${notificationStrip ? "top-10" : "top-0"}`
         }`}
       >
         <div className="container">
-          <div className="relative -mx-4 flex items-center justify-between">
-            <div className="w-80 max-w-full px-4 xl:mr-12">
+          <div className="relative flex items-center justify-between">
+            <div className="w-80 max-w-full sm:-mx-4 mx-0 px-4 xl:mr-12">
               <Link
                 href={"/" + lng}
                 className={`header-logo block w-full ${

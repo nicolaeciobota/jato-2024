@@ -3,7 +3,7 @@ import "@/styles/global.css";
 import { SiteLocale } from "@/graphql/generated";
 import getAvailableLocales from "@/app/i18n/settings";
 import Head from "./[lng]/Head";
-
+import { ClerkProvider } from '@clerk/nextjs'
 type Params = {
   children: React.ReactNode;
   params: {
@@ -17,15 +17,18 @@ export async function generateStaticParams() {
     language;
   });
 }
+export const dynamic = "force-dynamic"
 
 export default async function RootLayout({
   children,
   params: { lng },
 }: Params) {
   return (
-    <html lang={lng}>
-      <Head />
-      <body className={`tracking-tight antialiased`}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang={lng}>
+        <Head />
+        <body className={`tracking-tight antialiased`}>{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }

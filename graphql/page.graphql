@@ -255,6 +255,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         feature {
           _modelApiKey
           id
+          link
           featureTitle
           featureDescription
           featureIcon {
