@@ -12,6 +12,7 @@ import {
 import { notFound } from "next/navigation";
 import React from "react";
 import SingleTalk from "@/components/Agenda/SingleTalk";
+import LiveryPlayer from "@/components/LiveryPlayer";
 
 type Props = {
   data: StageQuery;
@@ -29,7 +30,6 @@ const Stage = ({ data, lng }: Props) => {
               <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight">
                 {data.stage.name}
               </h2>
-              <p>{data.stage.streamKey}</p>
             </div>
           </div>
         </div>
@@ -47,6 +47,9 @@ const Stage = ({ data, lng }: Props) => {
         </div>
 
         <div className=" -mx-4 flex flex-wrap"></div>
+      </div>
+      <div className="container">
+        {data?.stage?.streamKey ? <LiveryPlayer streamId={data?.stage?.streamKey} /> : null}
       </div>
     </section>
   );
