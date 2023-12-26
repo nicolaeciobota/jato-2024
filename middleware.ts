@@ -52,11 +52,16 @@ export default authMiddleware({
       );
     }
   },
-  publicRoutes: (req) => {
+  ignoredRoutes: (req) => {
     const pathname = req.nextUrl.pathname;
     const locale = pathname.split('/')[1];
     return req.url.includes(`/${locale}/home`)
   },
+  // publicRoutes: (req) => {
+  //   const pathname = req.nextUrl.pathname;
+  //   const locale = pathname.split('/')[1];
+  //   return req.url.includes(`/${locale}/home`)
+  // },
 })
 
 // async function middleware(request: NextRequest) {
