@@ -12,7 +12,7 @@ const DateTagTalks = ({ data, lng }: Props) => {
     notFound();
   }
   return (
-    <section className="py-[32px]">
+    <section className="py-[32px] dark:bg-dark-background">
       <div className="width-full flex items-center justify-center gap-4">
         <svg
           xmlns="http://www.w3.org/2000/svg"

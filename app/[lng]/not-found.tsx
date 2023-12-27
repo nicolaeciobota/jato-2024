@@ -3,7 +3,7 @@ import Link from "next/link";
 const NotFound = () => {
   return (
     <>
-      <section className="relative z-10 pb-16 pt-36 md:pb-20 lg:pb-28 lg:pt-[180px]">
+      <section className="relative z-10 pb-16 pt-36 md:pb-20 lg:pb-28 lg:pt-[180px] dark:bg-dark-background">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
@@ -133,10 +133,10 @@ const NotFound = () => {
                     </defs>
                   </svg>
                 </div>
-                <h3 className="mb-4 text-3xl font-bold text-black dark:text-white sm:text-4xl">
+                <h3 className="mb-4 text-3xl font-bold text-black dark:text-darktext sm:text-4xl">
                   Sorry, the page can’t be found
                 </h3>
-                <p className="mb-10 text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
+                <p className="mb-10 text-base font-medium leading-relaxed text-body-color dark:text-darktext sm:text-lg sm:leading-relaxed">
                   The page you were looking for appears to have been moved,
                   deleted or does not exist.
                 </p>

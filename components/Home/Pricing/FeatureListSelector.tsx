@@ -20,13 +20,13 @@ const FeatureListSelector = ({ header, subheader, plans }: Props) => {
     ?.planFeatures.split(', ');
 
   return (
-    <div className="mt-16 bg-white py-16 dark:bg-gray-900">
+    <div className="pt-32 bg-white pb-16 dark:bg-dark-background">
       <div className="container mx-auto px-6 py-8">
-        <h1 className="text-center text-2xl font-semibold capitalize text-gray-800 dark:text-white lg:text-3xl">
+        <h1 className="text-center text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-3xl">
           {header}
         </h1>
 
-        <div className="mx-auto mt-4 max-w-2xl text-center text-gray-500 dark:text-gray-300 xl:mt-6">
+        <div className="mx-auto mt-4 max-w-2xl text-center text-gray-500 dark:text-darktext xl:mt-6">
           <ReactMarkdown>{subheader || ''}</ReactMarkdown>
         </div>
 
@@ -59,14 +59,14 @@ const FeatureListSelector = ({ header, subheader, plans }: Props) => {
                     />
                   </svg>
 
-                  <h2 className="text-lg font-medium text-gray-700 dark:text-gray-200 sm:text-xl">
+                  <h2 className="text-lg font-medium text-gray-700 dark:text-darktext sm:text-xl">
                     {plan.tierName}
                   </h2>
                 </div>
 
                 <h2
                   className={
-                    'text-2xl font-semibold sm:text-3xl' +
+                    'text-2xl font-semibold sm:text-3xl dark:text-darktext' +
                     (planIsSelected ? ' text-primary' : ' text-gray-500')
                   }
                 >
@@ -88,7 +88,7 @@ const FeatureListSelector = ({ header, subheader, plans }: Props) => {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20, transition: { duration: 0.1 } }}
-                    className="flex items-center justify-between text-gray-800 dark:text-gray-200"
+                    className="flex items-center justify-between text-gray-800 dark:text-darktext"
                   >
                     <p className="textlg sm:text-xl">{feature}</p>
 

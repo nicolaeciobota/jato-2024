@@ -12,7 +12,7 @@ type Props = {
 const SpeakerTalks = ({ data, lng }: Props) => {
   if (!data.speaker) notFound();
   return (
-    <section className="mt-16 flex w-full flex-col items-center justify-center py-[32px] ">
+    <section className="mt-16 flex w-full flex-col items-center justify-center py-[32px] dark:bg-dark-background">
       <section className="px-auto mx-auto mb-8 flex  w-full items-center justify-center bg-white px-2 dark:bg-gray-900">
         {" "}
         <div className="py-10">
@@ -27,13 +27,13 @@ const SpeakerTalks = ({ data, lng }: Props) => {
               />
             </div>
             <div className="xl:mx-4 xl:w-1/2">
-              <h1 className="text-2xl font-semibold capitalize text-gray-800 dark:text-white lg:text-3xl">
+              <h1 className="text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-3xl">
                 {data.speaker.name}
               </h1>{" "}
-              <h2 className="text-2xl capitalize text-gray-800 dark:text-white lg:text-2xl">
+              <h2 className="text-2xl capitalize text-gray-800 dark:text-darktext lg:text-2xl">
                 {data.speaker.jobTitle}
               </h2>
-              <div className="mt-4 max-w-2xl text-gray-800 dark:text-gray-300">
+              <div className="mt-4 max-w-2xl text-gray-800 dark:text-darktext">
                 <ReactMarkdown>{data.speaker.bio}</ReactMarkdown>
               </div>
             </div>

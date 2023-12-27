@@ -17,7 +17,7 @@ const GradientHero = ({ heroTitle, heroSubtitle, buttons }: Props) => {
   const lastWord = heroTitleWords.pop();
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden dark:bg-dark-background">
       {/* Illustration behind hero content */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -62,7 +62,7 @@ const GradientHero = ({ heroTitle, heroSubtitle, buttons }: Props) => {
         <div className="pb-12 pt-32 md:pb-20 md:pt-40">
           <div className="pb-12 text-center md:pb-16">
             <h1
-              className="leading-tighter mb-4 text-6xl font-extrabold tracking-tighter md:text-8xl"
+              className="leading-tighter mb-4 text-6xl font-extrabold tracking-tighter md:text-8xl dark:text-darktext"
               data-aos="zoom-y-out"
             >
               {heroTitleWords.join(' ')}{' '}
@@ -72,7 +72,7 @@ const GradientHero = ({ heroTitle, heroSubtitle, buttons }: Props) => {
             </h1>
             <div className="mx-auto max-w-3xl">
               <div
-                className="mb-8 text-xl text-gray-600"
+                className="mb-8 text-xl text-gray-600 dark:text-darktext"
                 data-aos="zoom-y-out"
                 data-aos-delay="150"
               >

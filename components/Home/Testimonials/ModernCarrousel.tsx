@@ -29,13 +29,13 @@ const ModernCarrousel = ({ reviews, header, subheader }: Props) => {
   const currentReview = reviews[currentIndex];
 
   return (
-    <section className="bg-white py-16 dark:bg-gray-900">
+    <section className="bg-white py-16 dark:bg-dark-background">
       <div className="relative flex">
         <div className="min-h-screen lg:w-1/3"></div>
         <div className="mt-32 hidden h-[750px] w-3/4 rounded-xl bg-primary/10 dark:bg-gray-800 lg:block"></div>
 
         <div className="container mx-auto flex min-h-screen w-full flex-col justify-center px-6 py-10 lg:absolute lg:inset-x-0">
-          <h1 className="text-2xl font-semibold capitalize text-gray-800 dark:text-white lg:text-3xl">
+          <h1 className="text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-3xl">
             {header}
           </h1>
 
@@ -50,7 +50,7 @@ const ModernCarrousel = ({ reviews, header, subheader }: Props) => {
             </div>
 
             <div className="mt-8 lg:mt-0 lg:px-10">
-              <div className="mt-6 max-w-lg text-gray-500 dark:text-gray-400">
+              <div className="mt-6 max-w-lg text-gray-500 dark:text-darktext">
                 <StructuredText
                   data={currentReview.review.value}
                   renderNode={Highlighter}
@@ -60,7 +60,7 @@ const ModernCarrousel = ({ reviews, header, subheader }: Props) => {
               <h3 className="mt-6 text-lg font-medium text-primary">
                 {currentReview.reviewerName}
               </h3>
-              <p className="text-gray-600 dark:text-gray-300">
+              <p className="text-gray-600 dark:text-darktext">
                 {currentReview.reviewerTitle}
               </p>
             </div>

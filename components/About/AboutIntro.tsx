@@ -39,7 +39,7 @@ const AboutIntro = ({
   const x = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   return (
-    <div className="mx-auto mt-16 px-4 py-12 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 lg:py-20">
+    <div className="mx-auto mt-16 px-4 py-12 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 lg:py-20 dark:bg-dark-background">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -51,7 +51,7 @@ const AboutIntro = ({
             {preHeader}
           </p>
         </div>
-        <h2 className="mb-6 max-w-lg font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+        <h2 className="mb-6 max-w-lg font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 dark:text-darktext sm:text-4xl md:mx-auto">
           <span className="relative inline-block text-primary">
             <motion.svg
               style={{ y, x }}
@@ -80,7 +80,7 @@ const AboutIntro = ({
           </span>{' '}
           {restOfTheString}
         </h2>
-        <div className="text-base text-gray-700 md:text-lg">
+        <div className="text-base text-gray-700 dark:text-darktext md:text-lg">
           <ReactMarkdown>{subheader || ''}</ReactMarkdown>
         </div>
       </motion.div>
@@ -139,7 +139,7 @@ const AboutIntro = ({
                 renderNodeRule(isHeading, ({ children, key }) => {
                   return (
                     <h3
-                      className="mb-2 mt-4 text-lg font-semibold leading-5"
+                      className="mb-2 mt-4 text-lg font-semibold leading-5 dark:text-darktext"
                       key={key}
                     >
                       {children}
@@ -148,7 +148,7 @@ const AboutIntro = ({
                 }),
                 renderNodeRule(isParagraph, ({ children, key }) => {
                   return (
-                    <div className="mb-4 text-sm text-body-color" key={key}>
+                    <div className="mb-4 text-sm text-body-color dark:text-darktext" key={key}>
                       {children}
                     </div>
                   );

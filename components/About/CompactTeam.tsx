@@ -13,13 +13,13 @@ type Props = {
 
 const CompactTeam = ({ header, subheader, members, lng }: Props) => {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-white dark:bg-dark-background">
       <div className="container mx-auto px-6 py-10">
-        <h1 className="text-center text-2xl font-semibold capitalize text-gray-800 dark:text-white lg:text-4xl">
+        <h1 className="text-center text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-4xl">
           {header}
         </h1>
 
-        <div className="mx-auto my-6 max-w-2xl text-center text-gray-500 dark:text-gray-300">
+        <div className="mx-auto my-6 max-w-2xl text-center text-gray-500 dark:text-darktext">
           <ReactMarkdown>{subheader || ''}</ReactMarkdown>
         </div>
 
@@ -40,11 +40,11 @@ const CompactTeam = ({ header, subheader, members, lng }: Props) => {
                   />
                 </div>
 
-                <h1 className="mt-4 text-2xl font-semibold capitalize text-gray-700 group-hover:text-white dark:text-white">
+                <h1 className="mt-4 text-2xl font-semibold capitalize text-gray-700 group-hover:text-white dark:text-darktext">
                   {member.name}
                 </h1>
 
-                <p className="mt-2 capitalize text-gray-500 group-hover:text-gray-300 dark:text-gray-300">
+                <p className="mt-2 capitalize text-gray-500 group-hover:text-gray-300 dark:text-darktext">
                   {member.bio}
                 </p>
 

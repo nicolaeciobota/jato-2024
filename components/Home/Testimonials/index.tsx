@@ -12,7 +12,7 @@ type Props = {
 
 const Testimonials = ({ reviews, header, subheader }: Props) => {
   return (
-    <section className="relative z-10 bg-primary/[.03] py-16 text-center md:py-20 lg:py-28 lg:text-start">
+    <section className="relative z-10 bg-primary/[.03] dark:bg-dark-background py-16 text-center md:py-20 lg:py-28 lg:text-start">
       <div className="container">
         <SectionTitle title={header} paragraph={subheader} center />
 

@@ -21,13 +21,13 @@ type Props = {
 
 const StatsSection = ({ title, subtitle, statistic }: Props) => {
   return (
-    <section className="body-font flex flex-col items-center justify-center text-gray-600">
+    <section className="body-font flex flex-col items-center justify-center text-gray-600 dark:bg-dark-background">
       <div className="container mx-auto px-5 py-4 md:py-12">
         <div className="flex w-full flex-col pb-12 text-center">
-          <h1 className="title-font mb-4 text-2xl font-semibold text-gray-900 sm:text-4xl">
+          <h1 className="title-font mb-4 text-2xl font-semibold text-gray-900 dark:text-darktext sm:text-4xl">
             {title}
           </h1>
-          <div className="mx-auto text-base leading-relaxed lg:w-2/3">
+          <div className="mx-auto text-base leading-relaxed lg:w-2/3 dark:text-darktext">
             <ReactMarkdown>{subtitle || ''}</ReactMarkdown>
           </div>
         </div>
@@ -35,14 +35,14 @@ const StatsSection = ({ title, subtitle, statistic }: Props) => {
           {statistic.map((stat) => {
             return (
               <div key={stat.id} className="w-4/5 p-4 text-primary md:w-1/4">
-                <div className="flex flex-col items-center justify-center rounded-lg border-2 border-gray-200 px-4 py-6 text-center text-primary">
+                <div className="flex flex-col items-center justify-center rounded-lg border-2 border-gray-200 dark:border-gray-500 px-4 py-6 text-center text-primary">
                   <div className="mb-4 h-24 w-24 text-primary">
                     <SvgRenderer url={stat.icon.url} />
                   </div>
-                  <h2 className="title-font mt-8 text-3xl font-medium text-gray-800">
+                  <h2 className="title-font mt-8 text-3xl font-medium text-gray-800 dark:text-darktext">
                     {formatNumber(stat.quantity)}
                   </h2>
-                  <p className="leading-relaxed text-gray-500">{stat.label}</p>
+                  <p className="leading-relaxed text-gray-500 dark:text-darktext">{stat.label}</p>
                 </div>
               </div>
             );

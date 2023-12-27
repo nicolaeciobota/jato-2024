@@ -14,13 +14,13 @@ const PricingBox = (props: {
 
   return (
     <div className="w-full">
-      <div className="relative z-10 h-full rounded-md bg-white px-8 py-10 shadow-signUp dark:bg-[#1D2144]">
+      <div className="relative z-10 h-full rounded-md bg-white px-8 py-10 shadow-signUp dark:bg-subsectionBackground">
         <div className="flex items-center justify-between">
-          <h3 className="price mb-2 text-3xl font-bold text-black dark:text-white">
+          <h3 className="price mb-2 text-3xl font-bold text-black dark:text-darktext">
             $<span className="amount">{price}</span>
             <span className="time text-body-color">/{duration}</span>
           </h3>
-          <h4 className="mb-2 text-xl font-bold text-dark dark:text-white">
+          <h4 className="mb-2 text-xl font-bold text-dark dark:text-darktext">
             {packageName}
           </h4>
         </div>

@@ -35,7 +35,7 @@ const SingleAward = ({ award, locale }: Props) => {
           <h3>
             <Link
               href={"/" + locale + "/awards/" + slug}
-              className="dark:text-blue mb-4 block h-16 text-xl text-black hover:text-white dark:hover:text-primary"
+              className="dark:text-blue mb-4 block h-16 text-xl text-black hover:text-white dark:text-darktext dark:hover:text-primary"
             >
               {title}
             </Link>
@@ -58,14 +58,14 @@ const SingleAward = ({ award, locale }: Props) => {
                 </div>
               </div>
               <div className="w-full">
-                <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
+                <h4 className="mb-1 text-sm font-medium text-dark dark:text-darktext">
                   {acategory?.name}
                 </h4>
-                <div className="text-xs text-body-color">{acategory?.bio}</div>
+                <div className="text-xs text-body-color dark:text-darktext">{acategory?.bio}</div>
               </div>
             </Link>
             <div className="inline-block">
-              <div className="text-xs text-body-color">
+              <div className="text-xs text-body-color dark:text-darktext">
                 {transformDate(_publishedAt)}
               </div>
             </div>

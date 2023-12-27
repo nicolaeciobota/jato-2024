@@ -27,9 +27,9 @@ const SingleTestimonial = ({ testimonial }: Props) => {
 
   return (
     <div className="h-96 w-full">
-      <div className="flex h-full flex-col items-center justify-center rounded-md bg-white p-8 shadow-one dark:bg-[#1D2144] lg:items-start lg:px-5 xl:px-8">
+      <div className="flex h-full flex-col items-center justify-center rounded-md bg-white p-8 shadow-one dark:bg-subsectionBackground lg:items-start lg:px-5 xl:px-8">
         <div className="mb-5 flex items-center space-x-1">{ratingIcons}</div>
-        <div className="mb-8 h-36 border-b border-body-color border-opacity-10 pb-8 text-base leading-relaxed text-body-color dark:border-white dark:border-opacity-10 dark:text-white">
+        <div className="mb-8 h-36 border-b border-body-color border-opacity-10 pb-8 text-base leading-relaxed text-body-color dark:border-white dark:border-opacity-10 dark:text-darktext">
           <StructuredText data={review.value} renderNode={Highlighter} />
         </div>
         <div className="flex w-96 items-center px-16 md:w-full md:px-4 lg:px-0">
@@ -43,7 +43,7 @@ const SingleTestimonial = ({ testimonial }: Props) => {
             />
           </div>
           <div className="w-full">
-            <h5 className="mb-1 text-lg font-semibold text-dark dark:text-white lg:text-base xl:text-lg">
+            <h5 className="mb-1 text-lg font-semibold text-dark dark:text-darktext lg:text-base xl:text-lg">
               {reviewerName}
             </h5>
             <p className="text-sm text-body-color">{reviewerTitle}</p>
