@@ -14,6 +14,7 @@ import {
 import NotificationStrip from "./NotificationStrip";
 import { Menu } from "./HeaderRenderer";
 import { isEmptyDocument } from "datocms-structured-text-utils";
+import { SignOutButton, UserButton } from "@clerk/nextjs";
 
 type Props = {
   lng: SiteLocale;
@@ -208,9 +209,10 @@ const Header = ({ lng, data }: Props) => {
               <div className="flex items-center justify-end pr-16 lg:pr-0">
                 <LanguageSelector lng={lng} languages={data._site.locales} />
               </div>
-              <div onClick={themeHandler}>
+              <div onClick={themeHandler} className="mr-3">
                 <p>{theme === 'dark' ? 'light' : 'dark'}</p>
               </div>
+              <UserButton />
             </div>
           </div>
         </div>
