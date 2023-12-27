@@ -16,15 +16,15 @@ type Props = {
 
 const RightImageHero = ({ heroTitle, heroSubtitle, buttons, image }: Props) => {
   return (
-    <div className="mt-40 bg-white pb-6 sm:pb-8 lg:pb-12">
+    <div className="pt-40 bg-white dark:bg-dark-background pb-6 sm:pb-8 lg:pb-12">
       <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
         <section className="flex flex-col justify-between gap-6 sm:gap-10 md:gap-16 lg:flex-row">
           <div className="flex flex-col items-start sm:text-center lg:py-12 lg:text-left xl:w-10/12 xl:py-24 ">
-            <h1 className="mb-8 text-4xl font-bold text-black sm:text-5xl md:mb-12 md:text-6xl">
+            <h1 className="mb-8 text-4xl font-bold text-black dark:text-darktext sm:text-5xl md:mb-12 md:text-6xl">
               {heroTitle}
             </h1>
 
-            <div className="mb-8 leading-relaxed text-gray-500 md:mb-12 lg:w-4/5 xl:text-lg">
+            <div className="mb-8 leading-relaxed text-gray-500 dark:text-darktext md:mb-12 lg:w-4/5 xl:text-lg">
               <ReactMarkdown>{heroSubtitle || ''}</ReactMarkdown>
             </div>
 

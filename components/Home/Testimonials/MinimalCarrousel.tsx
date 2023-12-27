@@ -29,9 +29,9 @@ const MinimalCarrousel = ({ reviews, header, subheader }: Props) => {
   const currentReview = reviews[currentIndex];
 
   return (
-    <section className="bg-primary/10 py-16 dark:bg-gray-900">
+    <section className="bg-primary/10 py-16 dark:bg-dark-background">
       <div className="container mx-auto flex flex-col items-center justify-center px-6 py-10">
-        <h1 className="text-center text-2xl font-semibold capitalize text-gray-800 dark:text-white lg:text-3xl">
+        <h1 className="text-center text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-3xl">
           {header}
         </h1>
 
@@ -62,7 +62,7 @@ const MinimalCarrousel = ({ reviews, header, subheader }: Props) => {
               />
             </svg>
           </button>
-          <div className="flex items-center text-center text-gray-500 lg:mx-8">
+          <div className="flex items-center text-center text-gray-500 dark:text-darktext lg:mx-8">
             <StructuredText
               data={currentReview.review.value}
               renderNode={Highlighter}
@@ -100,10 +100,10 @@ const MinimalCarrousel = ({ reviews, header, subheader }: Props) => {
           </div>
 
           <div className="mt-4 text-center">
-            <h1 className="font-semibold text-gray-800 dark:text-white">
+            <h1 className="font-semibold text-gray-800 dark:text-darktext">
               {currentReview.reviewerName}
             </h1>
-            <span className="text-sm text-gray-500 dark:text-gray-400">
+            <span className="text-sm text-gray-500 dark:text-darktext">
               {currentReview.reviewerTitle}
             </span>
           </div>

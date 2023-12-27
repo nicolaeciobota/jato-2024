@@ -14,7 +14,7 @@ type Props = {
 
 const TalkGridRenderer = ({ data, lng, talkMeta }: Props) => {
   return (
-    <section className="mt-4 pb-[120px] pt-[120px]">
+    <section className="mt-4 pb-[120px] pt-[120px] dark:bg-dark-background">
       <div className="container ">
         <div className="-mx-4 flex h-full flex-wrap justify-between">
           {data.map((talk) => {

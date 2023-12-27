@@ -16,14 +16,14 @@ const BigImageHorizontalFeatures = ({
   featuresSubheader,
 }: Props) => {
   return (
-    <div className="cursor-default bg-white py-6 sm:py-8 lg:py-12">
+    <div className="cursor-default bg-white dark:bg-dark-background py-6 sm:py-8 lg:py-12">
       <div className="mx-auto max-w-screen-xl px-4 md:px-8">
         <div className="mb-10 md:mb-16">
-          <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">
+          <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-darktext md:mb-6 lg:text-3xl">
             {featuresHeader}
           </h2>
 
-          <div className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">
+          <div className="mx-auto max-w-screen-md text-center text-gray-500 dark:text-darktext md:text-lg">
             <ReactMarkdown>{featuresSubheader || ""}</ReactMarkdown>
           </div>
         </div>
@@ -48,13 +48,13 @@ const BigImageHorizontalFeatures = ({
                   </div>
                 </div>
                 <div className="flex flex-col gap-2 p-4 lg:p-6">
-                  <h2 className="text-xl font-bold text-gray-800">
+                  <h2 className="text-xl font-bold text-gray-800 dark:text-darktext">
                     <div className="transition duration-100 group-hover:text-primary">
                       {feature.featureTitle}
                     </div>
                   </h2>
 
-                  <div className="text-gray-500">
+                  <div className="text-gray-500 dark:text-darktext">
                     <ReactMarkdown>
                       {feature.featureDescription || ""}
                     </ReactMarkdown>

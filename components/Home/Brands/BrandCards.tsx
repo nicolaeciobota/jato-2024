@@ -7,7 +7,7 @@ type Props = {
 
 const BrandCards = ({ brandShowcase }: Props) => {
   return (
-    <div className="bg-white py-6 lg:py-8">
+    <div className="bg-white py-6 lg:py-8 dark:bg-dark-background">
       <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
         <div className="grid grid-cols-1 gap-4 rounded-lg md:grid-cols-3 mx-4 lg:mx-12">
           {brandShowcase.map((brand) => {

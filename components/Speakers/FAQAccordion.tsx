@@ -66,9 +66,9 @@ const FAQAccordion = ({ title, subtitle, questions }: Props) => {
   }
 
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-white dark:bg-dark-background">
       <div className="container mx-auto px-6 py-12">
-        <h1 className="mb-4 text-center text-2xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
+        <h1 className="mb-4 text-center text-2xl font-semibold text-gray-800 dark:text-darktext lg:text-4xl">
           {title}
         </h1>
         <div className=" text-center text-gray-500">
@@ -90,7 +90,7 @@ const FAQAccordion = ({ title, subtitle, questions }: Props) => {
                 }}
               >
                 <button className="flex w-full items-center justify-between">
-                  <h1 className="font-semibold text-gray-700 dark:text-white">
+                  <h1 className="font-semibold text-gray-700 dark:text-darktext">
                     {question.question}
                   </h1>
                   {isOpen ? closeIcon : openIcon}

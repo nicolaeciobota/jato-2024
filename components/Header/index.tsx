@@ -107,7 +107,7 @@ const Header = ({ lng, data }: Props) => {
         />
       )}
       <header
-        className={`header left-0 z-40 w-full flex items-center bg-transparent ${sticky
+        className={`header left-0 z-40 w-full flex items-center bg-transparent dark:bg-dark-background ${sticky
           ? "fixed top-0 z-50 bg-white bg-opacity-80 shadow-sticky backdrop-blur-sm transition"
           : `absolute ${notificationStrip ? "top-10" : "top-0"}`
           }`}
@@ -126,7 +126,7 @@ const Header = ({ lng, data }: Props) => {
                     alt="logo"
                     width={140}
                     height={30}
-                    className="w-full dark:hidden"
+                    className="w-full"
                   />
                 )}
               </Link>
@@ -165,7 +165,7 @@ const Header = ({ lng, data }: Props) => {
                         {menuItem.path ? (
                           <Link
                             href={"/" + lng + menuItem.path}
-                            className={`flex py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:px-0 lg:py-6`}
+                            className={`flex py-2 text-base text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6`}
                           >
                             {menuItem.title}
                           </Link>
@@ -173,7 +173,7 @@ const Header = ({ lng, data }: Props) => {
                           <>
                             <a
                               onClick={() => handleSubmenu(index)}
-                              className="flex cursor-pointer items-center justify-between py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:px-0 lg:py-6"
+                              className="flex cursor-pointer items-center justify-between py-2 text-base text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6"
                             >
                               {menuItem.title}
                               <span className="pl-3">
@@ -193,7 +193,7 @@ const Header = ({ lng, data }: Props) => {
                                 <Link
                                   href={"/" + lng + submenuItem.path}
                                   key={submenuItem.id}
-                                  className="block rounded py-2.5 text-sm text-dark hover:opacity-70 dark:text-white lg:px-3"
+                                  className="block rounded py-2.5 text-sm text-dark hover:opacity-70 dark:hover:bg-[#201f2f] dark:text-white lg:px-3"
                                 >
                                   {submenuItem.title}
                                 </Link>
@@ -209,8 +209,8 @@ const Header = ({ lng, data }: Props) => {
               <div className="flex items-center justify-end pr-16 lg:pr-0">
                 <LanguageSelector lng={lng} languages={data._site.locales} />
               </div>
-              <div onClick={themeHandler} className="mr-3">
-                <p>{theme === 'dark' ? 'light' : 'dark'}</p>
+              <div onClick={themeHandler}>
+                <p className="text-dark dark:text-white">{theme === 'dark' ? 'light' : 'dark'}</p>
               </div>
               <UserButton />
             </div>

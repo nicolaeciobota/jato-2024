@@ -45,7 +45,7 @@ type Props = {
 const Award = ({ data, lng }: Props) => {
   if (!data.award) notFound();
   return (
-    <section className="mt-40 pb-[120px]">
+    <section className="pt-40 pb-[120px] dark:bg-dark-background">
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-center">
           <div className="w-full px-4 lg:w-full">
@@ -193,7 +193,7 @@ const Award = ({ data, lng }: Props) => {
                 />
               </div>
               <div className="w-1/2">
-                <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight">
+                <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
                   {data.award.title}
                 </h2>
                 <div className="mb-10 flex items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">

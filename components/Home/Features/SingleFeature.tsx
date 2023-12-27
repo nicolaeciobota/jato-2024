@@ -26,10 +26,10 @@ const SingleFeature = ({ feature }: Props) => {
             />
           </Link>
         </div>
-        <h3 className="mb-5 text-xl font-bold text-black dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
+        <h3 className="mb-5 text-xl font-bold text-black dark:text-darktext sm:text-2xl lg:text-xl xl:text-2xl">
           {featureTitle}
         </h3>
-        <div className="pr-[10px] text-base font-medium leading-relaxed text-body-color">
+        <div className="pr-[10px] text-base font-medium leading-relaxed text-body-color dark:text-darktext">
           <ReactMarkdown>{featureDescription || ""}</ReactMarkdown>
         </div>
       </div>

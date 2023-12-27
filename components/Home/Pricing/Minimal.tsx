@@ -29,7 +29,7 @@ const Minimal = ({ header, subheader, plans }: Props) => {
   const evidencePlanFeatures = planInEvidence.planFeatures.split(', ');
 
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-white dark:bg-dark-background">
       <div className="container mx-auto px-6 py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <div>

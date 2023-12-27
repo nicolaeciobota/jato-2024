@@ -17,7 +17,7 @@ type Props = {
 const Pricing = ({ header, subheader, plans }: Props) => {
   const [isMonthly, setIsMonthly] = useState(true);
   return (
-    <section id="pricing" className="relative z-10 py-16 md:py-20 lg:py-28">
+    <section id="pricing" className="relative z-10 py-16 md:py-20 lg:py-28 dark:bg-dark-background">
       <div className="container">
         <SectionTitle
           title={header}
@@ -43,7 +43,7 @@ const Pricing = ({ header, subheader, plans }: Props) => {
               className="flex cursor-pointer items-center"
             >
               <div className="relative">
-                <div className="h-5 w-14 rounded-full bg-[#1D2144] shadow-inner"></div>
+                <div className="h-5 w-14 rounded-full bg-subsectionBackground shadow-inner"></div>
                 <div
                   className={`${
                     isMonthly ? '' : 'translate-x-full'
