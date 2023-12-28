@@ -209,8 +209,18 @@ const Header = ({ lng, data }: Props) => {
               <div className="flex items-center justify-end pr-16 lg:pr-0">
                 <LanguageSelector lng={lng} languages={data._site.locales} />
               </div>
-              <div onClick={themeHandler}>
-                <p className="text-dark dark:text-white">{theme === 'dark' ? 'light' : 'dark'}</p>
+              <div className="h-5 w-5 mx-3" onClick={themeHandler}>
+                <Image
+                  src={
+                    theme === 'dark'
+                      ? '/dark-mode-icon.svg'
+                      : '/moon.svg'
+                  }
+                  width={20}
+                  height={20}
+                  alt="light"
+                  className={`${theme === 'dark' ? 'rotate-90' : 'rotate-[40]'} `}
+                />
               </div>
               <UserButton />
             </div>
