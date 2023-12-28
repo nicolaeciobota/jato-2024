@@ -19,17 +19,19 @@ const TalkGridRenderer = ({ data, lng, talkMeta }: Props) => {
       <div className="container ">
         <div className="flex xl:justify-between justify-center xl:flex-row flex-col">
           <div className="-mx-4 flex h-auto xl:flex-col flex-row xl:justify-start items-start justify-center xl:w-1/5 w-full relative">
-            <div className="absolute bottom-0 left-0.5 top-2 hidden w-px bg-slate-200 xl:block"></div>
-            {data.map((talk) => {
-              return (
-                <div
-                  key={talk.id}
-                  className="mb-10 w-full"
-                >
-                  <DateTab talk={talk as TalkRecord} locale={lng} />
-                </div>
-              );
-            })}
+            <div className="relative xl:block flex xl:w-auto w-full">
+              <div className="absolute bottom-0 left-0.5 top-2 hidden w-px bg-slate-200 xl:block"></div>
+              {data.map((talk) => {
+                return (
+                  <div
+                    key={talk.id}
+                    className="mb-10 w-full"
+                  >
+                    <DateTab talk={talk as TalkRecord} locale={lng} />
+                  </div>
+                );
+              })}
+            </div>
           </div>
           <div className="-mx-4 flex h-full flex-wrap xl:w-4/5 w-full lg:justify-between justify-center">
             {data.map((talk) => {
