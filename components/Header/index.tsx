@@ -114,21 +114,22 @@ const Header = ({ lng, data }: Props) => {
       >
         <div className="container">
           <div className="relative flex items-center justify-between">
-            <div className="w-80 max-w-full sm:-mx-4 mx-0 px-4 xl:mr-12">
+            <div className="sm:-mx-4 mx-0 px-4">
               <Link
                 href={"/" + lng}
                 className={`header-logo block w-full ${sticky ? "py-5 lg:py-2" : "py-8"
                   } `}
               >
-                {data.layout?.logo.url && (
-                  <Image
-                    src={data.layout.logo.url}
-                    alt="logo"
-                    width={140}
-                    height={30}
-                    className="w-full"
-                  />
-                )}
+                <div className="w-40">
+                  {data.layout?.logo.url && (
+                    <Image
+                      src={data.layout.logo.url}
+                      alt="logo"
+                      width={140}
+                      height={130}
+                    />
+                  )}
+                </div>
               </Link>
             </div>
             <div className="flex w-full items-center justify-between px-4">
