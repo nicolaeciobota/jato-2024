@@ -12,12 +12,12 @@ type Props = {
 
 const FAQGrid = ({ title, subtitle, questions }: Props) => {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-white dark:bg-dark-background">
       <div className="container mx-auto px-6 py-12">
-        <h1 className="mb-4 text-center text-2xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
+        <h1 className="mb-4 text-center text-2xl font-semibold text-gray-800 dark:text-darktext lg:text-4xl">
           {title}
         </h1>
-        <div className=" text-center text-gray-500">
+        <div className=" text-center text-gray-500 dark:text-darktext">
           <ReactMarkdown>{subtitle || ''}</ReactMarkdown>
         </div>
 
@@ -43,11 +43,11 @@ const FAQGrid = ({ title, subtitle, questions }: Props) => {
                 </div>
 
                 <div>
-                  <h1 className="text-xl font-semibold text-gray-700 dark:text-white">
+                  <h1 className="text-xl font-semibold text-gray-700 dark:text-darktext">
                     {question.question}
                   </h1>
 
-                  <div className="mt-2 text-sm text-gray-500 dark:text-gray-300">
+                  <div className="mt-2 text-sm text-gray-500 dark:text-darktext">
                     <StructuredText
                       data={question.answer.value}
                       renderNode={Highlighter}

@@ -18,16 +18,16 @@ const MinimalistFeaturedPostsGrid = ({
   locale,
 }: BlogProps) => {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-white dark:bg-dark-background">
       <div className="container mx-auto px-6 py-10">
-        <h1 className="text-2xl font-semibold capitalize text-gray-800 dark:text-white lg:text-3xl">
+        <h1 className="text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-3xl">
           {blogHeader}
         </h1>
 
         <div className="mt-8 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-2">
           {blogData.map((post) => {
             return (
-              <div key={post.id} className="flex gap-4">
+              <div key={post.id} className="md:flex block gap-4">
                 {post.seoTags?.image?.responsiveImage && (
                   <div className="relative h-56 w-56 flex-shrink-0 overflow-hidden rounded-lg object-cover">
                     <DatoImage
@@ -42,7 +42,7 @@ const MinimalistFeaturedPostsGrid = ({
                 <div className="flex flex-col justify-between py-6 lg:mx-6">
                   <Link
                     href={'/' + locale + '/posts/' + post.slug}
-                    className="text-xl font-semibold text-gray-800 hover:underline dark:text-white "
+                    className="text-xl font-semibold text-gray-800 hover:underline dark:text-darktext"
                   >
                     {post.title}
                   </Link>

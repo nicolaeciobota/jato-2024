@@ -17,9 +17,9 @@ type Props = {
 
 const CompactSpeaker = ({ header, subheader, speakersSection, lng }: Props) => {
   return (
-    <section className="mt-16 bg-white dark:bg-gray-900">
+    <section className="mt-16 bg-white dark:bg-dark-background">
       <div className="mx-auto mt-16 px-4 py-12 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 lg:py-20">
-        <h1 className="text-center text-2xl font-semibold capitalize text-gray-800 dark:text-white lg:text-4xl">
+        <h1 className="text-center text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-4xl">
           {header}
         </h1>
 
@@ -44,11 +44,11 @@ const CompactSpeaker = ({ header, subheader, speakersSection, lng }: Props) => {
                   />
                 </div>
 
-                <h1 className="mt-4 text-2xl font-semibold capitalize text-gray-700 group-hover:text-white dark:text-white">
+                <h1 className="mt-4 text-2xl font-semibold capitalize text-gray-700 group-hover:text-white dark:text-darktext">
                   {member.name}
                 </h1>
 
-                <h3 className="mt-2 text-xl capitalize text-gray-500 group-hover:text-gray-300 dark:text-gray-300">
+                <h3 className="mt-2 text-xl capitalize text-gray-500 group-hover:text-gray-300 dark:text-darktext">
                   {member.jobTitle}
                 </h3>
               </Link>

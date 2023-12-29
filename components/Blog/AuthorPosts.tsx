@@ -12,10 +12,10 @@ type Props = {
 const AuthorPosts = ({ data, lng }: Props) => {
   if (!data.author) notFound();
   return (
-    <section className="mt-16 flex flex-col items-center justify-center py-[32px]">
-      <section className="px-auto mx-auto mb-8 flex items-center justify-center bg-white px-16 dark:bg-gray-900">
+    <section className="mt-16 flex flex-col items-center justify-center py-[32px] dark:bg-dark-background">
+      <section className="px-auto mx-auto mb-8 flex items-center justify-center bg-white px-16 dark:bg-dark-background">
         <div className="py-10">
-          <div className="flex flex-col items-center justify-center gap-8 p-4 text-center md:flex-row md:text-start">
+          <div className="flex flex-col items-center justify-center gap-8 p-4 text-center md:flex-row md:text-start dark:bg-gray-800">
             <div className="relative aspect-square w-56 overflow-hidden rounded-xl drop-shadow-xl">
               <DatoImage
                 className="h-full w-full object-cover"
@@ -26,12 +26,12 @@ const AuthorPosts = ({ data, lng }: Props) => {
               />
             </div>
             <div className="xl:mx-4 xl:w-1/2">
-              <h1 className="text-2xl font-semibold capitalize text-gray-800 dark:text-white lg:text-3xl">
+              <h1 className="text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-3xl">
                 {data.author.name}
               </h1>
-              <p className="text-base text-body-color">{data.author.bio}</p>
+              <p className="text-base text-body-color dark:text-darktext">{data.author.bio}</p>
 
-              <div className="mt-4 max-w-2xl text-gray-500 dark:text-gray-300">
+              <div className="mt-4 max-w-2xl text-gray-500 dark:text-darktext">
                 <ReactMarkdown>{data.author.description}</ReactMarkdown>
               </div>
             </div>

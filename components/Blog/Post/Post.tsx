@@ -41,12 +41,12 @@ type Props = {
 const Post = ({ data, lng }: Props) => {
   if (!data.post) notFound();
   return (
-    <section className="mt-40 pb-[120px]">
+    <section className="pt-40 pb-[120px] dark:bg-dark-background">
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-center">
           <div className="w-full px-4 lg:w-8/12">
             <div>
-              <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight">
+              <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
                 {data.post.title}
               </h2>
               <div className="mb-10 flex items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
@@ -67,17 +67,17 @@ const Post = ({ data, lng }: Props) => {
                       </div>
                     </div>
                     <div className="w-full">
-                      <h4 className="mb-1 text-base font-medium text-body-color">
+                      <h4 className="mb-1 text-base font-medium text-body-color dark:text-darktext">
                         <span>{data.post.author?.name}</span>
                       </h4>
-                      <p className="text-xs text-body-color">
+                      <p className="text-xs text-body-color dark:text-darktext">
                         {data.post.author?.bio}
                       </p>
                     </div>
                   </Link>
                   {data.post._publishedAt && (
                     <div className="mb-5 flex items-center">
-                      <p className="mr-5 flex items-center text-base font-medium text-body-color">
+                      <p className="mr-5 flex items-center text-base font-medium text-body-color dark:text-darktext">
                         {DateIcon}
                         {transformDate(data.post._publishedAt)}
                       </p>
@@ -189,7 +189,7 @@ const Post = ({ data, lng }: Props) => {
                     renderNodeRule(isHeading, ({ children, key }) => {
                       return (
                         <h3
-                          className="mb-4 mt-9 text-xl font-bold text-black dark:text-white sm:text-2xl lg:text-xl xl:text-2xl"
+                          className="mb-4 mt-9 text-xl font-bold text-black dark:text-darktext sm:text-2xl lg:text-xl xl:text-2xl"
                           key={key}
                         >
                           {children}
@@ -199,7 +199,7 @@ const Post = ({ data, lng }: Props) => {
                     renderNodeRule(isParagraph, ({ children, key }) => {
                       return (
                         <div
-                          className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed"
+                          className="text-base font-medium leading-relaxed text-body-color dark:text-darktext sm:text-lg sm:leading-relaxed"
                           key={key}
                         >
                           {children}
@@ -215,7 +215,7 @@ const Post = ({ data, lng }: Props) => {
 
                       return (
                         <a
-                          className="text-base font-medium leading-relaxed text-body-color underline sm:text-lg sm:leading-relaxed"
+                          className="text-base font-medium leading-relaxed text-body-color dark:text-darktext underline sm:text-lg sm:leading-relaxed"
                           href={node.url}
                           key={key}
                           {...attributeObject}
@@ -248,7 +248,7 @@ const Post = ({ data, lng }: Props) => {
                     </div>
                   </div>
                   <div className="mb-5">
-                    <h5 className="mb-3 text-sm font-medium text-body-color sm:text-right">
+                    <h5 className="mb-3 text-sm font-medium text-body-color dark:text-darktext sm:text-right">
                       Share this post :
                     </h5>
                     <div className="flex items-center sm:justify-end">

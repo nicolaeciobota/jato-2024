@@ -40,6 +40,11 @@ module.exports = {
         primary: 'rgb(var(--color-primary) / <alpha-value>)',
         yellow: '#FBB040',
         'body-color': '#959CB1',
+        darktext: '#8A8F9C',
+      },
+      backgroundColor: {
+        'dark-background': '#181724',
+        'subsectionBackground': '#1D2144'
       },
       boxShadow: {
         signUp: '0px 5px 10px rgba(4, 10, 34, 0.2)',

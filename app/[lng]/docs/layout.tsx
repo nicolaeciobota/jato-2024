@@ -44,7 +44,7 @@ export default async function RootLayout({
                 alt="logo"
                 width={data.documentationHome.logo.width || 140}
                 height={data.documentationHome.logo.height || 30}
-                className="w-full dark:hidden"
+                className="w-full"
               />
             </Link>
           </div>

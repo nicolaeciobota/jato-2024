@@ -19,10 +19,10 @@ const ModernPostCards = ({
   locale,
 }: BlogProps) => {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-white dark:bg-dark-background">
       <div className="container mx-auto px-6 py-10">
         <div className="text-center">
-          <h1 className="text-2xl font-semibold capitalize text-gray-800 dark:text-white lg:text-3xl">
+          <h1 className="text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-3xl">
             {blogHeader}
           </h1>
 
@@ -48,12 +48,12 @@ const ModernPostCards = ({
                 <div className="relative z-20 mx-auto -mt-20 max-w-lg rounded-md bg-white p-6 shadow dark:bg-gray-900">
                   <Link
                     href={'/' + locale + '/posts/' + post.slug}
-                    className="font-semibold text-gray-800 hover:underline dark:text-white md:text-xl"
+                    className="font-semibold text-gray-800 hover:underline dark:text-darktext md:text-xl"
                   >
                     {post.title}
                   </Link>
 
-                  <p className="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                  <p className="mt-3 text-sm text-gray-500 dark:text-darktext md:text-sm">
                     {post.seoTags?.description}
                   </p>
 

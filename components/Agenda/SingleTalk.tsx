@@ -14,9 +14,10 @@ import { primaryColor } from "@/app/i18n/settings";
 type Props = {
   talk: TalkRecord; //
   locale: SiteLocale;
+  hideBtnLink?: boolean
 };
 
-const SingleTalk = ({ talk, locale }: Props) => {
+const SingleTalk = ({ talk, locale, hideBtnLink = true }: Props) => {
   const {
     title,
     id,
@@ -36,8 +37,8 @@ const SingleTalk = ({ talk, locale }: Props) => {
 
   return (
     <>
-      <div className="flex h-full flex-col  shadow-lg">
-        <div className="relative flex flex-1 flex-col rounded-2xl border border-slate-200 bg-white p-8 py-16">
+      <div className="flex h-full flex-col  shadow-lg rounded-2xl">
+        <div className="relative flex flex-1 flex-col rounded-2xl border border-slate-200 dark:border-none bg-white dark:bg-subsectionBackground p-8 py-16">
           <p className="text-md absolute top-0 inline-flex -translate-y-1/2 items-center justify-center rounded-full bg-primary px-3 py-1 font-semibold tracking-wide text-white shadow-md">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +51,7 @@ const SingleTalk = ({ talk, locale }: Props) => {
             {` ${typeof startTime === "string" ? startTime : startTime.time} -`}
             {` ${typeof endTime === "string" ? endTime : endTime.time}`}
           </p>
-          <p className=" mb-5 flex text-sm font-semibold tracking-wide  text-dark dark:text-white">
+          <p className=" mb-5 flex text-sm font-semibold tracking-wide  text-dark dark:text-darktext">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="1em"
@@ -62,10 +63,10 @@ const SingleTalk = ({ talk, locale }: Props) => {
             {`${typeof startTime === "string" ? startTime : startTime.day} - `}
             {` ${typeof startTime === "string" ? startTime : startTime.date}`}
           </p>{" "}
-          <h4 className="-mx-6 items-center rounded-lg bg-slate-100 px-8 py-2 text-xl font-semibold uppercase leading-5">
+          <h4 className="-mx-6 items-center rounded-lg bg-slate-100 dark:bg-[#201f2f] dark:text-darktext px-8 py-2 text-xl font-semibold uppercase leading-5">
             {title}
           </h4>
-          <p className="mt-4 flex-1 leading-6 text-slate-700">{description}</p>
+          <p className="mt-4 flex-1 leading-6 text-slate-700 dark:text-darktext">{description}</p>
           <span className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10" />
           <ul className="flex flex-wrap justify-between">
             {speaker.map((speakerItem) => {
@@ -87,11 +88,11 @@ const SingleTalk = ({ talk, locale }: Props) => {
                       </div>
                     </div>
                     <div className="flex flex-col justify-center">
-                      <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
+                      <h4 className="mb-1 text-sm font-medium text-dark dark:text-darktext">
                         {speakerItem.name}
                       </h4>
 
-                      <div className="text-xs text-dark dark:text-white">
+                      <div className="text-xs text-dark dark:text-darktext">
                         {speakerItem.jobTitle}
                       </div>
                     </div>
@@ -100,19 +101,22 @@ const SingleTalk = ({ talk, locale }: Props) => {
               );
             })}
           </ul>
-          <Link href={`/${locale}/stage/${stage.slug}`} className="mt-5">
-            <button className="flex w-full items-center justify-center rounded-md bg-primary p-3 text-sm  font-bold text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="1em"
-                viewBox="0 0 576 512"
-                className="mr-2 fill-current text-xl"
-              >
-                <path d="M0 128C0 92.7 28.7 64 64 64H320c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128zM559.1 99.8c10.4 5.6 16.9 16.4 16.9 28.2V384c0 11.8-6.5 22.6-16.9 28.2s-23 5-32.9-1.6l-96-64L416 337.1V320 192 174.9l14.2-9.5 96-64c9.8-6.5 22.4-7.2 32.9-1.6z" />
-              </svg>{" "}
-              <span className="uppercase">{` ${stage.name}`}</span>
-            </button>
-          </Link>
+          {hideBtnLink
+            ? <Link href={`/${locale}/stage/${stage.slug}`} className="mt-5">
+              <button className="flex w-full items-center justify-center rounded-md bg-primary p-3 text-sm  font-bold text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="1em"
+                  viewBox="0 0 576 512"
+                  className="mr-2 fill-current text-xl"
+                >
+                  <path d="M0 128C0 92.7 28.7 64 64 64H320c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128zM559.1 99.8c10.4 5.6 16.9 16.4 16.9 28.2V384c0 11.8-6.5 22.6-16.9 28.2s-23 5-32.9-1.6l-96-64L416 337.1V320 192 174.9l14.2-9.5 96-64c9.8-6.5 22.4-7.2 32.9-1.6z" />
+                </svg>{" "}
+                <span className="uppercase">{` ${stage.name}`}</span>
+              </button>
+            </Link>
+            : null
+          }
           <div className="absolute bottom-0 right-0 z-[1]">
             <svg
               width="179"

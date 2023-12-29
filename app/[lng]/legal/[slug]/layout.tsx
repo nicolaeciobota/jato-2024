@@ -32,7 +32,7 @@ export default async function RootLayout({
       <HeaderRenderer lng={lng} isDraft={isEnabled} />
       {children}
       <Footer lng={lng} />
-      <ScrollToTop lng={lng} isDraft={isEnabled} />
+      {/* <ScrollToTop lng={lng} isDraft={isEnabled} /> */}
     </>
   );
 }

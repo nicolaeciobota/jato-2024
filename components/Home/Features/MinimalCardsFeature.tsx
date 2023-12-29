@@ -16,7 +16,7 @@ const MinimalCardsFeature = ({
   featuresSubheader,
 }: Props) => {
   return (
-    <div className="flex flex-wrap justify-center gap-8 px-32 py-16  text-center md:grid md:grid-cols-2 md:text-primary lg:grid-cols-3">
+    <div className="flex flex-wrap justify-center gap-8 px-32 py-16  text-center md:grid md:grid-cols-2 md:text-primary lg:grid-cols-3 dark:bg-dark-background">
       {features.map((feature) => {
         return (
           <div
@@ -35,11 +35,11 @@ const MinimalCardsFeature = ({
               </div>
             </div>
 
-            <h2 className="mt-2 text-xl font-semibold text-gray-800 dark:text-white md:mt-0">
+            <h2 className="mt-2 text-xl font-semibold text-gray-800 dark:text-darktext md:mt-0">
               {feature.featureTitle}
             </h2>
 
-            <div className="mt-2 text-sm text-gray-600 dark:text-gray-200">
+            <div className="mt-2 text-sm text-gray-600 dark:text-darktext">
               <ReactMarkdown>{feature.featureDescription || ""}</ReactMarkdown>
             </div>
           </div>

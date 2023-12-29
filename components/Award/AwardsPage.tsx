@@ -30,7 +30,7 @@ const AwardsPage = ({ data, lng, page }: Props) => {
                 <a
                   href={
                     page - 1 === 1
-                      ? `/${lng}/awards`
+                      ? `/${lng}/award`
                       : `/${lng}/awards/page/${page - 1}`
                   }
                   className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"

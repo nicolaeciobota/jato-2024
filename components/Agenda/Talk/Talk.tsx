@@ -44,15 +44,15 @@ const Talk = ({ data, lng }: Props) => {
   // Assuming data.talk.speaker contains the array of speakers
   const members = (speaker as SpeakerRecord[]) || [];
   return (
-    <section className="mt-40 pb-[120px]">
+    <section className="pt-40 pb-[120px] dark:bg-dark-background">
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-center">
           <div className="w-full px-4 lg:w-8/12">
             <div>
-              <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight">
+              <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
                 {title}
               </h2>
-              <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight">
+              <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
                 {start}
                 {end}
               </h2>
@@ -187,7 +187,7 @@ const Talk = ({ data, lng }: Props) => {
                       renderNodeRule(isHeading, ({ children, key }) => {
                         return (
                           <h3
-                            className="mb-4 mt-9 text-xl font-bold text-black dark:text-white sm:text-2xl lg:text-xl xl:text-2xl"
+                            className="mb-4 mt-9 text-xl font-bold text-black dark:text-darktext sm:text-2xl lg:text-xl xl:text-2xl"
                             key={key}
                           >
                             {children}
@@ -197,7 +197,7 @@ const Talk = ({ data, lng }: Props) => {
                       renderNodeRule(isParagraph, ({ children, key }) => {
                         return (
                           <div
-                            className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed"
+                            className="text-base font-medium leading-relaxed text-body-color dark:text-darktext sm:text-lg sm:leading-relaxed"
                             key={key}
                           >
                             {children}
@@ -213,7 +213,7 @@ const Talk = ({ data, lng }: Props) => {
 
                         return (
                           <a
-                            className="text-base font-medium leading-relaxed text-body-color underline sm:text-lg sm:leading-relaxed"
+                            className="text-base font-medium leading-relaxed text-body-color dark:text-darktext underline sm:text-lg sm:leading-relaxed"
                             href={node.url}
                             key={key}
                             {...attributeObject}

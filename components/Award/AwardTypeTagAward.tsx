@@ -12,7 +12,7 @@ const TagAwards = ({ data, lng }: Props) => {
     notFound();
   }
   return (
-    <section className="py-[32px]">
+    <section className="py-[32px] dark:bg-dark-background">
       <div className="width-full flex items-center justify-center gap-4">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@ const TagAwards = ({ data, lng }: Props) => {
             d="M6 6h.008v.008H6V6z"
           />
         </svg>
-        <h1 className="my-24 text-center text-2xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
+        <h1 className="my-24 text-center text-2xl font-semibold text-gray-800 dark:text-darktext lg:text-4xl">
           {data.atag.atag}
         </h1>
       </div>

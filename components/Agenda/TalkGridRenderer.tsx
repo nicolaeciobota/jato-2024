@@ -5,6 +5,7 @@ import {
 } from "@/graphql/generated";
 import PageIndicatorList from "./PageIndicatorList";
 import SingleTalk from "./SingleTalk";
+import DateTab from "./DateTab";
 
 type Props = {
   data: TalkRecord[];
@@ -14,21 +15,26 @@ type Props = {
 
 const TalkGridRenderer = ({ data, lng, talkMeta }: Props) => {
   return (
-    <section className="mt-4 pb-[120px] pt-[120px]">
+    <section className="mt-4 pb-[120px] pt-[120px] dark:bg-dark-background">
       <div className="container ">
-        <div className="-mx-4 flex h-full flex-wrap justify-between">
-          {data.map((talk) => {
-            return (
-              <div
-                key={talk.id}
-                className="mb-10 w-full px-4 md:w-2/3 lg:w-1/2 xl:w-1/3 "
-              >
-                <SingleTalk talk={talk as TalkRecord} locale={lng} />
-              </div>
-            );
-          })}
+        <div className="flex xl:justify-between justify-center xl:flex-row flex-col">
+          <div className="-mx-4 flex h-auto xl:flex-col flex-row xl:justify-start items-start justify-center xl:w-1/5 w-full relative">
+            <div className="relative xl:block flex xl:w-auto w-full">
+            </div>
+          </div>
+          <div className="-mx-4 flex h-full flex-wrap xl:w-4/5 w-full lg:justify-between justify-center">
+            {data.map((talk) => {
+              return (
+                <div
+                  key={talk.id}
+                  className="w-full px-4 md:w-2/3 lg:w-1/2 xl:w-1/3 xl:mb-0 mb-10"
+                >
+                  <SingleTalk talk={talk as TalkRecord} locale={lng} />
+                </div>
+              );
+            })}
+          </div>
         </div>
-
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
             <ul className="flex items-center justify-center pt-8">

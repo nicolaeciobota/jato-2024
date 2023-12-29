@@ -13,13 +13,13 @@ type Props = {
 
 const ExpandedTeam = ({ header, subheader, members, lng }: Props) => {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-white dark:bg-dark-background">
       <div className="container mx-auto px-6 py-10">
-        <h1 className="mb-4 text-center text-2xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
+        <h1 className="mb-4 text-center text-2xl font-semibold text-gray-800 dark:text-darktext lg:text-4xl">
           {header}
         </h1>
 
-        <div className="mx-auto my-6 max-w-2xl text-center text-gray-500 dark:text-gray-300">
+        <div className="mx-auto my-6 max-w-2xl text-center text-gray-500 dark:text-darktext">
           <ReactMarkdown>{subheader || ''}</ReactMarkdown>
         </div>
 
@@ -42,17 +42,17 @@ const ExpandedTeam = ({ header, subheader, members, lng }: Props) => {
                   </div>
 
                   <div className="mt-4 sm:mx-4 sm:mt-0">
-                    <h1 className="text-xl font-semibold capitalize text-gray-700 group-hover:text-white dark:text-white md:text-2xl">
+                    <h1 className="text-xl font-semibold capitalize text-gray-700 group-hover:text-white dark:text-darktext md:text-2xl">
                       {member.name}
                     </h1>
 
-                    <p className="mt-2 capitalize text-gray-500 group-hover:text-white">
+                    <p className="mt-2 capitalize text-gray-500 dark:text-darktext group-hover:text-white">
                       {member.bio}
                     </p>
                   </div>
                 </div>
 
-                <p className="mt-4 capitalize text-gray-500 group-hover:text-white dark:text-gray-300">
+                <p className="mt-4 capitalize text-gray-500 group-hover:text-white dark:text-darktext">
                   {member.description}
                 </p>
 

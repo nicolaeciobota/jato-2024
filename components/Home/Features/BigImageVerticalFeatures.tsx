@@ -16,14 +16,14 @@ const BigImageVerticalFeatures = ({
   featuresSubheader,
 }: Props) => {
   return (
-    <div className="bg-white py-6 sm:py-8 lg:py-12">
+    <div className="bg-white py-6 sm:py-8 lg:py-12 dark:bg-dark-background">
       <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
         <div className="mb-10 md:mb-16">
-          <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">
+          <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-darktext md:mb-6 lg:text-3xl">
             {featuresHeader}
           </h2>
 
-          <div className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">
+          <div className="mx-auto max-w-screen-md text-center text-gray-500 dark:text-darktext md:text-lg">
             <ReactMarkdown>{featuresSubheader || ""}</ReactMarkdown>
           </div>
         </div>
@@ -33,7 +33,7 @@ const BigImageVerticalFeatures = ({
             return (
               <div
                 key={feature.id}
-                className="group flex flex-col overflow-hidden rounded-lg border bg-white"
+                className="group flex flex-col overflow-hidden rounded-lg border dark:border-none bg-white dark:bg-gray-800"
               >
                 {" "}
                 <div className="group relative block h-48 overflow-hidden bg-gray-100 md:h-64">
@@ -48,13 +48,13 @@ const BigImageVerticalFeatures = ({
                   </div>
                 </div>
                 <div className="flex flex-1 flex-col p-4 sm:p-6">
-                  <h2 className="mb-2 text-lg font-semibold text-gray-800">
+                  <h2 className="mb-2 text-lg font-semibold text-gray-800 dark:text-darktext">
                     <div className="transition duration-100 group-hover:text-primary">
                       {feature.featureTitle}
                     </div>
                   </h2>
 
-                  <div className="mb-8 text-gray-500">
+                  <div className="mb-8 text-gray-500 dark:text-darktext">
                     <ReactMarkdown>
                       {feature.featureDescription || ""}
                     </ReactMarkdown>

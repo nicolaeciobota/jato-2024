@@ -31,7 +31,7 @@ const Legal = ({ data, lng }: Props) => {
                     renderNodeRule(isHeading, ({ children, key }) => {
                       return (
                         <h3
-                          className="mb-4 mt-9 text-xl font-bold text-black dark:text-white sm:text-2xl lg:text-xl xl:text-2xl"
+                          className="mb-4 mt-9 text-xl font-bold text-black dark:text-darktext sm:text-2xl lg:text-xl xl:text-2xl"
                           key={key}
                         >
                           {children}
@@ -41,7 +41,7 @@ const Legal = ({ data, lng }: Props) => {
                     renderNodeRule(isParagraph, ({ children, key }) => {
                       return (
                         <p
-                          className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed"
+                          className="text-base font-medium leading-relaxed text-body-color dark:text-darktext sm:text-lg sm:leading-relaxed"
                           key={key}
                         >
                           {children}

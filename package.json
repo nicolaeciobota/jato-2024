@@ -10,6 +10,7 @@
     "generate-ts-types": "graphql-codegen --config graphql.config.yml"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.29.0",
     "@datocms/cma-client-node": "^2.0.0",
     "@formatjs/intl-localematcher": "^0.4.0",
     "@graphql-codegen/cli": "^5.0.0",
@@ -17,6 +18,7 @@
     "@graphql-codegen/typescript": "^4.0.1",
     "@graphql-codegen/typescript-operations": "^4.0.1",
     "@graphql-typed-document-node/core": "^3.2.0",
+    "@liveryvideo/player": "^7.8.1",
     "@next/font": "13.1.6",
     "accept-language": "^3.0.18",
     "datocms-structured-text-utils": "^2.0.4",
@@ -28,11 +30,12 @@
     "graphql-request": "^6.1.0",
     "i18next": "^23.4.1",
     "i18next-resources-to-backend": "^1.1.4",
+    "iframe-resizer-react": "^1.1.0",
     "jsdom": "^22.1.0",
     "language-name-map": "^0.3.0",
     "lucide-react": "^0.268.0",
     "negotiator": "^0.6.3",
-    "next": "13.4.5",
+    "next": "^14.0.4",
     "next-themes": "^0.2.1",
     "popmotion": "^11.0.5",
     "react": "18.2.0",
@@ -41,7 +44,8 @@
     "react-i18next": "^13.0.3",
     "react-markdown": "^8.0.7",
     "react-modal-video": "^2.0.0",
-    "react-syntax-highlighter": "^15.5.0"
+    "react-syntax-highlighter": "^15.5.0",
+    "swiper": "^11.0.5"
   },
   "devDependencies": {
     "@types/jsdom": "^21.1.1",
