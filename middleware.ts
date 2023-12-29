@@ -3,7 +3,7 @@ import getAvailableLocales, { getFallbackLocale } from './app/i18n/settings';
 import { match } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 import { SiteLocale } from './graphql/generated';
-import { authMiddleware } from "@clerk/nextjs";
+import { authMiddleware, redirectToSignIn } from "@clerk/nextjs";
 
 async function getLocale(
   request: Request,
@@ -24,12 +24,12 @@ async function getLocale(
 export default authMiddleware({
   beforeAuth: async (request: NextRequest) => {
     const pathname = request.nextUrl.pathname;
-    const locales = await getAvailableLocales();
+        const locales = await getAvailableLocales();
     const pathnameIsMissingLocale = locales.every(
       (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
     );
 
-    if(pathname === '/redirect-to-circle'){
+    if (pathname === '/redirect-to-circle') {
       return NextResponse.redirect('https://social.jato-live.com/?automatic_login=true');
     }
 
@@ -55,7 +55,11 @@ export default authMiddleware({
       );
     }
   },
-
+  afterAuth: async (auth, req: NextRequest, evt) => {
+    if (!auth.userId && !auth.isPublicRoute) {
+      return redirectToSignIn({ returnBackUrl: '' });
+    }
+  },
   ignoredRoutes: (req) => {
     const pathname = req.nextUrl.pathname;
     const locale = pathname.split('/')[1];
