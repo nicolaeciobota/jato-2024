@@ -34,6 +34,9 @@ const Stage = ({ data, lng }: Props) => {
           </div>
         </div>
       </div>
+      <div className="container mb-12">
+        {data?.stage?.streamKey ? <LiveryPlayer streamId={data?.stage?.streamKey} /> : null}
+      </div>
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-center">
           {
@@ -61,15 +64,12 @@ const Stage = ({ data, lng }: Props) => {
                   key={talks.id}
                   className="mb-10 w-full px-4 md:w-2/3 lg:w-1/2 xl:w-1/3"
                 >
-                  <SingleTalk talk={talks as TalkRecord} locale={lng} />
+                  <SingleTalk talk={talks as TalkRecord} locale={lng} hideBtnLink={false}/>
                 </div>
               ))}
         </div>
 
         <div className=" -mx-4 flex flex-wrap"></div>
-      </div>
-      <div className="container">
-        {data?.stage?.streamKey ? <LiveryPlayer streamId={data?.stage?.streamKey} /> : null}
       </div>
     </section>
   );

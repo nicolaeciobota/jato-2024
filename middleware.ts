@@ -28,6 +28,11 @@ export default authMiddleware({
     const pathnameIsMissingLocale = locales.every(
       (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
     );
+
+    if(pathname === '/redirect-to-circle'){
+      return NextResponse.redirect('https://social.jato-live.com/?automatic_login=true');
+    }
+
     if (pathname === '/') {
       const locale = await getLocale(request, locales);
       return NextResponse.redirect(new URL(`/${locale}/home`, request.url));
@@ -41,66 +46,22 @@ export default authMiddleware({
         new URL(`/${pathname.split('/')[1]}/home`, request.url)
       );
     }
+
     //go to pathname in browser language if locale is missing but pathname is set
     if (pathnameIsMissingLocale) {
       const locale = getLocale(request, locales);
-
-      // e.g. incoming request is /products
-      // The new URL is now /en/products
       return NextResponse.redirect(
         new URL(`/${locale}/${pathname}`, request.url)
       );
     }
   },
+
   ignoredRoutes: (req) => {
     const pathname = req.nextUrl.pathname;
     const locale = pathname.split('/')[1];
     return req.url.includes(`/${locale}/home`)
   },
-  // publicRoutes: (req) => {
-  //   const pathname = req.nextUrl.pathname;
-  //   const locale = pathname.split('/')[1];
-  //   return req.url.includes(`/${locale}/home`)
-  // },
 })
-
-// async function middleware(request: NextRequest) {
-
-//   // Check if there is any supported locale in the pathname
-//   const pathname = request.nextUrl.pathname;
-//   const locales = await getAvailableLocales();
-
-//   const pathnameIsMissingLocale = locales.every(
-//     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
-//   );
-
-//   //go to home in browser language if pathname & locale is missing
-//   if (pathname === '/') {
-//     const locale = await getLocale(request, locales);
-//     return NextResponse.redirect(new URL(`/${locale}/home`, request.url));
-//   }
-
-//   //go to the specific locale home if there is no pathname but the locale is set
-//   if (
-//     pathname.split('/').length === 2 &&
-//     locales.includes(pathname.split('/')[1] as SiteLocale)
-//   ) {
-//     return NextResponse.redirect(
-//       new URL(`/${pathname.split('/')[1]}/home`, request.url)
-//     );
-//   }
-
-//   //go to pathname in browser language if locale is missing but pathname is set
-//   if (pathnameIsMissingLocale) {
-//     const locale = getLocale(request, locales);
-
-//     // e.g. incoming request is /products
-//     // The new URL is now /en/products
-//     return NextResponse.redirect(
-//       new URL(`/${locale}/${pathname}`, request.url)
-//     );
-//   }
-// }
 
 export const config = {
   matcher: ['/((?!.*\\.|_next|api\\/).*)', "/((?!.*\\..*|_next).*)", "/"],

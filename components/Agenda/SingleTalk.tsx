@@ -14,9 +14,10 @@ import { primaryColor } from "@/app/i18n/settings";
 type Props = {
   talk: TalkRecord; //
   locale: SiteLocale;
+  hideBtnLink?: boolean
 };
 
-const SingleTalk = ({ talk, locale }: Props) => {
+const SingleTalk = ({ talk, locale, hideBtnLink = true }: Props) => {
   const {
     title,
     id,
@@ -100,19 +101,22 @@ const SingleTalk = ({ talk, locale }: Props) => {
               );
             })}
           </ul>
-          <Link href={`/${locale}/stage/${stage.slug}`} className="mt-5">
-            <button className="flex w-full items-center justify-center rounded-md bg-primary p-3 text-sm  font-bold text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="1em"
-                viewBox="0 0 576 512"
-                className="mr-2 fill-current text-xl"
-              >
-                <path d="M0 128C0 92.7 28.7 64 64 64H320c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128zM559.1 99.8c10.4 5.6 16.9 16.4 16.9 28.2V384c0 11.8-6.5 22.6-16.9 28.2s-23 5-32.9-1.6l-96-64L416 337.1V320 192 174.9l14.2-9.5 96-64c9.8-6.5 22.4-7.2 32.9-1.6z" />
-              </svg>{" "}
-              <span className="uppercase">{` ${stage.name}`}</span>
-            </button>
-          </Link>
+          {hideBtnLink
+            ? <Link href={`/${locale}/stage/${stage.slug}`} className="mt-5">
+              <button className="flex w-full items-center justify-center rounded-md bg-primary p-3 text-sm  font-bold text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="1em"
+                  viewBox="0 0 576 512"
+                  className="mr-2 fill-current text-xl"
+                >
+                  <path d="M0 128C0 92.7 28.7 64 64 64H320c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128zM559.1 99.8c10.4 5.6 16.9 16.4 16.9 28.2V384c0 11.8-6.5 22.6-16.9 28.2s-23 5-32.9-1.6l-96-64L416 337.1V320 192 174.9l14.2-9.5 96-64c9.8-6.5 22.4-7.2 32.9-1.6z" />
+                </svg>{" "}
+                <span className="uppercase">{` ${stage.name}`}</span>
+              </button>
+            </Link>
+            : null
+          }
           <div className="absolute bottom-0 right-0 z-[1]">
             <svg
               width="179"
