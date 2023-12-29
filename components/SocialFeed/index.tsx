@@ -1,6 +1,6 @@
 'use client'
 import { SocialFeedQuery } from "@/graphql/generated";
-import IframeResizer from 'iframe-resizer-react';
+import IFrame from "../IFrame";
 
 type SocialFeedProps = {
   data: SocialFeedQuery
@@ -18,18 +18,8 @@ const SocialFeed = ({
       <div className="container">
         <div>
           {
-            data?.socialFeed?.iframe
-              ? <IframeResizer
-                heightCalculationMethod="lowestElement"
-                inPageLinks
-                log
-                src={data?.socialFeed?.iframe}
-                scrolling={true}
-                style={{
-                  minHeight: '100vh',
-                  minWidth: '100%'
-                }}
-              />
+           data?.socialFeed?.iframe
+              ? <IFrame iframeUrl={data?.socialFeed?.iframe} iframeHeight={100} />
               : null
           }
         </div>

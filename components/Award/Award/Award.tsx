@@ -270,7 +270,7 @@ const Award = ({ data, lng }: Props) => {
               </div>
             </div>
             {
-              data?.award?.iframe ? <IFrame iframeUrl={data?.award?.iframe} /> : null
+              data?.award?.iframe ? <IFrame iframeUrl={data?.award?.iframe} iframeHeight={80} shadowWidth={1075}/> : null
             }
           </div>
         </div>
