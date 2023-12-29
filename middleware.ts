@@ -30,7 +30,7 @@ export default authMiddleware({
     );
 
     if (pathname === '/redirect-to-circle') {
-      return NextResponse.redirect('https://social.jato-live.com/?automatic_login=true');
+      return NextResponse.redirect(process.env.NEXT_PUBLIC_CIRCLE_APP || '');
     }
 
     if (pathname === '/') {
