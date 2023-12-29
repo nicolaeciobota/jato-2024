@@ -17,11 +17,7 @@ const Member = ({
     >
       <div className="container">
         <div>
-          {
-            data?.member?.iframeUrl
-              ? <IFrame iframeUrl={data?.member?.iframeUrl} iframeHeight={100} />
-              : null
-          }
+          <IFrame iframeUrl={data?.member?.iframeUrl || ''} iframeHeight={100} />
         </div>
       </div>
     </section>

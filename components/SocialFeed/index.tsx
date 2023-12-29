@@ -17,11 +17,7 @@ const SocialFeed = ({
     >
       <div className="container">
         <div>
-          {
-           data?.socialFeed?.iframe
-              ? <IFrame iframeUrl={data?.socialFeed?.iframe} iframeHeight={100} />
-              : null
-          }
+          <IFrame iframeUrl={data?.socialFeed?.iframe || ''} iframeHeight={100} />
         </div>
       </div>
     </section>
