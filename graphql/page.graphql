@@ -273,6 +273,10 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         id
         _modelApiKey
       }
+      ... on AllCategoryAwardsSectionRecord {
+        id
+        _modelApiKey
+      }
       ... on AllTalksSectionRecord {
         id
         _modelApiKey
@@ -321,6 +325,66 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
     }
   }
   _allPostsMeta(locale: $locale, filter: { title: { isBlank: "false" } }) {
+    count
+  }
+  allCategoryAwards(
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+    first: "9"
+  ) {
+    _publishedAt
+    title
+    id
+    award {
+      _publishedAt
+      slug
+      id
+      title
+      jobTitle
+      atags {
+        atag
+      }
+      seoTags {
+        description
+        image {
+          responsiveImage {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
+            alt
+            title
+            bgColor
+            base64
+          }
+        }
+      }
+      acategory {
+        name
+        slug
+        bio
+        picture {
+          responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
+            alt
+            title
+            bgColor
+            base64
+          }
+        }
+      }
+    }
+  }
+  _allCategoryAwardsMeta(locale: $locale, filter: { title: { isBlank: "false" } }) {
     count
   }
   allAwards(
