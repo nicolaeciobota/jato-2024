@@ -24,7 +24,7 @@ const SingleCategoryAward = ({ categoryRecord, locale }: Props) => {
               </svg>
             </div>
           </div>
-          <div className="lg:w-4/5 w-full flex flex-wrap gap-6 justify-end items-center">
+          <div className="lg:w-4/5 w-full flex flex-wrap gap-6 justify-start items-center">
             {
               award?.map((singleAward: AwardRecord, index: number) => {
                 const { title, seoTags, jobTitle, slug } = singleAward;
