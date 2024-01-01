@@ -19,18 +19,18 @@ const DateTab = ({ tab, isSelected }: Props) => {
         date
     } = tab;
 
-    const formattedDate = `${MONTHS[(new Date(date)).getMonth()]} - ${(new Date(date)).getDate()}`;
+    const formattedDate = `${MONTHS[(new Date(date)).getMonth()]} ${(new Date(date)).getDate()}`;
 
     return (
-        <div className="relative mb-10 lg:pl-8">
+        <div className="relative xl:pl-8 px-3">
             <svg
                 aria-hidden="true"
                 viewBox="0 0 6 6"
-                className={`absolute left-[-0.5px] top-[0.5625rem] hidden h-1.5 w-1.5 overflow-visible lg:block ${isSelected ? 'fill-blue-600 stroke-blue-600' : 'fill-transparent stroke-slate-400'}`}>
+                className={`absolute left-[1px] top-[0.5625rem] hidden h-1.5 w-1.5 overflow-visible lg:block ${isSelected ? 'fill-blue-600 stroke-blue-600' : 'fill-transparent stroke-slate-400'}`}>
                 <path d="M3 0L6 3L3 6L0 3Z" stroke-width="2" stroke-linejoin="round"></path>
             </svg>
             <div className="relative">
-                <div className={`font-mono text-sm ${isSelected ? 'text-[#2563eb]' : 'text-slate-500'}`}>
+                <div className={`font-mono lg:text-sm text-xs ${isSelected ? 'text-[#2563eb]' : 'text-slate-500'}`}>
                     <button
                         className="ui-not-focus-visible:outline-none"
                         id="headlessui-tabs-tab-:R6kqlaqlla:"
@@ -42,7 +42,7 @@ const DateTab = ({ tab, isSelected }: Props) => {
                 </div>
                 <time
                     dateTime="2022-04-05"
-                    className="mt-1.5 block text-2xl font-semibold tracking-tight text-blue-900"
+                    className="mb-3 block xl:text-2xl lg:text-lg text-sm font-semibold tracking-tight text-blue-900 xl:w-auto lg:w-[120px] w-[88px]"
                 >
                     {formattedDate}
                 </time>

@@ -44,23 +44,28 @@ const AgendaTabPage = ({ data, lng, page }: Props) => {
                 <div className="flex xl:justify-between justify-center xl:flex-row flex-col">
                     <div className="-mx-4 flex h-auto xl:flex-col flex-row xl:justify-start items-start justify-center xl:w-1/5 w-full relative">
                         <div className="relative xl:block flex xl:w-auto w-full">
-                            <div className="absolute bottom-0 left-0.5 top-2 hidden w-px bg-slate-200 xl:block"></div>
+                            <div className="absolute bottom-0 left-1.5 top-2 hidden w-px bg-slate-200 xl:block"></div>
                             {titleDate.map((tab, index) => <div onClick={() => setSelectedTab(tab)} key={index}>
                                 <DateTab tab={tab} locale={lng} isSelected={(tab.title === selectedTab.title && tab.date === selectedTab.date)} />
                             </div>)}
                         </div>
                     </div>
                     <div className="-mx-4 flex h-full flex-wrap xl:w-4/5 w-full justify-center">
-                        {talks.map((talk) => {
-                            return (
-                                <div
-                                    key={talk.id}
-                                    className="w-full mb-10 px-4 md:w-2/3 lg:w-1/2 xl:w-1/3 xl:mb-0"
-                                >
-                                    <SingleTalk talk={talk as TalkRecord} locale={lng} />
-                                </div>
-                            );
-                        })}
+                        {talks?.length > 0
+                            ? talks.map((talk) => {
+                                return (
+                                    <div
+                                        key={talk.id}
+                                        className="w-full mb-10 px-4 md:w-2/3 lg:w-1/2 xl:w-1/3 xl:mb-0"
+                                    >
+                                        <SingleTalk talk={talk as TalkRecord} locale={lng} />
+                                    </div>
+                                );
+                            })
+                            : <div className="mt-[20%] text-2xl font-bold text-primary">
+                                <p>No talk found</p>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div className=" -mx-4 flex flex-wrap">
