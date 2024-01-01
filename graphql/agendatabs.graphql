@@ -1,0 +1,92 @@
+query AgendaTab(
+  $locale: SiteLocale
+  $fallbackLocale: [SiteLocale!]
+  $skip: IntType = "0"
+  $first: IntType = "0"
+) { 
+  allAgendaTabs(
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+    orderBy: date_ASC
+    first: $first
+    skip: $skip
+  ) {
+    _publishedAt
+    date
+    title
+    id
+    _allReferencingTalks(
+      filter: { title: { isBlank: "false" } }
+      orderBy: _createdAt_DESC
+      first: "100"
+      locale: $locale
+      fallbackLocales: $fallbackLocale
+    ) {
+      _publishedAt
+      slug
+      id
+      title
+      description
+      start
+      end
+      dateTags {
+        id
+        eventDate
+        slug
+      }
+      stage {
+        id
+        name
+        slug
+      }
+      seoTags {
+        description
+        image {
+          responsiveImage {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
+            alt
+            title
+            bgColor
+            base64
+          }
+        }
+      }
+      speaker {
+        name
+        jobTitle
+        id
+        slug
+        picture {
+          responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
+            alt
+            title
+            bgColor
+            base64
+          }
+        }
+      }
+    }
+    _allReferencingTalksMeta(
+      locale: $locale
+      filter: { title: { isBlank: "false" } }
+    ) {
+      count
+    }
+  }
+  _allAgendaTabsMeta(locale: $locale) {
+    count
+  }
+}
