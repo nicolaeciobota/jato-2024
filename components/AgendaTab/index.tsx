@@ -50,13 +50,13 @@ const AgendaTab = ({
               </div>)}
             </div>
           </div>
-          <div className="-mx-4 flex h-full flex-wrap xl:w-4/5 w-full justify-center pt-8">
+          <div className="lg:-mx-4 flex h-full flex-wrap xl:w-4/5 w-full justify-center pt-8">
             {talks.length > 0
               ? talks.map((talk) => {
                 return (
                   <div
                     key={talk.id}
-                    className="w-full px-4 mb-10 md:w-2/3 lg:w-1/2 xl:w-1/3"
+                    className="w-full sm:px-4 mb-10 md:w-2/3 lg:w-1/2 xl:w-1/3"
                   >
                     <SingleTalk talk={talk as TalkRecord} locale={lng} />
                   </div>
