@@ -17,8 +17,8 @@ type Props = {
 
 const CompactSpeaker = ({ header, subheader, speakersSection, lng }: Props) => {
   return (
-    <section className="mt-16 bg-white dark:bg-dark-background">
-      <div className="mx-auto mt-16 px-4 py-12 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 lg:py-20">
+    <section className="lg:mt-16 mt-6 bg-white dark:bg-dark-background">
+      <div className="mx-auto lg:mt-16 px-4 py-10 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 lg:py-20">
         <h1 className="text-center text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-4xl">
           {header}
         </h1>
@@ -27,7 +27,7 @@ const CompactSpeaker = ({ header, subheader, speakersSection, lng }: Props) => {
           <ReactMarkdown>{subheader || ""}</ReactMarkdown>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 xl:mt-16 xl:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 md:gap-8 md:grid-cols-2 xl:mt-16 xl:grid-cols-3">
           {speakersSection.map((member) => {
             return (
               <Link

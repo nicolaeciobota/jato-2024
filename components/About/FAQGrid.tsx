@@ -13,7 +13,7 @@ type Props = {
 const FAQGrid = ({ title, subtitle, questions }: Props) => {
   return (
     <section className="bg-white dark:bg-dark-background">
-      <div className="container mx-auto px-6 py-12">
+      <div className="container mx-auto px-6 lg:py-12 py-6">
         <h1 className="mb-4 text-center text-2xl font-semibold text-gray-800 dark:text-darktext lg:text-4xl">
           {title}
         </h1>

@@ -36,8 +36,8 @@ const Video = ({
           mb="80px"
         />
 
-        <div className="-mx-4 flex flex-wrap">
-          <div className="w-full px-4">
+        <div className="sm:-mx-4 flex flex-wrap">
+          <div className="w-full sm:px-4">
             <div className="mx-auto max-w-[1024px] overflow-hidden rounded-md">
               <div className="relative aspect-[77/40] items-center justify-center">
                 <DatoImage
