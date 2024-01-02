@@ -23,10 +23,10 @@ type Props = {
 
 const DetailSection = ({ details, image, imagePosition }: Props) => {
   return (
-    <section className="py-16 text-center md:py-20 lg:py-28 lg:text-start dark:bg-dark-background">
+    <section className="md:py-16 py-4 text-center lg:py-28 lg:text-start dark:bg-dark-background">
       <div className="container">
         <div className="-mx-4 flex flex-col items-center justify-center lg:flex-row lg:flex-wrap ">
-          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 px-4">
             {!imagePosition && image.responsiveImage && (
               <div className="relative h-64 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-auto">
                 <DatoImage
@@ -39,7 +39,7 @@ const DetailSection = ({ details, image, imagePosition }: Props) => {
               </div>
             )}
             <div className="w-full">
-              <div className="sm:ml-6 md:px-24 lg:px-0">
+              <div className="lg:ml-6 md:px-24 lg:px-0">
                 <StructuredText
                   data={details.value}
                   renderNode={Highlighter}
@@ -47,7 +47,7 @@ const DetailSection = ({ details, image, imagePosition }: Props) => {
                     renderNodeRule(isHeading, ({ children, key }) => {
                       return (
                         <h3
-                          className="mb-4 mt-9 text-xl font-bold text-black dark:text-darktext sm:text-2xl lg:text-xl xl:text-2xl"
+                          className="mb-4 lg:mt-9 mt-5 text-xl font-bold text-black dark:text-darktext sm:text-2xl lg:text-xl xl:text-2xl"
                           key={key}
                         >
                           {children}

@@ -224,7 +224,7 @@ const Award = ({ data, lng }: Props) => {
                     </Link>
                     {data.award._publishedAt && (
                       <div className="mb-5 flex items-center">
-                        <p className="sm:mr-5 flex items-center sm:text-base text-sm font-medium text-body-color">
+                        <p className="flex items-center sm:text-base text-sm font-medium text-body-color">
                           {DateIcon}
                           {transformDate(data.award._publishedAt)}
                         </p>

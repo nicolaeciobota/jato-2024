@@ -187,7 +187,7 @@ const Header = ({ lng, data }: Props) => {
                 </ul>
               </nav>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center gap-2">
               {/* <div className="flex items-center justify-end">
                 <LanguageSelector lng={lng} languages={data._site.locales} />
               </div> */}
@@ -211,7 +211,7 @@ const Header = ({ lng, data }: Props) => {
                 className="block rounded-lg md:px-3 px-1 py-[6px] ring-primary focus:ring-2 lg:hidden"
               >
                 <span
-                  className={`relative lg:my-1.5 my-1 block h-0.5 lg:w-[30px] w-5 bg-black transition-all duration-300 dark:bg-white ${navbarOpen ? " top-[7px] rotate-45" : " "
+                  className={`relative lg:my-1.5 my-1 block h-0.5 lg:w-[30px] w-5 bg-black transition-all duration-300 dark:bg-white ${navbarOpen ? " top-[5px] rotate-45" : " "
                     }`}
                 />
                 <span

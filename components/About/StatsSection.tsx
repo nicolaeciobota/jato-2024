@@ -22,7 +22,7 @@ type Props = {
 const StatsSection = ({ title, subtitle, statistic }: Props) => {
   return (
     <section className="body-font flex flex-col items-center justify-center text-gray-600 dark:bg-dark-background">
-      <div className="container mx-auto px-5 py-4 md:py-12">
+      <div className="container mx-auto px-5 lg:py-12 md:py-8 py-4">
         <div className="flex w-full flex-col pb-12 text-center">
           <h1 className="title-font mb-4 text-2xl font-semibold text-gray-900 dark:text-darktext sm:text-4xl">
             {title}
@@ -34,7 +34,7 @@ const StatsSection = ({ title, subtitle, statistic }: Props) => {
         <div className="-m-4 flex flex-col flex-wrap items-center justify-center text-center md:flex-row">
           {statistic.map((stat) => {
             return (
-              <div key={stat.id} className="w-4/5 p-4 text-primary md:w-1/4">
+              <div key={stat.id} className="w-full md:w-1/2 p-4 text-primary lg:w-1/4">
                 <div className="flex flex-col items-center justify-center rounded-lg border-2 border-gray-200 dark:border-gray-500 px-4 py-6 text-center text-primary">
                   <div className="mb-4 h-24 w-24 text-primary">
                     <SvgRenderer url={stat.icon.url} />

@@ -14,7 +14,7 @@ type Props = {
 const ExpandedTeam = ({ header, subheader, members, lng }: Props) => {
   return (
     <section className="bg-white dark:bg-dark-background">
-      <div className="container mx-auto px-6 py-10">
+      <div className="container mx-auto px-6 lg:py-10 py-6">
         <h1 className="mb-4 text-center text-2xl font-semibold text-gray-800 dark:text-darktext lg:text-4xl">
           {header}
         </h1>
