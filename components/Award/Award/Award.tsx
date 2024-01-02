@@ -45,12 +45,12 @@ type Props = {
 const Award = ({ data, lng }: Props) => {
   if (!data.award) notFound();
   return (
-    <section className="pt-40 pb-[120px] dark:bg-dark-background">
+    <section className="md:pt-40 pt-32 pb-[120px] dark:bg-dark-background">
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-center">
-          <div className="w-full px-4 lg:w-full">
-            <div className="flex gap-4">
-              <div className="w-1/2">
+          <div className="w-full md:px-4 sm:px-0 px-4 lg:w-full">
+            <div className="flex md:flex-nowrap flex-wrap gap-4">
+              <div className="md:w-1/2 w-full">
                 <StructuredText
                   data={data.award.content as any}
                   renderNode={Highlighter}
@@ -192,18 +192,18 @@ const Award = ({ data, lng }: Props) => {
                   ]}
                 />
               </div>
-              <div className="w-1/2">
+              <div className="md:w-1/2 w-full">
                 <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
                   {data.award.title}
                 </h2>
-                <div className="mb-10 flex items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
-                  <div className="flex flex-col items-start md:flex-row md:items-center">
+                <div className="lg:mb-10 flex xl:items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
+                  <div className="flex xl:flex-nowrap flex-wrap items-start md:flex-row md:items-center xl:w-auto lg:w-[260px] sm:w-[220px] w-[200px]">
                     <Link
                       href={`/${lng}/awards/acategory/${data.award.acategory?.slug}`}
-                      className="mb-5 mr-10 flex items-center"
+                      className="mb-5 xl:mr-10 flex items-center"
                     >
-                      <div className="mr-4">
-                        <div className="relative h-10 w-10 overflow-hidden rounded-full">
+                      <div className="sm:mr-4 mr-1">
+                        <div className="relative sm:h-10 h-8 sm:w-10 w-8 overflow-hidden rounded-full">
                           <DatoImage
                             className="h-full w-full object-cover"
                             data={
@@ -214,7 +214,7 @@ const Award = ({ data, lng }: Props) => {
                         </div>
                       </div>
                       <div className="w-full">
-                        <h4 className="mb-1 text-base font-medium text-body-color">
+                        <h4 className="mb-1 sm:text-base text-sm font-medium text-body-color">
                           <span>{data.award.acategory?.name}</span>
                         </h4>
                         <p className="text-xs text-body-color">
@@ -224,7 +224,7 @@ const Award = ({ data, lng }: Props) => {
                     </Link>
                     {data.award._publishedAt && (
                       <div className="mb-5 flex items-center">
-                        <p className="mr-5 flex items-center text-base font-medium text-body-color">
+                        <p className="sm:mr-5 flex items-center sm:text-base text-sm font-medium text-body-color">
                           {DateIcon}
                           {transformDate(data.award._publishedAt)}
                         </p>
@@ -240,7 +240,7 @@ const Award = ({ data, lng }: Props) => {
                     </a>
                   </div>
                 </div>
-                <div className="mt-16 items-center justify-between sm:flex">
+                <div className="lg:mt-16 flex flex-wrap items-center justify-between">
                   <div className="mb-5">
                     <h5 className="mb-3 text-sm font-medium text-body-color">
                       Award Tags :

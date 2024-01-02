@@ -140,7 +140,7 @@ const Header = ({ lng, data }: Props) => {
                   : "invisible top-[120%] opacity-0"
                   }`}
               >
-                <ul className="block items-center lg:flex xl:space-x-5 space-x-2.5">
+                <ul className="block items-center lg:flex xl:space-x-6 space-x-4">
                   {menuData.map((menuItem, index) => (
                     <li key={menuItem.id} className="group relative">
                       {menuItem.path ? (
@@ -188,9 +188,9 @@ const Header = ({ lng, data }: Props) => {
               </nav>
             </div>
             <div className="flex items-center">
-              <div className="flex items-center justify-end">
+              {/* <div className="flex items-center justify-end">
                 <LanguageSelector lng={lng} languages={data._site.locales} />
-              </div>
+              </div> */}
               <div className="h-5 w-5 mx-3" onClick={themeHandler}>
                 <Image
                   src={

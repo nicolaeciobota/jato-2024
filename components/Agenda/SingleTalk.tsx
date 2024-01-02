@@ -40,16 +40,18 @@ const SingleTalk = ({ talk, locale, hideBtnLink = true }: Props) => {
       <div className="flex h-full flex-col  shadow-lg rounded-2xl">
         <div className="relative flex flex-1 flex-col rounded-2xl border border-slate-200 dark:border-none bg-white dark:bg-subsectionBackground p-8 py-16">
           <p className="text-md absolute top-0 inline-flex -translate-y-1/2 items-center justify-center rounded-full bg-primary px-3 py-1 font-semibold tracking-wide text-white shadow-md">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="1em"
-              viewBox="0 0 512 512"
-              className="mr-2 fill-current py-0.5 text-xl text-white"
-            >
-              <path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" />
-            </svg>
-            {` ${typeof startTime === "string" ? startTime : startTime.time} -`}
-            {` ${typeof endTime === "string" ? endTime : endTime.time}`}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="1em"
+                viewBox="0 0 512 512"
+                className="mr-2 fill-current py-0.5 text-xl text-white"
+              >
+                <path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" />
+              </svg>
+            <p className="flex items-center">
+              {` ${typeof startTime === "string" ? startTime : startTime.time} -`}
+              {` ${typeof endTime === "string" ? endTime : endTime.time}`}
+            </p>
           </p>
           <p className=" mb-5 flex text-sm font-semibold tracking-wide  text-dark dark:text-darktext">
             <svg
