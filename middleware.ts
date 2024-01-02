@@ -24,13 +24,17 @@ async function getLocale(
 export default authMiddleware({
   beforeAuth: async (request: NextRequest) => {
     const pathname = request.nextUrl.pathname;
-        const locales = await getAvailableLocales();
+    const locales = await getAvailableLocales();
     const pathnameIsMissingLocale = locales.every(
       (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
     );
 
     if (pathname === '/redirect-to-circle') {
       return NextResponse.redirect(process.env.NEXT_PUBLIC_CIRCLE_APP || '');
+    }
+
+    if (pathname === '/redirect-to-circle-sign-in') {
+      return NextResponse.redirect(process.env.NEXT_PUBLIC_CIRCLE_SIGN_IN || '');
     }
 
     if (pathname === '/') {
