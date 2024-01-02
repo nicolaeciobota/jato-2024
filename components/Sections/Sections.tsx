@@ -49,6 +49,8 @@ import {
   StageQuery,
   StageRecord,
   SpeakerSectionRecord,
+  CategoryAwardRecord,
+  AllCategoryAwardsSectionRecord,
 } from "@/graphql/generated";
 import GradientHero from "../Home/Hero/GradientHero";
 import FeatureCards from "../Home/Features/FeatureCards";
@@ -78,6 +80,7 @@ import Changelog from "../Changelog";
 import TalkGridRenderer from "../Agenda/TalkGridRenderer";
 import Talk from "../Agenda";
 import StageGridRenderer from "../Stage/StageGridRenderer";
+import CategoryAwardGridRenderer from "../Award/CategoryAwardGridRenderer";
 
 type Props = {
   sections: Array<PageModelSectionsField>;
@@ -86,6 +89,8 @@ type Props = {
   postMeta: CollectionMetadata;
   awardMeta: CollectionMetadata;
   awards: AwardRecord[];
+  categoryAwardsMeta: CollectionMetadata;
+  categoryAwards: CategoryAwardRecord[];
   talks: TalkRecord[];
   talkMeta: CollectionMetadata;
   stages: StageRecord[];
@@ -104,6 +109,8 @@ export default function Section({
   stageMeta,
   talks,
   talkMeta,
+  categoryAwards,
+  categoryAwardsMeta,
   data,
 }: Props) {
   return (
@@ -500,6 +507,15 @@ export default function Section({
                 data={awards}
                 lng={locale}
                 awardMeta={awardMeta}
+              />
+            );
+          case "all_category_awards_section":
+            const allCategoryAwardsSectionRecord = section as AllCategoryAwardsSectionRecord;
+            return (
+              <CategoryAwardGridRenderer
+                data={categoryAwards}
+                lng={locale}
+                awardMeta={categoryAwardsMeta}
               />
             );
           case "all_talks_section":
