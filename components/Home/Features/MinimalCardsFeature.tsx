@@ -25,13 +25,15 @@ const MinimalCardsFeature = ({
           >
             <div className="-mt-16 flex justify-center md:justify-end">
               <div className="relative h-20 w-20 overflow-hidden rounded-full border-2 border-primary object-cover">
-                <DatoImage
-                  data={feature.featureIcon.responsiveImage}
-                  className="h-full w-full object-contain"
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="50% 50%"
-                />
+                <Link href={feature?.link || '#'}>
+                  <DatoImage
+                    data={feature.featureIcon.responsiveImage}
+                    className="h-full w-full object-contain"
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="50% 50%"
+                  />
+                </Link>
               </div>
             </div>
 
