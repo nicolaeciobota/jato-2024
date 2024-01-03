@@ -14,7 +14,7 @@ const SingleFeature = ({ feature }: Props) => {
 
   return (
     <div className="w-full">
-      <div className="flex flex-col items-center justify-center px-16 text-center  md:px-0">
+      <div className="flex flex-col items-center justify-center sm:px-16  text-center  md:px-0">
         <div className="relative mb-10 flex h-[70px] w-[70px] items-center justify-center overflow-hidden rounded-md bg-primary bg-opacity-10 text-primary">
           <Link href={link || '#'}>
             <DatoImage
@@ -29,7 +29,7 @@ const SingleFeature = ({ feature }: Props) => {
         <h3 className="mb-5 text-xl font-bold text-black dark:text-darktext sm:text-2xl lg:text-xl xl:text-2xl">
           {featureTitle}
         </h3>
-        <div className="pr-[10px] text-base font-medium leading-relaxed text-body-color dark:text-darktext">
+        <div className="text-base font-medium leading-relaxed text-body-color dark:text-darktext">
           <ReactMarkdown>{featureDescription || ""}</ReactMarkdown>
         </div>
       </div>

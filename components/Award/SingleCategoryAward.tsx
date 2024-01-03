@@ -32,11 +32,11 @@ const SingleCategoryAward = ({ categoryRecord, locale }: Props) => {
                   <div key={index} className="lg:w-[31%] md:w-[48%] w-full overflow-hidden group rounded-3xl bg-neutral-100 cursor-pointer relative">
                     <Link href={"/" + locale + "/awards/" + slug}>
                       <DatoImage
-                        className="h-96 w-full transition duration-500 group-hover:scale-105"
-
+                        className="h-[280px] object-cover w-full transition duration-500 group-hover:scale-105"
+                        objectFit="cover"
                         data={seoTags!.image!.responsiveImage as ResponsiveImage}
                       />
-                      <div className="w-full h-full flex flex-col justify-end bg-gradient-to-t from-black to-black/0 p-6 absolute top-0 left-0">
+                      <div className="w-full h-full flex flex-col justify-end bg-gradient-to-t from-black to-black/0 to-40% p-6 absolute top-0 left-0">
                         <p className="text-base font-semibold text-white tracking-wide">{title}</p>
                         <p className="text-sm text-white mt-2">{jobTitle}</p>
                       </div>

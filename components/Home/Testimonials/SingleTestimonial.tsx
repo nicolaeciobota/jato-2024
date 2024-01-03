@@ -32,7 +32,7 @@ const SingleTestimonial = ({ testimonial }: Props) => {
         <div className="mb-8 h-36 border-b border-body-color border-opacity-10 pb-8 text-base leading-relaxed text-body-color dark:border-white dark:border-opacity-10 dark:text-darktext">
           <StructuredText data={review.value} renderNode={Highlighter} />
         </div>
-        <div className="flex w-96 items-center px-16 md:w-full md:px-4 lg:px-0">
+        <div className="flex items-center lg:justify-start justify-center w-full">
           <div className="relative mr-4 h-[50px] w-full max-w-[50px] overflow-hidden rounded-full">
             <DatoImage
               data={reviewerPicture.responsiveImage}
@@ -42,7 +42,7 @@ const SingleTestimonial = ({ testimonial }: Props) => {
               objectPosition="50% 50%"
             />
           </div>
-          <div className="w-full">
+          <div className="">
             <h5 className="mb-1 text-lg font-semibold text-dark dark:text-darktext lg:text-base xl:text-lg">
               {reviewerName}
             </h5>
