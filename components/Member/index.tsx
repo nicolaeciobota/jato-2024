@@ -15,7 +15,7 @@ const Member = ({
       id="socialfeed"
       className="bg-primary bg-opacity-5 py-16 md:py-20 lg:py-28"
     >
-      <div className="container h-[45vh]">
+      <div className="container h-[44vh]">
         {
           data?.member?.iframeUrl
             ? <IFrame

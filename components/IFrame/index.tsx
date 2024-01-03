@@ -50,7 +50,7 @@ const IFrame: FC<Props> = ({
                     ? <button
                         type="button"
                         onClick={toggleDrawer}
-                        className="mx-0 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 p-2.5 dark:hover:bg-gray-600 dark:hover:text-white"
+                        className="hover:bg-primary/90 focus:shadow-outline sm:mr-6 inline-flex h-12 items-center justify-center rounded bg-primary px-6 font-medium tracking-wide text-white shadow-md transition duration-200 focus:outline-none"
                     >
                         {
                             button
@@ -88,18 +88,9 @@ const IFrame: FC<Props> = ({
                             onClick={toggleDrawer}
                             className="block rounded-lg md:px-3 px-1 py-[6px] ring-primary focus:ring-2 absolute top-[-28px] end-3.5"
                         >
-                            <span
-                                className={`relative lg:my-1.5 my-1 block h-0.5 lg:w-[30px] w-5 bg-black transition-all duration-300 dark:bg-white ${isOpen ? " top-[5px] rotate-45" : " "
-                                    }`}
-                            />
-                            <span
-                                className={`relative lg:my-1.5 my-1 block h-0.5 lg:w-[30px] w-5 bg-black transition-all duration-300 dark:bg-white ${isOpen ? "opacity-0 " : " "
-                                    }`}
-                            />
-                            <span
-                                className={`relative lg:my-1.5 my-1 block h-0.5 lg:w-[30px] w-5 bg-black transition-all duration-300 dark:bg-white ${isOpen ? " top-[-8px] -rotate-45" : " "
-                                    }`}
-                            />
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                            </svg>
                         </button>
                         : null}
                 </div>
