@@ -59,10 +59,10 @@ const GradientHero = ({ heroTitle, heroSubtitle, buttons }: Props) => {
         className="mx-auto max-w-4xl px-4 sm:px-6"
       >
         {/* Hero content */}
-        <div className="pb-12 pt-32 md:pb-20 md:pt-40">
-          <div className="pb-12 text-center md:pb-16">
+        <div className="lg:pb-20 lg:pt-40 md:pt-32 pt-24">
+          <div className="text-center md:pb-16 sm:pb-12 pb-4">
             <h1
-              className="leading-tighter mb-4 text-6xl font-extrabold tracking-tighter md:text-8xl dark:text-darktext"
+              className="mb-4 md:text-7xl sm:text-6xl text-[34px] leading-none font-bold tracking-tighter dark:text-darktext"
               data-aos="zoom-y-out"
             >
               {heroTitleWords.join(' ')}{' '}
@@ -72,14 +72,14 @@ const GradientHero = ({ heroTitle, heroSubtitle, buttons }: Props) => {
             </h1>
             <div className="mx-auto max-w-3xl">
               <div
-                className="mb-8 text-xl text-gray-600 dark:text-darktext"
+                className="mb-8 xl:text-xl sm:text-base text-sm text-gray-600 dark:text-darktext"
                 data-aos="zoom-y-out"
                 data-aos-delay="150"
               >
                 <ReactMarkdown>{heroSubtitle || ''}</ReactMarkdown>
               </div>
               <div
-                className="mx-auto flex max-w-xs flex-col justify-center sm:max-w-none sm:flex-row"
+                className="sm:mx-auto flex flex-col justify-center sm:max-w-none sm:flex-row"
                 data-aos="zoom-y-out"
                 data-aos-delay="300"
               >

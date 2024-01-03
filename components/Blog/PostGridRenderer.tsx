@@ -14,7 +14,7 @@ type Props = {
 
 const PostGridRenderer = ({ data, lng, postMeta }: Props) => {
   return (
-    <section className="mt-4 pb-[120px] pt-[120px] dark:bg-dark-background">
+    <section className="mt-4 lg:pb-[120px] md:pb-20 pb-16  lg:pt-[120px] pt-24 dark:bg-dark-background">
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-center">
           {data.map((post) => (

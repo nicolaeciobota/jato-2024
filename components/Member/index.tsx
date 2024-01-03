@@ -23,7 +23,7 @@ const Member = ({
               iframeHeight={80}
               defaultOpen={true}
               button={
-                <div>Circle Social Feed</div>
+                <div>Circle Member</div>
               }
             />
             : <div>Not found!</div>

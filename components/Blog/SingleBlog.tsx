@@ -40,11 +40,11 @@ const SingleBlog = ({ blog, locale }: Props) => {
               {title}
             </Link>
           </h3>
-          <div className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10" />
-          <div className="flex h-full items-center justify-between">
+          <div className="sm:mb-6 mb-4 border-b border-body-color border-opacity-10 sm:pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10" />
+          <div className="sm:flex block h-full items-center justify-between">
             <Link
               href={`/${locale}/posts/author/${author?.slug}`}
-              className="mr-5 flex items-center border-r border-body-color border-opacity-10 pr-5 dark:border-white dark:border-opacity-10 xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5"
+              className="mr-5 flex items-center sm:border-r border-body-color border-opacity-10 pr-5 dark:border-white dark:border-opacity-10 xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5"
             >
               <div className="mr-4">
                 <div className="relative h-12 w-12 overflow-hidden rounded-full object-contain">
@@ -64,7 +64,7 @@ const SingleBlog = ({ blog, locale }: Props) => {
                 <div className="text-xs text-body-color">{author?.bio}</div>
               </div>
             </Link>
-            <div className="inline-block">
+            <div className="inline-block sm:pl-0 pl-16">
               <div className="text-xs text-body-color">
                 {transformDate(_publishedAt)}
               </div>

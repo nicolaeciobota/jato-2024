@@ -30,7 +30,7 @@ const Minimal = ({ header, subheader, plans }: Props) => {
 
   return (
     <section className="bg-white dark:bg-dark-background">
-      <div className="container mx-auto px-6 py-8">
+      <div className="container mx-auto sm:px-6 px-4 md:py-8 py-4">
         <div className="sm:flex sm:items-center sm:justify-between">
           <div>
             <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 lg:text-3xl">
@@ -59,8 +59,8 @@ const Minimal = ({ header, subheader, plans }: Props) => {
           </div>
         </div>
 
-        <div className="-mx-6 mt-16 flex flex-col items-center justify-center gap-6 lg:flex-row">
-          <div className="h-[650px] w-4/5 transform rounded-lg bg-gray-700 px-6 py-4 transition-colors duration-300 dark:bg-gray-800 lg:w-1/3">
+        <div className="sm:-mx-6 md:mt-16 mt-8 flex flex-col items-center justify-center gap-6 lg:flex-row">
+          <div className="lg:h-[650px] sm:w-4/5 w-full transform rounded-lg bg-gray-700 sm:px-6 px-4 py-4 transition-colors duration-300 dark:bg-gray-800 lg:w-1/3">
             <p className="text-lg font-medium text-gray-100">
               {planInEvidence.tierName}
             </p>
@@ -75,14 +75,14 @@ const Minimal = ({ header, subheader, plans }: Props) => {
               </span>
             </h4>
 
-            <div className="mt-4 h-24 text-gray-300">
+            <div className="mt-4 lg:h-24 text-gray-300">
               <StructuredText
                 data={planInEvidence.tierDescription.value}
                 renderNode={Highlighter}
               />
             </div>
 
-            <div className="mt-8 h-80 space-y-8">
+            <div className="sm:mt-8 mt-5 lg:h-80 lg:space-y-8 space-y-4">
               {evidencePlanFeatures.map((feature) => {
                 return (
                   <div key={feature} className="flex items-center">
@@ -105,7 +105,7 @@ const Minimal = ({ header, subheader, plans }: Props) => {
               })}
             </div>
 
-            <button className="mt-10 w-full transform rounded-md bg-primary px-4 py-2 font-medium capitalize tracking-wide text-white transition-colors duration-300 hover:bg-primary/90 focus:bg-primary/80 focus:outline-none">
+            <button className="md:mt-10 mt-6 w-full transform rounded-md bg-primary px-4 py-2 font-medium capitalize tracking-wide text-white transition-colors duration-300 hover:bg-primary/90 focus:bg-primary/80 focus:outline-none">
               Choose plan
             </button>
           </div>
@@ -113,7 +113,7 @@ const Minimal = ({ header, subheader, plans }: Props) => {
             return (
               <div
                 key={plan.id}
-                className="h-[650px] w-4/5 transform rounded-lg px-6 py-4 transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-800 lg:w-1/3"
+                className="lg:h-[650px] sm:w-4/5 w-full transform rounded-lg sm:px-6 px-4 py-4 transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-800 lg:w-1/3"
               >
                 <p className="text-lg font-medium text-gray-800 dark:text-gray-100">
                   {plan.tierName}
@@ -126,14 +126,14 @@ const Minimal = ({ header, subheader, plans }: Props) => {
                   </span>
                 </h4>
 
-                <div className="mt-4 h-24 text-gray-500 dark:text-gray-300">
+                <div className="mt-4 lg:h-24 text-gray-500 dark:text-gray-300">
                   <StructuredText
                     data={plan.tierDescription.value}
                     renderNode={Highlighter}
                   />
                 </div>
 
-                <div className="mt-8 h-80 space-y-8">
+                <div className="sm:mt-8 mt-5 lg:h-80 lg:space-y-8 space-y-4">
                   {plan.planFeatures.split(', ').map((feature) => {
                     return (
                       <div key={feature} className="flex items-center">
@@ -158,7 +158,7 @@ const Minimal = ({ header, subheader, plans }: Props) => {
                   })}
                 </div>
 
-                <button className="mt-10 w-full transform rounded-md bg-primary px-4 py-2 font-medium capitalize tracking-wide text-white transition-colors duration-300 hover:bg-primary/90 focus:bg-primary/80 focus:outline-none">
+                <button className="md:mt-10 mt-6 w-full transform rounded-md bg-primary px-4 py-2 font-medium capitalize tracking-wide text-white transition-colors duration-300 hover:bg-primary/90 focus:bg-primary/80 focus:outline-none">
                   Choose plan
                 </button>
               </div>

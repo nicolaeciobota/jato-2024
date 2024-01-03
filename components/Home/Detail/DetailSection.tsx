@@ -23,10 +23,10 @@ type Props = {
 
 const DetailSection = ({ details, image, imagePosition }: Props) => {
   return (
-    <section className="md:py-16 py-4 text-center lg:py-28 lg:text-start dark:bg-dark-background">
+    <section className="py-4 text-center lg:py-16 lg:text-start dark:bg-dark-background">
       <div className="container">
         <div className="-mx-4 flex flex-col items-center justify-center lg:flex-row lg:flex-wrap ">
-          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 px-4">
+          <div className="grid sm:gap-8 gap-5 lg:grid-cols-2 lg:gap-12 px-4">
             {!imagePosition && image.responsiveImage && (
               <div className="relative h-64 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-auto">
                 <DatoImage
@@ -68,7 +68,7 @@ const DetailSection = ({ details, image, imagePosition }: Props) => {
                       return (
                         <div
                           key={key}
-                          className="mb-5 flex items-center text-lg font-medium text-body-color"
+                          className="sm:mb-5 flex items-center text-lg font-medium text-body-color"
                         >
                           <span className="mr-4 flex h-[30px] w-[30px] items-center justify-center rounded-md bg-primary bg-opacity-10 text-primary">
                             {checkIcon}
@@ -81,7 +81,7 @@ const DetailSection = ({ details, image, imagePosition }: Props) => {
                       return (
                         <div
                           key={key}
-                          className="mb-6 mt-6 grid w-full grid-cols-2 gap-4 text-center lg:ml-0"
+                          className="mb-6 mt-6 grid w-full xs:grid-cols-2 gap-4 text-center lg:ml-0"
                         >
                           {children}
                         </div>
