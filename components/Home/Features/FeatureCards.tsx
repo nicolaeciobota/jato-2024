@@ -46,13 +46,15 @@ const FeatureCards = ({
                   className="relative flex h-64 flex-col items-center justify-center rounded bg-white p-6 shadow-xl"
                 >
                   <div className="relative -mt-1 mb-2 flex h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-primary bg-opacity-5">
-                    <DatoImage
-                      data={feature.featureIcon.responsiveImage}
-                      className="h-full w-full object-contain"
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="50% 50%"
-                    />
+                    <Link href={feature?.link || '#'}>
+                      <DatoImage
+                        data={feature.featureIcon.responsiveImage}
+                        className="h-full w-full object-contain"
+                        layout="fill"
+                        objectFit="cover"
+                        objectPosition="50% 50%"
+                      />
+                    </Link>
                   </div>
                   <h4 className="mb-1 text-xl font-bold leading-snug tracking-tight">
                     {feature.featureTitle}

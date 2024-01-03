@@ -18,7 +18,7 @@ const SingleFeature = ({ feature }: Props) => {
         <div className="relative mb-10 flex h-[70px] w-[70px] items-center justify-center overflow-hidden rounded-md bg-primary bg-opacity-10 text-primary">
           <Link href={link || '#'}>
             <DatoImage
-              data={feature.featureIcon.responsiveImage}
+              data={featureIcon.responsiveImage}
               className="h-full w-full object-contain"
               layout="fill"
               objectFit="cover"

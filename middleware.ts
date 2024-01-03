@@ -33,10 +33,6 @@ export default authMiddleware({
       return NextResponse.redirect(process.env.NEXT_PUBLIC_CIRCLE_APP || '');
     }
 
-    if (pathname === '/redirect-to-circle-sign-in') {
-      return NextResponse.redirect(process.env.NEXT_PUBLIC_CIRCLE_SIGN_IN || '');
-    }
-
     if (pathname === '/') {
       const locale = await getLocale(request, locales);
       return NextResponse.redirect(new URL(`/${locale}/home`, request.url));

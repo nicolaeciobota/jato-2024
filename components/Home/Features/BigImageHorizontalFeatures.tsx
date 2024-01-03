@@ -38,13 +38,15 @@ const BigImageHorizontalFeatures = ({
                 {" "}
                 <div className="relative block h-48 w-full shrink-0 self-start overflow-hidden md:h-full md:w-32 lg:w-48">
                   <div className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110">
-                    <DatoImage
-                      data={feature.featureIcon.responsiveImage}
-                      className="object-contain"
-                      layout="fill"
-                      // objectFit="contain"
-                      objectPosition="50% 50%"
-                    />
+                    <Link href={feature?.link || '#'}>
+                      <DatoImage
+                        data={feature.featureIcon.responsiveImage}
+                        className="h-full w-full object-contain"
+                        layout="fill"
+                        objectFit="cover"
+                        objectPosition="50% 50%"
+                      />
+                    </Link>
                   </div>
                 </div>
                 <div className="flex flex-col gap-2 p-4 lg:p-6">

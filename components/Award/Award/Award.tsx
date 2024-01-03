@@ -16,7 +16,6 @@ import {
 import NewsletterCTABlock from "@/components/Award/Award/StructuredTextBlocks/NewsletterCTABlock";
 import CTABlock from "@/components/Award/Award/StructuredTextBlocks/CTABlock";
 import DateIcon from "@/components/Award/svgs/DateIcon";
-import SingleAward from "../SingleAward";
 
 import Link from "next/link";
 import {
@@ -31,11 +30,10 @@ import {
   SiteLocale,
 } from "@/graphql/generated";
 import { notFound } from "next/navigation";
-import React, { useState } from "react";
 import Highlighter from "@/components/Common/Highlighter";
 import CTAAppBlock from "./StructuredTextBlocks/CTAAppBlock";
 import GalleryBlock from "./StructuredTextBlocks/GalleryBlock";
-import IFrame from "@/components/IFrame";
+import EmbededIframe from "@/components/IFrame/EmbededIframe";
 
 type Props = {
   data: AwardQuery;
@@ -269,7 +267,11 @@ const Award = ({ data, lng }: Props) => {
                 </div>
               </div>
             </div>
-            <IFrame iframeUrl={data?.award?.iframe || ''} iframeHeight={80} shadowWidth={1075} />
+            {
+              data?.award?.iframe
+               ? <EmbededIframe iframeUrl={data?.award?.iframe || ''} iframeHeight={80} shadowWidth={1075} />
+               : null 
+            }
           </div>
         </div>
       </div>
