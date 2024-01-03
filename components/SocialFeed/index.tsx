@@ -17,7 +17,19 @@ const SocialFeed = ({
     >
       <div className="container">
         <div>
-          <IFrame iframeUrl={data?.socialFeed?.iframe || ''} iframeHeight={100} />
+          {
+            data?.socialFeed?.iframe
+              ? <IFrame
+                iframeUrl={data?.socialFeed?.iframe || ''}
+                iframeHeight={80}
+                defaultOpen={true}
+                button={
+                  <div>Circle Members</div>
+                }
+              />
+              : <div>Not found!</div>
+          }
+
         </div>
       </div>
     </section>
