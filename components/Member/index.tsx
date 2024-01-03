@@ -15,10 +15,19 @@ const Member = ({
       id="socialfeed"
       className="bg-primary bg-opacity-5 py-16 md:py-20 lg:py-28"
     >
-      <div className="container">
-        <div>
-          <IFrame iframeUrl={data?.member?.iframeUrl || ''} iframeHeight={100} />
-        </div>
+      <div className="container h-[44vh]">
+        {
+          data?.member?.iframeUrl
+            ? <IFrame
+              iframeUrl={data?.member?.iframeUrl || ''}
+              iframeHeight={80}
+              defaultOpen={true}
+              button={
+                <div>Circle Social Feed</div>
+              }
+            />
+            : <div>Not found!</div>
+            }
       </div>
     </section>
   );
