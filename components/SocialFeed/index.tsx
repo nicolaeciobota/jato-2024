@@ -24,7 +24,7 @@ const SocialFeed = ({
                 iframeHeight={80}
                 defaultOpen={true}
                 button={
-                  <div>Circle Members</div>
+                  <div>Circle Social Feed</div>
                 }
               />
               : <div>Not found!</div>
