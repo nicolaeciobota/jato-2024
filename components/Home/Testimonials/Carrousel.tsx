@@ -29,9 +29,9 @@ const Carrousel = ({ reviews, header, subheader }: Props) => {
   const currentReview = reviews[currentIndex];
 
   return (
-    <section className="pb-24 bg-white dark:bg-dark-background">
-      <div className="mx-auto max-w-6xl px-6 py-10">
-        <main className="relative z-20 mt-8 w-full md:flex md:items-center xl:mt-12">
+    <section className="lg:pb-24 md:pb-16 pb-4  bg-white dark:bg-dark-background">
+      <div className="mx-auto max-w-6xl sm:px-6 px-4 lg:py-10 py-4">
+        <main className="relative z-20 lg:mt-8 w-full md:flex md:items-center xl:mt-12">
           <div className="absolute -z-10 w-full rounded-2xl bg-primary/70 md:h-96"></div>
 
           <div className="w-full rounded-2xl bg-primary p-6 md:flex md:items-center md:justify-evenly md:bg-transparent md:p-0 lg:px-12">

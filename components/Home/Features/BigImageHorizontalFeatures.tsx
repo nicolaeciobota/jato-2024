@@ -36,13 +36,13 @@ const BigImageHorizontalFeatures = ({
                 className="group flex flex-col items-center overflow-hidden rounded-lg border md:flex-row"
               >
                 {" "}
-                <div className="relative block h-48 w-full shrink-0 self-start overflow-hidden bg-gray-100 md:h-full md:w-32 lg:w-48">
+                <div className="relative block h-48 w-full shrink-0 self-start overflow-hidden md:h-full md:w-32 lg:w-48">
                   <div className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110">
                     <DatoImage
                       data={feature.featureIcon.responsiveImage}
-                      className="h-full w-full object-contain"
+                      className="object-contain"
                       layout="fill"
-                      objectFit="cover"
+                      // objectFit="contain"
                       objectPosition="50% 50%"
                     />
                   </div>

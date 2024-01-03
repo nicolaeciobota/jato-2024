@@ -13,9 +13,9 @@ type Props = {
 
 const MinimalReviewCards = ({ reviews, header, subheader }: Props) => {
   return (
-    <div className="bg-white dark:bg-dark-background py-16 sm:py-8 lg:py-12">
+    <div className="bg-white dark:bg-dark-background py-6 sm:py-8 lg:py-12">
       <div className="mx-auto max-w-screen-xl px-4 md:px-8">
-        <h2 className="mb-8 text-center text-2xl font-bold text-gray-800 dark:text-darktext md:mb-12 lg:text-3xl">
+        <h2 className="sm:mb-8 mb-5 text-center text-2xl font-bold text-gray-800 dark:text-darktext md:mb-12 lg:text-3xl">
           {header}
         </h2>
 

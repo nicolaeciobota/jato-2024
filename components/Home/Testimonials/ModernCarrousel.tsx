@@ -29,12 +29,12 @@ const ModernCarrousel = ({ reviews, header, subheader }: Props) => {
   const currentReview = reviews[currentIndex];
 
   return (
-    <section className="bg-white py-16 dark:bg-dark-background">
+    <section className="bg-white dark:bg-dark-background">
       <div className="relative flex">
         <div className="min-h-screen lg:w-1/3"></div>
         <div className="mt-32 hidden h-[750px] w-3/4 rounded-xl bg-primary/10 dark:bg-gray-800 lg:block"></div>
 
-        <div className="container mx-auto flex min-h-screen w-full flex-col justify-center px-6 py-10 lg:absolute lg:inset-x-0">
+        <div className="container mx-auto flex min-h-screen w-full flex-col justify-center sm:px-6 px-4 lg:py-10 py-5 lg:absolute lg:inset-x-0">
           <h1 className="text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-3xl">
             {header}
           </h1>
@@ -66,7 +66,7 @@ const ModernCarrousel = ({ reviews, header, subheader }: Props) => {
             </div>
           </div>
 
-          <div className="mt-12 flex items-center justify-between lg:justify-start">
+          <div className="lg:mt-12 mt-6 flex items-center lg:justify-start">
             <button
               title="left arrow"
               className="rounded-full border p-2 text-gray-800 transition-colors duration-300 hover:bg-gray-100 rtl:-scale-x-100 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800"

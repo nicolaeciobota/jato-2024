@@ -11,7 +11,7 @@ type Props = {
 const SmallCards = ({ header, subheader, plans }: Props) => {
   return (
     <div className="bg-white dark:bg-dark-background">
-      <div className="container mx-auto px-6 py-8">
+      <div className="container mx-auto sm:px-6 sm:py-8 p-4">
         <h1 className="text-center text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-3xl">
           {header}
         </h1>
@@ -25,7 +25,7 @@ const SmallCards = ({ header, subheader, plans }: Props) => {
             return (
               <div
                 key={plan.id}
-                className="w-full space-y-8 rounded-lg border border-gray-200 p-8 text-center dark:border-gray-700"
+                className="w-full space-y-8 rounded-lg border border-gray-200 sm:p-8 p-4 text-center dark:border-gray-700"
               >
                 <p className="font-medium uppercase text-gray-500 dark:text-darktext">
                   {plan.tierName}

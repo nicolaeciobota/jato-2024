@@ -36,7 +36,7 @@ const CarrouselFeaturedPosts = ({
 
   return (
     <section className="bg-white dark:bg-dark-background">
-      <div className="container mx-auto px-6 py-10">
+      <div className="container mx-auto sm:px-6 px-4 sm:py-10 py-6">
         <h1 className="text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-3xl">
           {blogHeader}
         </h1>
@@ -60,7 +60,7 @@ const CarrouselFeaturedPosts = ({
 
             <a
               href="#"
-              className="mt-4 block text-2xl font-semibold text-gray-800 hover:underline dark:text-darktext"
+              className="mt-4 block text-2xl font-semibold text-gray-800 hover:underline dark:text-darktext lg:h-16"
             >
               {currentReview.title}
             </a>

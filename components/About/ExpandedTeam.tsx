@@ -14,7 +14,7 @@ type Props = {
 const ExpandedTeam = ({ header, subheader, members, lng }: Props) => {
   return (
     <section className="bg-white dark:bg-dark-background">
-      <div className="container mx-auto px-6 lg:py-10 py-6">
+      <div className="container mx-auto sm:px-6 px-4 lg:py-10 py-6">
         <h1 className="mb-4 text-center text-2xl font-semibold text-gray-800 dark:text-darktext lg:text-4xl">
           {header}
         </h1>
@@ -29,7 +29,7 @@ const ExpandedTeam = ({ header, subheader, members, lng }: Props) => {
               <Link
                 href={`/${lng}/posts/author/${member.slug}`}
                 key={member.id}
-                className=" group transform cursor-pointer rounded-xl border px-12 py-8 transition-colors duration-300 hover:border-transparent hover:bg-primary/90 hover:opacity-95 dark:border-gray-700 dark:hover:border-transparent"
+                className=" group transform cursor-pointer rounded-xl border sm:px-12 px-4 py-8 transition-colors duration-300 hover:border-transparent hover:bg-primary/90 hover:opacity-95 dark:border-gray-700 dark:hover:border-transparent"
               >
                 <div className="flex flex-col items-center sm:-mx-4 sm:flex-row">
                   <div className="relative z-50 h-24 w-24 flex-shrink-0 overflow-hidden rounded-full object-cover ring-4 ring-gray-300 sm:mx-4">

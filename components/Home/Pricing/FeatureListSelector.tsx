@@ -20,8 +20,8 @@ const FeatureListSelector = ({ header, subheader, plans }: Props) => {
     ?.planFeatures.split(', ');
 
   return (
-    <div className="pt-32 bg-white pb-16 dark:bg-dark-background">
-      <div className="container mx-auto px-6 py-8">
+    <div className="lg:pt-32 md:pt-24 sm:pt-16 pt-4 bg-white md:pb-16 sm:pb-8 dark:bg-dark-background">
+      <div className="container mx-auto sm:px-6 px-4 sm:py-8 py-6">
         <h1 className="text-center text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-3xl">
           {header}
         </h1>
@@ -30,7 +30,7 @@ const FeatureListSelector = ({ header, subheader, plans }: Props) => {
           <ReactMarkdown>{subheader || ''}</ReactMarkdown>
         </div>
 
-        <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-3 xl:mt-12">
+        <div className="mt-6 grid grid-cols-1 sm:gap-8 gap-5 lg:grid-cols-3 xl:mt-12">
           {plans.map((plan) => {
             const planIsSelected = plan.tierName === selectedPlan;
             return (
@@ -38,7 +38,7 @@ const FeatureListSelector = ({ header, subheader, plans }: Props) => {
                 key={plan.id}
                 onClick={() => setSelectedPlan(plan.tierName)}
                 className={
-                  'flex cursor-pointer items-center justify-between rounded-xl border px-8 py-4' +
+                  'flex cursor-pointer items-center justify-between rounded-xl border sm:px-8 px-4 sm:py-4 py-2' +
                   (planIsSelected ? ' border-primary' : '')
                 }
               >
@@ -78,7 +78,7 @@ const FeatureListSelector = ({ header, subheader, plans }: Props) => {
           })}
         </div>
 
-        <motion.div className="mt-8 space-y-8 rounded-xl bg-gray-100 p-8 dark:bg-gray-800">
+        <motion.div className="sm:mt-8 mt-5 sm:space-y-8 space-y-4 rounded-xl bg-gray-100 sm:p-8 p-4 dark:bg-gray-800">
           <AnimatePresence>
             {selectedPlanFeatures &&
               selectedPlanFeatures.map((feature) => {
@@ -110,8 +110,8 @@ const FeatureListSelector = ({ header, subheader, plans }: Props) => {
           </AnimatePresence>
         </motion.div>
 
-        <div className="mt-8 flex justify-center">
-          <button className="transform rounded-md bg-blue-600 px-8 py-2 capitalize tracking-wide text-white transition-colors duration-300 hover:bg-blue-500 focus:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+        <div className="sm:mt-8 mt-5 flex justify-center">
+          <button className="transform rounded-md bg-blue-600 px-8 py-2 capitalize tracking-wide text-white transition-colors duration-300 hover:bg-blue-500 focus:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 sm:w-auto w-full">
             Choose Plan
           </button>
         </div>

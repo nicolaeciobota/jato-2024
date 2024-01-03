@@ -41,7 +41,7 @@ type Props = {
 const Post = ({ data, lng }: Props) => {
   if (!data.post) notFound();
   return (
-    <section className="pt-40 pb-[120px] dark:bg-dark-background">
+    <section className="lg:pt-36 lg:pb-[120px] pt-24 md:pb-24 pb-12 dark:bg-dark-background">
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-center">
           <div className="w-full px-4 lg:w-8/12">
@@ -49,11 +49,11 @@ const Post = ({ data, lng }: Props) => {
               <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
                 {data.post.title}
               </h2>
-              <div className="mb-10 flex items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
+              <div className="lg:mb-10 mb-6 flex justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
                 <div className="flex flex-col items-start md:flex-row md:items-center">
                   <Link
                     href={`/${lng}/posts/author/${data.post.author?.slug}`}
-                    className="mb-5 mr-10 flex items-center"
+                    className="mb-5 sm:mr-10 mr-2 flex items-center"
                   >
                     <div className="mr-4">
                       <div className="relative h-10 w-10 overflow-hidden rounded-full">
@@ -77,7 +77,7 @@ const Post = ({ data, lng }: Props) => {
                   </Link>
                   {data.post._publishedAt && (
                     <div className="mb-5 flex items-center">
-                      <p className="mr-5 flex items-center text-base font-medium text-body-color dark:text-darktext">
+                      <p className="sm:mr-5 mr-1 flex items-center sm:text-base text-sm font-medium text-body-color dark:text-darktext">
                         {DateIcon}
                         {transformDate(data.post._publishedAt)}
                       </p>
@@ -102,7 +102,7 @@ const Post = ({ data, lng }: Props) => {
                       case "ImageBlockRecord":
                         const ImageBlockRecord = record as ImageBlockRecord;
                         return (
-                          <div className="relative mb-16 mt-16 overflow-hidden rounded-md shadow-md xs:h-[300px] sm:h-[300px] md:h-[400px]">
+                          <div className="relative lg:mb-16 mb-12 lg:mt-16 mt-12 overflow-hidden rounded-md shadow-md h-[300px] md:h-[400px]">
                             <DatoImage
                               data={ImageBlockRecord.image.responsiveImage}
                               layout="fill"
@@ -189,7 +189,7 @@ const Post = ({ data, lng }: Props) => {
                     renderNodeRule(isHeading, ({ children, key }) => {
                       return (
                         <h3
-                          className="mb-4 mt-9 text-xl font-bold text-black dark:text-darktext sm:text-2xl lg:text-xl xl:text-2xl"
+                          className="mb-4 lg:mt-9 mt-6 text-xl font-bold text-black dark:text-darktext sm:text-2xl lg:text-xl xl:text-2xl"
                           key={key}
                         >
                           {children}
@@ -229,12 +229,12 @@ const Post = ({ data, lng }: Props) => {
                     }),
                   ]}
                 />
-                <div className="mt-16 items-center justify-between sm:flex">
-                  <div className="mb-5">
+                <div className="lg:mt-16 md:mt-12 sm:mt-8 mt-6 items-center justify-between sm:flex flex-wrap">
+                  <div className="sm:mb-5 mb-2">
                     <h5 className="mb-3 text-sm font-medium text-body-color">
                       Post Tags :
                     </h5>
-                    <div className="flex items-center">
+                    <div className="flex flex-wrap items-center">
                       {data.post.tags.map((tag) => {
                         return (
                           <TagButton
@@ -247,11 +247,11 @@ const Post = ({ data, lng }: Props) => {
                       })}
                     </div>
                   </div>
-                  <div className="mb-5">
-                    <h5 className="mb-3 text-sm font-medium text-body-color dark:text-darktext sm:text-right">
+                  <div className="sm:mb-5 mb-2">
+                    <h5 className="mb-3 text-sm font-medium text-body-color dark:text-darktext">
                       Share this post :
                     </h5>
-                    <div className="flex items-center sm:justify-end">
+                    <div className="flex items-center sm:justify-end gap-3">
                       <SharePost />
                     </div>
                   </div>
