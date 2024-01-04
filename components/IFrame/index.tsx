@@ -30,7 +30,7 @@ const IFrame: FC<Props> = ({
     return (
         <div>
             <div className="h-full">
-                <div ref={ref} className={`fixed top-[8vh] bottom-0 left-0 z-40 w-full transition-transform transform ${true ? 'translate-y-0' : 'translate-y-full'}`}>
+                <div ref={ref} className={`fixed top-[8vh] bottom-0 left-0 z-0 w-full transition-transform transform ${true ? 'translate-y-0' : 'translate-y-full'}`}>
                     <div>
                         <div className={`relative w-full ${shadowWidth ? `max-w-[${shadowWidth}px]` : ''} ${iframeHeight === 80 ? 'h-[80vh]' : `h-[100vh]`} mx-auto`}>
                             {
