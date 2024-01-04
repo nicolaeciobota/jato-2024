@@ -1,5 +1,3 @@
-import Footer from "@/components/Footer";
-import "node_modules/react-modal-video/css/modal-video.css";
 import "@/styles/global.css";
 import { draftMode } from "next/headers";
 import { SiteLocale } from "@/graphql/generated";
@@ -29,7 +27,6 @@ export default async function RootLayout({
     <>
       <HeaderRenderer lng={lng} isDraft={isEnabled} />
       {children}
-      <Footer lng={lng} />
     </>
   );
 }
