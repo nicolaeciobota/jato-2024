@@ -17,7 +17,7 @@ const GradientCards = ({ header, subheader, plans }: Props) => {
   return (
     <div className="bg-white dark:bg-dark-background py-6 sm:py-8 lg:py-12">
       <div className="mx-auto flex flex-col justify-center px-4 md:px-8">
-        <div className="mb-10 md:mb-16">
+        <div className="md:mb-16 sm:mb-10 mb-5">
           <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-darktext md:mb-6 lg:text-3xl">
             {header}
           </h2>
@@ -28,22 +28,22 @@ const GradientCards = ({ header, subheader, plans }: Props) => {
         </div>
 
         <div className="flex w-full flex-row flex-wrap items-center justify-center gap-4">
-          <div className="relative mr-4 flex h-[550px] max-w-md flex-col justify-center rounded-lg bg-gradient-to-tr from-indigo-500 to-primary/80 p-8 shadow-xl">
+          <div className="relative lg:mr-4 flex h-[550px] sm:max-w-md w-full flex-col justify-center rounded-lg bg-gradient-to-tr from-indigo-500 to-primary/80 sm:p-8 p-4 shadow-xl">
             <div className="h-96">
-              <span className="absolute right-0 top-0 order-first m-8 inline-block rounded-full bg-indigo-200 bg-opacity-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white lg:order-none">
-                Best value
-              </span>
               <div className="mb-4 flex flex-col items-start justify-between gap-4 lg:flex-row">
-                <div>
+                <div className='flex justify-between items-center w-full'>
                   <h3 className="text-2xl font-semibold text-white sm:text-3xl">
                     {planInEvidence.tierName}
                   </h3>
-                  <div className="h-24 text-indigo-100">
-                    <StructuredText
-                      data={planInEvidence.tierDescription.value}
-                      renderNode={Highlighter}
-                    />
-                  </div>
+                  <span className="inline-block rounded-full bg-indigo-200 bg-opacity-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white lg:order-none">
+                    Best value
+                  </span>
+                </div>
+                <div className="h-24 text-indigo-100">
+                  <StructuredText
+                    data={planInEvidence.tierDescription.value}
+                    renderNode={Highlighter}
+                  />
                 </div>
               </div>
 
@@ -89,7 +89,7 @@ const GradientCards = ({ header, subheader, plans }: Props) => {
             return (
               <div
                 key={plan.id}
-                className="flex h-[550px] w-96 flex-col justify-center rounded-lg bg-gray-800 p-8"
+                className="flex h-[550px] sm:w-96 w-full flex-col justify-center rounded-lg bg-gray-800 sm:p-8 p-4"
               >
                 <div className="h-96">
                   <div className="mb-4">

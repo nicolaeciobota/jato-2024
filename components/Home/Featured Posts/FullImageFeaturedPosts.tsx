@@ -21,7 +21,7 @@ const FullImageFeaturedPosts = ({
   return (
     <div className="bg-white py-6 sm:py-8 lg:py-12 dark:bg-dark-background">
       <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
-        <div className="mb-10 md:mb-16">
+        <div className="sm:mb-10 mb-6 md:mb-16">
           <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-darktext md:mb-6 lg:text-3xl">
             {blogHeader}
           </h2>

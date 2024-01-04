@@ -29,22 +29,22 @@ const MinimalCarrousel = ({ reviews, header, subheader }: Props) => {
   const currentReview = reviews[currentIndex];
 
   return (
-    <section className="bg-primary/10 py-16 dark:bg-dark-background">
-      <div className="container mx-auto flex flex-col items-center justify-center px-6 py-10">
+    <section className="bg-primary/10 lg:py-16 md:py-10 py-6 dark:bg-dark-background">
+      <div className="container mx-auto flex flex-col items-center justify-center sm:px-6 px-4 md:py-10 py-6">
         <h1 className="text-center text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-3xl">
           {header}
         </h1>
 
-        <div className="mx-auto mt-6 flex justify-center">
+        <div className="mx-auto md:mt-6 mt-4 flex justify-center">
           <span className="inline-block h-1 w-40 rounded-full bg-primary"></span>
           <span className="mx-1 inline-block h-1 w-3 rounded-full bg-primary"></span>
           <span className="inline-block h-1 w-1 rounded-full bg-primary"></span>
         </div>
 
-        <div className="mx-auto mt-16 flex w-full max-w-6xl flex-row items-center justify-center text-center">
+        <div className="mx-auto md:mt-16 mt-8 flex w-full max-w-6xl flex-row items-center justify-center text-center">
           <button
             title="left arrow"
-            className="rounded-full border p-2 text-gray-800 transition-colors duration-300 hover:bg-gray-100 rtl:-scale-x-100 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 lg:block"
+            className="rounded-full border sm:p-2 text-gray-800 transition-colors duration-300 hover:bg-gray-100 rtl:-scale-x-100 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 lg:block"
             onClick={handlePrev}
           >
             <svg
@@ -89,7 +89,7 @@ const MinimalCarrousel = ({ reviews, header, subheader }: Props) => {
             </svg>
           </button>
         </div>
-        <div className="mt-8 flex flex-col items-center justify-center">
+        <div className="md:mt-8 mt-4 flex flex-col items-center justify-center">
           <div className="relative h-14 w-14 overflow-hidden rounded-full">
             <DatoImage
               layout="fill"

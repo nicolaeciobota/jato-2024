@@ -9,7 +9,7 @@ type Params = {
 const NewsletterCTABlock = ({ title, subtitle, buttonLabel }: Params) => {
   return (
     <section className="mt-8 rounded-xl bg-gray-50">
-      <div className="p-8 md:p-8 lg:px-16 lg:py-16 dark:bg-subsectionBackground">
+      <div className="lg:p-16 p-8 dark:bg-subsectionBackground">
         <div className="mx-auto max-w-lg text-center">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-darktext md:text-3xl">
             {title}
