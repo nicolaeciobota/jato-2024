@@ -140,13 +140,13 @@ const Header = ({ lng, data }: Props) => {
                   : "invisible top-[120%] opacity-0"
                   }`}
               >
-                <ul className="block items-center lg:flex xl:space-x-6 space-x-4">
+                <ul className="block items-center lg:flex xl:space-x-6 space-x-3">
                   {menuData.map((menuItem, index) => (
                     <li key={menuItem.id} className="group relative">
                       {menuItem.path ? (
                         <Link
                           href={"/" + lng + menuItem.path}
-                          className={`flex py-2 xl:text-base text-sm text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${menuItem.title.length > 10 ? 'xl:w-[84px] w-[72px]' : ''}`}
+                          className={`flex py-2 xl:text-base text-sm text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${menuItem.title.length > 10 ? 'xl:w-[88px] lg:w-[78px]' : ''}`}
                         >
                           {menuItem.title}
                         </Link>
@@ -154,7 +154,7 @@ const Header = ({ lng, data }: Props) => {
                         <>
                           <a
                             onClick={() => handleSubmenu(index)}
-                            className="flex cursor-pointer items-center justify-between py-2 xl:text-base text-sm text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 xl:w-[9.5rem] w-[8.5rem]"
+                            className="flex cursor-pointer items-center justify-between py-2 xl:text-base text-sm text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 xl:w-[10rem] lg:w-[9rem]"
                           >
                             {menuItem.title}
                             <span className="">

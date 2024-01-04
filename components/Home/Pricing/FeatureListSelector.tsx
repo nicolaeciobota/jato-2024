@@ -20,7 +20,7 @@ const FeatureListSelector = ({ header, subheader, plans }: Props) => {
     ?.planFeatures.split(', ');
 
   return (
-    <div className="lg:pt-32 md:pt-24 sm:pt-16 pt-4 bg-white md:pb-16 sm:pb-8 dark:bg-dark-background">
+    <div className="lg:pt-32 md:pt-24 pt-20 bg-white md:pb-16 sm:pb-8 dark:bg-dark-background">
       <div className="container mx-auto sm:px-6 px-4 sm:py-8 py-6">
         <h1 className="text-center text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-3xl">
           {header}

@@ -7,7 +7,7 @@ type Props = {
 
 const Brands = ({ brandShowcase }: Props) => {
   return (
-    <section className="pt-16">
+    <section className="pt-16 dark:bg-dark-background">
       <div className="container">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
@@ -36,7 +36,9 @@ const SingleBrand = ({ brand }: { brand: BrandRecord }) => {
         rel="nofollow noreferrer"
         className="relative h-10 w-full opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0 dark:opacity-60 dark:hover:opacity-100"
       >
-        <Image src={brandLogo.url} alt={brandName} fill />
+        <Image src={brandLogo.url} alt={brandName} fill 
+          className='dark:invert-0 brightness-200'
+        />
       </a>
     </div>
   );

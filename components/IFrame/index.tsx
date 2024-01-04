@@ -61,7 +61,7 @@ const IFrame: FC<Props> = ({
                     : null}
 
                 <div ref={ref} className={`fixed bottom-0 left-0 z-40 w-full p-4 transition-transform transform ${isOpen ? 'translate-y-0' : 'translate-y-full'}`}>
-                    <div className="bg-white p-4">
+                    <div className="bg-white sm:p-4">
                         <div className={`relative w-full ${shadowWidth ? `max-w-[${shadowWidth}px]` : ''} ${iframeHeight === 80 ? 'h-[80vh]' : 'h-[100vh]'} mx-auto`}>
                             {
                                 loading && <div className={`animate-pulse absolute w-full ${shadowWidth ? `max-w-[${shadowWidth}px]` : ''} mb-10 h-[${iframeHeight}vh]`}>
@@ -86,7 +86,7 @@ const IFrame: FC<Props> = ({
                     {isOpen
                         ? <button
                             onClick={toggleDrawer}
-                            className="block rounded-lg md:px-3 px-1 py-[6px] ring-primary focus:ring-2 absolute top-[-28px] end-3.5"
+                            className="block rounded-lg md:px-3 px-1 py-[6px] ring-primary focus:ring-2 absolute top-0 end-3.5"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />

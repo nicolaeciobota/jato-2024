@@ -16,7 +16,7 @@ const FeatureCards = ({
   featuresSubheader,
 }: Props) => {
   return (
-    <section className="relative">
+    <section className="relative dark:bg-dark-background">
       {/* Section background (needs .relative class on parent and next sibling elements) */}
       <div
         className="pointer-events-none absolute inset-0 top-1/2 bg-primary bg-opacity-5 md:mt-24 lg:mt-0"
@@ -27,10 +27,10 @@ const FeatureCards = ({
         <div className="py-12 md:py-20">
           {/* Section header */}
           <div className="mx-auto max-w-3xl pb-12 text-center md:pb-20">
-            <h1 className="mb-4 text-3xl font-bold !leading-tight text-black dark:text-white sm:text-4xl md:text-[45px]">
+            <h1 className="mb-4 text-3xl font-bold !leading-tight text-black dark:text-darktext sm:text-4xl md:text-[45px]">
               {featuresHeader}
             </h1>
-            <div className="text-xl text-gray-600">
+            <div className="text-xl text-gray-600 dark:text-darktext">
               <ReactMarkdown>{featuresSubheader || ""}</ReactMarkdown>
             </div>
           </div>
@@ -43,7 +43,7 @@ const FeatureCards = ({
               return (
                 <div
                   key={feature.id}
-                  className="relative flex h-64 flex-col items-center justify-center rounded bg-white p-6 shadow-xl"
+                  className="relative flex flex-col items-center justify-center rounded bg-white sm:p-6 p-4 shadow-xl h-80 dark:bg-subsectionBackground"
                 >
                   <div className="relative -mt-1 mb-2 flex h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-primary bg-opacity-5">
                     <Link href={feature?.link || '#'}>
@@ -56,10 +56,10 @@ const FeatureCards = ({
                       />
                     </Link>
                   </div>
-                  <h4 className="mb-1 text-xl font-bold leading-snug tracking-tight">
+                  <h4 className="mb-1 text-xl font-bold leading-snug tracking-tight dark:text-darktext">
                     {feature.featureTitle}
                   </h4>
-                  <div className="text-center text-gray-600">
+                  <div className="text-center text-gray-600 dark:text-darktext">
                     <ReactMarkdown>
                       {feature.featureDescription || ""}
                     </ReactMarkdown>

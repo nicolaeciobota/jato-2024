@@ -15,7 +15,7 @@ type Props = {
 const CategoryAwardGridRenderer = ({ data, lng, awardMeta }: Props) => {
 
   return (
-    <section className="mt-4 pb-[120px] pt-[120px] dark:bg-dark-background">
+    <section className="mt-4 lg:py-[120px] py-20 dark:bg-dark-background">
       <div className="container">
 
         {
