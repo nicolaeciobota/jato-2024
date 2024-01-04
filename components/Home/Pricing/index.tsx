@@ -17,7 +17,7 @@ type Props = {
 const Pricing = ({ header, subheader, plans }: Props) => {
   const [isMonthly, setIsMonthly] = useState(true);
   return (
-    <section id="pricing" className="relative z-10 py-16 md:py-20 lg:py-28 dark:bg-dark-background">
+    <section id="pricing" className="relative z-10 lg:py-28 md:py-20 sm:py-16 py-10 dark:bg-dark-background">
       <div className="container">
         <SectionTitle
           title={header}

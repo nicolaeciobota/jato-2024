@@ -29,7 +29,7 @@ const MinimalCarrousel = ({ reviews, header, subheader }: Props) => {
   const currentReview = reviews[currentIndex];
 
   return (
-    <section className="bg-primary/10 lg:py-16 md:py-10 py-6 dark:bg-dark-background">
+    <section className="bg-primary/10 lg:py-16 md:py-10 py-6 dark:bg-dark-background dark:opacity-95">
       <div className="container mx-auto flex flex-col items-center justify-center sm:px-6 px-4 md:py-10 py-6">
         <h1 className="text-center text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-3xl">
           {header}
@@ -70,7 +70,7 @@ const MinimalCarrousel = ({ reviews, header, subheader }: Props) => {
           </div>
           <button
             title="right arrow"
-            className="rounded-full border p-2 text-gray-800 transition-colors duration-300 hover:bg-gray-100 rtl:-scale-x-100 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 lg:block"
+            className="rounded-full border sm:p-2 text-gray-800 transition-colors duration-300 hover:bg-gray-100 rtl:-scale-x-100 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 lg:block"
             onClick={handleNext}
           >
             <svg

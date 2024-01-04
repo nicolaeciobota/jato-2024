@@ -40,7 +40,7 @@ const ModernCarrousel = ({ reviews, header, subheader }: Props) => {
           </h1>
 
           <div className="mt-10 lg:mt-20 lg:flex lg:items-center">
-            <div className="relative h-96 w-full overflow-hidden rounded-lg object-cover object-center lg:w-[32rem]">
+            <div className="relative lg:h-[32rem] md:h-[40rem] sm:h-[33rem] xs:h-96 h-80  w-full overflow-hidden rounded-lg object-cover object-center lg:w-[32rem]">
               <DatoImage
                 layout="fill"
                 objectFit="cover"

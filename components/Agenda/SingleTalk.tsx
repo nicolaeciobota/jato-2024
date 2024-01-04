@@ -38,7 +38,7 @@ const SingleTalk = ({ talk, locale, hideBtnLink = true }: Props) => {
   return (
     <>
       <div className="flex h-full flex-col  shadow-lg rounded-2xl">
-        <div className="relative flex flex-1 flex-col rounded-2xl border border-slate-200 dark:border-none bg-white dark:bg-subsectionBackground p-8 py-16">
+        <div className="relative flex flex-1 flex-col rounded-2xl border border-slate-200 dark:border-none bg-white dark:bg-subsectionBackground sm:px-8 px-4 py-16">
           <p className="text-md absolute top-0 inline-flex -translate-y-1/2 items-center justify-center rounded-full bg-primary px-3 py-1 font-semibold tracking-wide text-white shadow-md">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +65,7 @@ const SingleTalk = ({ talk, locale, hideBtnLink = true }: Props) => {
             {`${typeof startTime === "string" ? startTime : startTime.day} - `}
             {` ${typeof startTime === "string" ? startTime : startTime.date}`}
           </p>{" "}
-          <h4 className="-mx-6 items-center rounded-lg bg-slate-100 dark:bg-[#201f2f] dark:text-darktext px-8 py-2 text-xl font-semibold uppercase leading-5">
+          <h4 className="items-center rounded-lg bg-slate-100 dark:bg-[#201f2f] dark:text-darktext px-8 py-2 text-xl font-semibold uppercase leading-5">
             {title}
           </h4>
           <p className="mt-4 flex-1 leading-6 text-slate-700 dark:text-darktext">{description}</p>

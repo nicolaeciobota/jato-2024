@@ -12,12 +12,12 @@ type Props = {
 const SpeakerTalks = ({ data, lng }: Props) => {
   if (!data.speaker) notFound();
   return (
-    <section className="mt-16 flex w-full flex-col items-center justify-center py-[32px] dark:bg-dark-background">
-      <section className="px-auto mx-auto mb-8 flex  w-full items-center justify-center bg-white px-2 dark:bg-gray-900">
+    <section className="mt-16 flex w-full flex-col items-center justify-center md:py-8 py-4 dark:bg-dark-background">
+      <section className="px-auto mx-auto mb-8 flex  w-full items-center justify-center bg-white px-4 dark:bg-gray-900">
         {" "}
         <div className="md:py-10 py-6">
-          <div className="flex flex-col items-center justify-center gap-8  text-center md:flex-row md:text-start">
-            <div className="relative aspect-square w-56 overflow-hidden rounded-xl drop-shadow-xl md:w-72 lg:w-96">
+          <div className="flex flex-col items-center justify-center sm:gap-8 gap-5 text-center md:flex-row md:text-start">
+            <div className="relative aspect-square sm:w-56 w-full overflow-hidden rounded-xl drop-shadow-xl md:w-72 lg:w-96">
               <DatoImage
                 className="h-full w-full object-cover"
                 layout="fill"

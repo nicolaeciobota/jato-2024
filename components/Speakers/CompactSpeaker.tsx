@@ -18,7 +18,7 @@ type Props = {
 const CompactSpeaker = ({ header, subheader, speakersSection, lng }: Props) => {
   return (
     <section className="lg:mt-16 mt-6 bg-white dark:bg-dark-background">
-      <div className="mx-auto lg:mt-16 px-4 py-10 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 lg:py-20">
+      <div className="mx-auto lg:mt-16 px-4 py-14 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 lg:py-20">
         <h1 className="text-center text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-4xl">
           {header}
         </h1>
@@ -27,7 +27,7 @@ const CompactSpeaker = ({ header, subheader, speakersSection, lng }: Props) => {
           <ReactMarkdown>{subheader || ""}</ReactMarkdown>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 md:gap-8 md:grid-cols-2 xl:mt-16 xl:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 mgap-8 md:grid-cols-2 xl:mt-16 xl:grid-cols-3">
           {speakersSection.map((member) => {
             return (
               <Link
@@ -35,7 +35,7 @@ const CompactSpeaker = ({ header, subheader, speakersSection, lng }: Props) => {
                 key={member.id}
                 className="group flex transform flex-col items-center rounded-xl p-8 transition-colors duration-300 hover:bg-primary/90"
               >
-                <div className="relative h-80 w-80 overflow-hidden rounded-md object-cover ring-4 ring-gray-300">
+                <div className="relative lg:h-80 h-64 lg:w-80 w-64 overflow-hidden rounded-md object-cover ring-4 ring-gray-300">
                   <DatoImage
                     layout="fill"
                     objectFit="cover"

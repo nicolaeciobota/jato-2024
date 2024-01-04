@@ -34,7 +34,7 @@ const Carrousel = ({ reviews, header, subheader }: Props) => {
         <main className="relative z-20 lg:mt-8 w-full md:flex md:items-center xl:mt-12">
           <div className="absolute -z-10 w-full rounded-2xl bg-primary/70 md:h-96"></div>
 
-          <div className="w-full rounded-2xl bg-primary p-6 md:flex md:items-center md:justify-evenly md:bg-transparent md:p-0 lg:px-12">
+          <div className="w-full rounded-2xl bg-primary sm:p-6 p-4 md:flex md:items-center md:justify-evenly md:bg-transparent md:p-0 lg:px-12">
             <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-full object-cover object-center shadow-md md:mx-6 md:h-[32rem] md:w-80 md:rounded-2xl lg:h-[36rem] lg:w-[24rem]">
               <DatoImage
                 layout="fill"

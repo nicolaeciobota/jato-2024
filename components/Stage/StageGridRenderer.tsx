@@ -14,7 +14,7 @@ type Props = {
 
 const StageGridRenderer = ({ data, lng, stageMeta }: Props) => {
   return (
-    <section className="mt-4 pb-[120px] pt-[120px] dark:bg-dark-background">
+    <section className="mt-4 lg:py-[120px] md:py-24 py-20 dark:bg-dark-background">
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-center">
           {data.map((stage) => (

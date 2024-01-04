@@ -24,7 +24,7 @@ const MinimalReviewCards = ({ reviews, header, subheader }: Props) => {
             return (
               <div
                 key={review.id}
-                className="flex flex-col items-center justify-between gap-4 rounded-lg bg-primary/80 px-8 py-6 md:gap-6"
+                className="flex flex-col items-center justify-between gap-4 rounded-lg bg-primary/80 lg:px-8 px-4 py-6 md:gap-6"
               >
                 <div className="max-w-md text-center text-white lg:text-lg">
                   <StructuredText
