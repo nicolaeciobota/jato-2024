@@ -191,9 +191,15 @@ const Award = ({ data, lng }: Props) => {
                 />
               </div>
               <div className="md:w-1/2 w-full">
-                <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
+                <h2 className="text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
                   {data.award.title}
                 </h2>
+                <p className="mb-3 font-bold leading-tight text-black dark:text-darktext sm:leading-tight">
+                  {data.award.jobTitle}
+                </p>
+                <p className="mb-4 leading-tight text-black dark:text-darktext sm:leading-tight">
+                  {data.award.bio}
+                </p>
                 <div className="lg:mb-10 flex xl:items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
                   <div className="flex xl:flex-nowrap flex-wrap items-start md:flex-row md:items-center xl:w-auto lg:w-[260px] sm:w-[220px] w-[200px]">
                     <Link
@@ -220,14 +226,6 @@ const Award = ({ data, lng }: Props) => {
                         </p>
                       </div>
                     </Link>
-                    {data.award._publishedAt && (
-                      <div className="mb-5 flex items-center">
-                        <p className="flex items-center sm:text-base text-sm font-medium text-body-color">
-                          {DateIcon}
-                          {transformDate(data.award._publishedAt)}
-                        </p>
-                      </div>
-                    )}
                   </div>
                   <div className="mb-5">
                     <a
@@ -256,24 +254,16 @@ const Award = ({ data, lng }: Props) => {
                       })}
                     </div>
                   </div>
-                  <div className="mb-5">
-                    <h5 className="mb-3 text-sm font-medium text-body-color sm:text-right">
-                      Share this award :
-                    </h5>
-                    <div className="flex items-center sm:justify-end">
-                      <ShareAward />
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
-            {
-              data?.award?.iframe
-               ? <EmbededIframe iframeUrl={data?.award?.iframe || ''} iframeHeight={80} shadowWidth={1075} />
-               : null 
-            }
           </div>
         </div>
+        {
+          data?.award?.iframe
+            ? <EmbededIframe iframeUrl={data?.award?.iframe || ''} iframeHeight={80} />
+            : null
+        }
       </div>
     </section>
   );

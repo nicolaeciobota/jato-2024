@@ -1,6 +1,7 @@
-import { AwardTagQuery, AwardRecord, SiteLocale } from "@/graphql/generated";
+import { AwardTagQuery, SiteLocale, ResponsiveImage } from "@/graphql/generated";
 import { notFound } from "next/navigation";
-import SingleAward from "./SingleAward";
+import Link from "next/link";
+import { Image as DatoImage } from "react-datocms";
 
 type Props = {
   data: AwardTagQuery;
@@ -12,45 +13,60 @@ const TagAwards = ({ data, lng }: Props) => {
     notFound();
   }
   return (
-    <section className="py-[32px] dark:bg-dark-background">
-      <div className="width-full flex items-center justify-center gap-4">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="h-16 w-16 stroke-primary opacity-90"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M6 6h.008v.008H6V6z"
-          />
-        </svg>
-        <h1 className="my-24 text-center text-2xl font-semibold text-gray-800 dark:text-darktext lg:text-4xl">
-          {data.atag.atag}
-        </h1>
-      </div>
-
+    <section className="pb-[120px] pt-[120px]">
       <div className="container">
-        <div className="-mx-4 flex flex-wrap justify-center">
-          {data.atag["_allReferencingAwards"].map((award) => (
-            <div
-              key={award.id}
-              className="mb-10 w-full px-4 md:w-2/3 lg:w-1/2 xl:w-1/3"
-            >
-              <SingleAward award={award as AwardRecord} locale={lng} />
+        <div className="pb-16">
+          <div className="relative before:absolute after:absolute before:bg-neutral-950 after:bg-neutral-950/10 before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px">
+          </div>
+          <div className="flex lg:flex-nowrap flex-wrap xl:gap-8 gap-6 lg:justify-between justify-center lg:pt-16 pt-12">
+            <div className="lg:w-1/5 w-full">
+              <div className="flex gap-3 items-center lg:justify-start justify-center">
+                <h2 className="text-2xl font-semibold text-neutral-950">{data.atag.atag}</h2>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="h-8 w-8 stroke-primary opacity-90"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 6h.008v.008H6V6z"
+                  />
+                </svg>
+              </div>
             </div>
-          ))}
+            <div className="lg:w-4/5 w-full flex flex-wrap gap-6 justify-start items-center">
+              {
+                data.atag["_allReferencingAwards"]?.map((singleAward: any, index: number) => {
+                  const { title = '', seoTags, jobTitle = '', slug = '' } = singleAward;
+                  return (
+                    <div key={index} className="lg:w-[31%] md:w-[48%] w-full overflow-hidden group rounded-3xl bg-neutral-100 cursor-pointer relative">
+                      <Link href={"/" + lng + "/awards/" + slug}>
+                        <DatoImage
+                          className="h-[280px] object-cover w-full transition duration-500 group-hover:scale-105"
+                          objectFit="cover"
+                          data={seoTags!.image!.responsiveImage as ResponsiveImage}
+                        />
+                        <div className="w-full h-full flex flex-col justify-end bg-gradient-to-t from-black to-black/0 to-40% p-6 absolute top-0 left-0">
+                          <p className="text-base font-semibold text-white tracking-wide">{title}</p>
+                          <p className="text-sm text-white mt-2">{jobTitle}</p>
+                        </div>
+                      </Link>
+                    </div>
+                  );
+                })
+              }
+            </div>
+          </div>
         </div>
-
-        <div className="-mx-4 flex flex-wrap"></div>
       </div>
     </section>
   );

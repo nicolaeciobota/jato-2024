@@ -35,6 +35,7 @@ query AwardCategory(
       slug
       id
       title
+      jobTitle
       atags {
         atag
       }
