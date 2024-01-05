@@ -17,7 +17,7 @@ type Props = {
 
 const CompactSpeaker = ({ header, subheader, speakersSection, lng }: Props) => {
   return (
-    <section className="lg:mt-16 mt-6 bg-white dark:bg-dark-background">
+    <section className="lg:pt-16 pt-6 bg-white dark:bg-dark-background">
       <div className="mx-auto lg:mt-16 px-4 py-14 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 lg:py-20">
         <h1 className="text-center text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-4xl">
           {header}
