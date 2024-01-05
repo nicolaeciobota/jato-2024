@@ -1,7 +1,5 @@
-import ShareAward from "./ShareAward";
 import TagAwardButton from "../AwardTypeTagButton";
 import QuoteBlock from "@/components/Award/Award/StructuredTextBlocks/QuoteBlock";
-import transformDate from "@/utils/transformDate";
 import {
   isBlockquote,
   isHeading,
@@ -15,7 +13,6 @@ import {
 } from "react-datocms";
 import NewsletterCTABlock from "@/components/Award/Award/StructuredTextBlocks/NewsletterCTABlock";
 import CTABlock from "@/components/Award/Award/StructuredTextBlocks/CTABlock";
-import DateIcon from "@/components/Award/svgs/DateIcon";
 
 import Link from "next/link";
 import {
@@ -34,6 +31,7 @@ import Highlighter from "@/components/Common/Highlighter";
 import CTAAppBlock from "./StructuredTextBlocks/CTAAppBlock";
 import GalleryBlock from "./StructuredTextBlocks/GalleryBlock";
 import EmbededIframe from "@/components/IFrame/EmbededIframe";
+import AwardPagination from "./AwardPagination";
 
 type Props = {
   data: AwardQuery;
@@ -189,6 +187,7 @@ const Award = ({ data, lng }: Props) => {
                     }),
                   ]}
                 />
+                <AwardPagination lng={lng} categoryTitle={data.award.acategory?.name || ''} />
               </div>
               <div className="md:w-1/2 w-full">
                 <h2 className="text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">

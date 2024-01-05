@@ -1,0 +1,19 @@
+query SingleCategoryAwardByTitle(
+  $locale: SiteLocale
+  $fallbackLocale: [SiteLocale!]
+  $title: String!
+) {
+  categoryAward(
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+    filter: { title: { eq: $title } }
+  ) {
+    title
+    id
+    award {
+      _publishedAt
+      slug
+      title
+    }
+  }
+}

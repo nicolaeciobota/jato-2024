@@ -335,6 +335,26 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
     _publishedAt
     title
     id
+    category {
+      name
+      slug
+      bio
+      picture {
+        responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
+          srcSet
+          webpSrcSet
+          sizes
+          src
+          width
+          height
+          aspectRatio
+          alt
+          title
+          bgColor
+          base64
+        }
+      }
+    }
     award {
       _publishedAt
       slug
