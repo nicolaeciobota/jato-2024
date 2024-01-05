@@ -187,7 +187,6 @@ const Award = ({ data, lng }: Props) => {
                     }),
                   ]}
                 />
-                <AwardPagination lng={lng} categoryTitle={data.award.acategory?.name || ''} />
               </div>
               <div className="md:w-1/2 w-full">
                 <h2 className="text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
@@ -235,33 +234,33 @@ const Award = ({ data, lng }: Props) => {
                     </a>
                   </div>
                 </div>
-                <div className="flex flex-wrap items-center justify-between">
-                  <div className="">
-                    <h5 className="mb-3 text-sm font-medium text-body-color">
-                      Award Tags :
-                    </h5>
-                    <div className="flex items-center">
-                      {data.award.atags.map((atag) => {
-                        return (
-                          <TagAwardButton
-                            key={atag.id}
-                            atag={atag.atag}
-                            lng={lng}
-                            slug={atag.slug}
-                          />
-                        );
-                      })}
-                    </div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <h5 className="text-sm font-medium text-body-color">
+                    Award Tags :
+                  </h5>
+                  <div className="flex items-center">
+                    {data.award.atags.map((atag) => {
+                      return (
+                        <TagAwardButton
+                          key={atag.id}
+                          atag={atag.atag}
+                          lng={lng}
+                          slug={atag.slug}
+                        />
+                      );
+                    })}
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <AwardPagination lng={lng} categoryTitle={data.award.acategory?.name || ''} />
+
         </div>
       </div>
       <div>
         {
-            data?.award?.iframe
+          data?.award?.iframe
             ? <EmbededIframe iframeUrl={data?.award?.iframe || ''} iframeHeight={100} />
             : null
         }

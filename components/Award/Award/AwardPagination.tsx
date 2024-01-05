@@ -23,15 +23,19 @@ const AwardPagination = async ({ categoryTitle, lng }: Props) => {
     );
 
     return (
-        <div className="mb-10 w-full">
-            <ul className="mx-0">
+        <div className="w-full md:px-4 flex flex-wrap items-center md:justify-center sm:my-8 my-5 gap-3">
+            <h5 className="text-sm font-medium text-body-color">
+                Awards :
+            </h5>
+            <ul className="flex gap-3 flex-wrap items-center">
+
                 {
                     data?.categoryAward?.award.map((award: any, index: number) => {
                         return (
                             <Link
                                 href={`/${lng}/awards/${award.slug}`}
                                 key={index}
-                                className="mb-3 mr-3 inline-flex items-center justify-center rounded-md bg-primary bg-opacity-10 px-4 py-2 text-body-color duration-300 hover:bg-opacity-100 hover:text-white"
+                                className="inline-flex items-center justify-center rounded-md bg-primary bg-opacity-10 px-4 py-1 text-body-color duration-300 hover:bg-opacity-100 hover:text-white"
                             >
                                 {award.title}
                             </Link>
@@ -40,6 +44,7 @@ const AwardPagination = async ({ categoryTitle, lng }: Props) => {
                 }
             </ul>
         </div>
+
     );
 }
 
