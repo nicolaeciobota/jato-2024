@@ -33,7 +33,7 @@ const GalleryBlock: FC<Props> = ({ galleryRecords }) => {
       <Swiper
         loop={true}
         spaceBetween={10}
-        navigation={true}
+        navigation={false}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
         className="mainSwiper !m-0"
@@ -44,6 +44,7 @@ const GalleryBlock: FC<Props> = ({ galleryRecords }) => {
               className="relative h-72 w-full overflow-hidden rounded-xl lg:h-96"
             >
               <DatoImage
+                className="rounded"
                 layout="fill"
                 objectFit="contain"
                 data={image.responsiveImage}

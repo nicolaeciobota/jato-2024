@@ -1,7 +1,5 @@
-import ShareAward from "./ShareAward";
 import TagAwardButton from "../AwardTypeTagButton";
 import QuoteBlock from "@/components/Award/Award/StructuredTextBlocks/QuoteBlock";
-import transformDate from "@/utils/transformDate";
 import {
   isBlockquote,
   isHeading,
@@ -15,7 +13,6 @@ import {
 } from "react-datocms";
 import NewsletterCTABlock from "@/components/Award/Award/StructuredTextBlocks/NewsletterCTABlock";
 import CTABlock from "@/components/Award/Award/StructuredTextBlocks/CTABlock";
-import DateIcon from "@/components/Award/svgs/DateIcon";
 
 import Link from "next/link";
 import {
@@ -34,6 +31,7 @@ import Highlighter from "@/components/Common/Highlighter";
 import CTAAppBlock from "./StructuredTextBlocks/CTAAppBlock";
 import GalleryBlock from "./StructuredTextBlocks/GalleryBlock";
 import EmbededIframe from "@/components/IFrame/EmbededIframe";
+import AwardPagination from "./AwardPagination";
 
 type Props = {
   data: AwardQuery;
@@ -43,10 +41,10 @@ type Props = {
 const Award = ({ data, lng }: Props) => {
   if (!data.award) notFound();
   return (
-    <section className="md:pt-40 pt-32 pb-[120px] dark:bg-dark-background">
+    <section className="md:pt-40 pt-32 pb-20 bg-[#3553520d] dark:bg-dark-background">
       <div className="container">
-        <div className="-mx-4 flex flex-wrap justify-center">
-          <div className="w-full md:px-4 sm:px-0 px-4 lg:w-full">
+        <div className="flex flex-wrap justify-center pb-5">
+          <div className="w-full sm:px-4 lg:w-full">
             <div className="flex md:flex-nowrap flex-wrap gap-4">
               <div className="md:w-1/2 w-full">
                 <StructuredText
@@ -191,10 +189,16 @@ const Award = ({ data, lng }: Props) => {
                 />
               </div>
               <div className="md:w-1/2 w-full">
-                <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
+                <h2 className="text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
                   {data.award.title}
                 </h2>
-                <div className="lg:mb-10 flex xl:items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
+                <p className="mb-3 text-sm font-bold leading-tight text-black dark:text-darktext sm:leading-tight">
+                  {data.award.jobTitle}
+                </p>
+                <p className="mb-4 leading-tight text-black dark:text-darktext sm:leading-tight h-24 overflow-y-scroll">
+                  {data.award.bio}
+                </p>
+                <div className="mb-4 flex xl:items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
                   <div className="flex xl:flex-nowrap flex-wrap items-start md:flex-row md:items-center xl:w-auto lg:w-[260px] sm:w-[220px] w-[200px]">
                     <Link
                       href={`/${lng}/awards/acategory/${data.award.acategory?.slug}`}
@@ -220,16 +224,8 @@ const Award = ({ data, lng }: Props) => {
                         </p>
                       </div>
                     </Link>
-                    {data.award._publishedAt && (
-                      <div className="mb-5 flex items-center">
-                        <p className="flex items-center sm:text-base text-sm font-medium text-body-color">
-                          {DateIcon}
-                          {transformDate(data.award._publishedAt)}
-                        </p>
-                      </div>
-                    )}
                   </div>
-                  <div className="mb-5">
+                  <div className="">
                     <a
                       href={`/${lng}/awards/atag/${data.award.atags[0].slug}`}
                       className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white"
@@ -238,42 +234,36 @@ const Award = ({ data, lng }: Props) => {
                     </a>
                   </div>
                 </div>
-                <div className="lg:mt-16 flex flex-wrap items-center justify-between">
-                  <div className="mb-5">
-                    <h5 className="mb-3 text-sm font-medium text-body-color">
-                      Award Tags :
-                    </h5>
-                    <div className="flex items-center">
-                      {data.award.atags.map((atag) => {
-                        return (
-                          <TagAwardButton
-                            key={atag.id}
-                            atag={atag.atag}
-                            lng={lng}
-                            slug={atag.slug}
-                          />
-                        );
-                      })}
-                    </div>
-                  </div>
-                  <div className="mb-5">
-                    <h5 className="mb-3 text-sm font-medium text-body-color sm:text-right">
-                      Share this award :
-                    </h5>
-                    <div className="flex items-center sm:justify-end">
-                      <ShareAward />
-                    </div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <h5 className="text-sm font-medium text-body-color">
+                    Award Tags :
+                  </h5>
+                  <div className="flex items-center">
+                    {data.award.atags.map((atag) => {
+                      return (
+                        <TagAwardButton
+                          key={atag.id}
+                          atag={atag.atag}
+                          lng={lng}
+                          slug={atag.slug}
+                        />
+                      );
+                    })}
                   </div>
                 </div>
               </div>
             </div>
-            {
-              data?.award?.iframe
-               ? <EmbededIframe iframeUrl={data?.award?.iframe || ''} iframeHeight={80} shadowWidth={1075} />
-               : null 
-            }
           </div>
+          <AwardPagination lng={lng} categoryTitle={data.award.acategory?.name || ''} />
+
         </div>
+      </div>
+      <div>
+        {
+          data?.award?.iframe
+            ? <EmbededIframe iframeUrl={data?.award?.iframe || ''} iframeHeight={100} />
+            : null
+        }
       </div>
     </section>
   );
