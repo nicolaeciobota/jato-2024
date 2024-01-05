@@ -60,7 +60,7 @@ const Minimal = ({ header, subheader, plans }: Props) => {
         </div>
 
         <div className="sm:-mx-6 md:mt-16 mt-8 flex flex-col items-center justify-center gap-6 lg:flex-row">
-          <div className="lg:h-[650px] sm:w-4/5 w-full transform rounded-lg bg-gray-700 sm:px-6 px-4 py-4 transition-colors duration-300 dark:bg-gray-800 lg:w-1/3">
+          <div className="lg:h-[650px] sm:w-4/5 w-full transform rounded-lg bg-gray-700 sm:px-6 px-4 py-4 transition-colors duration-300 dark:bg-gray-800 lg:w-1/3 cursor-pointer">
             <p className="text-lg font-medium text-gray-100">
               {planInEvidence.tierName}
             </p>
@@ -113,7 +113,7 @@ const Minimal = ({ header, subheader, plans }: Props) => {
             return (
               <div
                 key={plan.id}
-                className="lg:h-[650px] sm:w-4/5 w-full transform rounded-lg sm:px-6 px-4 py-4 transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-800 lg:w-1/3"
+                className="lg:h-[650px] sm:w-4/5 w-full transform rounded-lg sm:px-6 px-4 py-4 transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-800 lg:w-1/3 cursor-pointer"
               >
                 <p className="text-lg font-medium text-gray-800 dark:text-gray-100">
                   {plan.tierName}
