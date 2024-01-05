@@ -19,7 +19,7 @@ const Member = ({
           data?.member?.iframeUrl
             ? <IFrame
               iframeUrl={data?.member?.iframeUrl || ''}
-              iframeHeight={86}
+              iframeHeight={92}
             />
             : <div>Not found!</div>
             }
