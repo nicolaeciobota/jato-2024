@@ -43,10 +43,10 @@ type Props = {
 const Award = ({ data, lng }: Props) => {
   if (!data.award) notFound();
   return (
-    <section className="md:pt-40 pt-32 pb-[120px] dark:bg-dark-background">
+    <section className="md:pt-40 pt-32 pb-20 bg-[#3553520d] dark:bg-dark-background">
       <div className="container">
-        <div className="-mx-4 flex flex-wrap justify-center">
-          <div className="w-full md:px-4 sm:px-0 px-4 lg:w-full">
+        <div className="flex flex-wrap justify-center pb-5">
+          <div className="w-full sm:px-4 lg:w-full">
             <div className="flex md:flex-nowrap flex-wrap gap-4">
               <div className="md:w-1/2 w-full">
                 <StructuredText
@@ -194,13 +194,13 @@ const Award = ({ data, lng }: Props) => {
                 <h2 className="text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
                   {data.award.title}
                 </h2>
-                <p className="mb-3 font-bold leading-tight text-black dark:text-darktext sm:leading-tight">
+                <p className="mb-3 text-sm font-bold leading-tight text-black dark:text-darktext sm:leading-tight">
                   {data.award.jobTitle}
                 </p>
-                <p className="mb-4 leading-tight text-black dark:text-darktext sm:leading-tight">
+                <p className="mb-4 leading-tight text-black dark:text-darktext sm:leading-tight h-24 overflow-y-scroll">
                   {data.award.bio}
                 </p>
-                <div className="lg:mb-10 flex xl:items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
+                <div className="mb-4 flex xl:items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
                   <div className="flex xl:flex-nowrap flex-wrap items-start md:flex-row md:items-center xl:w-auto lg:w-[260px] sm:w-[220px] w-[200px]">
                     <Link
                       href={`/${lng}/awards/acategory/${data.award.acategory?.slug}`}
@@ -227,7 +227,7 @@ const Award = ({ data, lng }: Props) => {
                       </div>
                     </Link>
                   </div>
-                  <div className="mb-5">
+                  <div className="">
                     <a
                       href={`/${lng}/awards/atag/${data.award.atags[0].slug}`}
                       className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white"
@@ -236,8 +236,8 @@ const Award = ({ data, lng }: Props) => {
                     </a>
                   </div>
                 </div>
-                <div className="lg:mt-16 flex flex-wrap items-center justify-between">
-                  <div className="mb-5">
+                <div className="flex flex-wrap items-center justify-between">
+                  <div className="">
                     <h5 className="mb-3 text-sm font-medium text-body-color">
                       Award Tags :
                     </h5>
@@ -259,9 +259,11 @@ const Award = ({ data, lng }: Props) => {
             </div>
           </div>
         </div>
+      </div>
+      <div>
         {
-          data?.award?.iframe
-            ? <EmbededIframe iframeUrl={data?.award?.iframe || ''} iframeHeight={80} />
+            data?.award?.iframe
+            ? <EmbededIframe iframeUrl={data?.award?.iframe || ''} iframeHeight={100} />
             : null
         }
       </div>
