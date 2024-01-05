@@ -33,7 +33,7 @@ const GalleryBlock: FC<Props> = ({ galleryRecords }) => {
       <Swiper
         loop={true}
         spaceBetween={10}
-        navigation={true}
+        navigation={false}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
         className="mainSwiper !m-0"

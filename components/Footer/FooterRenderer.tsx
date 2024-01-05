@@ -1,15 +1,14 @@
+'use client'
 import Image from "next/image";
 import Link from "next/link";
-import SvgRenderer from "../Common/SvgRenderer";
 import {
-  ChangeLogRecord,
   FooterQuery,
   LegalPageRecord,
   SiteLocale,
 } from "@/graphql/generated";
-import { notFound } from "next/navigation";
-import { primaryColor } from "@/app/i18n/settings";
 import ReactMarkdown from "react-markdown";
+import { useContext } from "react";
+import { AppContext } from "@/context/App";
 
 type Props = {
   data: FooterQuery;
@@ -17,6 +16,9 @@ type Props = {
 };
 
 const Footer = ({ data, lng }: Props) => {
+
+  const { theme } = useContext(AppContext);
+
   return (
     <footer className="relative z-10 mx-auto flex w-full flex-col items-center justify-center bg-primary dark:bg-dark-background bg-opacity-5 pt-16 text-center md:text-start lg:pt-24">
       <div className="container w-full">
@@ -26,9 +28,12 @@ const Footer = ({ data, lng }: Props) => {
               <Link href={"/" + lng + "/home"} className="mb-8 inline-block">
                 {data.layout?.footerLogo && (
                   <Image
-                    src={data.layout.footerLogo.url}
+                    src={
+                      theme === 'dark'
+                        ? '/jato-logo-crop-for-web-dark-theme.png'
+                        : '/jato-logo-crop-for-web.png'}
                     alt="logo"
-                    className="w-80"
+                    className="w-80 dark:invert-1 dark:brightness-300"
                     width={data.layout.footerLogo.width || 60}
                     height={data.layout.footerLogo.height || 60}
                   />

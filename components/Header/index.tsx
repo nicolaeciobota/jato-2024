@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import LanguageSelector from "./LanguageSelector";
+import { useContext, useEffect, useState } from "react";
 import {
   LayoutModelNotificationField,
   MenuDropdownRecord,
@@ -13,8 +12,8 @@ import {
 } from "@/graphql/generated";
 import NotificationStrip from "./NotificationStrip";
 import { Menu } from "./HeaderRenderer";
-import { isEmptyDocument } from "datocms-structured-text-utils";
-import { SignOutButton, UserButton } from "@clerk/nextjs";
+import { UserButton } from "@clerk/nextjs";
+import { AppContext } from "@/context/App";
 
 type Props = {
   lng: SiteLocale;
@@ -23,7 +22,7 @@ type Props = {
 
 const Header = ({ lng, data }: Props) => {
   const menuData: Menu[] = [];
-  const [theme, setTheme] = useState<string>('light');
+  const { theme, themeHandler } = useContext(AppContext)
 
   data.layout!.menu.map((item) => {
     if (item._modelApiKey === "menu_dropdown") {
@@ -54,10 +53,7 @@ const Header = ({ lng, data }: Props) => {
 
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
-  const [notificationStrip, setNotificationStrip] = useState(
-    // !isEmptyDocument(data.layout?.notification)
-    false
-  );
+  const [notificationStrip, setNotificationStrip] = useState(false);
 
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen);
@@ -86,14 +82,7 @@ const Header = ({ lng, data }: Props) => {
     }
   };
 
-  const themeHandler = () => {
-    setTheme((pre: string) => {
-      const mode = pre === 'dark' ? 'light' : 'dark';
-      document.getElementsByTagName('body')[0].className = mode
-      return mode;
-    }
-    );
-  }
+  console.log({theme})
 
   return (
     <>
@@ -115,23 +104,25 @@ const Header = ({ lng, data }: Props) => {
         <div className="max-w-[1440px] relative flex items-center justify-between w-full xl:px-8 px-4 mx-auto">
           <div className="flex w-full items-center justify-between xl:pl-4 sm:pl-6">
             <div className="sm:-mx-4 mx-0">
-            <Link
-              href={"/" + lng}
-              className={`header-logo block w-full ${sticky ? "py-5 lg:py-2" : "py-8"
-                } `}
-            >
-              <div className="lg:w-24 w-16">
-                {data.layout?.logo.url && (
-                  <Image
-                    src={data.layout.logo.url}
-                    alt="logo"
-                    width={140}
-                    height={130}
-                  />
-                )}
-              </div>
-            </Link>
-          </div>
+              <Link
+                href={"/" + lng}
+                className={`header-logo block w-full ${sticky ? "py-5 lg:py-2" : "py-8"
+                  } `}
+              >
+                <div className="lg:w-24 w-16">
+                  {data.layout?.logo.url && (
+                    <Image
+                      src={theme === 'dark'
+                        ? '/jato-logo-crop-for-web-dark-theme.png'
+                        : '/jato-logo-crop-for-web.png'}
+                      alt="logo"
+                      width={140}
+                      height={130}
+                    />
+                  )}
+                </div>
+              </Link>
+            </div>
             <div className="ml-6">
               <nav
                 id="navbarCollapse"
@@ -188,9 +179,6 @@ const Header = ({ lng, data }: Props) => {
               </nav>
             </div>
             <div className="flex items-center gap-2">
-              {/* <div className="flex items-center justify-end">
-                <LanguageSelector lng={lng} languages={data._site.locales} />
-              </div> */}
               <div className="h-5 w-5 mx-3" onClick={themeHandler}>
                 <Image
                   src={
@@ -201,7 +189,7 @@ const Header = ({ lng, data }: Props) => {
                   width={20}
                   height={20}
                   alt="light"
-                  className={`${theme === 'dark' ? 'rotate-90' : 'rotate-[40]'} `}
+                  className={`cursor-pointer ${theme === 'dark' ? 'rotate-90' : 'rotate-[40]'} `}
                 />
               </div>
               <button
