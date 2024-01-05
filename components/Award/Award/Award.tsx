@@ -195,7 +195,7 @@ const Award = ({ data, lng }: Props) => {
                 <p className="mb-3 text-sm font-bold leading-tight text-black dark:text-darktext sm:leading-tight">
                   {data.award.jobTitle}
                 </p>
-                <p className="mb-4 leading-tight text-black dark:text-darktext sm:leading-tight h-24 overflow-y-scroll">
+                <p className="mb-4 leading-tight text-black dark:text-darktext sm:leading-tight h-24 overflow-auto">
                   {data.award.bio}
                 </p>
                 <div className="mb-4 flex xl:items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
