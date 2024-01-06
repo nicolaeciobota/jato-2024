@@ -33,9 +33,9 @@ const AgendaTabPage = ({ data, lng, page }: Props) => {
     const talks = useMemo(() => {
         if (selectedTab?.date && selectedTab?.title) {
             const filteredTab = data.allAgendaTabs.filter((tab) => tab?.title === selectedTab?.title && tab?.date === selectedTab?.date)[0];
-            return filteredTab?._allReferencingTalks || [];
+            return filteredTab?.talk || [];
         }
-        return data?.allAgendaTabs[0]._allReferencingTalks;
+        return data?.allAgendaTabs[0].talk;
     }, [selectedTab, data])
 
     return (
