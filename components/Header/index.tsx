@@ -82,8 +82,6 @@ const Header = ({ lng, data }: Props) => {
     }
   };
 
-  console.log({theme})
-
   return (
     <>
       {notificationStrip && (

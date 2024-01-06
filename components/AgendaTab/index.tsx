@@ -33,17 +33,17 @@ const AgendaTab = ({
   const talks = useMemo(() => {
     if (selectedTab?.date && selectedTab?.title) {
       const filteredTab = data.allAgendaTabs.filter((tab) => tab?.title === selectedTab?.title && tab?.date === selectedTab?.date)[0];
-      return filteredTab?._allReferencingTalks || [];
+      return filteredTab?.talk || [];
     }
-    return data?.allAgendaTabs[0]._allReferencingTalks;
+    return data?.allAgendaTabs[0].talk;
   }, [selectedTab, data])
 
   return (
     <section className="mt-4 lg:py-[120px] md:py-24 py-20 dark:bg-dark-background">
       <div className="container ">
-        <div className="flex xl:justify-between justify-center xl:flex-row flex-col">
-          <div className="-mx-4 flex h-auto xl:flex-col flex-row xl:justify-start items-start justify-center xl:w-1/5 w-full relative">
-            <div className="relative xl:block flex xl:w-auto w-full xl:overflow-hidden overflow-scroll pb-2">
+        <div className="flex xl:justify-between justify-center xl:flex-row flex-col mt-8 sm:mt-0">
+          <div className="md:-mx-4 flex h-auto xl:flex-col flex-row xl:justify-start items-start justify-center xl:w-1/5 w-full relative">
+            <div className="relative xl:block flex justify-center xl:w-auto w-full xl:overflow-hidden overflow-scroll pb-2">
               <div className="absolute bottom-0 left-[3.5px] top-2 hidden w-px bg-slate-200 xl:block"></div>
               {titleDate.map((tab, index) => <div onClick={() => setSelectedTab(tab)} key={index}>
                 <DateTab tab={tab} locale={lng} isSelected={tab.title === selectedTab.title && tab.date === selectedTab.date} />

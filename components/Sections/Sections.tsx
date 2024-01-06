@@ -1,5 +1,4 @@
 import Blog from "../Blog";
-import Award from "../Award";
 import Brands from "../Home/Brands";
 import Features from "../Home/Features";
 import Hero from "../Home/Hero";
@@ -20,7 +19,6 @@ import {
   AboutIntroRecord,
   SpeakersIntroRecord,
   AllPostsSectionRecord,
-  AllAwardsSectionRecord,
   BrandSectionRecord,
   ChangelogSectionRecord,
   CollectionMetadata,
@@ -28,7 +26,6 @@ import {
   FaqSectionRecord,
   FeatureListSectionRecord,
   FeaturedPostsSectionRecord,
-  FeaturedTalksSectionRecord,
   HeroSectionRecord,
   PageModelSectionsField,
   PostRecord,
@@ -39,14 +36,10 @@ import {
   StatsSectionRecord,
   TeamSectionRecord,
   VideoSectionRecord,
-  AwardRecord,
   AllTalksSectionRecord,
   TalkRecord,
-  SpeakerRecord,
   TalkQuery,
   AllStagesSectionRecord,
-  StagesQuery,
-  StageQuery,
   StageRecord,
   SpeakerSectionRecord,
   CategoryAwardRecord,
@@ -55,7 +48,6 @@ import {
 import GradientHero from "../Home/Hero/GradientHero";
 import FeatureCards from "../Home/Features/FeatureCards";
 import PostGridRenderer from "../Blog/PostGridRenderer";
-import AwardGridRenderer from "../Award/AwardGridRenderer";
 import { redirect } from "next/navigation";
 import RightImageHero from "../Home/Hero/RightImageHero";
 import BackgroundImageHero from "../Home/Hero/BackgroundImage";
@@ -87,8 +79,6 @@ type Props = {
   locale: SiteLocale;
   posts: PostRecord[];
   postMeta: CollectionMetadata;
-  awardMeta: CollectionMetadata;
-  awards: AwardRecord[];
   categoryAwardsMeta: CollectionMetadata;
   categoryAwards: CategoryAwardRecord[];
   talks: TalkRecord[];
@@ -103,8 +93,6 @@ export default function Section({
   locale,
   posts,
   postMeta,
-  awards,
-  awardMeta,
   stages,
   stageMeta,
   talks,
@@ -499,15 +487,6 @@ export default function Section({
             const allPostsSectionRecord = section as AllPostsSectionRecord;
             return (
               <PostGridRenderer data={posts} lng={locale} postMeta={postMeta} />
-            );
-          case "all_awards_section":
-            const allAwardsSectionRecord = section as AllAwardsSectionRecord;
-            return (
-              <AwardGridRenderer
-                data={awards}
-                lng={locale}
-                awardMeta={awardMeta}
-              />
             );
           case "all_category_awards_section":
             const allCategoryAwardsSectionRecord = section as AllCategoryAwardsSectionRecord;

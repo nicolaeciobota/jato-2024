@@ -27,10 +27,10 @@ const SingleCategoryAward = ({ categoryRecord, locale }: Props) => {
           <div className="lg:w-4/5 w-full flex flex-wrap gap-6 justify-start items-center">
             {
               award?.map((singleAward: AwardRecord, index: number) => {
-                const { title, seoTags, jobTitle, slug } = singleAward;
+                const { title, seoTags, jobTitle } = singleAward;
                 return (
                   <div key={index} className="lg:w-[31%] md:w-[48%] w-full overflow-hidden group rounded bg-neutral-100 cursor-pointer relative">
-                    <Link href={"/" + locale + "/awards/" + slug}>
+                    <Link href={"/" + locale + "/category-awards/" + category?.slug + `_${index}`}>
                       <DatoImage
                         className="h-[280px] object-cover w-full transition duration-500 group-hover:scale-105"
                         objectFit="cover"

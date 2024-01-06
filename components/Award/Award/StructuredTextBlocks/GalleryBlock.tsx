@@ -46,7 +46,7 @@ const GalleryBlock: FC<Props> = ({ galleryRecords }) => {
               <DatoImage
                 className="rounded"
                 layout="fill"
-                objectFit="contain"
+                objectFit="cover"
                 data={image.responsiveImage}
               />
 

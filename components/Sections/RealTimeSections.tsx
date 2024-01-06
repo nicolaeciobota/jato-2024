@@ -45,13 +45,11 @@ export default function RealTimeSections({
       locale={locale}
       sections={data.page.sections as Array<PageModelSectionsField>}
       posts={data.allPosts as PostRecord[]}
-      awards={data.allAwards as AwardRecord[]}
       categoryAwards={data.allCategoryAwards as CategoryAwardRecord[]}
       categoryAwardsMeta={data._allCategoryAwardsMeta as CollectionMetadata}
       talks={data.allTalks as TalkRecord[]}
       stages={data.allStages as StageRecord[]}
       postMeta={data._allPostsMeta as CollectionMetadata}
-      awardMeta={data._allAwardsMeta as CollectionMetadata}
       talkMeta={data._allTalksMeta as CollectionMetadata}
       stageMeta={data._allStagesMeta as CollectionMetadata}
       data={{

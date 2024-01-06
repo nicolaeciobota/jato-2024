@@ -15,13 +15,7 @@ query AgendaTab(
     date
     title
     id
-    _allReferencingTalks(
-      filter: { title: { isBlank: "false" } }
-      orderBy: _createdAt_DESC
-      first: "100"
-      locale: $locale
-      fallbackLocales: $fallbackLocale
-    ) {
+    talk {
       _publishedAt
       slug
       id
@@ -78,12 +72,6 @@ query AgendaTab(
           }
         }
       }
-    }
-    _allReferencingTalksMeta(
-      locale: $locale
-      filter: { title: { isBlank: "false" } }
-    ) {
-      count
     }
   }
   _allAgendaTabsMeta(locale: $locale) {

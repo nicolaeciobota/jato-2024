@@ -1,3 +1,4 @@
+'use client'
 import QuoteBlock from "@/components/Award/Award/StructuredTextBlocks/QuoteBlock";
 import {
   isBlockquote,
@@ -20,24 +21,28 @@ import {
   ImageBlockRecord,
   GalleryRecord,
   NewsletterSubscriptionRecord,
-  AwardQuery,
   AwardRecord,
   ResponsiveImage,
   SiteLocale,
+  SingleCategoryAwardBySlugQuery,
 } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 import Highlighter from "@/components/Common/Highlighter";
 import CTAAppBlock from "./StructuredTextBlocks/CTAAppBlock";
 import GalleryBlock from "./StructuredTextBlocks/GalleryBlock";
 import EmbededIframe from "@/components/IFrame/EmbededIframe";
+import { useState } from "react";
 
 type Props = {
-  data: AwardQuery;
+  data: SingleCategoryAwardBySlugQuery;
   lng: SiteLocale;
+  currentAward: string | number
 };
 
-const Award = ({ data, lng }: Props) => {
-  if (!data.award) notFound();
+const SingleCategoryAwards = ({ data, lng, currentAward }: Props) => {
+
+  const [index, setIndex] = useState<number>(+currentAward)
+  if (!data.categoryAward) notFound();
 
   return (
     <section className="pt-[100px] pb-20 bg-[#3553520d] dark:bg-dark-background">
@@ -47,7 +52,7 @@ const Award = ({ data, lng }: Props) => {
 
             <div className="flex xl:flex-nowrap flex-wrap items-start md:flex-row md:items-center xl:w-auto lg:w-[260px] sm:w-[220px] w-[200px]">
               <Link
-                href={`/${lng}/awards/acategory/${data.award.acategory?.slug}`}
+                href={`/${lng}/category-awards/acategory/${data.categoryAward.category?.slug}`}
                 className="mb-5 xl:mr-10 flex items-center"
               >
                 <div className="sm:mr-4 mr-1">
@@ -55,7 +60,7 @@ const Award = ({ data, lng }: Props) => {
                     <DatoImage
                       className="h-full w-full object-cover"
                       data={
-                        data.award.acategory?.picture
+                        data.categoryAward.category?.picture
                           .responsiveImage as ResponsiveImage
                       }
                     />
@@ -63,10 +68,10 @@ const Award = ({ data, lng }: Props) => {
                 </div>
                 <div className="w-full">
                   <h4 className="mb-1 sm:text-base text-sm font-medium text-body-color">
-                    <span>{data.award.acategory?.name}</span>
+                    <span>{data.categoryAward.category?.name}</span>
                   </h4>
                   <p className="text-xs text-body-color">
-                    {data.award.acategory?.bio}
+                    {data.categoryAward.category?.bio}
                   </p>
                 </div>
               </Link>
@@ -75,7 +80,7 @@ const Award = ({ data, lng }: Props) => {
             <div className="flex md:flex-nowrap flex-wrap gap-4">
               <div className="md:w-1/2 w-full">
                 <StructuredText
-                  data={data.award.content as any}
+                  data={data.categoryAward.award[index]?.content as any}
                   renderNode={Highlighter}
                   renderBlock={({ record }: any) => {
                     switch (record.__typename) {
@@ -143,7 +148,7 @@ const Award = ({ data, lng }: Props) => {
                         return (
                           <Link
                             {...transformedMeta}
-                            href={`/${lng}/awards/${record.slug}`}
+                            href={`/${lng}/category-awards/${record.slug}`}
                             className="text-base font-medium leading-relaxed text-body-color underline sm:text-lg sm:leading-relaxed"
                           >
                             {children}
@@ -160,7 +165,7 @@ const Award = ({ data, lng }: Props) => {
                         return (
                           <Link
                             key={AwardRecord.id}
-                            href={`/${lng}/awards/${record.slug}`}
+                            href={`/${lng}/category-awards/${record.slug}`}
                             className="underline"
                           >
                             {AwardRecord.title}
@@ -217,31 +222,51 @@ const Award = ({ data, lng }: Props) => {
               </div>
               <div className="md:w-1/2 w-full">
                 <h2 className="text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
-                  {data.award.title}
+                  {data.categoryAward.award[index].title}
                 </h2>
                 <p className="mb-3 text-sm font-bold leading-tight text-black dark:text-darktext sm:leading-tight">
-                  {data.award.jobTitle}
+                  {data.categoryAward.award[index].jobTitle}
                 </p>
                 <p className="mb-4 leading-tight text-black dark:text-darktext sm:leading-tight max-h-[200px] overflow-auto">
-                  {data.award.bio}
+                  {data.categoryAward.award[index].bio}
                 </p>
                 <div className="mb-4 flex xl:items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
                   <div className="">
                     <a
-                      href={`/${lng}/awards/atag/${data.award.atags[0].slug}`}
+                      href={`/${lng}/category-awards/atag/${data.categoryAward.award[index].atags[0].slug}`}
                       className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white"
                     >
-                      {data.award.atags[0].atag}
+                      {data.categoryAward.award[index].atags[0].atag}
                     </a>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="bg-primary bg-opacity-10 text-body-color duration-300 hover:bg-opacity-100 hover:text-white w-8 h-8 rounded-full flex justify-center items-center">
+                  <div
+                    onClick={() => {
+                      setIndex((pre: number) => {
+                        if (pre > 0) {
+                          return pre - 1;
+                        }
+                        return pre
+                      })
+                    }}
+                    className="cursor-pointer bg-primary bg-opacity-10 text-body-color duration-300 hover:bg-opacity-100 hover:text-white w-8 h-8 rounded-full flex justify-center items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                     </svg>
                   </div>
-                  <div className="bg-primary bg-opacity-10 text-body-color duration-300 hover:bg-opacity-100 hover:text-white w-8 h-8 rounded-full flex justify-center items-center">
+                  <div
+                    onClick={() => {
+                      if (data.categoryAward) {
+                        setIndex((pre: number) => {
+                          if (data?.categoryAward && pre < data?.categoryAward.award.length - 1) {
+                            return pre + 1;
+                          }
+                          return pre
+                        })
+                      }
+                    }}
+                    className="cursor-pointer bg-primary bg-opacity-10 text-body-color duration-300 hover:bg-opacity-100 hover:text-white w-8 h-8 rounded-full flex justify-center items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
                       <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                     </svg>
@@ -254,8 +279,8 @@ const Award = ({ data, lng }: Props) => {
       </div>
       <div>
         {
-          data?.award?.iframe
-            ? <EmbededIframe iframeUrl={data?.award?.iframe || ''} iframeHeight={100} />
+          data?.categoryAward.award[index]?.iframe
+            ? <EmbededIframe iframeUrl={data?.categoryAward.award[index]?.iframe || ''} iframeHeight={100} />
             : null
         }
       </div>
@@ -263,4 +288,4 @@ const Award = ({ data, lng }: Props) => {
   );
 };
 
-export default Award;
+export default SingleCategoryAwards;
