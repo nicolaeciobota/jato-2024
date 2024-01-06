@@ -1,4 +1,4 @@
-import { AwardTagQuery, SiteLocale, ResponsiveImage, AwardRecord } from "@/graphql/generated";
+import { AwardTagQuery, SiteLocale, ResponsiveImage } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Image as DatoImage } from "react-datocms";
@@ -21,7 +21,7 @@ const TagAwards = ({ data, lng }: Props) => {
           <div className="flex lg:flex-nowrap flex-wrap xl:gap-8 gap-6 lg:justify-between justify-center lg:pt-16 pt-12">
             <div className="lg:w-1/5 w-full">
               <div className="flex gap-3 items-center lg:justify-start justify-center">
-                <h2 className="text-2xl font-semibold text-neutral-950">{data.atag.atag}</h2>
+                <h2 className="text-2xl font-semibold text-neutral-950">{data?.atag?.atag}</h2>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -46,10 +46,10 @@ const TagAwards = ({ data, lng }: Props) => {
             <div className="lg:w-4/5 w-full flex flex-wrap gap-6 justify-start items-center">
               {
                 data.atag["_allReferencingAwards"]?.map((singleAward: any, index: number) => {
-                  const { title = '', seoTags, jobTitle = '', slug = '', acategory } = singleAward;
+                  const { title = '', seoTags, jobTitle = '', slug = '', acategory = {} } = singleAward;
                   return (
                     <div key={index} className="lg:w-[31%] md:w-[48%] w-full overflow-hidden group rounded-3xl bg-neutral-100 cursor-pointer relative">
-                      <Link href={"/" + lng + "/category-awards/" + acategory.slug + `_${index}`}>
+                      <Link href={"/" + lng + "/category-awards/" + acategory?.slug + `_${index}`}>
                         <DatoImage
                           className="h-[280px] object-cover w-full transition duration-500 group-hover:scale-105"
                           objectFit="cover"
