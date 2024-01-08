@@ -3,6 +3,7 @@ import SingleTalk from "./SingleTalk";
 import { Image as DatoImage } from "react-datocms";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from 'rehype-raw';
 
 type Props = {
   data: SpeakerQuery;
@@ -34,7 +35,11 @@ const SpeakerTalks = ({ data, lng }: Props) => {
                 {data.speaker.jobTitle}
               </h2>
               <div className="mt-4 max-w-2xl text-gray-800 dark:text-darktext">
-                <ReactMarkdown>{data.speaker.bio}</ReactMarkdown>
+                <ReactMarkdown
+                  rehypePlugins={[rehypeRaw] as any}
+                >
+                  {data.speaker.bio}
+                </ReactMarkdown>
               </div>
             </div>
           </div>
