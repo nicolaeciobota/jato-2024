@@ -5,6 +5,7 @@ import {
 } from '@/graphql/generated';
 import PageIndicatorList from './PageIndicatorList';
 import SingleBlog from './SingleBlog';
+import Link from 'next/link';
 
 type Props = {
   data: PostRecord[];
@@ -33,12 +34,12 @@ const PostGridRenderer = ({ data, lng, postMeta }: Props) => {
               <PageIndicatorList lng={lng} postCount={postMeta.count} />
               {9 < postMeta.count && (
                 <li className="mx-1">
-                  <a
+                  <Link
                     href={`/${lng}/posts/page/2`}
                     className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
                   >
                     Next
-                  </a>
+                  </Link>
                 </li>
               )}
             </ul>

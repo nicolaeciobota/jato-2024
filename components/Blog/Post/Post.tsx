@@ -85,12 +85,12 @@ const Post = ({ data, lng }: Props) => {
                   )}
                 </div>
                 <div className="mb-5">
-                  <a
+                  <Link
                     href={`/${lng}/posts/tag/${data.post.tags[0].slug}`}
                     className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white"
                   >
                     {data.post.tags[0].tag}
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div>
@@ -214,14 +214,14 @@ const Post = ({ data, lng }: Props) => {
                         }, {}) || {};
 
                       return (
-                        <a
+                        <Link
                           className="text-base font-medium leading-relaxed text-body-color dark:text-darktext underline sm:text-lg sm:leading-relaxed"
                           href={node.url}
                           key={key}
                           {...attributeObject}
                         >
                           {children}
-                        </a>
+                        </Link>
                       );
                     }),
                     renderNodeRule(isBlockquote, ({ children, key }) => {

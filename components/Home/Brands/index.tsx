@@ -1,5 +1,6 @@
 import { BrandRecord } from '@/graphql/generated';
 import Image from 'next/image';
+import Link from 'next/link';
 
 type Props = {
   brandShowcase: BrandRecord[];
@@ -30,7 +31,7 @@ const SingleBrand = ({ brand }: { brand: BrandRecord }) => {
 
   return (
     <div className="mx-3 flex w-full max-w-[160px] items-center justify-center py-[15px] sm:mx-4 lg:max-w-[130px] xl:mx-6 xl:max-w-[150px] 2xl:mx-8 2xl:max-w-[160px]">
-      <a
+      <Link
         href={brandUrl || '#'}
         target="_blank"
         rel="nofollow noreferrer"
@@ -39,7 +40,7 @@ const SingleBrand = ({ brand }: { brand: BrandRecord }) => {
         <Image src={brandLogo.url} alt={brandName} fill 
           className='dark:invert-0 brightness-200'
         />
-      </a>
+      </Link>
     </div>
   );
 };

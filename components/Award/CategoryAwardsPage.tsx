@@ -1,6 +1,7 @@
 import PageIndicatorList from "@/components/Award/PageIndicatorList";
 import { CategoryAwardRecord, CategoryAwardQuery, SiteLocale } from "@/graphql/generated";
 import SingleCategoryAward from "./SingleCategoryAward";
+import Link from "next/link";
 
 type Props = {
   data: CategoryAwardQuery;
@@ -21,7 +22,7 @@ const CategoryAwardsPage = ({ data, lng, page }: Props) => {
           <div className="w-full px-4">
             <ul className="flex items-center justify-center pt-8">
               <li className="mx-1">
-                <a
+                <Link
                   href={
                     page - 1 === 1
                       ? `/${lng}/category-awards`
@@ -30,7 +31,7 @@ const CategoryAwardsPage = ({ data, lng, page }: Props) => {
                   className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
                 >
                   Prev
-                </a>
+                </Link>
               </li>
               <PageIndicatorList
                 lng={lng}
@@ -38,12 +39,12 @@ const CategoryAwardsPage = ({ data, lng, page }: Props) => {
               />
               {page * 9 <= data?._allCategoryAwardsMeta?.count && (
                 <li className="mx-1">
-                  <a
+                  <Link
                     href={`/${lng}/category-awards/page/${page + 1}`}
                     className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
                   >
                     Next
-                  </a>
+                  </Link>
                 </li>
               )}
             </ul>
