@@ -1,4 +1,5 @@
 import { Maybe } from 'graphql/jsutils/Maybe';
+import Link from 'next/link';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
 type Props = {
@@ -22,7 +23,7 @@ const CTAAppBlock = ({ title, text, googleURL, appleURL }: Props) => {
 
         <div className="mt-6">
           {appleURL && (
-            <a
+            <Link
               href={appleURL}
               className="inline-flex w-full items-center justify-center overflow-hidden rounded-lg bg-gray-900 px-4 py-2.5 text-sm text-white shadow transition-colors duration-300 hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80 dark:bg-gray-800 dark:hover:bg-gray-700 sm:mx-2 sm:w-auto"
             >
@@ -57,11 +58,11 @@ const CTAAppBlock = ({ title, text, googleURL, appleURL }: Props) => {
               </svg>
 
               <span className="mx-2">Get it on the App Store</span>
-            </a>
+            </Link>
           )}
 
           {googleURL && (
-            <a
+            <Link
               href={googleURL}
               className="mt-4 inline-flex w-full items-center justify-center overflow-hidden rounded-lg bg-primary px-4 py-2.5 text-sm text-white shadow transition-colors duration-300 hover:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80 sm:mx-2 sm:mt-0 sm:w-auto"
             >
@@ -74,7 +75,7 @@ const CTAAppBlock = ({ title, text, googleURL, appleURL }: Props) => {
               </svg>
 
               <span className="mx-2">Get it on Google Play</span>
-            </a>
+            </Link>
           )}
         </div>
       </div>

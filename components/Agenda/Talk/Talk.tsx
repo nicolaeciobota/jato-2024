@@ -212,14 +212,14 @@ const Talk = ({ data, lng }: Props) => {
                           }, {}) || {};
 
                         return (
-                          <a
+                          <Link
                             className="text-base font-medium leading-relaxed text-body-color dark:text-darktext underline sm:text-lg sm:leading-relaxed"
                             href={node.url}
                             key={key}
                             {...attributeObject}
                           >
                             {children}
-                          </a>
+                          </Link>
                         );
                       }),
                       renderNodeRule(isBlockquote, ({ children, key }) => {

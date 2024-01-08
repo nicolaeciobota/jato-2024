@@ -1,5 +1,6 @@
 import { ButtonRecord, FileField } from '@/graphql/generated';
 import { Maybe } from 'graphql/jsutils/Maybe';
+import Link from 'next/link';
 import { Image as DatoImage } from 'react-datocms';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
@@ -47,13 +48,13 @@ const SplitImage = ({ heroTitle, heroSubtitle, buttons, image }: Props) => {
               const secondary =
                 'hover:text-deep-purple-accent-700 inline-flex items-center font-semibold text-gray-800 dark:text-darktext transition-colors duration-200 sm:w-auto w-full sm:justify-start justify-center';
               return (
-                <a
+                <Link
                   key={button.id}
                   href={button.url || '#'}
                   className={button.primary ? primary : secondary}
                 >
                   {button.label}
-                </a>
+                </Link>
               );
             })}
           </div>
