@@ -199,14 +199,14 @@ const Award = ({ data, lng }: Props) => {
                         }, {}) || {};
 
                       return (
-                        <a
+                        <Link
                           className="text-base font-medium leading-relaxed text-body-color underline sm:text-lg sm:leading-relaxed"
                           href={node.url}
                           key={key}
                           {...attributeObject}
                         >
                           {children}
-                        </a>
+                        </Link>
                       );
                     }),
                     renderNodeRule(isBlockquote, ({ children, key }) => {
@@ -227,12 +227,12 @@ const Award = ({ data, lng }: Props) => {
                 </p>
                 <div className="mb-4 flex xl:items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
                   <div className="">
-                    <a
+                    <Link
                       href={`/${lng}/awards/atag/${data.award.atags[0].slug}`}
                       className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white"
                     >
                       {data.award.atags[0].atag}
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="flex gap-4">

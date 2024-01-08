@@ -58,12 +58,12 @@ const CarrouselFeaturedPosts = ({
               {currentReview.tags[0].tag}
             </p>
 
-            <a
+            <Link
               href="#"
               className="mt-4 block text-2xl font-semibold text-gray-800 hover:underline dark:text-darktext lg:h-16"
             >
               {currentReview.title}
-            </a>
+            </Link>
 
             <p className="mt-3 text-sm text-gray-500 dark:text-darktext md:text-sm">
               {currentReview.seoTags?.description}

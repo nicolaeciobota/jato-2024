@@ -13,15 +13,15 @@ const TagAwards = ({ data, lng }: Props) => {
     notFound();
   }
   return (
-    <section className="pb-[120px] pt-[120px]">
+    <section className="pb-[120px] pt-[120px] dark:bg-dark-background">
       <div className="container">
         <div className="pb-16">
-          <div className="relative before:absolute after:absolute before:bg-neutral-950 after:bg-neutral-950/10 before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px">
+          <div className="relative before:absolute after:absolute before:bg-neutral-950 dark:before:bg-primary after:bg-neutral-950/10 dark:after:bg-[#8a8f9c] before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px">
           </div>
           <div className="flex lg:flex-nowrap flex-wrap xl:gap-8 gap-6 lg:justify-between justify-center lg:pt-16 pt-12">
             <div className="lg:w-1/5 w-full">
               <div className="flex gap-3 items-center lg:justify-start justify-center">
-                <h2 className="text-2xl font-semibold text-neutral-950">{data?.atag?.atag}</h2>
+                <h2 className="text-2xl font-semibold text-neutral-950 dark:text-darktext">{data?.atag?.atag}</h2>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

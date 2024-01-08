@@ -58,13 +58,13 @@ const Footer = ({ data, lng }: Props) => {
                     const pageLink = link as LegalPageRecord; // The field has a "at least one" validation
                     return (
                       <li key={pageLink.id}>
-                        <a
+                        <Link
                           href={"/" + lng + "/legal/" + pageLink.slug}
                           className="mb-4 inline-block text-base font-medium text-body-color dark:text-darktext hover:text-primary"
                         >
                           {" "}
                           {pageLink.title}{" "}
-                        </a>
+                        </Link>
                       </li>
                     );
                   })}

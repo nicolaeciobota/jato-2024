@@ -1,6 +1,7 @@
 import Highlighter from '@/components/Common/Highlighter';
 import { PricingTierRecord } from '@/graphql/generated';
 import { Maybe } from 'graphql/jsutils/Maybe';
+import Link from 'next/link';
 import { StructuredText } from 'react-datocms/structured-text';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
@@ -77,12 +78,12 @@ const GradientCards = ({ header, subheader, plans }: Props) => {
               })}
             </ul>
 
-            <a
+            <Link
               href="#"
               className="block rounded-lg bg-indigo-200 bg-opacity-50 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-300 focus-visible:ring active:bg-indigo-400 md:text-base"
             >
               Get the Pro Bundle
-            </a>
+            </Link>
           </div>
           {plans.map((plan) => {
             const planFeatures = plan.planFeatures.split(', ');
@@ -134,12 +135,12 @@ const GradientCards = ({ header, subheader, plans }: Props) => {
                   })}
                 </ul>
 
-                <a
+                <Link
                   href="#"
                   className="block rounded-lg bg-gray-500 px-8 py-3 text-center text-sm font-semibold text-gray-100 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-600 focus-visible:ring active:text-gray-300 md:text-base"
                 >
                   Get the Basic Bundle
-                </a>
+                </Link>
               </div>
             );
           })}

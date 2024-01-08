@@ -1,6 +1,7 @@
 import PageIndicatorList from "@/components/Award/PageIndicatorList";
 import { AwardRecord, AwardsQuery, SiteLocale } from "@/graphql/generated";
 import SingleAward from "./SingleAward";
+import Link from "next/link";
 
 type Props = {
   data: AwardsQuery;
@@ -27,7 +28,7 @@ const AwardsPage = ({ data, lng, page }: Props) => {
           <div className="w-full px-4">
             <ul className="flex items-center justify-center pt-8">
               <li className="mx-1">
-                <a
+                <Link
                   href={
                     page - 1 === 1
                       ? `/${lng}/award`
@@ -36,7 +37,7 @@ const AwardsPage = ({ data, lng, page }: Props) => {
                   className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
                 >
                   Prev
-                </a>
+                </Link>
               </li>
               <PageIndicatorList
                 lng={lng}
@@ -44,12 +45,12 @@ const AwardsPage = ({ data, lng, page }: Props) => {
               />
               {page * 9 <= data["_allAwardsMeta"].count && (
                 <li className="mx-1">
-                  <a
+                  <Link
                     href={`/${lng}/awards/page/${page + 1}`}
                     className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
                   >
                     Next
-                  </a>
+                  </Link>
                 </li>
               )}
             </ul>

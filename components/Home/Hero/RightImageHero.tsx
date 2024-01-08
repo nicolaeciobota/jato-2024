@@ -35,13 +35,13 @@ const RightImageHero = ({ heroTitle, heroSubtitle, buttons, image }: Props) => {
                 const secondary =
                   'inline-block rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base sm:w-auto w-full';
                 return (
-                  <a
+                  <Link
                     key={button.id}
                     href={button.url || '#'}
                     className={button.primary ? primary : secondary}
                   >
                     {button.label}
-                  </a>
+                  </Link>
                 );
               })}
             </div>
