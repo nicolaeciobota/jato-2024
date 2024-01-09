@@ -42,28 +42,28 @@ const Award = ({ data, lng }: Props) => {
               </Link>
             </div>
 
-            <div className="flex flex-col md:flex-nowrap flex-wrap">
-
-              <div className="w-full">
+            <div className="flex md:flex-nowrap flex-wrap gap-10">
+              <div className="md:w-1/2 w-full">
                 <StructuredTextSection data={data.award.content} lng={lng} />
               </div>
-
-              <h2 className="my-3 text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
-                {data.award.title}
-              </h2>
-              <p className="mb-8 text-sm font-bold leading-tight text-black dark:text-darktext sm:leading-tight">
-                {data.award.jobTitle}
-              </p>
-              <div className="w-full">
+              <div className="md:w-1/2 w-full">
+                <h2 className="text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
+                  {data?.award?.title}
+                </h2>
+                <p className="mb-3 text-sm font-bold leading-tight text-black dark:text-darktext sm:leading-tight">
+                  {data?.award?.jobTitle}
+                </p>
                 <StructuredTextSection data={data.award.biography} lng={lng} />
-              </div>
-              <div className="my-5">
-                <Link
-                  href={`/${lng}/awards/atag/${data.award.atags[0].slug}`}
-                  className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white"
-                >
-                  {data.award.atags[0].atag}
-                </Link>
+                <div className="my-4 flex xl:items-center justify-between dark:border-white dark:border-opacity-10">
+                  <div className="">
+                    <Link
+                      href={`/${lng}/awards/atag/${data?.award?.atags[0]?.slug}`}
+                      className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white"
+                    >
+                      {data?.award?.atags[0].atag}
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

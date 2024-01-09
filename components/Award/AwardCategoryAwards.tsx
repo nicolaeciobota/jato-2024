@@ -16,7 +16,7 @@ const AwardCategory = ({ data, lng }: Props) => {
   if (!data.acategory) notFound();
   return (
     <>
-      <section className="py-[32px] dark:bg-dark-background">
+      <section className="lg:py-[32px] py-14 dark:bg-dark-background">
 
         <div className='flex width-full justify-center items-center gap-4 lg:py-16 py-8'>
           <svg

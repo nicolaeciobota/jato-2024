@@ -9,6 +9,7 @@ type Props = {
     iframeStyles?: CSSProperties;
     iframeHeight?: number;
     shadowWidth?: number;
+    btnText?: string;
 }
 
 const IFrame: FC<Props> = ({
@@ -16,6 +17,7 @@ const IFrame: FC<Props> = ({
     iframeStyles,
     iframeHeight,
     shadowWidth,
+    btnText
 }) => {
 
     const { back } = useRouter();
@@ -47,16 +49,13 @@ const IFrame: FC<Props> = ({
             <div className="cursor-pointer" ref={ref}>
                 {
                     !loading
-                        ? <svg
+                        ? <button
                             onClick={routeBackHandler}
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            className="w-8 h-8 lg:w-10 lg:h-10 relative block ml-auto mr-2 mt-0 lg:mr-8 z-50">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                        </svg>
+                            type="button"
+                            className="relative block mt-3 ml-auto mr-2 lg:mr-8 z-50 mb-4 cursor-pointer rounded-lg bg-gradient-to-r from-primary to-teal-400 p-2 text-[14px] text-white transition-all hover:opacity-80 sm:mb-0 sm:w-auto"
+                        >
+                            {btnText}
+                        </button>
                         : null
                 }
 
@@ -76,6 +75,7 @@ const IFrame: FC<Props> = ({
                         left: 0,
                         right: 0,
                         margin: 'auto',
+                        marginTop: '60px',
                         borderRadius: '12px',
                         ...iframeStyles
                     }}
