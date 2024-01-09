@@ -39,7 +39,7 @@ const SingleAward = ({ award, locale }: Props) => {
             >
               {title}
             </h3>
-            <p className="text-sm ">{jobTitle}</p>
+            <p className="text-sm dark:text-darktext">{jobTitle}</p>
           </Link>
           <div className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10" />
           <div className="flex h-full items-center justify-between">
