@@ -15,8 +15,10 @@ query Awards(
     slug
     id
     title
+    jobTitle
     atags {
       atag
+      slug
     }
     seoTags {
       description

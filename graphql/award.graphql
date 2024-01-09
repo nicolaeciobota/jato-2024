@@ -11,7 +11,6 @@ query Award(
     _publishedAt
     title
     jobTitle
-    bio
     iframe
     acategory {
       name
@@ -39,6 +38,133 @@ query Award(
       id
       atag
       slug
+    }
+    biography {
+      value
+      links {
+        _publishedAt
+        __typename
+        slug
+        id
+        title
+        atags {
+          atag
+        }
+        seoTags {
+          description
+          image {
+            responsiveImage {
+              srcSet
+              webpSrcSet
+              sizes
+              src
+              width
+              height
+              aspectRatio
+              alt
+              title
+              bgColor
+              base64
+            }
+          }
+        }
+        acategory {
+          name
+          bio
+          picture {
+            responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
+              srcSet
+              webpSrcSet
+              sizes
+              src
+              width
+              height
+              aspectRatio
+              alt
+              title
+              bgColor
+              base64
+            }
+          }
+        }
+      }
+      blocks {
+        ... on ImageBlockRecord {
+          id
+          __typename
+          image {
+            id
+            responsiveImage {
+              srcSet
+              webpSrcSet
+              sizes
+              src
+              width
+              height
+              aspectRatio
+              alt
+              title
+              base64
+            }
+          }
+        }
+        ... on GalleryRecord {
+          id
+          __typename
+          imageGallery {
+            id
+            responsiveImage {
+              srcSet
+              webpSrcSet
+              sizes
+              src
+              width
+              height
+              aspectRatio
+              alt
+              title
+              base64
+            }
+          }
+        }
+        ... on AppCtaRecord {
+          id
+          __typename
+          text
+          title
+          googlePlayUrl
+          appstoreUrl
+        }
+        ... on NewsletterSubscriptionRecord {
+          id
+          __typename
+          buttonLabel
+          subtitle
+          title
+        }
+        ... on CtaButtonWithImageRecord {
+          id
+          __typename
+          title
+          subtitle
+          image {
+            id
+            responsiveImage {
+              srcSet
+              webpSrcSet
+              sizes
+              src
+              width
+              height
+              aspectRatio
+              alt
+              title
+              base64
+            }
+          }
+          buttonLabel
+        }
+      }
     }
     content {
       value

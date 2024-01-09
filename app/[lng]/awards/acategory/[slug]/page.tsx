@@ -1,11 +1,10 @@
 import { getFallbackLocale } from "@/app/i18n/settings";
-import RealTimeTagPosts from "@/components/Blog/RealTime/RealTimeTagPosts";
-import TagPosts from "@/components/Blog/TagPosts";
-import TagAwards from "@/components/Award/AwardTypeTagAward";
-import RealTimeTagAwards from "@/components/Award/RealTime/RealTimeTagAward";
-import { AwardTagDocument, SiteLocale, TagDocument } from "@/graphql/generated";
+import AwardCategory from "@/components/Award/AwardCategoryAwards";
+import RealTimeAwardCategoryAwards from "@/components/Award/RealTime/RealTimeAwardCategoryAwards";
+import { AwardCategoryDocument, SiteLocale } from "@/graphql/generated";
 import queryDatoCMS from "@/utils/queryDatoCMS";
 import { draftMode } from "next/headers";
+import { notFound } from "next/navigation";
 
 type Params = {
   params: {
@@ -14,13 +13,13 @@ type Params = {
   };
 };
 
-const TagAwardsPage = async ({ params }: Params) => {
+const ACategoryPage = async ({ params }: Params) => {
   const fallbackLng = await getFallbackLocale();
   const { lng } = params;
   const { isEnabled } = draftMode();
 
   const data = await queryDatoCMS(
-    AwardTagDocument,
+    AwardCategoryDocument,
     {
       locale: lng,
       fallbackLocale: fallbackLng,
@@ -29,15 +28,17 @@ const TagAwardsPage = async ({ params }: Params) => {
     isEnabled
   );
 
+  if (!data.acategory) notFound();
+
   return (
     <>
-      {!isEnabled && <TagAwards data={data} lng={lng} />}
+      {!isEnabled && <AwardCategory data={data} lng={lng} />}
       {isEnabled && (
-        <RealTimeTagAwards
+        <RealTimeAwardCategoryAwards
           initialData={data}
           locale={lng}
           token={process.env.DATOCMS_READONLY_API_TOKEN || ""}
-          query={AwardTagDocument}
+          query={AwardCategoryDocument}
           variables={{
             locale: lng,
             fallbackLocale: fallbackLng,
@@ -49,4 +50,4 @@ const TagAwardsPage = async ({ params }: Params) => {
   );
 };
 
-export default TagAwardsPage;
+export default ACategoryPage;

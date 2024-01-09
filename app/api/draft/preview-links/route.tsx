@@ -20,8 +20,6 @@ const generatePreviewUrl = ({
       return `/${locale}/posts/${item.attributes.slug}`;
     case "award":
       return `/${locale}/awards/${item.attributes.slug}`;
-    case "category_awards":
-      return `/${locale}/category-awards/${item.attributes.slug}`;
     case "agenda_tab":
       return `/${locale}/agenda-tab/${item.attributes.slug}`;
     case "tag":

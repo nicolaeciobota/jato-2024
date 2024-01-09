@@ -1,35 +1,11 @@
-import QuoteBlock from "@/components/Award/Award/StructuredTextBlocks/QuoteBlock";
 import {
-  isBlockquote,
-  isHeading,
-  isLink,
-  isParagraph,
-} from "datocms-structured-text-utils";
-import {
-  Image as DatoImage,
-  StructuredText,
-  renderNodeRule,
-} from "react-datocms";
-import NewsletterCTABlock from "@/components/Award/Award/StructuredTextBlocks/NewsletterCTABlock";
-import CTABlock from "@/components/Award/Award/StructuredTextBlocks/CTABlock";
-
-import Link from "next/link";
-import {
-  AppCtaRecord,
-  CtaButtonWithImageRecord,
-  ImageBlockRecord,
-  GalleryRecord,
-  NewsletterSubscriptionRecord,
   AwardQuery,
-  AwardRecord,
-  ResponsiveImage,
   SiteLocale,
 } from "@/graphql/generated";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import Highlighter from "@/components/Common/Highlighter";
-import CTAAppBlock from "./StructuredTextBlocks/CTAAppBlock";
-import GalleryBlock from "./StructuredTextBlocks/GalleryBlock";
 import EmbededIframe from "@/components/IFrame/EmbededIframe";
+import StructuredTextSection from "./StructuredTextBlocks";
 
 type Props = {
   data: AwardQuery;
@@ -44,209 +20,50 @@ const Award = ({ data, lng }: Props) => {
       <div className="container">
         <div className="flex flex-wrap justify-center pb-5">
           <div className="w-full sm:px-4 lg:w-full">
-
-            <div className="flex xl:flex-nowrap flex-wrap items-start md:flex-row md:items-center xl:w-auto lg:w-[260px] sm:w-[220px] w-[200px]">
+            <div className="lg:mb-10 mb-6 flex justify-center pb-4">
               <Link
                 href={`/${lng}/awards/acategory/${data.award.acategory?.slug}`}
-                className="mb-5 xl:mr-10 flex items-center"
               >
-                <div className="sm:mr-4 mr-1">
-                  <div className="relative sm:h-10 h-8 sm:w-10 w-8 overflow-hidden rounded-full">
-                    <DatoImage
-                      className="h-full w-full object-cover"
-                      data={
-                        data.award.acategory?.picture
-                          .responsiveImage as ResponsiveImage
-                      }
-                    />
-                  </div>
-                </div>
-                <div className="w-full">
-                  <h4 className="mb-1 sm:text-base text-sm font-medium text-body-color">
-                    <span>{data.award.acategory?.name}</span>
-                  </h4>
-                  <p className="text-xs text-body-color">
-                    {data.award.acategory?.bio}
-                  </p>
+                <div className='flex w-full justify-center items-center gap-4'>
+                  <svg
+                    stroke="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 576 512"
+                    fill="none"
+                    strokeWidth={'20'}
+                    className="h-12 w-12 stroke-primary opacity-90">
+                    <path
+                      d="M400 0H176c-26.5 0-48.1 21.8-47.1 48.2c.2 5.3 .4 10.6 .7 15.8H24C10.7 64 0 74.7 0 88c0 92.6 33.5 157 78.5 200.7c44.3 43.1 98.3 64.8 138.1 75.8c23.4 6.5 39.4 26 39.4 45.6c0 20.9-17 37.9-37.9 37.9H192c-17.7 0-32 14.3-32 32s14.3 32 32 32H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H357.9C337 448 320 431 320 410.1c0-19.6 15.9-39.2 39.4-45.6c39.9-11 93.9-32.7 138.2-75.8C542.5 245 576 180.6 576 88c0-13.3-10.7-24-24-24H446.4c.3-5.2 .5-10.4 .7-15.8C448.1 21.8 426.5 0 400 0zM48.9 112h84.4c9.1 90.1 29.2 150.3 51.9 190.6c-24.9-11-50.8-26.5-73.2-48.3c-32-31.1-58-76-63-142.3zM464.1 254.3c-22.4 21.8-48.3 37.3-73.2 48.3c22.7-40.3 42.8-100.5 51.9-190.6h84.4c-5.1 66.3-31.1 111.2-63 142.3z" />
+                  </svg>
+                  <h1 className="text-center text-2xl font-semibold text-gray-800 dark:text-darktext lg:text-4xl">
+                    {data?.award.acategory?.name}
+                  </h1>
                 </div>
               </Link>
             </div>
 
-            <div className="flex md:flex-nowrap flex-wrap gap-4">
-              <div className="md:w-1/2 w-full">
-                <StructuredText
-                  data={data.award.content as any}
-                  renderNode={Highlighter}
-                  renderBlock={({ record }: any) => {
-                    switch (record.__typename) {
-                      case "ImageBlockRecord":
-                        const ImageBlockRecord = record as ImageBlockRecord;
-                        return (
-                          <div className="relative mb-16 mt-16 overflow-hidden rounded-md shadow-md sm:h-[300px] md:h-[400px]">
-                            <DatoImage
-                              data={ImageBlockRecord.image.responsiveImage}
-                              layout="fill"
-                              objectFit="cover"
-                              objectPosition="50% 50%"
-                            />
-                          </div>
-                        );
-                      case "GalleryRecord":
-                        const galleryRecord = record as GalleryRecord;
-                        return (
-                          <GalleryBlock galleryRecords={[galleryRecord]} />
-                        );
-                      case "NewsletterSubscriptionRecord":
-                        const NewsletterSubscriptionRecord =
-                          record as NewsletterSubscriptionRecord;
-                        return (
-                          <NewsletterCTABlock
-                            title={NewsletterSubscriptionRecord.title}
-                            subtitle={NewsletterSubscriptionRecord.subtitle}
-                            buttonLabel={
-                              NewsletterSubscriptionRecord.buttonLabel
-                            }
-                          />
-                        );
-                      case "CtaButtonWithImageRecord":
-                        const CtaButtonWithImageRecord =
-                          record as CtaButtonWithImageRecord;
-                        return (
-                          <CTABlock
-                            title={CtaButtonWithImageRecord.title}
-                            subtitle={CtaButtonWithImageRecord.subtitle}
-                            buttonLabel={CtaButtonWithImageRecord.buttonLabel}
-                            image={CtaButtonWithImageRecord.image}
-                          />
-                        );
-                      case "AppCtaRecord":
-                        const appCtaRecord = record as AppCtaRecord;
-                        return (
-                          <CTAAppBlock
-                            title={appCtaRecord.title}
-                            text={appCtaRecord.text}
-                            googleURL={appCtaRecord.googlePlayUrl}
-                            appleURL={appCtaRecord.appstoreUrl}
-                          />
-                        );
-                      default:
-                        return null;
-                    }
-                  }}
-                  renderLinkToRecord={({
-                    record,
-                    children,
-                    transformedMeta,
-                  }) => {
-                    switch (record.__typename) {
-                      case "AwardRecord":
-                        return (
-                          <Link
-                            {...transformedMeta}
-                            href={`/${lng}/awards/${record.slug}`}
-                            className="text-base font-medium leading-relaxed text-body-color underline sm:text-lg sm:leading-relaxed"
-                          >
-                            {children}
-                          </Link>
-                        );
-                      default:
-                        return null;
-                    }
-                  }}
-                  renderInlineRecord={({ record }) => {
-                    switch (record.__typename) {
-                      case "AwardRecord":
-                        const AwardRecord = record as AwardRecord;
-                        return (
-                          <Link
-                            key={AwardRecord.id}
-                            href={`/${lng}/awards/${record.slug}`}
-                            className="underline"
-                          >
-                            {AwardRecord.title}
-                          </Link>
-                        );
-                      default:
-                        return null;
-                    }
-                  }}
-                  customNodeRules={[
-                    renderNodeRule(isHeading, ({ children, key }) => {
-                      return (
-                        <h3
-                          className="mb-4 mt-9 text-xl font-bold text-black dark:text-white sm:text-2xl lg:text-xl xl:text-2xl"
-                          key={key}
-                        >
-                          {children}
-                        </h3>
-                      );
-                    }),
-                    renderNodeRule(isParagraph, ({ children, key }) => {
-                      return (
-                        <div
-                          className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed"
-                          key={key}
-                        >
-                          {children}
-                        </div>
-                      );
-                    }),
-                    renderNodeRule(isLink, ({ node, children, key }) => {
-                      const attributeObject =
-                        node.meta?.reduce((acc: any, { id, value }) => {
-                          acc[id] = value;
-                          return acc;
-                        }, {}) || {};
+            <div className="flex flex-col md:flex-nowrap flex-wrap">
 
-                      return (
-                        <Link
-                          className="text-base font-medium leading-relaxed text-body-color underline sm:text-lg sm:leading-relaxed"
-                          href={node.url}
-                          key={key}
-                          {...attributeObject}
-                        >
-                          {children}
-                        </Link>
-                      );
-                    }),
-                    renderNodeRule(isBlockquote, ({ children, key }) => {
-                      return <QuoteBlock text={children} />;
-                    }),
-                  ]}
-                />
+              <div className="w-full">
+                <StructuredTextSection data={data.award.content} lng={lng} />
               </div>
-              <div className="md:w-1/2 w-full">
-                <h2 className="text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
-                  {data.award.title}
-                </h2>
-                <p className="mb-3 text-sm font-bold leading-tight text-black dark:text-darktext sm:leading-tight">
-                  {data.award.jobTitle}
-                </p>
-                <p className="mb-4 leading-tight text-black dark:text-darktext sm:leading-tight max-h-[200px] overflow-auto">
-                  {data.award.bio}
-                </p>
-                <div className="mb-4 flex xl:items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
-                  <div className="">
-                    <Link
-                      href={`/${lng}/awards/atag/${data.award.atags[0].slug}`}
-                      className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white"
-                    >
-                      {data.award.atags[0].atag}
-                    </Link>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="bg-primary bg-opacity-10 text-body-color duration-300 hover:bg-opacity-100 hover:text-white w-8 h-8 rounded-full flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                    </svg>
-                  </div>
-                  <div className="bg-primary bg-opacity-10 text-body-color duration-300 hover:bg-opacity-100 hover:text-white w-8 h-8 rounded-full flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                    </svg>
-                  </div>
-                </div>
+
+              <h2 className="my-3 text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
+                {data.award.title}
+              </h2>
+              <p className="mb-8 text-sm font-bold leading-tight text-black dark:text-darktext sm:leading-tight">
+                {data.award.jobTitle}
+              </p>
+              <div className="w-full">
+                <StructuredTextSection data={data.award.biography} lng={lng} />
+              </div>
+              <div className="my-5">
+                <Link
+                  href={`/${lng}/awards/atag/${data.award.atags[0].slug}`}
+                  className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white"
+                >
+                  {data.award.atags[0].atag}
+                </Link>
               </div>
             </div>
           </div>

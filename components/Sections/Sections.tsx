@@ -42,8 +42,8 @@ import {
   AllStagesSectionRecord,
   StageRecord,
   SpeakerSectionRecord,
-  CategoryAwardRecord,
-  AllCategoryAwardsSectionRecord,
+  AwardRecord,
+  AllAwardsSectionRecord,
 } from "@/graphql/generated";
 import GradientHero from "../Home/Hero/GradientHero";
 import FeatureCards from "../Home/Features/FeatureCards";
@@ -70,22 +70,21 @@ import BigImageHorizontalFeatures from "../Home/Features/BigImageHorizontalFeatu
 import BigImageVerticalFeatures from "../Home/Features/BigImageVerticalFeatures";
 import Changelog from "../Changelog";
 import TalkGridRenderer from "../Agenda/TalkGridRenderer";
-import Talk from "../Agenda";
 import StageGridRenderer from "../Stage/StageGridRenderer";
-import CategoryAwardGridRenderer from "../Award/CategoryAwardGridRenderer";
+import AwardGridRenderer from "../Award/AwardGridRenderer";
 
 type Props = {
   sections: Array<PageModelSectionsField>;
   locale: SiteLocale;
   posts: PostRecord[];
   postMeta: CollectionMetadata;
-  categoryAwardsMeta: CollectionMetadata;
-  categoryAwards: CategoryAwardRecord[];
   talks: TalkRecord[];
   talkMeta: CollectionMetadata;
   stages: StageRecord[];
   stageMeta: CollectionMetadata;
   data: TalkQuery;
+  awardMeta: CollectionMetadata;
+  awards: AwardRecord[];
 };
 
 export default function Section({
@@ -97,9 +96,8 @@ export default function Section({
   stageMeta,
   talks,
   talkMeta,
-  categoryAwards,
-  categoryAwardsMeta,
-  data,
+  awards,
+  awardMeta,
 }: Props) {
   return (
     <>
@@ -488,13 +486,13 @@ export default function Section({
             return (
               <PostGridRenderer data={posts} lng={locale} postMeta={postMeta} />
             );
-          case "all_category_awards_section":
-            const allCategoryAwardsSectionRecord = section as AllCategoryAwardsSectionRecord;
+          case "all_awards_section":
+            const allAwardsSectionRecord = section as AllAwardsSectionRecord;
             return (
-              <CategoryAwardGridRenderer
-                data={categoryAwards}
+              <AwardGridRenderer
+                data={awards}
                 lng={locale}
-                awardMeta={categoryAwardsMeta}
+                awardMeta={awardMeta}
               />
             );
           case "all_talks_section":
