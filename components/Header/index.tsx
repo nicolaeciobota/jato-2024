@@ -103,11 +103,11 @@ const Header = ({ lng, data }: Props) => {
           <div className="flex w-full items-center justify-between xl:pl-4 sm:pl-6">
             <div className="sm:-mx-4 mx-0">
               <Link
-                href={"/" + lng}
+                href={`/${lng}/about`}
                 className={`header-logo block w-full ${sticky ? "py-5 lg:py-2" : "py-8"
                   } `}
               >
-                <div className="lg:w-24 w-16">
+                <div className="lg:w-32 sm:w-28 w-24">
                   {data.layout?.logo.url && (
                     <Image
                       src={theme === 'dark'

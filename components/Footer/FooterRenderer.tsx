@@ -25,7 +25,7 @@ const Footer = ({ data, lng }: Props) => {
         <div className="flex w-full flex-col justify-between md:flex-row md:px-16">
           <div className="w-full">
             <div className="md:mb-12 sm:mb-8 mb-5 lg:mb-16">
-              <Link href={"/" + lng + "/home"} className="mb-8 inline-block">
+              <Link href={`/${lng}/about`} className="mb-8 inline-block">
                 {data.layout?.footerLogo && (
                   <Image
                     src={
