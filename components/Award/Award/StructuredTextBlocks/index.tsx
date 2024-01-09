@@ -146,12 +146,12 @@ const StructuredTextSection = ({ data, lng }: Props) => {
                 }),
                 renderNodeRule(isParagraph, ({ children, key }) => {
                     return (
-                        <div
+                        <p
                             className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed"
                             key={key}
                         >
                             {children}
-                        </div>
+                        </p>
                     );
                 }),
                 renderNodeRule(isLink, ({ node, children, key }) => {
