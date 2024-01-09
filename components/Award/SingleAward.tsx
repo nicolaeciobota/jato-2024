@@ -1,5 +1,4 @@
 import { AwardRecord, ResponsiveImage, SiteLocale } from "@/graphql/generated";
-import transformDate from "@/utils/transformDate";
 import Link from "next/link";
 import { Image as DatoImage } from "react-datocms";
 
@@ -9,37 +8,39 @@ type Props = {
 };
 
 const SingleAward = ({ award, locale }: Props) => {
-  const { title, seoTags, acategory, atags, _publishedAt, slug } = award;
+  const { title, seoTags, acategory, atags, slug, jobTitle } = award;
 
   return (
     <>
       <div className="relative h-full overflow-hidden rounded-xl bg-white shadow-one dark:bg-dark">
-        <Link
-          href={"/" + locale + "/awards/" + slug}
-          className="relative block h-[230px] w-full overflow-hidden"
-        >
-          <span className="absolute right-6 top-6 z-20 inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold capitalize text-white">
-            {atags[0].atag}
-          </span>
-          <div className="relative h-full w-full overflow-hidden">
-            <DatoImage
-              className="h-full w-full object-contain"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="50% 50%"
-              data={seoTags!.image!.responsiveImage as ResponsiveImage}
-            />
-          </div>
-        </Link>
+        <div className="relative block h-[230px] w-full overflow-hidden">
+          <Link href={"/" + locale + "/awards/atag/" + atags[0].slug}>
+            <span className="absolute right-6 top-6 z-20 inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold capitalize text-white">
+              {atags[0].atag}
+            </span>
+          </Link>
+          <Link href={"/" + locale + "/awards/" + slug}>
+            <div className="relative h-full w-full overflow-hidden">
+              <DatoImage
+                className="h-full w-full object-contain"
+                layout="fill"
+                objectFit="cover"
+                objectPosition="50% 50%"
+                data={seoTags!.image!.responsiveImage as ResponsiveImage}
+              />
+            </div>
+          </Link>
+        </div>
+
         <div className="p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8">
-          <h3>
-            <Link
-              href={"/" + locale + "/awards/" + slug}
-              className="dark:text-blue mb-4 block h-16 text-xl text-black hover:text-white dark:text-darktext dark:hover:text-primary"
+          <Link href={"/" + locale + "/awards/" + slug}>
+            <h3
+              className="dark:text-blue mb-4 block h-4 text-xl text-black dark:text-darktext dark:hover:text-primary"
             >
               {title}
-            </Link>
-          </h3>
+            </h3>
+            <p className="text-sm ">{jobTitle}</p>
+          </Link>
           <div className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10" />
           <div className="flex h-full items-center justify-between">
             <Link
@@ -61,14 +62,8 @@ const SingleAward = ({ award, locale }: Props) => {
                 <h4 className="mb-1 text-sm font-medium text-dark dark:text-darktext">
                   {acategory?.name}
                 </h4>
-                <div className="text-xs text-body-color dark:text-darktext">{acategory?.bio}</div>
               </div>
             </Link>
-            <div className="inline-block">
-              <div className="text-xs text-body-color dark:text-darktext">
-                {transformDate(_publishedAt)}
-              </div>
-            </div>
           </div>
         </div>
       </div>

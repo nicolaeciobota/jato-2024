@@ -2,8 +2,7 @@ import { TalkRecord, SiteLocale, SpeakerQuery } from "@/graphql/generated";
 import SingleTalk from "./SingleTalk";
 import { Image as DatoImage } from "react-datocms";
 import { notFound } from "next/navigation";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from 'rehype-raw';
+import StructuredTextSection from "../Award/Award/StructuredTextBlocks";
 
 type Props = {
   data: SpeakerQuery;
@@ -12,6 +11,7 @@ type Props = {
 
 const SpeakerTalks = ({ data, lng }: Props) => {
   if (!data.speaker) notFound();
+
   return (
     <section className="mt-16 flex w-full flex-col items-center justify-center md:py-8 py-4 dark:bg-dark-background">
       <section className="px-auto mx-auto mb-8 flex  w-full justify-center bg-white px-4 dark:bg-gray-900 lg:h-auto">
@@ -35,11 +35,7 @@ const SpeakerTalks = ({ data, lng }: Props) => {
                 {data.speaker.jobTitle}
               </h2>
               <div className="mt-4 max-w-2xl text-gray-800 dark:text-darktext">
-                <ReactMarkdown
-                  rehypePlugins={[rehypeRaw] as any}
-                >
-                  {data.speaker.bio}
-                </ReactMarkdown>
+                <StructuredTextSection data={data.speaker.biography} lng={lng} />
               </div>
             </div>
           </div>

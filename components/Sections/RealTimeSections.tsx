@@ -8,12 +8,10 @@ import {
   PageQuery,
   PageQueryVariables,
   PostRecord,
-  AwardRecord,
   TalkRecord,
-  SpeakerRecord,
   SiteLocale,
   StageRecord,
-  CategoryAwardRecord,
+  AwardRecord,
 } from "@/graphql/generated";
 import { TypedDocumentNode } from "@graphql-typed-document-node/core";
 
@@ -45,13 +43,13 @@ export default function RealTimeSections({
       locale={locale}
       sections={data.page.sections as Array<PageModelSectionsField>}
       posts={data.allPosts as PostRecord[]}
-      categoryAwards={data.allCategoryAwards as CategoryAwardRecord[]}
-      categoryAwardsMeta={data._allCategoryAwardsMeta as CollectionMetadata}
       talks={data.allTalks as TalkRecord[]}
       stages={data.allStages as StageRecord[]}
       postMeta={data._allPostsMeta as CollectionMetadata}
       talkMeta={data._allTalksMeta as CollectionMetadata}
       stageMeta={data._allStagesMeta as CollectionMetadata}
+      awards={data.allAwards as AwardRecord[]}
+      awardMeta={data._allAwardsMeta as CollectionMetadata}
       data={{
         __typename: undefined,
         talk: undefined,

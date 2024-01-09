@@ -8,6 +8,7 @@ import { Maybe } from "graphql/jsutils/Maybe";
 import Link from "next/link";
 import { Image as DatoImage } from "react-datocms";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import StructuredTextSection from "../Award/Award/StructuredTextBlocks";
 
 type Props = {
   header: Maybe<string>;
@@ -58,9 +59,7 @@ const ExpandedSpeaker = ({
                     <h3 className="mt-2 capitalize text-gray-500 group-hover:text-white">
                       {member.jobTitle}
                     </h3>{" "}
-                    <p className="mt-4 capitalize text-gray-500 group-hover:text-white dark:text-gray-300">
-                      {member.bio}
-                    </p>
+                    <StructuredTextSection data={member.biography} lng={lng} />
                   </div>
                 </div>
               </Link>

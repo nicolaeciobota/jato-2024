@@ -11,7 +11,6 @@ import {
   TalkRecord,
   SiteLocale,
   StageRecord,
-  CategoryAwardRecord,
 } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 import { getFallbackLocale } from "@/app/i18n/settings";
@@ -37,7 +36,7 @@ export default async function Home({ params: { lng, slug } }: Params) {
     isEnabled
   );
 
-  if (!data.page) notFound();
+  if (!data?.page) notFound();
   
   return (
     <>
@@ -47,8 +46,8 @@ export default async function Home({ params: { lng, slug } }: Params) {
           sections={data.page.sections as Array<PageModelSectionsField>}
           posts={data.allPosts as PostRecord[]}
           postMeta={data._allPostsMeta as CollectionMetadata}
-          categoryAwards={data.allCategoryAwards as CategoryAwardRecord[]}
-          categoryAwardsMeta={data._allCategoryAwardsMeta as CollectionMetadata}
+          awards={data.allAwards as AwardRecord[]}
+          awardMeta={data._allAwardsMeta as CollectionMetadata}
           talks={data.allTalks as TalkRecord[]}
           talkMeta={data._allTalksMeta as CollectionMetadata}
           stages={data.allStages as StageRecord[]}
