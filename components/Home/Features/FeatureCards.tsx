@@ -16,13 +16,8 @@ const FeatureCards = ({
   featuresSubheader,
 }: Props) => {
   return (
-    <section className="relative dark:bg-dark-background">
-      {/* Section background (needs .relative class on parent and next sibling elements) */}
-      <div
-        className="pointer-events-none absolute inset-0 top-1/2 bg-primary bg-opacity-5 md:mt-24 lg:mt-0"
-        aria-hidden="true"
-      ></div>
-
+    <section className="bg-white py-6 sm:py-8 lg:py-12 dark:bg-dark-background">
+    
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <div className="py-12 md:py-20">
           {/* Section header */}

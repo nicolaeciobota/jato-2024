@@ -5,7 +5,7 @@ export default function Head() {
       <Script
         id="cookieyes"
         type="text/javascript"
-        src="https://cdn-cookieyes.com/client_data/2a9ebb39815c7def75cd322d/script.js"
+        src="https://cdn-cookieyes.com/client_data/38dd9bcb9ab1dc9ac5706bcb/script.js"
       ></Script>
       <title>JATO Virtual Event Platform</title>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
