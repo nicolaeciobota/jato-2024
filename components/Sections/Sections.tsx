@@ -44,6 +44,7 @@ import {
   SpeakerSectionRecord,
   AwardRecord,
   AllAwardsSectionRecord,
+  FeaturedAcategorySectionRecord,
 } from "@/graphql/generated";
 import GradientHero from "../Home/Hero/GradientHero";
 import FeatureCards from "../Home/Features/FeatureCards";
@@ -72,6 +73,11 @@ import Changelog from "../Changelog";
 import TalkGridRenderer from "../Agenda/TalkGridRenderer";
 import StageGridRenderer from "../Stage/StageGridRenderer";
 import AwardGridRenderer from "../Award/AwardGridRenderer";
+import MinimalCardsAcategory from "../Home/Features Categories/MinimalCardsAcategory";
+import FeaturedAcategory from "../Home/Features Categories";
+import BigImageHorizontalAcategory from "../Home/Features Categories/BigImageHorizontalAcategory";
+import BigImageVerticalAcategory from "../Home/Features Categories/BigImageVerticalAcategory";
+import AcategoryCards from "../Home/Features Categories/AcategoryCards";
 
 type Props = {
   sections: Array<PageModelSectionsField>;
@@ -160,7 +166,6 @@ export default function Section({
                   />
                 );
             }
-
           case "feature_list_section":
             const featureListSectionRecord =
               section as FeatureListSectionRecord;
@@ -216,6 +221,15 @@ export default function Section({
                   />
                 );
             }
+
+          case "featured_acategory_section":
+            const featureAcategorySectionRecord =
+              section as FeaturedAcategorySectionRecord;
+            return (
+              <FeaturedAcategory
+                featureAcategorySectionRecord={featureAcategorySectionRecord}
+              />
+            )
 
           case "video_section":
             const videoSectionRecord = section as VideoSectionRecord;
@@ -395,6 +409,7 @@ export default function Section({
                   />
                 );
             }
+
 
           case "team_section":
             const teamSectionRecord = section as TeamSectionRecord;
