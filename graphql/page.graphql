@@ -366,6 +366,23 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           }
         }
       }
+      ... on FeaturedAcategorySectionRecord {
+        _modelApiKey
+        id
+        featuredAcategoryHeader
+        featuredAcategorySubheader
+        displayOption
+        featuredAcategory {
+          name
+          slug
+          description
+          picture {
+            responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
+              ...DatoImage_responsiveImage
+            }
+          }
+        }
+      }
       ... on FeatureListSectionRecord {
         _modelApiKey
         id
