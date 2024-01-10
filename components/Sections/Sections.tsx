@@ -228,6 +228,7 @@ export default function Section({
             return (
               <FeaturedAcategory
                 featureAcategorySectionRecord={featureAcategorySectionRecord}
+                locale={locale}
               />
             )
 

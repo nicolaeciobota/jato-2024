@@ -1,14 +1,16 @@
-import { AcategoryRecord } from "@/graphql/generated";
+import { AcategoryRecord, SiteLocale } from "@/graphql/generated";
 import Link from "next/link";
 import { Image as DatoImage } from "react-datocms";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 type Props = {
   features: AcategoryRecord[];
+  locale: SiteLocale
 };
 
 const BigImageHorizontalAcategory = ({
   features,
+  locale
 }: Props) => {
   return (
     <div className="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-2 xl:grid-cols-2 xl:gap-8">
@@ -21,7 +23,7 @@ const BigImageHorizontalAcategory = ({
             {" "}
             <div className="relative block h-48 w-full shrink-0 self-start overflow-hidden md:h-full md:w-32 lg:w-48">
               <div className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110">
-                <Link href={feature?.slug || '#'}>
+              <Link href={`/${locale}/awards/acategory/${feature.slug}`}>
                   <DatoImage
                     data={feature.picture.responsiveImage}
                     className="h-full w-full object-contain"

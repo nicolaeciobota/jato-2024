@@ -1,4 +1,4 @@
-import { FeaturedAcategorySectionRecord } from "@/graphql/generated";
+import { FeaturedAcategorySectionRecord, SiteLocale } from "@/graphql/generated";
 import SectionTitle from "../../Common/SectionTitle";
 import { ReactNode } from "react";
 import MinimalCardsAcategory from "./MinimalCardsAcategory";
@@ -9,9 +9,10 @@ import AcategoryCards from "./AcategoryCards";
 
 type Props = {
   featureAcategorySectionRecord: FeaturedAcategorySectionRecord;
+  locale: SiteLocale
 };
 
-const FeaturedAcategory = ({ featureAcategorySectionRecord }: Props) => {
+const FeaturedAcategory = ({ featureAcategorySectionRecord, locale }: Props) => {
 
   const {
     featuredAcategory,
@@ -21,10 +22,10 @@ const FeaturedAcategory = ({ featureAcategorySectionRecord }: Props) => {
   } = featureAcategorySectionRecord;
 
   const displayContentMapper: { [key: string]: ReactNode } = {
-    card_minimal: <MinimalCardsAcategory features={featuredAcategory} />,
-    grid: <GridAcategory features={featuredAcategory} />,
-    big_image_horizontal: <BigImageHorizontalAcategory features={featuredAcategory} />,
-    big_image_vertical: <BigImageVerticalAcategory features={featuredAcategory} />
+    card_minimal: <MinimalCardsAcategory features={featuredAcategory} locale={locale}/>,
+    grid: <GridAcategory features={featuredAcategory} locale={locale}/>,
+    big_image_horizontal: <BigImageHorizontalAcategory features={featuredAcategory} locale={locale}/>,
+    big_image_vertical: <BigImageVerticalAcategory features={featuredAcategory} locale={locale}/>
   }
 
   return (
@@ -40,7 +41,7 @@ const FeaturedAcategory = ({ featureAcategorySectionRecord }: Props) => {
             center
           />
           
-          {displayContentMapper[displayOption] || <AcategoryCards features={featuredAcategory} />}
+          {displayContentMapper[displayOption] || <AcategoryCards features={featuredAcategory} locale={locale}/>}
         </div>
       </section>
     </>

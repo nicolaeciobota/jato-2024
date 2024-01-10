@@ -1,14 +1,14 @@
-'use client'
-import { AcategoryRecord } from "@/graphql/generated";
+import { AcategoryRecord, SiteLocale } from "@/graphql/generated";
 import Link from "next/link";
 import { Image as DatoImage } from "react-datocms";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 type Props = {
   features: AcategoryRecord[];
+  locale: SiteLocale
 };
 
-const GridAcategory = ({ features }: Props) => {
+const GridAcategory = ({ features, locale }: Props) => {
 
   return (
     <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
@@ -19,7 +19,7 @@ const GridAcategory = ({ features }: Props) => {
             <div key={id} className="w-full">
               <div className="flex flex-col items-center justify-center sm:px-16  text-center  md:px-0">
                 <div className="relative mb-10 flex h-[70px] w-[70px] items-center justify-center overflow-hidden rounded-md bg-primary bg-opacity-10 text-primary">
-                  <Link href={`/${'en'}/awards/acategory/${slug}`}>
+                  <Link href={`/${locale}/awards/acategory/${slug}`}>
                     <DatoImage
                       data={picture.responsiveImage}
                       className="h-full w-full object-contain"
