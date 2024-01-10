@@ -19,7 +19,6 @@ const Member = ({
           data?.member?.iframeUrl
             ? <IFrame
               iframeUrl={data?.member?.iframeUrl || ''}
-              iframeHeight={90}
               btnText="Close Members"
             />
             : <div>Not found!</div>

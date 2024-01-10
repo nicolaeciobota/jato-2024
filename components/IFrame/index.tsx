@@ -39,7 +39,7 @@ const IFrame: FC<Props> = ({
     }, [])
 
     return (
-        <div className="fixed h-screen w-full top-0 bottom-0 left-0 right-0 m-auto bg-slate-400 z-50">
+        <div className="flex items-center sm:block fixed h-screen w-full top-0 bottom-0 left-0 right-0 m-auto bg-slate-400 z-50">
             {
                 loading && <div className={`animate-pulse absolute w-full ${shadowWidth ? `max-w-[${shadowWidth}px]` : ''} h-[100vh]`}>
                     <div className="w-full h-full bg-[#e8e7e8] dark:bg-subsectionBackground">
@@ -52,7 +52,7 @@ const IFrame: FC<Props> = ({
                         ? <button
                             onClick={routeBackHandler}
                             type="button"
-                            className="relative block mt-3 ml-auto mr-2 lg:mr-8 z-50 mb-4 cursor-pointer rounded-lg bg-gradient-to-r from-primary to-teal-400 p-2 text-[14px] text-white transition-all hover:opacity-80 sm:mb-0 sm:w-auto"
+                            className="left-0 right-0 w-[200px] top-8 sm:top-0 absolute sm:relative block mt-6 sm:mt-1 mx-auto z-50 mb-4 cursor-pointer rounded-lg bg-gradient-to-r from-primary to-teal-400 p-2 text-[14px] text-white transition-all hover:opacity-80 sm:mb-0 sm:w-auto"
                         >
                             {btnText}
                         </button>
@@ -65,8 +65,8 @@ const IFrame: FC<Props> = ({
                     log
                     src={iframeUrl}
                     scrolling={true}
+                    className="min-h-[76vh] sm:min-h-[90vh]"
                     style={{
-                        minHeight: `${iframeHeight}vh`,
                         minWidth: '96%',
                         overflow: 'auto',
                         position: 'fixed',
@@ -75,12 +75,12 @@ const IFrame: FC<Props> = ({
                         left: 0,
                         right: 0,
                         margin: 'auto',
-                        marginTop: '60px',
+                        // marginTop: '60px',
                         borderRadius: '12px',
                         ...iframeStyles
                     }}
                 />
-            </div>
+           </div>
         </div>
     );
 }
