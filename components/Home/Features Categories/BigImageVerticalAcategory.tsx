@@ -20,7 +20,7 @@ const BigImageVerticalAcategory = ({
             className="group flex flex-col justify-center items-center overflow-hidden rounded-lg border dark:border-none bg-white dark:bg-gray-800"
           >
             {" "}
-            <div className="group relative block h-48 overflow-hidden bg-gray-100 md:h-64">
+            <div className="group relative block h-48 w-full overflow-hidden bg-gray-100 md:h-64">
               <div className="absolute inset-0 h-full w-full overflow-hidden object-cover object-center transition duration-200 group-hover:scale-110">
                 <Link href={feature?.slug || '#'}>
                   <DatoImage

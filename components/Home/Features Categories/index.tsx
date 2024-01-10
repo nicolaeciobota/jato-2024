@@ -38,6 +38,7 @@ const FeaturedAcategory = ({ featureAcategorySectionRecord }: Props) => {
             title={featuredAcategoryHeader}
             paragraph={featuredAcategorySubheader}
             center
+            mb={'50px'}
           />
           
           {displayContentMapper[displayOption] || <AcategoryCards features={featuredAcategory} />}
