@@ -1,5 +1,6 @@
 import "node_modules/react-modal-video/css/modal-video.css";
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
 import "@/styles/global.css";
 import { SiteLocale } from "@/graphql/generated";
 import getAvailableLocales from "@/app/i18n/settings";
@@ -31,6 +32,7 @@ export default async function RootLayout({
         <body className={`tracking-tight antialiased`}>
           {children}
           <SpeedInsights />
+          <Analytics />
         </body>
       </html>
     </ClerkProvider>
