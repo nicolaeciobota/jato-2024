@@ -14,7 +14,7 @@ const Features = ({ features, featuresHeader, featuresSubheader }: Props) => {
     <>
       <section
         id="features"
-        className="bg-primary/[.03] py-16 md:py-20 lg:py-28 dark:bg-dark-background opacity-95"
+        className="bg-white py-6 sm:py-8 lg:py-12 dark:bg-dark-background"
       >
         <div className="container">
           <SectionTitle
