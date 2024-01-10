@@ -14,11 +14,11 @@ const SingleAward = ({ award, locale }: Props) => {
     <>
       <div className="relative h-full overflow-hidden rounded-xl bg-white shadow-one dark:bg-dark">
         <div className="relative block h-[230px] w-full overflow-hidden">
-          <Link href={"/" + locale + "/awards/atag/" + atags[0].slug}>
+          {/* <Link href={"/" + locale + "/awards/atag/" + atags[0].slug}>
             <span className="absolute right-6 top-6 z-20 inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold capitalize text-white">
               {atags[0].atag}
             </span>
-          </Link>
+          </Link> */}
           <Link href={"/" + locale + "/awards/" + slug}>
             <div className="relative h-full w-full overflow-hidden">
               <DatoImage

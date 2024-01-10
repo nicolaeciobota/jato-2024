@@ -20,7 +20,6 @@ const SocialFeed = ({
             data?.socialFeed?.iframe
               ? <IFrame
                 iframeUrl={data?.socialFeed?.iframe || ''}
-                iframeHeight={90}
                 btnText="Close Social"
               />
               : <div>Not found!</div>
