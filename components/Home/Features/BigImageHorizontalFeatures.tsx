@@ -16,7 +16,7 @@ const BigImageHorizontalFeatures = ({
   featuresSubheader,
 }: Props) => {
   return (
-    <div className="bg-white py-6 sm:py-8 lg:py-12 dark:bg-dark-background">
+    <div className="bg-white py-8 sm:py-10 lg:py-15 dark:bg-dark-background mt-12">
       <div className="mx-auto max-w-screen-xl px-4 md:px-8">
         <div className="mb-10 md:mb-16">
           <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-darktext md:mb-6 lg:text-3xl">
