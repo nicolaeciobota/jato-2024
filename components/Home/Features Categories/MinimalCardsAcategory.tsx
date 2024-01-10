@@ -13,7 +13,7 @@ const MinimalCardsAcategory = ({
   locale
 }: Props) => {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-2 xl:grid-cols-2 xl:gap-8">
+    <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-4 md:gap-6 xl:gap-8">
       {
         features.map((feature) => {
           return (
