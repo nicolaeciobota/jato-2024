@@ -11,7 +11,7 @@ type Props = {
 
 const AwardsPage = ({ data, lng, page }: Props) => {
   return (
-    <section className="pb-[120px] pt-[120px]">
+    <section className="pb-[120px] pt-[120px] min-h-[calc(100vh-320px)]">
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-center">
           {data.allAwards.map((award) => (
