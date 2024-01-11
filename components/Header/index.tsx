@@ -142,7 +142,7 @@ const Header = ({ lng, data }: Props) => {
                           </Link>
                         ) : (
                           <>
-                            <a
+                            <div
                               onClick={() => handleSubmenu(index)}
                               className="flex cursor-pointer items-center justify-between py-2 xl:text-base text-sm text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 xl:w-[10rem] lg:w-[9rem]"
                             >
@@ -155,7 +155,7 @@ const Header = ({ lng, data }: Props) => {
                                   />
                                 </svg>
                               </span>
-                            </a>
+                            </div>
                             <div
                               className={`submenu relative left-0 top-full rounded-md bg-white transition-[top] duration-300 group-hover:opacity-100 dark:bg-dark lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full ${openIndex === index ? "block" : "hidden"
                                 }`}

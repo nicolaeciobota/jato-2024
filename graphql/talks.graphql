@@ -55,7 +55,6 @@ query Talks(
               slug
               id
               title
-              description
               start
               end
               dateTags {

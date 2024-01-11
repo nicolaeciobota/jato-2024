@@ -23,7 +23,6 @@ query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
           slug
           id
           title
-          description
           start
           end
           dateTags {
@@ -198,7 +197,6 @@ query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
               slug
               id
               title
-              description
               start
               end
               dateTags {
