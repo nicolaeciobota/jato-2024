@@ -22,7 +22,7 @@ type Props = {
 
 const Header = ({ lng, data }: Props) => {
   const menuData: Menu[] = [];
-  const { isSignedIn } = useAuth();
+  const { isSignedIn, getToken } = useAuth();
   const { theme, themeHandler } = useContext(AppContext)
 
   data.layout!.menu.map((item) => {
@@ -83,6 +83,12 @@ const Header = ({ lng, data }: Props) => {
     }
   };
 
+  const getT = async () => {
+    const r = await getToken()
+    console.log({r})
+    return r;
+  }
+
   return (
     <>
       {notificationStrip && (
@@ -99,6 +105,9 @@ const Header = ({ lng, data }: Props) => {
           ? "fixed top-0 z-50 bg-white bg-opacity-80 shadow-sticky backdrop-blur-sm transition"
           : `absolute ${notificationStrip ? "top-10" : "top-0"}`
           }`}
+        onClick={() => {
+          getT();
+        }}
       >
         <div className="max-w-[1440px] relative flex items-center justify-between w-full xl:px-8 px-4 mx-auto">
           <div className="flex w-full items-center justify-between xl:pl-4 sm:pl-6">

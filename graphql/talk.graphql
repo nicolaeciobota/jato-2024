@@ -6,7 +6,6 @@ query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
   ) {
     _publishedAt
     title
-    description
     start
     end
     stage {
