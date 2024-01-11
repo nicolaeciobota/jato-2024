@@ -42,11 +42,11 @@ const Award = ({ data, lng }: Props) => {
               </Link>
             </div>
 
-            <div className="flex md:flex-nowrap flex-wrap justify-center">
-              <div className="md:w-1/2 w-full">
+            <div className="flex flex-col md:items-start items-center justify-center sm:gap-8 gap-5 text-center md:flex-row md:text-start">
+              <div className="relative sm:w-56 w-full overflow-hidden rounded-xl drop-shadow-xl md:w-72 lg:w-96">
                 <StructuredTextSection data={data.award.content} lng={lng} />
               </div>
-              <div className="md:w-1/2 w-full">
+              <div className="xl:mx-4 xl:w-1/2">
                 <h2 className="text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
                   {data?.award?.title}
                 </h2>

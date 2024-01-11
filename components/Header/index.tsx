@@ -140,7 +140,7 @@ const Header = ({ lng, data }: Props) => {
                     : "invisible top-[120%] opacity-0"
                     }`}
                 >
-                  <ul className="block items-center lg:flex xl:space-x-6 space-x-3">
+                  <ul className="block items-center lg:flex xl:gap-3 gap-2.5">
                     {menuData.map((menuItem, index) => (
                       <li key={menuItem.id} className="group relative">
                         {menuItem.path ? (
@@ -222,7 +222,14 @@ const Header = ({ lng, data }: Props) => {
                     }`}
                 />
               </button>
-              <UserButton />
+              {
+                !isSignedIn
+                  ? <UserButton />
+                  : <Link href={'#'}>
+                    <p className="flex py-2 font-semibold xl:text-base text-sm text-primary group-hover:opacity-70 dark:text-darktext lg:px-0 lg:py-6 ">Log In</p>
+                  </Link>
+              }
+
             </div>
           </div>
         </div>
