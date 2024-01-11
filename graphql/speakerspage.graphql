@@ -46,7 +46,6 @@ query SpeakerPage($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
               slug
               id
               title
-              description
               start
               end
               dateTags {

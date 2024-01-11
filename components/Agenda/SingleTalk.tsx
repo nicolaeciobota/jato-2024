@@ -10,6 +10,7 @@ import Link from "next/link";
 import { Image as DatoImage } from "react-datocms";
 import SpeakerTalks from "./SpeakerTalks";
 import { primaryColor } from "@/app/i18n/settings";
+import StructuredTextSection from "../Award/Award/StructuredTextBlocks";
 
 type Props = {
   talk: TalkRecord; //
@@ -22,7 +23,7 @@ const SingleTalk = ({ talk, locale, hideBtnLink = true }: Props) => {
     title,
     id,
     seoTags,
-    description,
+    content,
     start,
     end,
     dateTags,
@@ -69,7 +70,9 @@ const SingleTalk = ({ talk, locale, hideBtnLink = true }: Props) => {
           <h4 className="items-center rounded-lg bg-slate-100 dark:bg-[#201f2f] dark:text-darktext px-8 py-2 text-xl font-semibold uppercase leading-5">
             {title}
           </h4>
-          <p className="mt-4 flex-1 leading-6 text-slate-700 dark:text-darktext">{description}</p>
+          <div className="mt-4 flex-1 leading-6">
+            <StructuredTextSection data={content} lng={locale} />
+          </div>
           <span className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10" />
           <ul className="flex flex-wrap justify-between">
             {speaker.map((speakerItem) => {
