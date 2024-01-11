@@ -48,7 +48,7 @@ const CompactSpeaker = ({ header, subheader, speakersSection, lng }: Props) => {
                   {member.name}
                 </h1>
 
-                <h3 className="mt-2 text-xl capitalize text-gray-500 group-hover:text-gray-300 dark:text-darktext">
+                <h3 className="mt-2 text-xl capitalize text-gray-500 group-hover:text-gray-300 dark:text-darktext text-center">
                   {member.jobTitle}
                 </h3>
               </Link>

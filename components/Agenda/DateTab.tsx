@@ -23,14 +23,14 @@ const DateTab = ({ tab, isSelected }: Props) => {
 
     return (
         <div className="relative xl:pl-8 lg:px-3">
-            <svg
+            {/* <svg
                 aria-hidden="true"
                 viewBox="0 0 6 6"
-                className={`absolute left-[1px] xl:top-[0.5625rem] top-[0.30rem] hidden h-1.5 w-1.5 overflow-visible lg:block ${isSelected ? 'fill-blue-600 stroke-blue-600' : 'fill-transparent stroke-slate-400'}`}>
+                className={`absolute left-[1px] xl:top-[0.5625rem] top-[0.30rem] hidden h-1.5 w-1.5 overflow-visible lg:block ${isSelected ? 'fill-primary stroke-primary' : 'fill-teal-400 stroke-teal-400'}`}>
                 <path d="M3 0L6 3L3 6L0 3Z" stroke-width="2" stroke-linejoin="round"></path>
-            </svg>
+            </svg> */}
             <div className="relative">
-                <div className={`font-mono lg:text-sm text-xs ${isSelected ? 'text-[#2563eb]' : 'text-slate-500'}`}>
+                <div className={`font-mono lg:text-lg text-bas ${isSelected ? 'text-primary' : 'text-teal-400'}`}>
                     <button
                         className="ui-not-focus-visible:outline-none"
                         id="headlessui-tabs-tab-:R6kqlaqlla:"
@@ -42,10 +42,11 @@ const DateTab = ({ tab, isSelected }: Props) => {
                 </div>
                 <time
                     dateTime="2022-04-05"
-                    className="mb-3 block xl:text-2xl lg:text-lg text-sm font-semibold tracking-tight text-blue-900 xl:w-auto lg:w-[120px] w-[88px]"
+                    className={`mb-1 block xl:text-[26px] lg:text-xl text-base font-semibold tracking-tight w-max ${isSelected ? 'text-primary' : 'text-teal-400'}`}
                 >
                     {formattedDate}
                 </time>
+                <div className={`h-[5px] w-full rounded ${isSelected ? 'bg-primary' : 'bg-transparent'}`}></div>
             </div>
         </div>
     );

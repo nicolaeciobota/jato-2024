@@ -35,17 +35,17 @@ const SingleAward = ({ award, locale }: Props) => {
         <div className="p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8">
           <Link href={"/" + locale + "/awards/" + slug}>
             <h3
-              className="dark:text-blue mb-4 block h-4 text-xl text-black dark:text-darktext dark:hover:text-primary"
+              className="dark:text-blue mb-4 block text-xl text-black dark:text-darktext dark:hover:text-primary text-center"
             >
               {title}
             </h3>
-            <p className="text-sm dark:text-darktext">{jobTitle}</p>
+            <p className="text-sm dark:text-darktext text-center">{jobTitle}</p>
           </Link>
           <div className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10" />
-          <div className="flex h-full items-center justify-between">
+          <div className="flex h-full items-center justify-center">
             <Link
               href={`/${locale}/awards/acategory/${acategory?.slug}`}
-              className="mr-5 flex items-center border-r border-body-color border-opacity-10 pr-5 dark:border-white dark:border-opacity-10 xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5"
+              className="flex items-center dark:border-white dark:border-opacity-10 xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5"
             >
               <div className="mr-4">
                 <div className="relative h-12 w-12 overflow-hidden rounded-full object-contain">
