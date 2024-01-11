@@ -129,7 +129,7 @@ export default authMiddleware({
     const locale = pathname.split('/')[1];
     return req.url.includes(`/${locale}/home`)
   },
-  publicRoutes: ['/','/en/home']
+  publicRoutes: ['/en/home']
 })
 
 export const config = {
