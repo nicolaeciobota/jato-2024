@@ -5,7 +5,7 @@ import "@/styles/global.css";
 import { SiteLocale } from "@/graphql/generated";
 import getAvailableLocales from "@/app/i18n/settings";
 import Head from "./[lng]/Head";
-// import { ClerkProvider } from '@clerk/nextjs'
+import { ClerkProvider } from '@clerk/nextjs'
 type Params = {
   children: React.ReactNode;
   params: {
@@ -26,7 +26,7 @@ export default async function RootLayout({
   params: { lng },
 }: Params) {
   return (
-    // <ClerkProvider>
+    <ClerkProvider>
       <html lang={lng}>
         <Head />
         <body className={`tracking-tight antialiased`}>
@@ -35,6 +35,6 @@ export default async function RootLayout({
           <Analytics />
         </body>
       </html>
-    // </ClerkProvider>
+    </ClerkProvider>
   );
 }
