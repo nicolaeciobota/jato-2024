@@ -42,7 +42,7 @@ const Award = ({ data, lng }: Props) => {
               </Link>
             </div>
 
-            <div className="flex md:flex-nowrap flex-wrap gap-10">
+            <div className="flex md:flex-nowrap flex-wrap justify-center">
               <div className="md:w-1/2 w-full">
                 <StructuredTextSection data={data.award.content} lng={lng} />
               </div>

@@ -41,12 +41,12 @@ const GalleryBlock: FC<Props> = ({ galleryRecords }) => {
         {extractImages.map((image: ImageFileField, index: number) => (
           <SwiperSlide key={index}>
             <div
-              className="relative h-72 w-full overflow-hidden rounded-xl lg:h-96"
+              className="relative aspect-square sm:w-56 mx-auto w-full overflow-hidden rounded-xl drop-shadow-xl md:w-72 lg:w-96"
             >
               <DatoImage
                 className="rounded"
                 layout="fill"
-                objectFit="cover"
+                objectFit="contain"
                 data={image.responsiveImage}
               />
 
