@@ -12,7 +12,7 @@ import {
 } from "@/graphql/generated";
 import NotificationStrip from "./NotificationStrip";
 import { Menu } from "./HeaderRenderer";
-import { UserButton } from "@clerk/nextjs";
+// import { UserButton } from "@clerk/nextjs";
 import { AppContext } from "@/context/App";
 
 type Props = {
@@ -209,7 +209,7 @@ const Header = ({ lng, data }: Props) => {
                     }`}
                 />
               </button>
-              <UserButton />
+              {/* <UserButton /> */}
             </div>
           </div>
         </div>
