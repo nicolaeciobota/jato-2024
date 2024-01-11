@@ -60,7 +60,6 @@ query AgendaTab(
                 slug
                 id
                 title
-                description
                 start
                 end
                 dateTags {

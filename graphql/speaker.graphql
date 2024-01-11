@@ -30,7 +30,6 @@ query Speaker(
         slug
         id
         title
-        description
         start
         end
         dateTags {
@@ -194,7 +193,6 @@ query Speaker(
                 slug
                 id
                 title
-                description
                 start
                 end
                 dateTags {

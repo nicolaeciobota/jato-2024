@@ -94,7 +94,6 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
               slug
               id
               title
-              description
               start
               end
               dateTags {
@@ -549,7 +548,6 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
               slug
               id
               title
-              description
               start
               end
               dateTags {
@@ -770,7 +768,6 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           slug
           id
           title
-          description
           start
           end
           dateTags {

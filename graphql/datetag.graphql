@@ -18,7 +18,6 @@ query Datetag(
       slug
       id
       title
-      description
       start
       end
       dateTags {
@@ -56,7 +55,6 @@ query Datetag(
             slug
             id
             title
-            description
             start
             end
             dateTags {
