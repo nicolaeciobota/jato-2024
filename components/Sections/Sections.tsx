@@ -45,6 +45,7 @@ import {
   AwardRecord,
   AllAwardsSectionRecord,
   FeaturedAcategorySectionRecord,
+  IvsLiveStageRecord,
 } from "@/graphql/generated";
 import GradientHero from "../Home/Hero/GradientHero";
 import FeatureCards from "../Home/Features/FeatureCards";
@@ -78,6 +79,7 @@ import FeaturedAcategory from "../Home/Features Categories";
 import BigImageHorizontalAcategory from "../Home/Features Categories/BigImageHorizontalAcategory";
 import BigImageVerticalAcategory from "../Home/Features Categories/BigImageVerticalAcategory";
 import AcategoryCards from "../Home/Features Categories/AcategoryCards";
+import IVSliveStage from "../Home/IVSliveStage/IVSliveStage";
 
 type Props = {
   sections: Array<PageModelSectionsField>;
@@ -118,6 +120,11 @@ export default function Section({
                 featuredChangeLogs={changeLogSection.featuredVersions}
                 locale={locale}
               />
+            );
+          case "ivs_live_stage":
+            const ivsLiveStageRecord = section as IvsLiveStageRecord;
+            return (
+              <IVSliveStage ivsLiveStageRecord={ivsLiveStageRecord} />
             );
           case "hero_section":
             const heroSectionRecord = section as HeroSectionRecord;

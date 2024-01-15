@@ -382,6 +382,16 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           }
         }
       }
+      ... on IvsLiveStageRecord {
+        _modelApiKey
+        id
+        title
+        rtmpUrl
+        iframeUrl
+        iframeHeight
+        iframeWidth
+        iframeMinHeight
+      }
       ... on FeatureListSectionRecord {
         _modelApiKey
         id
