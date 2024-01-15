@@ -36,7 +36,8 @@ export const VideoJS = ({ options, onReady, playbackURL }: Props) => {
                 techOrder: ["AmazonIVS"],
                 ...options
             }, () => {
-                player?.src(playbackURL)
+                player.autoplay(options?.autoplay);
+                player.src(options?.sources);
                 onReady && onReady(player);
             });
 

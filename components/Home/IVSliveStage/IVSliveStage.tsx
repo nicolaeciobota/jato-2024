@@ -23,7 +23,7 @@ const IVSliveStage = ({
             className="bg-primary/[.03] pt-24 pb-10 dark:bg-dark-background opacity-95 min-h-[calc(100vh-320px)]"
         >
             <div className="container">
-                <div className="flex lg:flex-row flex-col h-full">
+                <div className="mt-5 flex lg:flex-row flex-col h-full">
                     <div className="lg:w-[66.66%] w-full">
                         <IVSplayer playbackURL={rtmpUrl} />
                     </div>
