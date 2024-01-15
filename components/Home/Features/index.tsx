@@ -1,37 +1,39 @@
-import { FeatureRecord } from "@/graphql/generated";
-import SectionTitle from "../../Common/SectionTitle";
-import SingleFeature from "./SingleFeature";
-import { Maybe } from "graphql/jsutils/Maybe";
+'use client'
+import { FeatureListSectionRecord } from "@/graphql/generated";
+import { ReactNode } from "react";
+import MinimalCardsFeature from "./MinimalCardsFeature";
+import Features from "./Features";
+import BigImageHorizontalFeatures from "./BigImageHorizontalFeatures";
+import BigImageVerticalFeatures from "./BigImageVerticalFeatures";
+import FeatureCards from "./FeatureCards";
+import { useAuth } from "@clerk/nextjs";
 
 type Props = {
-  features: FeatureRecord[];
-  featuresHeader: string;
-  featuresSubheader: Maybe<string>;
+  featureListSectionRecord: FeatureListSectionRecord
+
 };
 
-const Features = ({ features, featuresHeader, featuresSubheader }: Props) => {
+const Index = ({ featureListSectionRecord }: Props) => {
+
+  const { isSignedIn } = useAuth();
+  const { feature, featuresHeader, featuresSubheader, displayOption } = featureListSectionRecord;
+
+  const displayContentMapper: { [key: string]: ReactNode } = {
+    card_minimal: <MinimalCardsFeature features={feature} featuresHeader={featuresHeader} featuresSubheader={featuresSubheader} />,
+    grid: <Features features={feature} featuresHeader={featuresHeader} featuresSubheader={featuresSubheader} />,
+    big_image_horizontal: <BigImageHorizontalFeatures features={feature} featuresHeader={featuresHeader} featuresSubheader={featuresSubheader} />,
+    big_image_vertical: <BigImageVerticalFeatures features={feature} featuresHeader={featuresHeader} featuresSubheader={featuresSubheader} />
+  }
+
+  if(!isSignedIn) return;
+
   return (
     <>
-      <section
-        id="features"
-        className="bg-white py-8 sm:py-10 lg:py-15 dark:bg-dark-background mt-12"
-      >
-        <div className="container">
-          <SectionTitle
-            title={featuresHeader}
-            paragraph={featuresSubheader}
-            center
-          />
-
-          <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature) => (
-              <SingleFeature key={feature.id} feature={feature} />
-            ))}
-          </div>
-        </div>
-      </section>
+      {
+        displayContentMapper[displayOption] || <FeatureCards features={feature} featuresHeader={featuresHeader} featuresSubheader={featuresSubheader} />
+      }
     </>
   );
 };
 
-export default Features;
+export default Index;

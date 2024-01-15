@@ -21,7 +21,7 @@ const MinimalCardsFeature = ({
       className="bg-white py-8 sm:py-10 lg:py-15 dark:bg-dark-background mt-12"
     >
       <div className="container">
-        <div className="mx-auto max-w-3xl pb-12 text-center md:pb-20">
+        <div className="py-12 md:py-20 mx-auto max-w-3xl text-center">
           <h1 className="mb-4 text-3xl font-bold !leading-tight text-black dark:text-darktext sm:text-4xl md:text-[45px]">
             {featuresHeader}
           </h1>
