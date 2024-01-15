@@ -39,7 +39,7 @@ const IVSplayer = ({ playbackURL }: Props) => {
     }, [playerRef]);
 
     return (
-        <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
+        <VideoJS playbackURL={playbackURL} options={videoJsOptions} onReady={handlePlayerReady} />
     );
 };
 
