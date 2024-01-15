@@ -9,10 +9,11 @@ import {
 
 interface Props {
     options: any;
-    onReady: any
+    onReady: any;
+    playbackURL: string;
 }
 
-export const VideoJS = ({ options, onReady }: Props) => {
+export const VideoJS = ({ options, onReady, playbackURL }: Props) => {
     const videoRef = useRef<any>(null);
     const playerRef = useRef<any>(null);
 
