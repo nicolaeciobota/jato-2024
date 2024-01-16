@@ -12,7 +12,7 @@ import {
 } from "@/graphql/generated";
 import NotificationStrip from "./NotificationStrip";
 import { Menu } from "./HeaderRenderer";
-import { UserButton, useAuth } from "@clerk/nextjs";
+// import { UserButton, useAuth } from "@clerk/nextjs";
 import { AppContext } from "@/context/App";
 
 type Props = {
@@ -22,7 +22,7 @@ type Props = {
 
 const Header = ({ lng, data }: Props) => {
   const menuData: Menu[] = [];
-  const { isSignedIn } = useAuth();
+  // const { isSignedIn } = useAuth();
   const { theme, themeHandler } = useContext(AppContext)
 
   data.layout!.menu.map((item) => {
@@ -213,8 +213,9 @@ const Header = ({ lng, data }: Props) => {
                 />
               </button>
               {
-                isSignedIn
-                  ? <div className="h-9 relative w-9 flex justify-center items-center"><UserButton /></div>
+                false
+                  // ? <UserButton />
+                  ? <></>
                   : <Link href={process.env.NEXT_PUBLIC_CLERK_SIGNIN || '#'}>
                     <p className="flex font-semibold xl:text-base text-sm text-primary group-hover:opacity-70 dark:text-darktext lg:px-0">Log In</p>
                   </Link>
