@@ -1,12 +1,14 @@
-import { SocialFeedQuery } from "@/graphql/generated";
+import { SiteLocale, SocialFeedQuery } from "@/graphql/generated";
 import IFrame from "../IFrame";
 
 type SocialFeedProps = {
-  data: SocialFeedQuery
+  data: SocialFeedQuery;
+  lng: SiteLocale;
 };
 
 const SocialFeed = ({
-  data
+  data,
+  lng
 }: SocialFeedProps) => {
 
   return (
@@ -21,6 +23,7 @@ const SocialFeed = ({
               ? <IFrame
                 iframeUrl={data?.socialFeed?.iframe || ''}
                 btnText="Close Social"
+                lng={lng}
               />
               : <div>Not found!</div>
           }

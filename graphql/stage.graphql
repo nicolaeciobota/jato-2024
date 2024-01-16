@@ -11,6 +11,7 @@ query Stage(
     _publishedAt
     name
     streamKey
+    iframeUrl
     talk {
       _publishedAt
       slug

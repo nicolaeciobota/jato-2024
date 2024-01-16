@@ -16,6 +16,7 @@ query Stages(
     id
     name
     streamKey
+    iframeUrl
     seoTags {
       description
       image {

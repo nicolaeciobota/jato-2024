@@ -10,10 +10,9 @@ import {
 interface Props {
     options: any;
     onReady: any;
-    playbackURL: string;
 }
 
-export const VideoJS = ({ options, onReady, playbackURL }: Props) => {
+export const VideoJS = ({ options, onReady }: Props) => {
     const videoRef = useRef<any>(null);
     const playerRef = useRef<any>(null);
 
@@ -36,7 +35,8 @@ export const VideoJS = ({ options, onReady, playbackURL }: Props) => {
                 techOrder: ["AmazonIVS"],
                 ...options
             }, () => {
-                player?.src(playbackURL)
+                player.autoplay(options?.autoplay);
+                player.src(options?.sources);
                 onReady && onReady(player);
             });
 

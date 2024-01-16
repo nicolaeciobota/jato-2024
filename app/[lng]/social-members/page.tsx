@@ -28,7 +28,7 @@ const MemberPage = async ({ params }: Params) => {
 
   return (
     <>
-      {!isEnabled && <Member data={data}/>}
+      {!isEnabled && <Member data={data} lng={lng} />}
     </>
   );
 };
