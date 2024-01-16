@@ -12,7 +12,7 @@ import {
 } from "@/graphql/generated";
 import NotificationStrip from "./NotificationStrip";
 import { Menu } from "./HeaderRenderer";
-import { UserButton, useAuth } from "@clerk/nextjs";
+// import { UserButton, useAuth } from "@clerk/nextjs";
 import { AppContext } from "@/context/App";
 
 type Props = {
@@ -22,7 +22,7 @@ type Props = {
 
 const Header = ({ lng, data }: Props) => {
   const menuData: Menu[] = [];
-  const { isSignedIn } = useAuth();
+  // const { isSignedIn } = useAuth();
   const { theme, themeHandler } = useContext(AppContext)
 
   data.layout!.menu.map((item) => {
@@ -122,7 +122,7 @@ const Header = ({ lng, data }: Props) => {
               </Link>
             </div>
             <div className="ml-6">
-              {isSignedIn
+              {true
                 ? <nav
                   id="navbarCollapse"
                   className={`navbar absolute right-0 z-30 w-[250px] rounded border-[.5px] border-body-color/50 bg-white px-6 py-4 duration-300 dark:border-body-color/20 dark:bg-dark lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${navbarOpen
@@ -213,8 +213,9 @@ const Header = ({ lng, data }: Props) => {
                 />
               </button>
               {
-                isSignedIn
-                  ? <UserButton />
+                false
+                  // ? <UserButton />
+                  ? <></>
                   : <Link href={process.env.NEXT_PUBLIC_CLERK_SIGNIN || '#'}>
                     <p className="flex py-2 font-semibold xl:text-base text-sm text-primary group-hover:opacity-70 dark:text-darktext lg:px-0 lg:py-6 ">Log In</p>
                   </Link>
