@@ -5,7 +5,7 @@ import { CustomColorDocument, SiteLocale } from '@/graphql/generated';
 import getAvailableLocales from '@/app/i18n/settings';
 import CustomColor from '@/components/Common/CustomColor';
 import queryDatoCMS from '@/utils/queryDatoCMS';
-import { AppProvider } from '@/context/App';
+// import { AppProvider } from '@/context/App';
 
 type Params = {
   children: React.ReactNode;
@@ -35,9 +35,9 @@ export default async function RootLayout({
         g={data.layout?.mainColor.green || 247}
         b={data.layout?.mainColor.blue || 108}
       />
-      <AppProvider>
+      {/* <AppProvider> */}
         {children}
-      </AppProvider>
+      {/* </AppProvider> */}
     </>
   );
 }
