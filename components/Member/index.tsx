@@ -1,12 +1,14 @@
-import { MemberQuery } from "@/graphql/generated";
+import { MemberQuery, SiteLocale } from "@/graphql/generated";
 import IFrame from "../IFrame";
 
 type MemberProps = {
-  data: MemberQuery
+  data: MemberQuery;
+  lng: SiteLocale;
 };
 
 const Member = ({
-  data
+  data,
+  lng
 }: MemberProps) => {
 
   return (
@@ -20,6 +22,7 @@ const Member = ({
             ? <IFrame
               iframeUrl={data?.member?.iframeUrl || ''}
               btnText="Close Members"
+              lng={lng}
             />
             : <div>Not found!</div>
             }

@@ -1,7 +1,7 @@
 import Script from 'next/script';
 export default function Head() {
   return (
-    <head>
+    <head lang='en'>
       <Script
         id="cookieyes"
         type="text/javascript"

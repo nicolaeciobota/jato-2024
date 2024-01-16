@@ -16,7 +16,7 @@ const FeatureCards = ({
   featuresSubheader,
 }: Props) => {
   return (
-    <section className="bg-white py-8 sm:py-10 lg:py-15 dark:bg-dark-background mt-12">
+    <section id="features" className="bg-white py-8 sm:py-10 lg:py-15 dark:bg-dark-background mt-12">
     
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <div className="py-12 md:py-20">

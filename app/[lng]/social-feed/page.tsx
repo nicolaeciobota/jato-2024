@@ -28,7 +28,7 @@ const SocialFeedPage = async ({ params }: Params) => {
 
   return (
     <>
-      {!isEnabled && <SocialFeed data={data}/>}
+      {!isEnabled && <SocialFeed data={data} lng={lng}/>}
     </>
   );
 };
