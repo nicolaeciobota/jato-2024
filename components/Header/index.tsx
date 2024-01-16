@@ -136,7 +136,7 @@ const Header = ({ lng, data }: Props) => {
                         {menuItem.path ? (
                           <Link
                             href={"/" + lng + menuItem.path}
-                            className={`flex py-2 xl:text-base text-sm text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${menuItem.title.length > 10 ? 'xl:w-[88px] lg:w-[78px]' : ''}`}
+                            className={`flex py-2 xl:text-base text-sm text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${menuItem.title.length > 10 ? 'xl:w-[124px] lg:w-[78px]' : ''}`}
                           >
                             {menuItem.title}
                           </Link>
@@ -214,9 +214,9 @@ const Header = ({ lng, data }: Props) => {
               </button>
               {
                 isSignedIn
-                  ? <UserButton />
+                  ? <div className="h-9 relative w-9 flex justify-center items-center"><UserButton /></div>
                   : <Link href={process.env.NEXT_PUBLIC_CLERK_SIGNIN || '#'}>
-                    <p className="flex py-2 font-semibold xl:text-base text-sm text-primary group-hover:opacity-70 dark:text-darktext lg:px-0 lg:py-6 ">Log In</p>
+                    <p className="flex font-semibold xl:text-base text-sm text-primary group-hover:opacity-70 dark:text-darktext lg:px-0">Log In</p>
                   </Link>
               }
 

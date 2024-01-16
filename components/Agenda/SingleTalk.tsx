@@ -74,7 +74,7 @@ const SingleTalk = ({ talk, locale, hideBtnLink = true }: Props) => {
             <StructuredTextSection data={content} lng={locale} />
           </div>
           <span className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10" />
-          <ul className="flex flex-wrap justify-between">
+          <ul className="flex flex-wrap flex-col justify-between">
             {speaker.map((speakerItem) => {
               return (
                 <li key={speakerItem.id} className="mb-2 mr-2 ">

@@ -43,8 +43,7 @@ const AgendaTab = ({
       <div className="container ">
         <div className="flex justify-center flex-col mt-8 sm:mt-0">
           <div className="md:-mx-4 flex h-auto xl:flex-col flex-row items-center justify-center w-full relative overflow-auto">
-            <div className="relative flex pb-2 gap-3">
-              {/* <div className="absolute bottom-0 left-[3.5px] top-2 hidden w-px bg-slate-200 xl:block"></div> */}
+            <div className="relative flex pb-2 gap-8">
               {titleDate.map((tab, index) => <div onClick={() => setSelectedTab(tab)} key={index}>
                 <DateTab tab={tab} locale={lng} isSelected={tab.title === selectedTab.title && tab.date === selectedTab.date} />
               </div>)}

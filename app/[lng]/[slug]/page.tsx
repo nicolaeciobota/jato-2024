@@ -37,7 +37,7 @@ export default async function Home({ params: { lng, slug } }: Params) {
   );
 
   if (!data?.page) notFound();
-  
+    
   return (
     <>
       {!isEnabled && (
