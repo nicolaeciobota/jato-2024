@@ -95,6 +95,9 @@ export default function Section({
   awards,
   awardMeta,
 }: Props) {
+
+  console.log({sections});
+
   return (
     <>
       {sections.map((section) => {
@@ -127,7 +130,6 @@ export default function Section({
             return (
               <Features featureListSectionRecord={featureListSectionRecord} />
             );
-
           case "featured_acategory_section":
             const featureAcategorySectionRecord =
               section as FeaturedAcategorySectionRecord;
@@ -137,7 +139,6 @@ export default function Section({
                 locale={locale}
               />
             )
-
           case "video_section":
             const videoSectionRecord = section as VideoSectionRecord;
             return (
@@ -316,7 +317,6 @@ export default function Section({
                   />
                 );
             }
-
 
           case "team_section":
             const teamSectionRecord = section as TeamSectionRecord;
