@@ -214,7 +214,7 @@ const Header = ({ lng, data }: Props) => {
               </button>
               {
                 isSignedIn
-                  ? <UserButton />
+                  ? <div><UserButton /></div>
                   : <Link href={process.env.NEXT_PUBLIC_CLERK_SIGNIN || '#'}>
                     <p className="flex py-2 font-semibold xl:text-base text-sm text-primary group-hover:opacity-70 dark:text-darktext lg:px-0 lg:py-6 ">Log In</p>
                   </Link>

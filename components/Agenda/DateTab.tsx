@@ -23,12 +23,6 @@ const DateTab = ({ tab, isSelected }: Props) => {
 
     return (
         <div className="relative xl:pl-8 lg:px-3">
-            {/* <svg
-                aria-hidden="true"
-                viewBox="0 0 6 6"
-                className={`absolute left-[1px] xl:top-[0.5625rem] top-[0.30rem] hidden h-1.5 w-1.5 overflow-visible lg:block ${isSelected ? 'fill-primary stroke-primary' : 'fill-teal-400 stroke-teal-400'}`}>
-                <path d="M3 0L6 3L3 6L0 3Z" stroke-width="2" stroke-linejoin="round"></path>
-            </svg> */}
             <div className="relative">
                 <div className={`font-mono lg:text-lg text-bas ${isSelected ? 'text-primary' : 'text-teal-400'}`}>
                     <button
