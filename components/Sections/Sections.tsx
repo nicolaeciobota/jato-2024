@@ -47,13 +47,8 @@ import {
   FeaturedAcategorySectionRecord,
   IvsLiveStageRecord,
 } from "@/graphql/generated";
-import GradientHero from "../Home/Hero/GradientHero";
-import FeatureCards from "../Home/Features/FeatureCards";
 import PostGridRenderer from "../Blog/PostGridRenderer";
 import { redirect } from "next/navigation";
-import RightImageHero from "../Home/Hero/RightImageHero";
-import BackgroundImageHero from "../Home/Hero/BackgroundImage";
-import SplitImage from "../Home/Hero/SplitImage";
 import GradientCards from "../Home/Pricing/GradientCards";
 import Minimal from "../Home/Pricing/Minimal";
 import FeatureListSelector from "../Home/Pricing/FeatureListSelector";
@@ -67,18 +62,11 @@ import ModernPostCards from "../Home/Featured Posts/ModernPostCards";
 import CarrouselFeaturedPosts from "../Home/Featured Posts/CarrouselFeaturedPosts";
 import MinimalistFeaturedPostsGrid from "../Home/Featured Posts/MinimalistFeaturedPostsGrid";
 import FullImageFeaturedPosts from "../Home/Featured Posts/FullImageFeaturedPosts";
-import MinimalCardsFeature from "../Home/Features/MinimalCardsFeature";
-import BigImageHorizontalFeatures from "../Home/Features/BigImageHorizontalFeatures";
-import BigImageVerticalFeatures from "../Home/Features/BigImageVerticalFeatures";
 import Changelog from "../Changelog";
 import TalkGridRenderer from "../Agenda/TalkGridRenderer";
 import StageGridRenderer from "../Stage/StageGridRenderer";
 import AwardGridRenderer from "../Award/AwardGridRenderer";
-import MinimalCardsAcategory from "../Home/Features Categories/MinimalCardsAcategory";
 import FeaturedAcategory from "../Home/Features Categories";
-import BigImageHorizontalAcategory from "../Home/Features Categories/BigImageHorizontalAcategory";
-import BigImageVerticalAcategory from "../Home/Features Categories/BigImageVerticalAcategory";
-import AcategoryCards from "../Home/Features Categories/AcategoryCards";
 import IVSliveStage from "../Home/IVSliveStage/IVSliveStage";
 
 type Props = {
@@ -128,106 +116,17 @@ export default function Section({
             );
           case "hero_section":
             const heroSectionRecord = section as HeroSectionRecord;
-            switch (heroSectionRecord.displayOptions) {
-              case "gradient":
-                return (
-                  <GradientHero
-                    heroTitle={heroSectionRecord.heroTitle}
-                    heroSubtitle={heroSectionRecord.heroSubtitle}
-                    buttons={heroSectionRecord.buttons}
-                  />
-                );
-              case "right_image":
-                return (
-                  <RightImageHero
-                    heroTitle={heroSectionRecord.heroTitle}
-                    heroSubtitle={heroSectionRecord.heroSubtitle}
-                    buttons={heroSectionRecord.buttons}
-                    image={heroSectionRecord.heroImage}
-                  />
-                );
-              case "background_image":
-                return (
-                  <BackgroundImageHero
-                    heroTitle={heroSectionRecord.heroTitle}
-                    heroSubtitle={heroSectionRecord.heroSubtitle}
-                    buttons={heroSectionRecord.buttons}
-                    image={heroSectionRecord.heroImage}
-                  />
-                );
-              case "split_image":
-                return (
-                  <SplitImage
-                    heroTitle={heroSectionRecord.heroTitle}
-                    heroSubtitle={heroSectionRecord.heroSubtitle}
-                    buttons={heroSectionRecord.buttons}
-                    image={heroSectionRecord.heroImage}
-                  />
-                );
-              default:
-                return (
-                  <Hero
-                    heroTitle={heroSectionRecord.heroTitle}
-                    heroSubtitle={heroSectionRecord.heroSubtitle}
-                    buttons={heroSectionRecord.buttons}
-                  />
-                );
-            }
+            return (
+              <Hero
+                heroSectionRecord={heroSectionRecord}
+              />
+            );
           case "feature_list_section":
             const featureListSectionRecord =
               section as FeatureListSectionRecord;
-            switch (featureListSectionRecord.displayOption) {
-              case "card_minimal":
-                return (
-                  <MinimalCardsFeature
-                    features={featureListSectionRecord.feature}
-                    featuresHeader={featureListSectionRecord.featuresHeader}
-                    featuresSubheader={
-                      featureListSectionRecord.featuresSubheader
-                    }
-                  />
-                );
-              case "grid":
-                return (
-                  <Features
-                    features={featureListSectionRecord.feature}
-                    featuresHeader={featureListSectionRecord.featuresHeader}
-                    featuresSubheader={
-                      featureListSectionRecord.featuresSubheader
-                    }
-                  />
-                );
-              case "big_image_horizontal":
-                return (
-                  <BigImageHorizontalFeatures
-                    features={featureListSectionRecord.feature}
-                    featuresHeader={featureListSectionRecord.featuresHeader}
-                    featuresSubheader={
-                      featureListSectionRecord.featuresSubheader
-                    }
-                  />
-                );
-              case "big_image_vertical":
-                return (
-                  <BigImageVerticalFeatures
-                    features={featureListSectionRecord.feature}
-                    featuresHeader={featureListSectionRecord.featuresHeader}
-                    featuresSubheader={
-                      featureListSectionRecord.featuresSubheader
-                    }
-                  />
-                );
-              default:
-                return (
-                  <FeatureCards
-                    features={featureListSectionRecord.feature}
-                    featuresHeader={featureListSectionRecord.featuresHeader}
-                    featuresSubheader={
-                      featureListSectionRecord.featuresSubheader
-                    }
-                  />
-                );
-            }
+            return (
+              <Features featureListSectionRecord={featureListSectionRecord} />
+            );
 
           case "featured_acategory_section":
             const featureAcategorySectionRecord =

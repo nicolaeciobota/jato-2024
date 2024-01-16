@@ -10,7 +10,8 @@
     "generate-ts-types": "graphql-codegen --config graphql.config.yml"
   },
   "dependencies": {
-    "@clerk/nextjs": "^4.29.0",
+    "@babel/traverse": "^7.23.7",
+    "@clerk/nextjs": "^4.29.3",
     "@datocms/cma-client-node": "^2.0.0",
     "@formatjs/intl-localematcher": "^0.4.0",
     "@graphql-codegen/cli": "^5.0.0",

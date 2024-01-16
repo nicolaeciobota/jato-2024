@@ -35,7 +35,25 @@ const Stage = ({ data, lng }: Props) => {
         </div>
       </div>
       <div className="container mb-12">
-        {data?.stage?.streamKey ? <LiveryPlayer streamId={data?.stage?.streamKey} /> : null}
+        {/* {data?.stage?.streamKey ? <LiveryPlayer streamId={data?.stage?.streamKey} /> : null} */}
+        <div className="flex lg:flex-row flex-col h-full">
+          {data?.stage?.streamKey
+            ? <div className="lg:w-[66.66%] w-full">
+              <LiveryPlayer streamId={data?.stage?.streamKey} />
+            </div>
+            : null}
+          <div className="lg:w-[33.33%] w-full lg:h-auto h-[565px]">
+            {data?.stage?.iframeUrl
+              ? <iframe
+                src={data?.stage?.iframeUrl || ''}
+                style={{
+                  width: '100%',
+                  height: '100%'
+                }}
+              ></iframe>
+              : null}
+          </div>
+        </div>
       </div>
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-center">
@@ -64,7 +82,7 @@ const Stage = ({ data, lng }: Props) => {
                   key={talks.id}
                   className="mb-10 w-full px-4 md:w-2/3 lg:w-1/2 xl:w-1/3"
                 >
-                  <SingleTalk talk={talks as TalkRecord} locale={lng} hideBtnLink={false}/>
+                  <SingleTalk talk={talks as TalkRecord} locale={lng} hideBtnLink={false} />
                 </div>
               ))}
         </div>
