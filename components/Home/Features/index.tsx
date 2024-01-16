@@ -1,4 +1,3 @@
-'use client'
 import { FeatureListSectionRecord } from "@/graphql/generated";
 import { ReactNode } from "react";
 import MinimalCardsFeature from "./MinimalCardsFeature";
