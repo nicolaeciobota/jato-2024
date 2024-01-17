@@ -46,6 +46,7 @@ import {
   AllAwardsSectionRecord,
   FeaturedAcategorySectionRecord,
   IvsLiveStageRecord,
+  MuxLiveStreamRecord,
 } from "@/graphql/generated";
 import PostGridRenderer from "../Blog/PostGridRenderer";
 import { redirect } from "next/navigation";
@@ -68,6 +69,7 @@ import StageGridRenderer from "../Stage/StageGridRenderer";
 import AwardGridRenderer from "../Award/AwardGridRenderer";
 import FeaturedAcategory from "../Home/Features Categories";
 import IVSliveStage from "../Home/IVSliveStage/IVSliveStage";
+import MUXliveStream from "../Home/MUXliveStream/MUXliveStream";
 
 type Props = {
   sections: Array<PageModelSectionsField>;
@@ -113,6 +115,11 @@ export default function Section({
             const ivsLiveStageRecord = section as IvsLiveStageRecord;
             return (
               <IVSliveStage ivsLiveStageRecord={ivsLiveStageRecord} />
+            );
+          case "mux_live_stream":
+            const muxLiveStreamRecord = section as MuxLiveStreamRecord;
+            return (
+              <MUXliveStream muxLiveStreamRecord={muxLiveStreamRecord} />
             );
           case "hero_section":
             const heroSectionRecord = section as HeroSectionRecord;
