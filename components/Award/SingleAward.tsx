@@ -35,7 +35,7 @@ const SingleAward = ({ award, locale }: Props) => {
         <div className="p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8">
           <Link href={"/" + locale + "/awards/" + slug}>
             <h3
-              className="dark:text-blue mb-4 block text-xl text-black dark:text-darktext dark:hover:text-primary text-center"
+              className="dark:text-blue mb-4 block text-xl text-black dark:text-darktext hover:text-primary dark:hover:text-toruquise text-center"
             >
               {title}
             </h3>
