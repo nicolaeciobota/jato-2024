@@ -76,7 +76,7 @@ const AboutIntro = ({
                   height="24"
                 />
               </motion.svg>
-              <span className="relative text-gray-700">{firstWord}</span>
+              <span className="relative text-gray-700 dark:text-darktext">{firstWord}</span>
             </span>{' '}
             {restOfTheString}
           </h2>
