@@ -27,7 +27,7 @@ const MUXliveStream = ({
             <div className="container">
                 <div className="flex lg:flex-row flex-col h-full">
                     <div className="lg:w-[66.66%] w-full">
-                        <MUXplayer streamType={streamType} playbackId={playbackId} placeholderUrl={placeholderUrl}/>
+                        <MUXplayer streamType={streamType} playbackId={playbackId} placeholderUrl={placeholderUrl} />
                     </div>
                     <div className="lg:w-[33.33%] w-full lg:h-auto h-[565px]">
                         <iframe
@@ -35,8 +35,8 @@ const MUXliveStream = ({
                             height={`${iframeHeight}px`}
                             width={`${iframeWidth}px`}
                             style={{
-                                width: `${iframeHeight}px`,
-                                height: `${iframeWidth}px`,
+                                width: `100%`,
+                                height: `100%`,
                                 minHeight: iframeMinHeight
                             }}
                         ></iframe>
