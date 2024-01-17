@@ -27,7 +27,7 @@ const BigImageVerticalAcategory = ({
                   <DatoImage
                     className="h-full w-full object-cover"
                     layout="fill"
-                    objectFit="cover"
+                    objectFit="contain"
                     objectPosition="50% 50%"
                     data={feature.picture.responsiveImage}
                   />

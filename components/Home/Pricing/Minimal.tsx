@@ -88,9 +88,8 @@ const Minimal = ({ header, subheader, plans }: Props) => {
                   <div key={feature} className="flex items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-primary"
+                      className="h-5 w-5 text-primary fill-current dark:fill-toruquise"
                       viewBox="0 0 20 20"
-                      fill="currentColor"
                     >
                       <path
                         fillRule="evenodd"
@@ -139,9 +138,8 @@ const Minimal = ({ header, subheader, plans }: Props) => {
                       <div key={feature} className="flex items-center">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5 text-primary"
+                          className="h-5 w-5 text-primary fill-current dark:fill-toruquise"
                           viewBox="0 0 20 20"
-                          fill="currentColor"
                         >
                           <path
                             fill-rule="evenodd"

@@ -28,7 +28,7 @@ const BigImageHorizontalAcategory = ({
                     data={feature.picture.responsiveImage}
                     className="h-full w-full object-contain"
                     layout="fill"
-                    objectFit="cover"
+                    objectFit="contain"
                     objectPosition="50% 50%"
                   />
                 </Link>
