@@ -17,7 +17,7 @@ const SingleStage = ({ stage, locale }: Props) => {
         <h3>
           <Link
             href={"/" + locale + "/stage/" + slug}
-            className="mb-4 block h-16 text-xl text-black hover:text-primary dark:text-white dark:hover:text-primary"
+            className="mb-4 block h-16 text-xl text-black hover:text-primary dark:text-white dark:hover:text-toruquise"
           >
             {name}
           </Link>

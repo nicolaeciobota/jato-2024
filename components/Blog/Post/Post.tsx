@@ -231,7 +231,7 @@ const Post = ({ data, lng }: Props) => {
                 />
                 <div className="lg:mt-16 md:mt-12 sm:mt-8 mt-6 items-center justify-between sm:flex flex-wrap">
                   <div className="sm:mb-5 mb-2">
-                    <h5 className="mb-3 text-sm font-medium text-body-color">
+                    <h5 className="mb-3 text-sm font-medium text-body-color dark:text-white">
                       Post Tags :
                     </h5>
                     <div className="flex flex-wrap items-center">

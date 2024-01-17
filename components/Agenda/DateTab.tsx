@@ -24,7 +24,7 @@ const DateTab = ({ tab, isSelected }: Props) => {
     return (
         <div className="relative xl:pl-8 lg:px-3">
             <div className="relative">
-                <div className={`font-mono text-lg ${isSelected ? 'text-primary' : 'text-teal-400'}`}>
+                <div className={`font-mono text-lg ${isSelected ? 'text-toruquise' : 'text-primary'}`}>
                     <button
                         className="ui-not-focus-visible:outline-none"
                         id="headlessui-tabs-tab-:R6kqlaqlla:"
@@ -36,11 +36,11 @@ const DateTab = ({ tab, isSelected }: Props) => {
                 </div>
                 <time
                     dateTime="2022-04-05"
-                    className={`mb-1 block xl:text-[26px] text-xl font-semibold tracking-tight w-max ${isSelected ? 'text-primary' : 'text-teal-400'}`}
+                    className={`mb-1 block xl:text-[26px] text-xl font-semibold tracking-tight w-max ${isSelected ? 'text-toruquise' : 'text-primary'}`}
                 >
                     {formattedDate}
                 </time>
-                <div className={`h-[5px] w-full rounded ${isSelected ? 'bg-primary' : 'bg-transparent'}`}></div>
+                <div className={`h-[5px] w-full rounded ${isSelected ? 'bg-toruquise' : 'bg-transparent'}`}></div>
             </div>
         </div>
     );

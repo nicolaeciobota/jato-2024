@@ -48,7 +48,7 @@ const AboutIntro = ({
           className="mb-10 max-w-xl sm:text-center md:mx-auto md:mb-12 lg:max-w-2xl"
         >
           <div>
-            <p className="bg-teal-accent-400 mb-4 inline-block rounded-full px-3 py-px text-xs font-semibold uppercase tracking-wider text-primary ">
+            <p className="bg-teal-accent-400 mb-4 inline-block rounded-full px-3 py-px text-xs font-semibold uppercase tracking-wider text-primary dark:text-toruquise">
               {preHeader}
             </p>
           </div>
@@ -57,8 +57,7 @@ const AboutIntro = ({
               <motion.svg
                 style={{ y, x }}
                 viewBox="0 0 52 24"
-                fill="currentColor"
-                className="text-blue-gray-100 absolute left-0 top-0 z-0 -ml-20 -mt-8 hidden w-32 sm:block lg:-ml-28 lg:-mt-10 lg:w-32"
+                className="text-blue-gray-100 absolute left-0 top-0 z-0 -ml-20 -mt-8 hidden w-32 sm:block lg:-ml-28 lg:-mt-10 lg:w-32 fill-current dark:fill-toruquise"
               >
                 <defs>
                   <pattern

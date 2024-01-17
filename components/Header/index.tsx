@@ -216,7 +216,7 @@ const Header = ({ lng, data }: Props) => {
                 isSignedIn
                   ? <div className="h-9 relative w-9 flex justify-center items-center"><UserButton /></div>
                   : <Link href={process.env.NEXT_PUBLIC_CLERK_SIGNIN || '#'}>
-                    <p className="flex font-semibold xl:text-base text-sm text-primary group-hover:opacity-70 dark:text-darktext lg:px-0">Log In</p>
+                    <p className="flex font-semibold xl:text-base text-sm text-primary group-hover:opacity-70 dark:text-toruquise lg:px-0">Log In</p>
                   </Link>
               }
 

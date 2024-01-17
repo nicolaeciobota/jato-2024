@@ -66,7 +66,7 @@ const GradientHero = ({ heroTitle, heroSubtitle, buttons }: Props) => {
               data-aos="zoom-y-out"
             >
               {heroTitleWords.join(' ')}{' '}
-              <span className="bg-gradient-to-r from-primary to-teal-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-teal-400 bg-clip-text text-transparent dark:text-toruquise">
                 {lastWord}
               </span>
             </h1>
