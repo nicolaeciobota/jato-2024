@@ -22,10 +22,12 @@ import {
     NewsletterSubscriptionRecord,
     AwardRecord,
     SiteLocale,
+    MuxVideoRecord,
 } from "@/graphql/generated";
 import Highlighter from "@/components/Common/Highlighter";
 import CTAAppBlock from "./CTAAppBlock";
 import GalleryBlock from "./GalleryBlock";
+import MUXplayer from "@/components/Home/MUXliveStream/MuxPlayer";
 
 
 type Props = {
@@ -91,6 +93,17 @@ const StructuredTextSection = ({ data, lng }: Props) => {
                                 googleURL={appCtaRecord.googlePlayUrl}
                                 appleURL={appCtaRecord.appstoreUrl}
                             />
+                        );
+                    case "MuxVideoRecord":
+                        const MuxVideoRecord = record as MuxVideoRecord;
+                        return (
+                            <div className="relative overflow-hidden">
+                                <MUXplayer
+                                    streamType={MuxVideoRecord.streamType}
+                                    placeholderUrl={MuxVideoRecord.placeholderUrl || ''}
+                                    playbackId={MuxVideoRecord.playbackId}
+                                />
+                            </div>
                         );
                     default:
                         return null;

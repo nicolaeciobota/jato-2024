@@ -10,7 +10,9 @@ const MUXliveStream = ({
 }: Props) => {
 
     const {
-        muxPlayerUrl,
+        playbackId,
+        placeholderUrl,
+        streamType,
         iframeHeight,
         iframeUrl,
         iframeWidth,
@@ -25,7 +27,7 @@ const MUXliveStream = ({
             <div className="container">
                 <div className="flex lg:flex-row flex-col h-full">
                     <div className="lg:w-[66.66%] w-full">
-                        <MUXplayer playerUrl={muxPlayerUrl}/>
+                        <MUXplayer streamType={streamType} playbackId={playbackId} placeholderUrl={placeholderUrl}/>
                     </div>
                     <div className="lg:w-[33.33%] w-full lg:h-auto h-[565px]">
                         <iframe

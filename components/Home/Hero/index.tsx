@@ -10,9 +10,10 @@ import { useAuth } from '@clerk/nextjs';
 
 type Props = {
   heroSectionRecord: HeroSectionRecord
+  slug: string;
 };
 
-const Index = ({ heroSectionRecord }: Props) => {
+const Index = ({ heroSectionRecord, slug }: Props) => {
 
   const { isSignedIn } = useAuth();
   const { displayOptions, heroTitle, heroSubtitle, buttons, heroImage } = heroSectionRecord;
@@ -24,7 +25,7 @@ const Index = ({ heroSectionRecord }: Props) => {
     'split_image': <SplitImage heroSubtitle={heroSubtitle} heroTitle={heroTitle} buttons={buttons} image={heroImage} />,
   }
 
-  if(isSignedIn) return;
+  if (slug === 'home' && isSignedIn) return;
 
   return (
     <>

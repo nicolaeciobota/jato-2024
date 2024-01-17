@@ -2,20 +2,18 @@
 import MuxPlayer from '@mux/mux-player-react';
 
 interface Props {
-    playerUrl: string;
+    playbackId: string;
+    placeholderUrl: string;
+    streamType: 'on-demand' | 'live' | 'll-live' | any;
 }
 
-const MUXplayer = ({ playerUrl }: Props) => {
+const MUXplayer = ({ playbackId, placeholderUrl, streamType }: Props) => {
 
     return (
         <MuxPlayer
-            playbackId={playerUrl}
-            metadata={{
-                video_id: 'video-id-123456',
-                video_title: 'Bick Buck Bunny',
-                viewer_user_id: 'user-id-bc-789',
-            }}
-            streamType="on-demand"
+            playbackId={playbackId}
+            placeholder={placeholderUrl}
+            streamType={streamType}
         />
     );
 }

@@ -396,7 +396,9 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         _modelApiKey
         id
         title
-        muxPlayerUrl
+        playbackId
+        placeholderUrl
+        streamType
         iframeUrl
         iframeHeight
         iframeWidth

@@ -74,6 +74,7 @@ import MUXliveStream from "../Home/MUXliveStream/MUXliveStream";
 type Props = {
   sections: Array<PageModelSectionsField>;
   locale: SiteLocale;
+  slug?: string;
   posts: PostRecord[];
   postMeta: CollectionMetadata;
   talks: TalkRecord[];
@@ -88,6 +89,7 @@ type Props = {
 export default function Section({
   sections,
   locale,
+  slug = '',
   posts,
   postMeta,
   stages,
@@ -125,6 +127,7 @@ export default function Section({
             const heroSectionRecord = section as HeroSectionRecord;
             return (
               <Hero
+                slug={slug}
                 heroSectionRecord={heroSectionRecord}
               />
             );
@@ -132,7 +135,7 @@ export default function Section({
             const featureListSectionRecord =
               section as FeatureListSectionRecord;
             return (
-              <Features featureListSectionRecord={featureListSectionRecord} />
+              <Features slug={slug} featureListSectionRecord={featureListSectionRecord} />
             );
 
           case "featured_acategory_section":
