@@ -35,7 +35,7 @@ const SingleBlog = ({ blog, locale }: Props) => {
           <h3>
             <Link
               href={"/" + locale + "/posts/" + slug}
-              className="mb-4 block h-16 text-xl text-black hover:text-primary dark:text-white dark:hover:text-primary"
+              className="mb-4 block h-16 text-xl text-black hover:text-primary dark:text-white dark:hover:text-toruquise"
             >
               {title}
             </Link>
