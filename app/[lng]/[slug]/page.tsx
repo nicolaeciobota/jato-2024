@@ -43,6 +43,7 @@ export default async function Home({ params: { lng, slug } }: Params) {
       {!isEnabled && (
         <Sections
           locale={lng}
+          slug={slug}
           sections={data.page.sections as Array<PageModelSectionsField>}
           posts={data.allPosts as PostRecord[]}
           postMeta={data._allPostsMeta as CollectionMetadata}

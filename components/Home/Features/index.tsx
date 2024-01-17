@@ -10,10 +10,10 @@ import { useAuth } from "@clerk/nextjs";
 
 type Props = {
   featureListSectionRecord: FeatureListSectionRecord
-
+  slug: string;
 };
 
-const Index = ({ featureListSectionRecord }: Props) => {
+const Index = ({ featureListSectionRecord, slug }: Props) => {
 
   const { isSignedIn } = useAuth();
   const { feature, featuresHeader, featuresSubheader, displayOption } = featureListSectionRecord;
@@ -25,7 +25,7 @@ const Index = ({ featureListSectionRecord }: Props) => {
     big_image_vertical: <BigImageVerticalFeatures features={feature} featuresHeader={featuresHeader} featuresSubheader={featuresSubheader} />
   }
 
-  if(!isSignedIn) return;
+  if(slug === 'home' && !isSignedIn) return;
 
   return (
     <>

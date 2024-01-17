@@ -392,6 +392,18 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         iframeWidth
         iframeMinHeight
       }
+      ... on MuxLiveStreamRecord {
+        _modelApiKey
+        id
+        title
+        playbackId
+        placeholderUrl
+        streamType
+        iframeUrl
+        iframeHeight
+        iframeWidth
+        iframeMinHeight
+      }
       ... on FeatureListSectionRecord {
         _modelApiKey
         id
