@@ -47,10 +47,10 @@ const FeatureListSelector = ({ header, subheader, plans }: Props) => {
                     xmlns="http://www.w3.org/2000/svg"
                     className={
                       'h-5 w-5 sm:h-7 sm:w-7' +
-                      (planIsSelected ? ' text-primary' : ' text-gray-400')
+                      (planIsSelected ? ' text-primary fill-toruquise' : ' text-gray-400 fill-current')
                     }
                     viewBox="0 0 20 20"
-                    fill="currentColor"
+                    // fill="currentColor"
                   >
                     <path
                       fillRule="evenodd"
