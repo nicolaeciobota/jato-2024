@@ -18,6 +18,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           id
           responsiveImage {
             ...DatoImage_responsiveImage
+            webpSrcSet
           }
         }
       }
@@ -73,6 +74,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           picture {
             responsiveImage {
               ...DatoImage_responsiveImage
+              webpSrcSet
             }
           }
         }
@@ -244,6 +246,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         heroImage {
           responsiveImage {
             ...DatoImage_responsiveImage
+            webpSrcSet
           }
         }
       }
@@ -260,6 +263,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         videoThumbnail {
           responsiveImage {
             ...DatoImage_responsiveImage
+            webpSrcSet
           }
         }
       }
@@ -273,6 +277,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         image {
           responsiveImage {
             ...DatoImage_responsiveImage
+            webpSrcSet
           }
         }
       }
@@ -294,6 +299,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           reviewerPicture {
             responsiveImage {
               ...DatoImage_responsiveImage
+              webpSrcSet
             }
           }
           reviewerTitle
@@ -350,6 +356,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
             image {
               responsiveImage {
                 ...DatoImage_responsiveImage
+                webpSrcSet
               }
             }
           }
@@ -360,6 +367,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
             picture {
               responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
                 ...DatoImage_responsiveImage
+                webpSrcSet
               }
             }
           }
@@ -378,6 +386,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           picture {
             responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
               ...DatoImage_responsiveImage
+              webpSrcSet
             }
           }
         }
@@ -417,17 +426,8 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         bannerUrl
         bannerImage {
           responsiveImage {
-            srcSet
+            ...DatoImage_responsiveImage
             webpSrcSet
-            sizes
-            src
-            width
-            height
-            aspectRatio
-            alt
-            title
-            bgColor
-            base64
           }
         }
       }
@@ -458,6 +458,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           featureIcon {
             responsiveImage {
               ...DatoImage_responsiveImage
+              webpSrcSet
             }
           }
         }
@@ -503,6 +504,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
       image {
         responsiveImage {
           ...DatoImage_responsiveImage
+          webpSrcSet
         }
       }
     }
@@ -513,6 +515,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
       picture {
         responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
           ...DatoImage_responsiveImage
+          webpSrcSet
         }
       }
     }
@@ -541,6 +544,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
       image {
         responsiveImage {
           ...DatoImage_responsiveImage
+          webpSrcSet
         }
       }
     }
@@ -551,6 +555,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
       picture {
         responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
           ...DatoImage_responsiveImage
+          webpSrcSet
         }
       }
     }
@@ -814,6 +819,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
       image {
         responsiveImage {
           ...DatoImage_responsiveImage
+          webpSrcSet
         }
       }
     }
@@ -966,6 +972,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
       image {
         responsiveImage {
           ...DatoImage_responsiveImage
+          webpSrcSet
         }
       }
     }
