@@ -57,7 +57,7 @@ const DetailSection = ({ details, image, imagePosition }: Props) => {
                     renderNodeRule(isParagraph, ({ children, key }) => {
                       return (
                         <p
-                          className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed"
+                          className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed dark:text-darktext"
                           key={key}
                         >
                           {children}

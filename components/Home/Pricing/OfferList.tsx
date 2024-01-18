@@ -19,10 +19,10 @@ const OfferList = ({
 }) => {
   return (
     <div className="mb-3 flex items-center">
-      <span className="mr-3 flex h-[18px] w-full max-w-[18px] items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary">
+      <span className="mr-3 flex h-[18px] w-full max-w-[18px] items-center justify-center rounded-full bg-primary dark:bg-toruquise bg-opacity-10 text-primary">
         {status === "active" ? checkIcon : crossIcon}
       </span>
-      <p className="m-0 text-base font-medium text-body-color">{text}</p>
+      <p className="m-0 text-base font-medium text-body-color dark:text-darktext">{text}</p>
     </div>
   );
 };

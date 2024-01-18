@@ -46,6 +46,9 @@ import {
   AllAwardsSectionRecord,
   FeaturedAcategorySectionRecord,
   IvsLiveStageRecord,
+  MuxLiveStreamRecord,
+  IframeBlockRecord,
+  BannerBlockRecord,
 } from "@/graphql/generated";
 import PostGridRenderer from "../Blog/PostGridRenderer";
 import { redirect } from "next/navigation";
@@ -68,10 +71,14 @@ import StageGridRenderer from "../Stage/StageGridRenderer";
 import AwardGridRenderer from "../Award/AwardGridRenderer";
 import FeaturedAcategory from "../Home/Features Categories";
 import IVSliveStage from "../Home/IVSliveStage/IVSliveStage";
+import MUXliveStream from "../Home/MUXliveStream/MUXliveStream";
+import IframeBlock from "../Home/Iframe Block/IframeBlock";
+import BannerBlock from "../Home/Banner Block/BannerBlock";
 
 type Props = {
   sections: Array<PageModelSectionsField>;
   locale: SiteLocale;
+  slug?: string;
   posts: PostRecord[];
   postMeta: CollectionMetadata;
   talks: TalkRecord[];
@@ -86,6 +93,7 @@ type Props = {
 export default function Section({
   sections,
   locale,
+  slug = '',
   posts,
   postMeta,
   stages,
@@ -114,10 +122,16 @@ export default function Section({
             return (
               <IVSliveStage ivsLiveStageRecord={ivsLiveStageRecord} />
             );
+          case "mux_live_stream":
+            const muxLiveStreamRecord = section as MuxLiveStreamRecord;
+            return (
+              <MUXliveStream muxLiveStreamRecord={muxLiveStreamRecord} />
+            );
           case "hero_section":
             const heroSectionRecord = section as HeroSectionRecord;
             return (
               <Hero
+                slug={slug}
                 heroSectionRecord={heroSectionRecord}
               />
             );
@@ -125,7 +139,7 @@ export default function Section({
             const featureListSectionRecord =
               section as FeatureListSectionRecord;
             return (
-              <Features featureListSectionRecord={featureListSectionRecord} />
+              <Features slug={slug} featureListSectionRecord={featureListSectionRecord} />
             );
 
           case "featured_acategory_section":
@@ -137,6 +151,12 @@ export default function Section({
                 locale={locale}
               />
             )
+
+          case "iframe_block":
+            return <IframeBlock iframeBlock={section as IframeBlockRecord} />
+
+          case "banner_block":
+            return <BannerBlock bannerBlock={section as BannerBlockRecord} />
 
           case "video_section":
             const videoSectionRecord = section as VideoSectionRecord;

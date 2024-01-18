@@ -40,7 +40,8 @@ module.exports = {
         primary: 'rgb(var(--color-primary) / <alpha-value>)',
         yellow: '#FBB040',
         'body-color': '#959CB1',
-        darktext: '#8A8F9C',
+        darktext: '#ffffff',
+        toruquise: '#08e8de',
       },
       backgroundColor: {
         'dark-background': '#181724',

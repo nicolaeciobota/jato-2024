@@ -216,6 +216,13 @@ query Award(
         }
       }
       blocks {
+        ... on MuxVideoRecord {
+          id
+          __typename
+          streamType
+          playbackId
+          placeholderUrl
+        }
         ... on ImageBlockRecord {
           id
           __typename

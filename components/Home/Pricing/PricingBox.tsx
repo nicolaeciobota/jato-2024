@@ -24,7 +24,7 @@ const PricingBox = (props: {
             {packageName}
           </h4>
         </div>
-        <div className="sm:mb-7 mb-5 sm:h-20 text-base text-body-color">
+        <div className="sm:mb-7 mb-5 sm:h-20 text-base text-body-color dark:text-darktext">
           <StructuredText data={subtitle.value} renderNode={Highlighter} />
         </div>
         <div className="mb-8 border-b border-body-color border-opacity-10 pb-8 dark:border-white dark:border-opacity-10">

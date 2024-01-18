@@ -27,7 +27,7 @@ const BigImageVerticalAcategory = ({
                   <DatoImage
                     className="h-full w-full object-cover"
                     layout="fill"
-                    objectFit="cover"
+                    objectFit="contain"
                     objectPosition="50% 50%"
                     data={feature.picture.responsiveImage}
                   />
@@ -36,7 +36,7 @@ const BigImageVerticalAcategory = ({
             </div>
             <div className="flex flex-1 flex-col p-4 sm:p-6">
               <h2 className="mb-2 text-lg font-semibold text-gray-800 dark:text-darktext">
-                <div className="transition duration-100 group-hover:text-primary">
+                <div className="transition duration-100 group-hover:text-primary dark:group-hover:text-toruquise h-14">
                   {feature.name}
                 </div>
               </h2>

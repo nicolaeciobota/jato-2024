@@ -13,7 +13,7 @@ const Brands = ({ brandShowcase }: Props) => {
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
             <div className="flex flex-wrap items-center justify-center rounded-md bg-primary brightness-75 opacity-90 px-8 py-8 dark:bg-opacity-5 sm:px-10 md:px-[50px] md:py-[40px] xl:p-[50px] 2xl:px-[70px] 2xl:py-[60px]">
-              {brandShowcase.map((brand) => (
+              {brandShowcase?.map((brand) => (
                 <SingleBrand key={brand.id} brand={brand} />
               ))}
             </div>

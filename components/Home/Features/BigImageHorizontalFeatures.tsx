@@ -51,7 +51,7 @@ const BigImageHorizontalFeatures = ({
                 </div>
                 <div className="flex flex-col gap-2 p-4 lg:p-6">
                   <h2 className="text-xl font-bold text-gray-800 dark:text-darktext">
-                    <div className="transition duration-100 group-hover:text-primary">
+                    <div className="transition duration-100 group-hover:text-primary dark:group-hover:text-toruquise h-14">
                       {feature.featureTitle}
                     </div>
                   </h2>

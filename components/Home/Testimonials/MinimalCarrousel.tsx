@@ -29,7 +29,7 @@ const MinimalCarrousel = ({ reviews, header, subheader }: Props) => {
   const currentReview = reviews[currentIndex];
 
   return (
-    <section className="bg-primary/10 lg:py-16 md:py-10 py-6 dark:bg-dark-background dark:opacity-95">
+    <section className="bg-primary/10 lg:py-16 md:py-10 py-6 dark:bg-gray-800">
       <div className="container mx-auto flex flex-col items-center justify-center sm:px-6 px-4 md:py-10 py-6">
         <h1 className="text-center text-2xl font-semibold capitalize text-gray-800 dark:text-darktext lg:text-3xl">
           {header}
