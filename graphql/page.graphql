@@ -392,6 +392,45 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         iframeWidth
         iframeMinHeight
       }
+      ... on IframeBlockRecord {
+        _modelApiKey
+        id
+        iframeUrl
+        height
+        width
+        minHeight
+        minHeightDimensionUnit
+        widthDimensionUnit
+        heightDimensionUnit
+      }
+      ... on BannerBlockRecord {
+        _modelApiKey
+        id
+        objectFit
+        layout
+        height
+        width
+        minHeight
+        minHeightDimensionUnit
+        widthDimensionUnit
+        heightDimensionUnit
+        bannerUrl
+        bannerImage {
+          responsiveImage {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
+            alt
+            title
+            bgColor
+            base64
+          }
+        }
+      }
       ... on MuxLiveStreamRecord {
         _modelApiKey
         id

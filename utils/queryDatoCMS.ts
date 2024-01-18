@@ -19,6 +19,9 @@ export default async function queryDatoCMS<
 
   if (isDraft) headers['X-Include-Drafts'] = 'true';
 
+  const expirationDate = new Date(Date.now() + 60 * 60 * 24 * 30 * 1000); // Setting expiration time to 30 days from now
+  headers['Expires'] = expirationDate.toUTCString();
+
   const { data } = await (
     await fetch('https://graphql.datocms.com/', {
       cache: 'force-cache',

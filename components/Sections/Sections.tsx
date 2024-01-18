@@ -47,6 +47,8 @@ import {
   FeaturedAcategorySectionRecord,
   IvsLiveStageRecord,
   MuxLiveStreamRecord,
+  IframeBlockRecord,
+  BannerBlockRecord,
 } from "@/graphql/generated";
 import PostGridRenderer from "../Blog/PostGridRenderer";
 import { redirect } from "next/navigation";
@@ -70,6 +72,8 @@ import AwardGridRenderer from "../Award/AwardGridRenderer";
 import FeaturedAcategory from "../Home/Features Categories";
 import IVSliveStage from "../Home/IVSliveStage/IVSliveStage";
 import MUXliveStream from "../Home/MUXliveStream/MUXliveStream";
+import IframeBlock from "../Home/Iframe Block/IframeBlock";
+import BannerBlock from "../Home/Banner Block/BannerBlock";
 
 type Props = {
   sections: Array<PageModelSectionsField>;
@@ -147,6 +151,12 @@ export default function Section({
                 locale={locale}
               />
             )
+
+          case "iframe_block":
+            return <IframeBlock iframeBlock={section as IframeBlockRecord} />
+
+          case "banner_block":
+            return <BannerBlock bannerBlock={section as BannerBlockRecord} />
 
           case "video_section":
             const videoSectionRecord = section as VideoSectionRecord;
