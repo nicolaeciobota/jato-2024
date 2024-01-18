@@ -86,8 +86,6 @@ type Props = {
   stages: StageRecord[];
   stageMeta: CollectionMetadata;
   data: TalkQuery;
-  awardMeta: CollectionMetadata;
-  awards: AwardRecord[];
 };
 
 export default function Section({
@@ -100,8 +98,6 @@ export default function Section({
   stageMeta,
   talks,
   talkMeta,
-  awards,
-  awardMeta,
 }: Props) {
   return (
     <>
@@ -427,15 +423,6 @@ export default function Section({
             const allPostsSectionRecord = section as AllPostsSectionRecord;
             return (
               <PostGridRenderer data={posts} lng={locale} postMeta={postMeta} />
-            );
-          case "all_awards_section":
-            const allAwardsSectionRecord = section as AllAwardsSectionRecord;
-            return (
-              <AwardGridRenderer
-                data={awards}
-                lng={locale}
-                awardMeta={awardMeta}
-              />
             );
           case "all_talks_section":
             const allTalksSectionRecord = section as AllTalksSectionRecord;

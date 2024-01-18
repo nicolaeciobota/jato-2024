@@ -18,6 +18,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           id
           responsiveImage {
             ...DatoImage_responsiveImage
+            webpSrcSet
           }
         }
       }
@@ -73,6 +74,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           picture {
             responsiveImage {
               ...DatoImage_responsiveImage
+              webpSrcSet
             }
           }
         }
@@ -211,6 +213,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           picture {
             responsiveImage {
               ...DatoImage_responsiveImage
+              webpSrcSet
             }
           }
         }
@@ -244,6 +247,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         heroImage {
           responsiveImage {
             ...DatoImage_responsiveImage
+            webpSrcSet
           }
         }
       }
@@ -260,6 +264,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         videoThumbnail {
           responsiveImage {
             ...DatoImage_responsiveImage
+            webpSrcSet
           }
         }
       }
@@ -273,6 +278,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         image {
           responsiveImage {
             ...DatoImage_responsiveImage
+            webpSrcSet
           }
         }
       }
@@ -294,6 +300,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           reviewerPicture {
             responsiveImage {
               ...DatoImage_responsiveImage
+              webpSrcSet
             }
           }
           reviewerTitle
@@ -350,6 +357,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
             image {
               responsiveImage {
                 ...DatoImage_responsiveImage
+                webpSrcSet
               }
             }
           }
@@ -360,6 +368,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
             picture {
               responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
                 ...DatoImage_responsiveImage
+                webpSrcSet
               }
             }
           }
@@ -378,6 +387,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           picture {
             responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
               ...DatoImage_responsiveImage
+              webpSrcSet
             }
           }
         }
@@ -458,15 +468,12 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           featureIcon {
             responsiveImage {
               ...DatoImage_responsiveImage
+              webpSrcSet
             }
           }
         }
       }
       ... on AllPostsSectionRecord {
-        id
-        _modelApiKey
-      }
-      ... on AllAwardsSectionRecord {
         id
         _modelApiKey
       }
@@ -503,6 +510,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
       image {
         responsiveImage {
           ...DatoImage_responsiveImage
+          webpSrcSet
         }
       }
     }
@@ -513,49 +521,12 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
       picture {
         responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
           ...DatoImage_responsiveImage
+          webpSrcSet
         }
       }
     }
   }
   _allPostsMeta(locale: $locale, filter: { title: { isBlank: "false" } }) {
-    count
-  }
-  allAwards(
-    filter: { title: { isBlank: "false" } }
-    orderBy: _createdAt_DESC
-    first: "9"
-    locale: $locale
-    fallbackLocales: $fallbackLocale
-  ) {
-    _publishedAt
-    slug
-    id
-    title
-    jobTitle
-    atags {
-      atag
-      slug
-    }
-    seoTags {
-      description
-      image {
-        responsiveImage {
-          ...DatoImage_responsiveImage
-        }
-      }
-    }
-    acategory {
-      name
-      slug
-      bio
-      picture {
-        responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
-          ...DatoImage_responsiveImage
-        }
-      }
-    }
-  }
-  _allAwardsMeta(locale: $locale, filter: { title: { isBlank: "false" } }) {
     count
   }
   allTalks(
@@ -814,6 +785,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
       image {
         responsiveImage {
           ...DatoImage_responsiveImage
+          webpSrcSet
         }
       }
     }
@@ -943,6 +915,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
       picture {
         responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
           ...DatoImage_responsiveImage
+          webpSrcSet
         }
       }
     }
@@ -966,6 +939,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
       image {
         responsiveImage {
           ...DatoImage_responsiveImage
+          webpSrcSet
         }
       }
     }
