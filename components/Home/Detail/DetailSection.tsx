@@ -5,7 +5,7 @@ import {
   isListItem,
   isList,
 } from 'datocms-structured-text-utils';
-import { DetailSectionModelDetailsField, FileField } from '@/graphql/generated';
+import { DetailSectionModelDetailsField, FileField, ImageFileField } from '@/graphql/generated';
 import { Image as DatoImage } from 'react-datocms';
 import Highlighter from '@/components/Common/Highlighter';
 
@@ -17,7 +17,7 @@ const checkIcon = (
 
 type Props = {
   details: DetailSectionModelDetailsField;
-  image: FileField;
+  image: ImageFileField;
   imagePosition: boolean;
 };
 

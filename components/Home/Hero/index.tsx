@@ -20,9 +20,9 @@ const Index = ({ heroSectionRecord, slug }: Props) => {
 
   const displayedConentMapper: { [key: string]: ReactNode } = {
     'gradient': <GradientHero heroSubtitle={heroSubtitle} heroTitle={heroTitle} buttons={buttons} />,
-    'right_image': <RightImageHero heroSubtitle={heroSubtitle} heroTitle={heroTitle} buttons={buttons} image={heroImage} />,
-    'background_image': <BackgroundImageHero heroSubtitle={heroSubtitle} heroTitle={heroTitle} buttons={buttons} image={heroImage} />,
-    'split_image': <SplitImage heroSubtitle={heroSubtitle} heroTitle={heroTitle} buttons={buttons} image={heroImage} />,
+    'right_image': <RightImageHero heroSubtitle={heroSubtitle} heroTitle={heroTitle} buttons={buttons} image={heroImage?.responsiveImage as any} />,
+    'background_image': <BackgroundImageHero heroSubtitle={heroSubtitle} heroTitle={heroTitle} buttons={buttons} image={heroImage?.responsiveImage as any} />,
+    'split_image': <SplitImage heroSubtitle={heroSubtitle} heroTitle={heroTitle} buttons={buttons} image={heroImage?.responsiveImage as any} />,
   }
 
   if (slug === 'home' && isSignedIn) return;

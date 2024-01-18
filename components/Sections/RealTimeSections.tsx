@@ -48,8 +48,6 @@ export default function RealTimeSections({
       postMeta={data._allPostsMeta as CollectionMetadata}
       talkMeta={data._allTalksMeta as CollectionMetadata}
       stageMeta={data._allStagesMeta as CollectionMetadata}
-      awards={data.allAwards as AwardRecord[]}
-      awardMeta={data._allAwardsMeta as CollectionMetadata}
       data={{
         __typename: undefined,
         talk: undefined,
