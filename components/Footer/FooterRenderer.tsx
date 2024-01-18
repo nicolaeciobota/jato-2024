@@ -9,6 +9,7 @@ import {
 import ReactMarkdown from "react-markdown";
 import { useContext } from "react";
 import { AppContext } from "@/context/App";
+import Script from "next/script";
 
 type Props = {
   data: FooterQuery;
@@ -21,6 +22,12 @@ const Footer = ({ data, lng }: Props) => {
 
   return (
     <footer className="relative z-10 mx-auto flex w-full flex-col items-center justify-center bg-primary dark:bg-dark-background bg-opacity-5 pt-16 text-center md:text-start lg:pt-24">
+      <Script
+        id="cookieyes"
+        type="text/javascript"
+        defer
+        src="https://cdn-cookieyes.com/client_data/38dd9bcb9ab1dc9ac5706bcb/script.js"
+      ></Script>
       <div className="container w-full">
         <div className="flex w-full flex-col justify-between md:flex-row md:px-16">
           <div className="w-full">
