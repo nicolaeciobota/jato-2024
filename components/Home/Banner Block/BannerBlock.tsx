@@ -30,10 +30,10 @@ const BannerBlock = ({
     return (
         <section
             id="BannerBlock"
-            className="pt-28 pb-16 dark:bg-dark-background min-h-[calc(100vh-320px)]"
+            className="pt-28 pb-10 dark:bg-dark-background min-h-[calc(100vh-320px)]"
         >
             <Link href={bannerUrl}>
-                <div className="w-full h-[100vh]">
+                <div className="w-full h-[30vh] sm:h-[50vh] md:h-[70vh] lg:h-[100vh]">
                     <div
                         className={`relative mx-auto w-[${widthWithUnit}] h-[${heightWithUnit}] min-h-[${minHeightWithUnit}]`}
                         style={{
