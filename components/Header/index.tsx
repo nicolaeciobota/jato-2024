@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
@@ -69,33 +68,6 @@ const Header = ({ lng, data }: Props) => {
       });
     }
   }
-
-  // data.layout!.menu.map((item) => {
-  //   if (item._modelApiKey === "menu_dropdown") {
-  //     const dropdownItem = item as MenuDropdownRecord;
-  //     menuData.push({
-  //       id: "1",
-  //       title: dropdownItem.title || "Other Items",
-  //       newTab: false,
-  //       submenu: dropdownItem.items.map((item) => {
-  //         return {
-  //           id: item.id,
-  //           title: item.title,
-  //           path: `/${item.page.slug}`,
-  //           newTab: true,
-  //         };
-  //       }),
-  //     });
-  //   } else {
-  //     const menuItem = item as MenuItemRecord;
-  //     menuData.push({
-  //       id: menuItem.id,
-  //       title: menuItem.title,
-  //       path: `/${menuItem.page.slug}`,
-  //       newTab: false,
-  //     });
-  //   }
-  // });
 
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen);

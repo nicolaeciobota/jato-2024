@@ -29,7 +29,7 @@ const MUXliveStream = ({
                     <div className="lg:w-[66.66%] w-full">
                         <MUXplayer streamType={streamType} playbackId={playbackId} placeholderUrl={placeholderUrl} />
                     </div>
-                    <div className="lg:w-[33.33%] w-full lg:h-auto h-[565px]">
+                    <div className="lg:w-[33.33%] w-full lg:h-auto h-[90vh]">
                         <iframe
                             src={iframeUrl}
                             height={`${iframeHeight}px`}
