@@ -9,7 +9,6 @@ import {
 import ReactMarkdown from "react-markdown";
 import { useContext } from "react";
 import { AppContext } from "@/context/App";
-import Script from "next/script";
 
 type Props = {
   data: FooterQuery;
@@ -77,12 +76,6 @@ const Footer = ({ data, lng }: Props) => {
           </div>
         </div>
       </footer>
-      <Script
-        defer
-        id="cookieyes"
-        type="text/javascript"
-        src="https://cdn-cookieyes.com/client_data/38dd9bcb9ab1dc9ac5706bcb/script.js"
-      ></Script>
     </>
   );
 };

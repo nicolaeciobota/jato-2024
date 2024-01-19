@@ -56,6 +56,7 @@ import MUXliveStream from "../Home/MUXliveStream/MUXliveStream";
 import IframeBlock from "../Home/Iframe Block/IframeBlock";
 import BannerBlock from "../Home/Banner Block/BannerBlock";
 import FeaturedPosts from "../Home/Featured Posts";
+import Script from "next/script";
 
 type Props = {
   sections: Array<PageModelSectionsField>;
@@ -70,6 +71,16 @@ export default function Section({
 }: Props) {
   return (
     <>
+      {
+        slug === 'home'
+          ? <Script
+            defer
+            id="cookieyes"
+            type="text/javascript"
+            src="https://cdn-cookieyes.com/client_data/38dd9bcb9ab1dc9ac5706bcb/script.js"
+          ></Script>
+          : null
+      }
       {sections.map((section) => {
         switch (section._modelApiKey) {
           case "changelog_section":
