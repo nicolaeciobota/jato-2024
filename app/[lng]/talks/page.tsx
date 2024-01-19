@@ -1,7 +1,7 @@
 import { getFallbackLocale } from "@/app/i18n/settings";
-import AwardsPage from "@/components/Award/AwardsPage";
-import RealTimeAwardsPage from "@/components/Award/RealTime/RealTimeAwardsPage";
-import { AwardsDocument, SiteLocale } from "@/graphql/generated";
+import TalksPage from "@/components/Agenda/TalksPage";
+import RealTimeTalksPage from "@/components/Agenda/RealTime/RealTimeTalksPage";
+import { SiteLocale, TalksDocument } from "@/graphql/generated";
 import queryDatoCMS from "@/utils/queryDatoCMS";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
@@ -13,13 +13,13 @@ type Params = {
   };
 };
 
-const Awards = async ({ params }: Params) => {
+const Page = async ({ params }: Params) => {
   const fallbackLng = await getFallbackLocale();
   const { lng } = params;
   const { isEnabled } = draftMode();
 
   const data = await queryDatoCMS(
-    AwardsDocument,
+    TalksDocument,
     {
       locale: lng,
       fallbackLocale: fallbackLng,
@@ -28,19 +28,19 @@ const Awards = async ({ params }: Params) => {
     isEnabled
   );
 
-  if (!data.allAwards.length) {
+  if (!data.allTalks.length) {
     notFound();
   }
 
   return (
     <>
-      {!isEnabled && <AwardsPage data={data} lng={lng} page={params.page} />}
+      {!isEnabled && <TalksPage data={data} lng={lng} page={params.page} />}
       {isEnabled && (
-        <RealTimeAwardsPage
+        <RealTimeTalksPage
           initialData={data}
           locale={lng}
           token={process.env.DATOCMS_READONLY_API_TOKEN || ""}
-          query={AwardsDocument}
+          query={TalksDocument}
           variables={{
             locale: lng,
             fallbackLocale: fallbackLng,
@@ -53,4 +53,4 @@ const Awards = async ({ params }: Params) => {
   );
 };
 
-export default Awards;
+export default Page;

@@ -11,7 +11,6 @@ import {
   TalkRecord,
   SiteLocale,
   StageRecord,
-  AwardRecord,
 } from "@/graphql/generated";
 import { TypedDocumentNode } from "@graphql-typed-document-node/core";
 
@@ -42,16 +41,6 @@ export default function RealTimeSections({
     <Section
       locale={locale}
       sections={data.page.sections as Array<PageModelSectionsField>}
-      posts={data.allPosts as PostRecord[]}
-      talks={data.allTalks as TalkRecord[]}
-      stages={data.allStages as StageRecord[]}
-      postMeta={data._allPostsMeta as CollectionMetadata}
-      talkMeta={data._allTalksMeta as CollectionMetadata}
-      stageMeta={data._allStagesMeta as CollectionMetadata}
-      data={{
-        __typename: undefined,
-        talk: undefined,
-      }}
     />
   );
 }
