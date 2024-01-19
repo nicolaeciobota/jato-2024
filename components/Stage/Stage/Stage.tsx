@@ -22,7 +22,7 @@ type Props = {
 const Stage = ({ data, lng }: Props) => {
   if (!data.stage) notFound();
   return (
-    <section className="lg:py-[120px] md:py-24 py-20 dark:bg-dark-background min-h-[calc(100vh-320px)]">
+    <section className="bg-primary/[.03] lg:py-[120px] md:py-24 py-20 dark:bg-dark-background min-h-[calc(100vh-320px)]">
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-start">
           <div className="w-full px-4 lg:w-8/12">
@@ -35,8 +35,7 @@ const Stage = ({ data, lng }: Props) => {
         </div>
       </div>
       <div className="container mb-12">
-        {/* {data?.stage?.streamKey ? <LiveryPlayer streamId={data?.stage?.streamKey} /> : null} */}
-        <div className="flex lg:flex-row flex-col h-full">
+        <div className="flex lg:flex-row flex-col h-[90vh]">
           {data?.stage?.streamKey
             ? <div className="lg:w-[66.66%] w-full">
               <LiveryPlayer streamId={data?.stage?.streamKey} />

@@ -22,10 +22,10 @@ const MUXliveStream = ({
     return (
         <section
             id="IVSplayer"
-            className="bg-primary/[.03] pt-24 pb-10 dark:bg-dark-background opacity-95 min-h-[calc(100vh-320px)]"
+            className="bg-primary/[.03] pt-28 pb-10 dark:bg-dark-background opacity-95 min-h-[calc(100vh-320px)]"
         >
             <div className="container">
-                <div className="flex lg:flex-row flex-col h-full">
+                <div className="flex lg:flex-row flex-col h-[90vh]">
                     <div className="lg:w-[66.66%] w-full">
                         <MUXplayer streamType={streamType} playbackId={playbackId} placeholderUrl={placeholderUrl} />
                     </div>
