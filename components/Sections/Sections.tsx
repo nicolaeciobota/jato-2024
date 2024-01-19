@@ -60,6 +60,7 @@ import IVSliveStage from "../Home/IVSliveStage/IVSliveStage";
 import MUXliveStream from "../Home/MUXliveStream/MUXliveStream";
 import IframeBlock from "../Home/Iframe Block/IframeBlock";
 import BannerBlock from "../Home/Banner Block/BannerBlock";
+import FeaturedPosts from "../Home/Featured Posts";
 
 type Props = {
   sections: Array<PageModelSectionsField>;
@@ -246,66 +247,7 @@ export default function Section({
             }
 
           case "featured_posts_section":
-            const featuredPostsSectionRecord =
-              section as FeaturedPostsSectionRecord;
-            switch (featuredPostsSectionRecord.displayOptions) {
-              case "modern_cards":
-                return (
-                  <ModernPostCards
-                    locale={locale}
-                    blogData={featuredPostsSectionRecord.featuredPosts}
-                    blogHeader={featuredPostsSectionRecord.featuredPostsHeader}
-                    blogSubheader={
-                      featuredPostsSectionRecord.featuredPostsSubheader
-                    }
-                  />
-                );
-              case "carrousel":
-                return (
-                  <CarrouselFeaturedPosts
-                    locale={locale}
-                    blogData={featuredPostsSectionRecord.featuredPosts}
-                    blogHeader={featuredPostsSectionRecord.featuredPostsHeader}
-                    blogSubheader={
-                      featuredPostsSectionRecord.featuredPostsSubheader
-                    }
-                  />
-                );
-              case "minimalist_grid":
-                return (
-                  <MinimalistFeaturedPostsGrid
-                    locale={locale}
-                    blogData={featuredPostsSectionRecord.featuredPosts}
-                    blogHeader={featuredPostsSectionRecord.featuredPostsHeader}
-                    blogSubheader={
-                      featuredPostsSectionRecord.featuredPostsSubheader
-                    }
-                  />
-                );
-              case "full_image_card":
-                return (
-                  <FullImageFeaturedPosts
-                    locale={locale}
-                    blogData={featuredPostsSectionRecord.featuredPosts}
-                    blogHeader={featuredPostsSectionRecord.featuredPostsHeader}
-                    blogSubheader={
-                      featuredPostsSectionRecord.featuredPostsSubheader
-                    }
-                  />
-                );
-              default:
-                return (
-                  <Blog
-                    locale={locale}
-                    blogData={featuredPostsSectionRecord.featuredPosts}
-                    blogHeader={featuredPostsSectionRecord.featuredPostsHeader}
-                    blogSubheader={
-                      featuredPostsSectionRecord.featuredPostsSubheader
-                    }
-                  />
-                );
-            }
-
+            return <FeaturedPosts locale={locale} featuredPostsSection={section as FeaturedPostsSectionRecord} />
 
           case "team_section":
             const teamSectionRecord = section as TeamSectionRecord;
