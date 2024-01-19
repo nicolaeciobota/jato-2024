@@ -15,6 +15,13 @@ query Menu($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
           slug
         }
       }
+
+      ... on CircleMenuItemRecord {
+        id
+        _modelApiKey
+        title
+        redirectUrl
+      }
       ... on MenuDropdownRecord {
         id
         title

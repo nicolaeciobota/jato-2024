@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import {
+  CircleMenuItemRecord,
   LayoutModelNotificationField,
   MenuDropdownRecord,
   MenuItemRecord,
@@ -21,13 +22,21 @@ type Props = {
 };
 
 const Header = ({ lng, data }: Props) => {
+
   const menuData: Menu[] = [];
+  const circleMenuData: { [key: string]: string }[] = [];
   const { isSignedIn } = useAuth();
   const { theme, themeHandler } = useContext(AppContext)
+  const [openIndex, setOpenIndex] = useState(-1);
+  const [navbarOpen, setNavbarOpen] = useState(false);
+  const [notificationStrip, setNotificationStrip] = useState(false);
+  const [sticky, setSticky] = useState(false);
 
-  data.layout!.menu.map((item) => {
-    if (item._modelApiKey === "menu_dropdown") {
-      const dropdownItem = item as MenuDropdownRecord;
+  const menuItems = data.layout!.menu;
+
+  for (let i = 0; i < menuItems.length; i++) {
+    if (menuItems[i]._modelApiKey === 'menu_dropdown') {
+      const dropdownItem = menuItems[i] as MenuDropdownRecord;
       menuData.push({
         id: "1",
         title: dropdownItem.title || "Other Items",
@@ -41,8 +50,9 @@ const Header = ({ lng, data }: Props) => {
           };
         }),
       });
-    } else {
-      const menuItem = item as MenuItemRecord;
+    }
+    if (menuItems[i]._modelApiKey === 'menu_item') {
+      const menuItem = menuItems[i] as MenuItemRecord;
       menuData.push({
         id: menuItem.id,
         title: menuItem.title,
@@ -50,18 +60,47 @@ const Header = ({ lng, data }: Props) => {
         newTab: false,
       });
     }
-  });
+    if (menuItems[i]._modelApiKey === 'circle_menu_item') {
+      const menuItem = menuItems[i] as CircleMenuItemRecord;
+      circleMenuData.push({
+        id: menuItem.id,
+        title: menuItem.title,
+        redirectUrl: menuItem.redirectUrl,
+      });
+    }
+  }
 
-  // Navbar toggle
-  const [navbarOpen, setNavbarOpen] = useState(false);
-  const [notificationStrip, setNotificationStrip] = useState(false);
+  // data.layout!.menu.map((item) => {
+  //   if (item._modelApiKey === "menu_dropdown") {
+  //     const dropdownItem = item as MenuDropdownRecord;
+  //     menuData.push({
+  //       id: "1",
+  //       title: dropdownItem.title || "Other Items",
+  //       newTab: false,
+  //       submenu: dropdownItem.items.map((item) => {
+  //         return {
+  //           id: item.id,
+  //           title: item.title,
+  //           path: `/${item.page.slug}`,
+  //           newTab: true,
+  //         };
+  //       }),
+  //     });
+  //   } else {
+  //     const menuItem = item as MenuItemRecord;
+  //     menuData.push({
+  //       id: menuItem.id,
+  //       title: menuItem.title,
+  //       path: `/${menuItem.page.slug}`,
+  //       newTab: false,
+  //     });
+  //   }
+  // });
 
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen);
   };
 
-  // Sticky Navbar
-  const [sticky, setSticky] = useState(false);
   const handleStickyNavbar = () => {
     if (window.scrollY >= 80) {
       setSticky(true);
@@ -73,8 +112,6 @@ const Header = ({ lng, data }: Props) => {
     window.addEventListener("scroll", handleStickyNavbar);
   });
 
-  // submenu handler
-  const [openIndex, setOpenIndex] = useState(-1);
   const handleSubmenu = (index: number) => {
     if (openIndex === index) {
       setOpenIndex(-1);
@@ -82,6 +119,7 @@ const Header = ({ lng, data }: Props) => {
       setOpenIndex(index);
     }
   };
+
   return (
     <>
       {notificationStrip && (
@@ -136,7 +174,7 @@ const Header = ({ lng, data }: Props) => {
                         {menuItem.path ? (
                           <Link
                             href={"/" + lng + menuItem.path}
-                            className={`flex py-2 xl:text-base text-sm text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${menuItem.title.length > 10 ? 'xl:w-[124px] lg:w-[78px]' : ''}`}
+                            className={`flex py-2 xl:text-base text-sm text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${menuItem.title.length > 10 ? 'xl:w-[130px] lg:w-[78px]' : ''}`}
                           >
                             {menuItem.title}
                           </Link>
@@ -174,6 +212,21 @@ const Header = ({ lng, data }: Props) => {
                         )}
                       </li>
                     ))}
+
+                    {
+                      circleMenuData.map((item) => (
+                        <li key={item.id} className="group relative">
+                          <div
+                            onClick={() => {
+                              window.open(item.redirectUrl, '_self')
+                            }}
+                            className={`cursor-pointer flex py-2 xl:text-base text-sm text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${item.title.length > 10 ? 'xl:w-[125px] lg:w-[78px]' : ''}`}
+                          >
+                            {item.title}
+                          </div>
+                        </li>
+                      ))
+                    }
                   </ul>
                 </nav>
                 : null
@@ -219,7 +272,6 @@ const Header = ({ lng, data }: Props) => {
                     <p className="flex font-semibold xl:text-base text-sm text-primary group-hover:opacity-70 dark:text-toruquise lg:px-0">Log In</p>
                   </Link>
               }
-
             </div>
           </div>
         </div>
