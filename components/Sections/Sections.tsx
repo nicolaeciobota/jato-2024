@@ -18,17 +18,14 @@ import SpeakersIntro from "../Speakers/SpeakersIntro";
 import {
   AboutIntroRecord,
   SpeakersIntroRecord,
-  AllPostsSectionRecord,
   BrandSectionRecord,
   ChangelogSectionRecord,
-  CollectionMetadata,
   DetailSectionRecord,
   FaqSectionRecord,
   FeatureListSectionRecord,
   FeaturedPostsSectionRecord,
   HeroSectionRecord,
   PageModelSectionsField,
-  PostRecord,
   PricingSectionRecord,
   RedirectSectionRecord,
   ReviewSectionRecord,
@@ -36,21 +33,13 @@ import {
   StatsSectionRecord,
   TeamSectionRecord,
   VideoSectionRecord,
-  AllTalksSectionRecord,
-  TalkRecord,
-  TalkQuery,
-  AllStagesSectionRecord,
-  StageRecord,
   SpeakerSectionRecord,
-  AwardRecord,
-  AllAwardsSectionRecord,
   FeaturedAcategorySectionRecord,
   IvsLiveStageRecord,
   MuxLiveStreamRecord,
   IframeBlockRecord,
   BannerBlockRecord,
 } from "@/graphql/generated";
-import PostGridRenderer from "../Blog/PostGridRenderer";
 import { redirect } from "next/navigation";
 import GradientCards from "../Home/Pricing/GradientCards";
 import Minimal from "../Home/Pricing/Minimal";
@@ -66,9 +55,6 @@ import CarrouselFeaturedPosts from "../Home/Featured Posts/CarrouselFeaturedPost
 import MinimalistFeaturedPostsGrid from "../Home/Featured Posts/MinimalistFeaturedPostsGrid";
 import FullImageFeaturedPosts from "../Home/Featured Posts/FullImageFeaturedPosts";
 import Changelog from "../Changelog";
-import TalkGridRenderer from "../Agenda/TalkGridRenderer";
-import StageGridRenderer from "../Stage/StageGridRenderer";
-import AwardGridRenderer from "../Award/AwardGridRenderer";
 import FeaturedAcategory from "../Home/Features Categories";
 import IVSliveStage from "../Home/IVSliveStage/IVSliveStage";
 import MUXliveStream from "../Home/MUXliveStream/MUXliveStream";
@@ -79,25 +65,12 @@ type Props = {
   sections: Array<PageModelSectionsField>;
   locale: SiteLocale;
   slug?: string;
-  posts: PostRecord[];
-  postMeta: CollectionMetadata;
-  talks: TalkRecord[];
-  talkMeta: CollectionMetadata;
-  stages: StageRecord[];
-  stageMeta: CollectionMetadata;
-  data: TalkQuery;
 };
 
 export default function Section({
   sections,
   locale,
   slug = '',
-  posts,
-  postMeta,
-  stages,
-  stageMeta,
-  talks,
-  talkMeta,
 }: Props) {
   return (
     <>
@@ -417,25 +390,6 @@ export default function Section({
                 subheader={speakersIntroSectionRecord.subheader}
                 introduction={speakersIntroSectionRecord.introductionText}
                 preHeader={speakersIntroSectionRecord.preHeader}
-              />
-            );
-          case "all_posts_section":
-            const allPostsSectionRecord = section as AllPostsSectionRecord;
-            return (
-              <PostGridRenderer data={posts} lng={locale} postMeta={postMeta} />
-            );
-          case "all_talks_section":
-            const allTalksSectionRecord = section as AllTalksSectionRecord;
-            return (
-              <TalkGridRenderer data={talks} lng={locale} talkMeta={talkMeta} />
-            );
-          case "all_stages_section":
-            const allStagesSectionRecord = section as AllStagesSectionRecord;
-            return (
-              <StageGridRenderer
-                data={stages}
-                lng={locale}
-                stageMeta={stageMeta}
               />
             );
 

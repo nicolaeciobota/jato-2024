@@ -32,18 +32,20 @@ const StagesPage = ({ data, lng, page }: Props) => {
         <div className=" -mx-4 flex flex-wrap">
           <div className="w-full px-4">
             <ul className="flex items-center justify-center pt-8">
-              <li className="mx-1">
-                <Link
-                  href={
-                    page - 1 === 1
-                      ? `/${lng}/stage`
-                      : `/${lng}/stage/page/${page - 1}`
-                  }
-                  className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
-                >
-                  Prev
-                </Link>
-              </li>
+              {page > 0
+                ? <li className="mx-1">
+                  <Link
+                    href={
+                      page - 1 === 1
+                        ? `/${lng}/stage`
+                        : `/${lng}/stage/page/${+page - 1}`
+                    }
+                    className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
+                  >
+                    Prev
+                  </Link>
+                </li>
+                : null}
               <PageIndicatorList
                 lng={lng}
                 stageCount={data["_allStagesMeta"].count}
@@ -51,7 +53,7 @@ const StagesPage = ({ data, lng, page }: Props) => {
               {page * 9 <= data["_allStagesMeta"].count && (
                 <li className="mx-1">
                   <Link
-                    href={`/${lng}/stage/page/${page + 1}`}
+                    href={`/${lng}/stage/page/${+page + 1}`}
                     className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
                   >
                     Next
