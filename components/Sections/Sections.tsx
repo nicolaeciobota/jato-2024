@@ -1,4 +1,3 @@
-import Blog from "../Blog";
 import Brands from "../Home/Brands";
 import Features from "../Home/Features";
 import Hero from "../Home/Hero";
@@ -50,16 +49,13 @@ import ModernCarrousel from "../Home/Testimonials/ModernCarrousel";
 import MinimalCarrousel from "../Home/Testimonials/MinimalCarrousel";
 import MinimalReviewCards from "../Home/Testimonials/MinimalReviewCards";
 import BrandCards from "../Home/Brands/BrandCards";
-import ModernPostCards from "../Home/Featured Posts/ModernPostCards";
-import CarrouselFeaturedPosts from "../Home/Featured Posts/CarrouselFeaturedPosts";
-import MinimalistFeaturedPostsGrid from "../Home/Featured Posts/MinimalistFeaturedPostsGrid";
-import FullImageFeaturedPosts from "../Home/Featured Posts/FullImageFeaturedPosts";
 import Changelog from "../Changelog";
 import FeaturedAcategory from "../Home/Features Categories";
 import IVSliveStage from "../Home/IVSliveStage/IVSliveStage";
 import MUXliveStream from "../Home/MUXliveStream/MUXliveStream";
 import IframeBlock from "../Home/Iframe Block/IframeBlock";
 import BannerBlock from "../Home/Banner Block/BannerBlock";
+import FeaturedPosts from "../Home/Featured Posts";
 
 type Props = {
   sections: Array<PageModelSectionsField>;
@@ -80,6 +76,7 @@ export default function Section({
             const changeLogSection = section as ChangelogSectionRecord;
             return (
               <Changelog
+                key={section.id}
                 title={changeLogSection.title}
                 subtitle={changeLogSection.subtitle}
                 featuredChangeLogs={changeLogSection.featuredVersions}
@@ -89,17 +86,18 @@ export default function Section({
           case "ivs_live_stage":
             const ivsLiveStageRecord = section as IvsLiveStageRecord;
             return (
-              <IVSliveStage ivsLiveStageRecord={ivsLiveStageRecord} />
+              <IVSliveStage key={section.id} ivsLiveStageRecord={ivsLiveStageRecord} />
             );
           case "mux_live_stream":
             const muxLiveStreamRecord = section as MuxLiveStreamRecord;
             return (
-              <MUXliveStream muxLiveStreamRecord={muxLiveStreamRecord} />
+              <MUXliveStream key={section.id} muxLiveStreamRecord={muxLiveStreamRecord} />
             );
           case "hero_section":
             const heroSectionRecord = section as HeroSectionRecord;
             return (
               <Hero
+                key={section.id}
                 slug={slug}
                 heroSectionRecord={heroSectionRecord}
               />
@@ -108,7 +106,7 @@ export default function Section({
             const featureListSectionRecord =
               section as FeatureListSectionRecord;
             return (
-              <Features slug={slug} featureListSectionRecord={featureListSectionRecord} />
+              <Features key={section.id} slug={slug} featureListSectionRecord={featureListSectionRecord} />
             );
 
           case "featured_acategory_section":
@@ -116,21 +114,23 @@ export default function Section({
               section as FeaturedAcategorySectionRecord;
             return (
               <FeaturedAcategory
+                key={section.id}
                 featureAcategorySectionRecord={featureAcategorySectionRecord}
                 locale={locale}
               />
             )
 
           case "iframe_block":
-            return <IframeBlock iframeBlock={section as IframeBlockRecord} />
+            return <IframeBlock key={section.id} iframeBlock={section as IframeBlockRecord} />
 
           case "banner_block":
-            return <BannerBlock bannerBlock={section as BannerBlockRecord} />
+            return <BannerBlock key={section.id} bannerBlock={section as BannerBlockRecord} />
 
           case "video_section":
             const videoSectionRecord = section as VideoSectionRecord;
             return (
               <Video
+                key={section.id}
                 videoHeader={videoSectionRecord.videoHeader}
                 videoSubheader={videoSectionRecord.videoSubheader}
                 videoUid={videoSectionRecord.video?.providerUid}
@@ -142,14 +142,15 @@ export default function Section({
             const brandSectionRecord = section as BrandSectionRecord;
             switch (brandSectionRecord.displayOptions) {
               case "brand_cards":
-                return <BrandCards brandShowcase={brandSectionRecord.brand} />;
+                return <BrandCards key={section.id} brandShowcase={brandSectionRecord.brand} />;
               default:
-                return <Brands brandShowcase={brandSectionRecord.brand} />;
+                return <Brands key={section.id} brandShowcase={brandSectionRecord.brand} />;
             }
           case "detail_section":
             const detailSectionRecord = section as DetailSectionRecord;
             return (
               <DetailSection
+                key={section.id}
                 imagePosition={detailSectionRecord.imagePosition as boolean}
                 image={detailSectionRecord.image}
                 details={detailSectionRecord.details}
@@ -161,6 +162,7 @@ export default function Section({
               case "card_carrousel":
                 return (
                   <Carrousel
+                    key={section.id}
                     header={reviewSectionRecord.reviewSectionHeader}
                     subheader={reviewSectionRecord.reviewSectionSubheader}
                     reviews={reviewSectionRecord.reviews}
@@ -169,6 +171,7 @@ export default function Section({
               case "modern_carrousel":
                 return (
                   <ModernCarrousel
+                    key={section.id}
                     header={reviewSectionRecord.reviewSectionHeader}
                     subheader={reviewSectionRecord.reviewSectionSubheader}
                     reviews={reviewSectionRecord.reviews}
@@ -177,6 +180,7 @@ export default function Section({
               case "minimal_carrousel":
                 return (
                   <MinimalCarrousel
+                    key={section.id}
                     header={reviewSectionRecord.reviewSectionHeader}
                     subheader={reviewSectionRecord.reviewSectionSubheader}
                     reviews={reviewSectionRecord.reviews}
@@ -185,6 +189,7 @@ export default function Section({
               case "minimal_cards":
                 return (
                   <MinimalReviewCards
+                    key={section.id}
                     header={reviewSectionRecord.reviewSectionHeader}
                     subheader={reviewSectionRecord.reviewSectionSubheader}
                     reviews={reviewSectionRecord.reviews}
@@ -193,6 +198,7 @@ export default function Section({
               default:
                 return (
                   <Testimonials
+                    key={section.id}
                     header={reviewSectionRecord.reviewSectionHeader}
                     subheader={reviewSectionRecord.reviewSectionSubheader}
                     reviews={reviewSectionRecord.reviews}
@@ -206,6 +212,7 @@ export default function Section({
               case "cards_gradient":
                 return (
                   <GradientCards
+                    key={section.id}
                     header={pricingSectionRecord.pricingSectionHeader}
                     subheader={pricingSectionRecord.pricingSectionSubheader}
                     plans={pricingSectionRecord.plans}
@@ -214,6 +221,7 @@ export default function Section({
               case "minimal":
                 return (
                   <Minimal
+                    key={section.id}
                     header={pricingSectionRecord.pricingSectionHeader}
                     subheader={pricingSectionRecord.pricingSectionSubheader}
                     plans={pricingSectionRecord.plans}
@@ -222,6 +230,7 @@ export default function Section({
               case "feature_list":
                 return (
                   <FeatureListSelector
+                    key={section.id}
                     header={pricingSectionRecord.pricingSectionHeader}
                     subheader={pricingSectionRecord.pricingSectionSubheader}
                     plans={pricingSectionRecord.plans}
@@ -230,6 +239,7 @@ export default function Section({
               case "mini_cards":
                 return (
                   <SmallCards
+                    key={section.id}
                     header={pricingSectionRecord.pricingSectionHeader}
                     subheader={pricingSectionRecord.pricingSectionSubheader}
                     plans={pricingSectionRecord.plans}
@@ -238,6 +248,7 @@ export default function Section({
               default:
                 return (
                   <Pricing
+                    key={section.id}
                     header={pricingSectionRecord.pricingSectionHeader}
                     subheader={pricingSectionRecord.pricingSectionSubheader}
                     plans={pricingSectionRecord.plans}
@@ -246,72 +257,14 @@ export default function Section({
             }
 
           case "featured_posts_section":
-            const featuredPostsSectionRecord =
-              section as FeaturedPostsSectionRecord;
-            switch (featuredPostsSectionRecord.displayOptions) {
-              case "modern_cards":
-                return (
-                  <ModernPostCards
-                    locale={locale}
-                    blogData={featuredPostsSectionRecord.featuredPosts}
-                    blogHeader={featuredPostsSectionRecord.featuredPostsHeader}
-                    blogSubheader={
-                      featuredPostsSectionRecord.featuredPostsSubheader
-                    }
-                  />
-                );
-              case "carrousel":
-                return (
-                  <CarrouselFeaturedPosts
-                    locale={locale}
-                    blogData={featuredPostsSectionRecord.featuredPosts}
-                    blogHeader={featuredPostsSectionRecord.featuredPostsHeader}
-                    blogSubheader={
-                      featuredPostsSectionRecord.featuredPostsSubheader
-                    }
-                  />
-                );
-              case "minimalist_grid":
-                return (
-                  <MinimalistFeaturedPostsGrid
-                    locale={locale}
-                    blogData={featuredPostsSectionRecord.featuredPosts}
-                    blogHeader={featuredPostsSectionRecord.featuredPostsHeader}
-                    blogSubheader={
-                      featuredPostsSectionRecord.featuredPostsSubheader
-                    }
-                  />
-                );
-              case "full_image_card":
-                return (
-                  <FullImageFeaturedPosts
-                    locale={locale}
-                    blogData={featuredPostsSectionRecord.featuredPosts}
-                    blogHeader={featuredPostsSectionRecord.featuredPostsHeader}
-                    blogSubheader={
-                      featuredPostsSectionRecord.featuredPostsSubheader
-                    }
-                  />
-                );
-              default:
-                return (
-                  <Blog
-                    locale={locale}
-                    blogData={featuredPostsSectionRecord.featuredPosts}
-                    blogHeader={featuredPostsSectionRecord.featuredPostsHeader}
-                    blogSubheader={
-                      featuredPostsSectionRecord.featuredPostsSubheader
-                    }
-                  />
-                );
-            }
-
+            return <FeaturedPosts key={section.id} locale={locale} featuredPostsSection={section as FeaturedPostsSectionRecord} />
 
           case "team_section":
             const teamSectionRecord = section as TeamSectionRecord;
             if (teamSectionRecord.displayOptions === "compact")
               return (
                 <CompactTeam
+                  key={section.id}
                   header={teamSectionRecord.title}
                   subheader={teamSectionRecord.subtitle}
                   members={teamSectionRecord.showcasedMembers}
@@ -320,6 +273,7 @@ export default function Section({
               );
             return (
               <ExpandedTeam
+                key={section.id}
                 header={teamSectionRecord.title}
                 subheader={teamSectionRecord.subtitle}
                 members={teamSectionRecord.showcasedMembers}
@@ -331,6 +285,7 @@ export default function Section({
             if (speakerSectionRecord.displayOptions === "compact")
               return (
                 <CompactSpeaker
+                  key={section.id}
                   header={speakerSectionRecord.title}
                   subheader={speakerSectionRecord.subtitle}
                   speakersSection={speakerSectionRecord.showcasedSpeakers}
@@ -339,6 +294,7 @@ export default function Section({
               );
             return (
               <ExpandedSpeaker
+                key={section.id}
                 header={speakerSectionRecord.title}
                 subheader={speakerSectionRecord.subtitle}
                 speakersSection={speakerSectionRecord.showcasedSpeakers}
@@ -350,6 +306,7 @@ export default function Section({
             if (faqSectionRecord.displayOptions === "accordion")
               return (
                 <FAQAccordion
+                  key={section.id}
                   title={faqSectionRecord.title}
                   subtitle={faqSectionRecord.subtitle}
                   questions={faqSectionRecord.questions}
@@ -357,6 +314,7 @@ export default function Section({
               );
             return (
               <FAQGrid
+                key={section.id}
                 title={faqSectionRecord.title}
                 subtitle={faqSectionRecord.subtitle}
                 questions={faqSectionRecord.questions}
@@ -366,6 +324,7 @@ export default function Section({
             const statsSectionRecord = section as StatsSectionRecord;
             return (
               <StatsSection
+                key={section.id}
                 title={statsSectionRecord.title}
                 subtitle={statsSectionRecord.subtitle}
                 statistic={statsSectionRecord.statistic}
@@ -375,6 +334,7 @@ export default function Section({
             const aboutIntroSectionRecord = section as AboutIntroRecord;
             return (
               <AboutIntro
+                key={section.id}
                 header={aboutIntroSectionRecord.header}
                 subheader={aboutIntroSectionRecord.subheader}
                 introduction={aboutIntroSectionRecord.introductionText}
@@ -386,6 +346,7 @@ export default function Section({
             const speakersIntroSectionRecord = section as SpeakersIntroRecord;
             return (
               <SpeakersIntro
+                key={section.id}
                 header={speakersIntroSectionRecord.header}
                 subheader={speakersIntroSectionRecord.subheader}
                 introduction={speakersIntroSectionRecord.introductionText}
