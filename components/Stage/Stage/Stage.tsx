@@ -24,7 +24,7 @@ const Stage = ({ data, lng }: Props) => {
   return (
     <section className="lg:py-[120px] md:py-24 py-20 dark:bg-dark-background min-h-[calc(100vh-320px)]">
       <div className="container">
-        <div className="-mx-4 flex flex-wrap justify-center">
+        <div className="-mx-4 flex flex-wrap justify-start">
           <div className="w-full px-4 lg:w-8/12">
             <div>
               <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-darktext sm:text-4xl sm:leading-tight">
