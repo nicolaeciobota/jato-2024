@@ -5,6 +5,12 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
     fallbackLocales: $fallbackLocale
   ) {
     sections {
+      ... on SpacerRecord {
+        id
+        _modelApiKey
+        space
+        extraMargin
+      }
       ... on AboutIntroRecord {
         id
         _modelApiKey

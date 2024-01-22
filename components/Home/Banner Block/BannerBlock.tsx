@@ -30,28 +30,22 @@ const BannerBlock = ({
     return (
         <section
             id="BannerBlock"
-            className="pt-28 pb-10 dark:bg-dark-background min-h-[calc(100vh-320px)]"
+            className="dark:bg-dark-background min-h-[calc(100vh-320px)]"
         >
-            <Link href={bannerUrl}>
-                <div className="w-full h-[30vh] sm:h-[50vh] md:h-[70vh] lg:h-[100vh]">
+            <div className="container">
+                <Link href={bannerUrl}>
                     <div
-                        className={`relative mx-auto w-[${widthWithUnit}] h-[${heightWithUnit}] min-h-[${minHeightWithUnit}]`}
-                        style={{
-                            ...(widthDimensionUnit === '%' ? { width: `${widthWithUnit}` } : {}),
-                            ...(heightDimensionUnit === '%' ? { height: `${heightWithUnit}` } : {}),
-                            ...(minHeight === '%' ? { minHeight: `${minHeightWithUnit}` } : {}),
-                        }}
+                        className={`relative overflow-hidden rounded-md shadow-md h-[35vh] sm:h-[50vh] lg:h-[${heightWithUnit}] w-[${widthWithUnit}] min-h-[${minHeightWithUnit}]`}
                     >
                         <DatoImage
                             data={bannerImage.responsiveImage}
-                            className={`w-[${widthWithUnit}] h-[${heightWithUnit}] min-h-[${minHeightWithUnit}]`}
                             layout={layout as any}
                             objectFit={objectFit as any}
                             objectPosition="50% 50%"
                         />
                     </div>
-                </div>
-            </Link>
+                </Link>
+            </div>
         </section>
     );
 }
