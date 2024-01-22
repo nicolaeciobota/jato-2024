@@ -1,5 +1,5 @@
 'use client';
-import MuxPlayer from '@mux/mux-player-react';
+import MuxPlayer from '@mux/mux-player-react/lazy';
 
 interface Props {
     playbackId: string;
@@ -14,6 +14,9 @@ const MUXplayer = ({ playbackId, placeholderUrl, streamType }: Props) => {
             playbackId={playbackId}
             placeholder={placeholderUrl}
             streamType={streamType}
+            style={{
+                aspectRatio: 16/9
+            }}
         />
     );
 }

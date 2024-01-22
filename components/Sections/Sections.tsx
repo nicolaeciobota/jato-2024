@@ -38,6 +38,7 @@ import {
   MuxLiveStreamRecord,
   IframeBlockRecord,
   BannerBlockRecord,
+  SpacerRecord,
 } from "@/graphql/generated";
 import { redirect } from "next/navigation";
 import GradientCards from "../Home/Pricing/GradientCards";
@@ -57,6 +58,7 @@ import IframeBlock from "../Home/Iframe Block/IframeBlock";
 import BannerBlock from "../Home/Banner Block/BannerBlock";
 import FeaturedPosts from "../Home/Featured Posts";
 import Script from "next/script";
+import Spacer from "../Common/Spacer";
 
 type Props = {
   sections: Array<PageModelSectionsField>;
@@ -83,6 +85,15 @@ export default function Section({
       }
       {sections.map((section) => {
         switch (section._modelApiKey) {
+          case "spacer":
+            const spacer = section as SpacerRecord;
+            return (
+              <Spacer
+                key={section.id}
+                space={spacer.space}
+                extraMargin={spacer.extraMargin || null}
+              />
+            );
           case "changelog_section":
             const changeLogSection = section as ChangelogSectionRecord;
             return (

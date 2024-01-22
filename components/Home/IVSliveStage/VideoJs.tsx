@@ -33,7 +33,12 @@ export const VideoJS = ({ options, onReady }: Props) => {
 
             const player: any = playerRef.current = videojs(videoElement, {
                 techOrder: ["AmazonIVS"],
-                ...options
+                ...options,
+                controlBar: {
+                    volumePanel: {
+                        inline: false,
+                    }
+                }
             }, () => {
                 player.autoplay(options?.autoplay);
                 player.src(options?.sources);
@@ -50,7 +55,7 @@ export const VideoJS = ({ options, onReady }: Props) => {
 
     return (
         <div data-vjs-player>
-            <div ref={videoRef} />
+            <div id="myVideo" ref={videoRef} />
         </div>
     );
 }

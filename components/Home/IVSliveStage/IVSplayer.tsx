@@ -25,6 +25,15 @@ const IVSplayer = ({ playbackURL }: Props) => {
         }]
     };
 
+    const muteHandler = () => {
+        const isMuted = playerRef.current.muted();
+        playerRef.current.muted(!isMuted);
+        const el = document.getElementById('audioControl');
+        if (el) {
+            el.innerText = !isMuted ? 'Unmute' : 'Mute'
+        }
+    }
+
     const handlePlayerReady = useCallback((player: any) => {
         playerRef.current = player;
         registerIVSQualityPlugin(videojs);
@@ -39,7 +48,19 @@ const IVSplayer = ({ playbackURL }: Props) => {
     }, [playerRef]);
 
     return (
-        <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
+        <div>
+            <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
+            <div className="w-full flex justify-center items-center">
+                <button
+                    id="audioControl"
+                    type="button"
+                    onClick={muteHandler}
+                    className="py-2.5 w-24 h-12 px-5 bg-primary text-[#fff] rounded my-2 cursor-pointer"
+                >
+                    {'Unmute'}
+                </button>
+            </div>
+        </div>
     );
 };
 

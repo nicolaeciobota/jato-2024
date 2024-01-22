@@ -63,8 +63,9 @@ export default authMiddleware({
   ignoredRoutes: (req) => {
     const pathname = req.nextUrl.pathname;
     const locale = pathname.split('/')[1];
-    return req.url.includes(`/${locale}/home`)
+    return (req.url.includes(`/${locale}/home`) || req.url.includes('/api/revalidateCache'))
   },
+  publicRoutes: ['/api/revalidateCache']
 })
 
 export const config = {

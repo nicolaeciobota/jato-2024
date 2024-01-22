@@ -21,7 +21,7 @@ const IframeBlock = ({
     return (
         <section
             id="IframeBlock"
-            className="pt-28 pb-10 dark:bg-dark-background min-h-[calc(100vh-320px)]"
+            className="dark:bg-dark-background min-h-[calc(100vh-320px)]"
         >
             <div className="container">
                 <iframe
