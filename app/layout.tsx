@@ -27,7 +27,7 @@ export default async function RootLayout({
 }: Params) {
   return (
     <ClerkProvider>
-      <html lang={lng}>
+      <html lang={lng || 'en'}>
         <Head />
         <body className={`tracking-tight antialiased`}>
           {children}

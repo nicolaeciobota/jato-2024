@@ -3,7 +3,7 @@ import Link from "next/link";
 const NotFound = () => {
   return (
     <>
-      <section className="relative z-10 pb-16 sm:pt-36 pt-24 md:pb-20 lg:pb-28 lg:pt-[180px] dark:bg-dark-background">
+      <section className="relative z-10 pb-16 sm:pt-36 pt-24 md:pb-20 lg:pb-28 lg:pt-[180px] dark:bg-dark-background min-h-[calc(100vh-320px)]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">

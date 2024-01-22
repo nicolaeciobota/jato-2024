@@ -72,7 +72,7 @@ export default function Section({
   slug = '',
 }: Props) {
   return (
-    <>
+    <div className="min-h-[calc(100vh-320px)]">
       {
         slug === 'home'
           ? <Script
@@ -383,6 +383,6 @@ export default function Section({
             return <></>;
         }
       })}
-    </>
+    </div>
   );
 }
