@@ -16,7 +16,7 @@ const Award = ({ data, lng }: Props) => {
   if (!data.award) notFound();
 
   return (
-    <section className="pt-[100px] pb-20 bg-[#3553520d] dark:bg-dark-background min-h-[calc(100vh-320px)]">
+    <section className="pt-[100px] pb-20 bg-[#F7F9FA] dark:bg-dark-background min-h-[calc(100vh-320px)]">
       <div className="container">
         <div className="flex flex-wrap justify-center pb-5">
           <div className="w-full sm:px-4 lg:w-full">

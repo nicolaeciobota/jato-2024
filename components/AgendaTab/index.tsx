@@ -39,7 +39,7 @@ const AgendaTab = ({
   }, [selectedTab, data])
 
   return (
-    <section className="mt-4 lg:py-[120px] md:py-24 py-20 dark:bg-dark-background">
+    <section className="mt-4 lg:py-[120px] md:py-24 py-20 dark:bg-dark-background min-h-[calc(100vh-320px)]">
       <div className="container ">
         <div className="flex justify-center flex-col mt-8 sm:mt-0">
           <div className="md:-mx-4 flex h-auto xl:flex-col flex-row items-center justify-center w-full relative overflow-auto">

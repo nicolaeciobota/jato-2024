@@ -34,7 +34,7 @@ const Footer = ({ data, lng }: Props) => {
                           ? '/jato-logo-crop-for-web-dark-theme.png'
                           : '/jato-logo-crop-for-web.png'}
                       alt="logo"
-                      className="w-80 dark:invert-1 dark:brightness-300"
+                      className="xl:w-60 lg:w-48 w-36 dark:invert-1 dark:brightness-300"
                       width={data.layout.footerLogo.width || 60}
                       height={data.layout.footerLogo.height || 60}
                     />

@@ -1,5 +1,5 @@
 'use client'
-import { CSSProperties, FC, useEffect, useState } from "react";
+import { CSSProperties, FC, useState } from "react";
 import IframeResizer from 'iframe-resizer-react';
 
 type Props = {
@@ -13,33 +13,37 @@ const EmbededIframe: FC<Props> = ({ iframeUrl, iframeStyles, iframeHeight, shado
 
     const [loading, setLoading] = useState<boolean>(true);
 
-    useEffect(() => {
-        let timer = setTimeout(() => {
-            setLoading(false);
-        }, 4 * 1000)
-
-        return () => clearTimeout(timer)
-    }, [])
+    const handleIframeLoad = () => {
+        setLoading(false);
+    };
 
     return (
         <div className={`relative w-full ${shadowWidth ? `max-w-[${shadowWidth}px]` : ''} ${iframeHeight === 80 ? 'h-[80vh]' : 'h-[100vh]'} mx-auto`}>
             {
-                loading && <div className={`animate-pulse absolute w-full ${shadowWidth ? `max-w-[${shadowWidth}px]` : ''} mb-10 h-[${iframeHeight}vh]`}>
-                    <div className="w-full h-full bg-[#e8e7e8] dark:bg-subsectionBackground rounded-2xl">
+                loading
+                    ? <div className={`animate-pulse absolute top-0 w-full h-[${iframeHeight}vh] z-10`}>
+                        <div className={`bg-[#e8e7e8] h-full`}>
+                            <div className="m-auto w-full h-full flex justify-center items-center">
+                                <p className={`inline mx-auto text-black text-[20px]`}>
+                                    Loading comments ...
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    : null
             }
             {iframeUrl
                 ? <IframeResizer
                     heightCalculationMethod="lowestElement"
                     inPageLinks
-                    log
                     src={iframeUrl}
                     scrolling={true}
-                    loading="lazy"
+                    onLoad={handleIframeLoad}
                     style={{
                         minHeight: `${iframeHeight}vh`,
                         minWidth: '100%',
+                        position: 'absolute',
+                        top: '0',
                         ...iframeStyles
                     }}
                 />
