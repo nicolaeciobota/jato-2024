@@ -27,7 +27,7 @@ const IVSliveStage = ({
                     <div className="lg:w-[66.66%] w-full">
                         <IVSplayer playbackURL={rtmpUrl} />
                     </div>
-                    <div className="lg:w-[33.33%] w-full lg:h-auto h-[565px]">
+                    <div className="lg:w-[33.33%] w-full lg:h-auto h-[90vh]">
                         <iframe
                             src={iframeUrl}
                             height={`${iframeHeight}px`}
