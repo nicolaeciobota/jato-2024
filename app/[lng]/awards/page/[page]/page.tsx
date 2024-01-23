@@ -1,9 +1,7 @@
 import { getFallbackLocale } from "@/app/i18n/settings";
-import PostsPage from "@/components/Blog/PostsPage";
 import AwardsPage from "@/components/Award/AwardsPage";
 import RealTimeAwardsPage from "@/components/Award/RealTime/RealTimeAwardsPage";
-import RealTimePostsPage from "@/components/Blog/RealTime/RealTimePostsPage";
-import { AwardsDocument, PostsDocument, SiteLocale } from "@/graphql/generated";
+import { AwardsDocument, SiteLocale } from "@/graphql/generated";
 import queryDatoCMS from "@/utils/queryDatoCMS";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
