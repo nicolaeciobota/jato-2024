@@ -41,7 +41,6 @@ const Award = ({ data, lng }: Props) => {
                 </div>
               </Link>
             </div>
-
             <div className="flex flex-col md:items-start items-center justify-center sm:gap-8 gap-5 text-center md:flex-row md:text-start">
               <div className="relative sm:w-56 w-full overflow-hidden rounded-xl drop-shadow-xl md:w-72 lg:w-96">
                 <StructuredTextSection data={data.award.content} lng={lng} />
@@ -70,6 +69,9 @@ const Award = ({ data, lng }: Props) => {
         </div>
       </div>
       <div>
+        <h4 className="block text-lg mt-4 mb-4 ml-0 mr-0 font-bold text-center text-gray-800 dark:text-darktext">
+          {"Comments"}
+        </h4>
         {
           data?.award?.iframe
             ? <EmbededIframe iframeUrl={data?.award?.iframe || ''} iframeHeight={100} />
