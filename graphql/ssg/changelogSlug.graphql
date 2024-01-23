@@ -1,0 +1,5 @@
+query ChangeLogSlug($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
+  allChangeLogs(locale: $locale, fallbackLocales: $fallbackLocale) {
+    slug
+  }
+}

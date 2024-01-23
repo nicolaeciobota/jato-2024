@@ -1,0 +1,5 @@
+query AuthorsSlug($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
+  allAuthors(locale: $locale, fallbackLocales: $fallbackLocale) {
+    slug
+  }
+}

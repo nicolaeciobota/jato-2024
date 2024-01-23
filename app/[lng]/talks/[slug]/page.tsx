@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import { draftMode } from "next/headers";
 import Talk from "@/components/Agenda/Talk/Talk";
 import RealTimeTalk from "@/components/Agenda/RealTime/RealTimeTalk";
-import { SpeakerRecord, SiteLocale, TalkDocument } from "@/graphql/generated";
+import { SiteLocale, TalkDocument, TalkSlugDocument } from "@/graphql/generated";
+import { getSlugs } from "@/ssg";
 
 type Params = {
   params: {
@@ -12,6 +13,11 @@ type Params = {
     lng: SiteLocale;
   };
 };
+
+export async function generateStaticParams() {
+  const paths = await getSlugs(TalkSlugDocument, 'allTalks');
+  return paths
+}
 
 const TalkDetailsPage = async ({ params: { slug, lng } }: Params) => {
   const fallbackLng = await getFallbackLocale();

@@ -2,9 +2,10 @@ import { getFallbackLocale } from "@/app/i18n/settings";
 import queryDatoCMS from "@/utils/queryDatoCMS";
 import { notFound } from "next/navigation";
 import { draftMode } from "next/headers";
-import { AwardDocument, SiteLocale, StageDocument } from "@/graphql/generated";
+import { AwardDocument, SiteLocale, StageDocument, StageSlugDocument } from "@/graphql/generated";
 import Stage from "@/components/Stage/Stage/Stage";
 import RealTimeStage from "@/components/Stage/RealTime/RealTimeStage";
+import { getSlugs } from "@/ssg";
 
 type Params = {
   params: {
@@ -12,6 +13,11 @@ type Params = {
     lng: SiteLocale;
   };
 };
+
+export async function generateStaticParams() {
+  const paths = await getSlugs(StageSlugDocument, 'allStages');
+  return paths
+}
 
 const StageDetailsPage = async ({ params: { slug, lng } }: Params) => {
   const fallbackLng = await getFallbackLocale();

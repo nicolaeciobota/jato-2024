@@ -5,6 +5,8 @@ import { draftMode } from "next/headers";
 import Award from "@/components/Award/Award/Award";
 import RealTimeAward from "@/components/Award/RealTime/RealTimeAward";
 import { AwardDocument, SiteLocale } from "@/graphql/generated";
+import { AwardsSlugDocument } from "@/graphql/generated";
+import { getSlugs } from "@/ssg";
 
 type Params = {
   params: {
@@ -12,6 +14,11 @@ type Params = {
     lng: SiteLocale;
   };
 };
+
+export async function generateStaticParams() {
+  const paths = await getSlugs(AwardsSlugDocument, 'allAwards');
+  return paths
+}
 
 const AwardsDetailsPage = async ({ params: { slug, lng } }: Params) => {
   const fallbackLng = await getFallbackLocale();

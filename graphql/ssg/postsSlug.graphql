@@ -1,0 +1,9 @@
+query PostsSlug($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
+  allPosts(
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    _publishedAt
+    slug
+  }
+}

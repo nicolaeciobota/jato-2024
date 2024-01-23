@@ -1,0 +1,5 @@
+query TagsSlug($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
+  allTags(locale: $locale, fallbackLocales: $fallbackLocale) {
+    slug
+  }
+}

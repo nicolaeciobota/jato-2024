@@ -1,0 +1,8 @@
+query SpeakerSlug(
+  $locale: SiteLocale
+  $fallbackLocale: [SiteLocale!]
+) {
+  allSpeakers( locale: $locale, fallbackLocales: $fallbackLocale) {
+    slug
+  }
+}
