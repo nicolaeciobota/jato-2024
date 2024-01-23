@@ -1,7 +1,8 @@
 import { getFallbackLocale } from '@/app/i18n/settings';
 import RealTimeTagPosts from '@/components/Blog/RealTime/RealTimeTagPosts';
 import TagPosts from '@/components/Blog/TagPosts';
-import { SiteLocale, TagDocument } from '@/graphql/generated';
+import { SiteLocale, TagDocument, TagsSlugDocument } from '@/graphql/generated';
+import { getSlugs } from '@/ssg';
 import queryDatoCMS from '@/utils/queryDatoCMS';
 import { draftMode } from 'next/headers';
 
@@ -11,6 +12,11 @@ type Params = {
     lng: SiteLocale;
   };
 };
+
+export async function generateStaticParams() {
+  const paths = await getSlugs(TagsSlugDocument, 'allTags');
+  return paths
+}
 
 const TagPage = async ({ params }: Params) => {
   const fallbackLng = await getFallbackLocale();

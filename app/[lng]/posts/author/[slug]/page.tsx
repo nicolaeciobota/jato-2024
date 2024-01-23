@@ -1,7 +1,8 @@
 import { getFallbackLocale } from "@/app/i18n/settings";
 import AuthorPosts from "@/components/Blog/AuthorPosts";
 import RealTimeAuthorPosts from "@/components/Blog/RealTime/RealTimeAuthorPosts";
-import { AuthorDocument, SiteLocale } from "@/graphql/generated";
+import { AuthorDocument, AuthorsSlugDocument, SiteLocale } from "@/graphql/generated";
+import { getSlugs } from "@/ssg";
 import queryDatoCMS from "@/utils/queryDatoCMS";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
@@ -12,6 +13,11 @@ type Params = {
     lng: SiteLocale;
   };
 };
+
+export async function generateStaticParams() {
+  const paths = await getSlugs(AuthorsSlugDocument, 'allAuthors');
+  return paths
+}
 
 const AuthorPage = async ({ params }: Params) => {
   const fallbackLng = await getFallbackLocale();

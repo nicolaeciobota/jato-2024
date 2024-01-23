@@ -1,0 +1,11 @@
+query StageSlug(
+  $locale: SiteLocale
+  $fallbackLocale: [SiteLocale!]
+) {
+  allStages(
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    slug
+  }
+}

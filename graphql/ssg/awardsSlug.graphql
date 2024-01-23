@@ -1,0 +1,18 @@
+query AwardsSlug(
+  $locale: SiteLocale
+  $fallbackLocale: [SiteLocale!]
+) {
+  allAwards(
+    orderBy: _createdAt_DESC
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    _publishedAt
+    slug
+    id
+    title
+  }
+  _allAwardsMeta(locale: $locale, filter: { title: { isBlank: "false" } }) {
+    count
+  }
+}

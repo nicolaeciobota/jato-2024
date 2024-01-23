@@ -1,0 +1,16 @@
+query AwardsAtagSlug(
+  $locale: SiteLocale
+  $fallbackLocale: [SiteLocale!]
+) {
+  allAtags(
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    _publishedAt
+    slug
+    id
+  }
+  _allAtagsMeta(locale: $locale, filter: { atag: { isBlank: "false" } }) {
+    count
+  }
+}

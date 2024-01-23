@@ -1,0 +1,8 @@
+query TalkSlug($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
+  allTalks(
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    slug
+  }
+}

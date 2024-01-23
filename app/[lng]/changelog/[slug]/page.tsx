@@ -1,12 +1,11 @@
-import { getFallbackLocale } from '@/app/i18n/settings';
 import Highlighter from '@/components/Common/Highlighter';
-import DocumentaitonPageRenderer from '@/components/Documentaiton/DocumentationPageRenderer';
 import {
   ChangeLogModelContentField,
+  ChangeLogSlugDocument,
   ChangelogDocument,
-  DocumentationPageDocument,
   SiteLocale,
 } from '@/graphql/generated';
+import { getSlugs } from '@/ssg';
 import queryDatoCMS from '@/utils/queryDatoCMS';
 import transformDate from '@/utils/transformDate';
 import { isHeading, isParagraph } from 'datocms-structured-text-utils';
@@ -22,8 +21,12 @@ type Params = {
   };
 };
 
+export async function generateStaticParams() {
+  const paths = await getSlugs(ChangeLogSlugDocument, 'allChangeLogs');
+  return paths
+}
+
 const ChangelogPage = async ({ params: { slug, lng } }: Params) => {
-  const fallbackLng = await getFallbackLocale();
   const { isEnabled } = draftMode();
 
   const data = await queryDatoCMS(

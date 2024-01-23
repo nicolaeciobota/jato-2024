@@ -1,0 +1,12 @@
+query DocumentationSlug(
+  $locale: SiteLocale
+  $fallbackLocale: [SiteLocale!]
+) {
+  allDocumentationPages(
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    title
+    slug
+  }
+}

@@ -1,7 +1,8 @@
 import { getFallbackLocale } from "@/app/i18n/settings";
 import TagAwards from "@/components/Award/AwardTypeTagAward";
 import RealTimeTagAwards from "@/components/Award/RealTime/RealTimeTagAward";
-import { AwardTagDocument, SiteLocale } from "@/graphql/generated";
+import { AwardTagDocument, AwardsAtagSlugDocument, SiteLocale } from "@/graphql/generated";
+import { getSlugs } from "@/ssg";
 import queryDatoCMS from "@/utils/queryDatoCMS";
 import { draftMode } from "next/headers";
 
@@ -11,6 +12,11 @@ type Params = {
     lng: SiteLocale;
   };
 };
+
+export async function generateStaticParams() {
+  const paths = await getSlugs(AwardsAtagSlugDocument, 'allAtags');
+  return paths
+}
 
 const TagAwardsPage = async ({ params }: Params) => {
   const fallbackLng = await getFallbackLocale();

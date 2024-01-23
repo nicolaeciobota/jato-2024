@@ -1,7 +1,8 @@
 import { getFallbackLocale } from '@/app/i18n/settings';
 import DocumentaitonPageRenderer from '@/components/Documentaiton/DocumentationPageRenderer';
 import RealTimeDocumentationPage from '@/components/Documentaiton/RealTimeDocumentationPage';
-import { DocumentationPageDocument, SiteLocale } from '@/graphql/generated';
+import { DocumentationPageDocument, SiteLocale, DocumentationSlugDocument } from '@/graphql/generated';
+import { getSlugs } from '@/ssg';
 import queryDatoCMS from '@/utils/queryDatoCMS';
 import { draftMode } from 'next/headers';
 import { notFound } from 'next/navigation';
@@ -12,6 +13,11 @@ type Params = {
     lng: SiteLocale;
   };
 };
+
+export async function generateStaticParams() {
+  const paths = await getSlugs(DocumentationSlugDocument, 'allDocumentationPages');
+  return paths
+}
 
 const DocumentaitonPage = async ({ params: { slug, lng } }: Params) => {
   const fallbackLng = await getFallbackLocale();

@@ -1,0 +1,19 @@
+query AwardsCategorySlug(
+  $locale: SiteLocale
+  $fallbackLocale: [SiteLocale!]
+  $skip: IntType = "0"
+) {
+  allAcategories(
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+    skip: $skip
+  ) {
+    _publishedAt
+    slug
+    id
+    name
+  }
+  _allAcategoriesMeta(locale: $locale, filter: { name: { isBlank: "false" } }) {
+    count
+  }
+}
