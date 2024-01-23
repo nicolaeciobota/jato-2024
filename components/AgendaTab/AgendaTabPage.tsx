@@ -41,22 +41,21 @@ const AgendaTabPage = ({ data, lng, page }: Props) => {
     return (
         <section className="mt-4 lg:py-[120px] md:py-24 py-20 dark:bg-dark-background min-h-[calc(100vh-320px)]">
             <div className="container ">
-                <div className="flex xl:justify-between justify-center xl:flex-row flex-col">
-                    <div className="-mx-4 flex h-auto xl:flex-col flex-row xl:justify-start items-start justify-center xl:w-1/5 w-full relative">
-                        <div className="relative xl:block flex xl:w-auto w-full">
-                            <div className="absolute bottom-0 left-1.5 top-2 hidden w-px bg-slate-200 xl:block"></div>
+                <div className="flex justify-center flex-col mt-8 sm:mt-0">
+                    <div className="md:-mx-4 flex h-auto xl:flex-col flex-row items-center justify-center w-full relative overflow-auto">
+                        <div className="relative flex pb-2 gap-8">
                             {titleDate.map((tab, index) => <div onClick={() => setSelectedTab(tab)} key={index}>
-                                <DateTab tab={tab} locale={lng} isSelected={(tab.title === selectedTab.title && tab.date === selectedTab.date)} />
+                                <DateTab tab={tab} locale={lng} isSelected={tab.title === selectedTab.title && tab.date === selectedTab.date} />
                             </div>)}
                         </div>
                     </div>
-                    <div className="-mx-4 flex h-full flex-wrap xl:w-4/5 w-full justify-center">
-                        {talks?.length > 0
+                    <div className="lg:-mx-4 flex h-full flex-wrap w-full justify-center pt-8">
+                        {talks.length > 0
                             ? talks.map((talk) => {
                                 return (
                                     <div
                                         key={talk.id}
-                                        className="w-full mb-10 px-4 md:w-2/3 lg:w-1/2 xl:w-1/3 xl:mb-0"
+                                        className="w-full sm:px-4 mb-10 md:w-2/3 lg:w-1/2 xl:w-1/3"
                                     >
                                         <SingleTalk talk={talk as TalkRecord} locale={lng} />
                                     </div>
