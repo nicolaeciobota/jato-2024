@@ -6,7 +6,7 @@ import RightImageHero from './RightImageHero';
 import BackgroundImageHero from './BackgroundImage';
 import SplitImage from './SplitImage';
 import Hero from './Hero';
-import { useAuth } from '@clerk/nextjs';
+// import { useAuth } from '@clerk/nextjs';
 
 type Props = {
   heroSectionRecord: HeroSectionRecord
@@ -15,7 +15,7 @@ type Props = {
 
 const Index = ({ heroSectionRecord, slug }: Props) => {
 
-  const { isSignedIn } = useAuth();
+  // const { isSignedIn } = useAuth();
   const { displayOptions, heroTitle, heroSubtitle, buttons, heroImage } = heroSectionRecord;
 
   const displayedConentMapper: { [key: string]: ReactNode } = {
@@ -25,7 +25,7 @@ const Index = ({ heroSectionRecord, slug }: Props) => {
     'split_image': <SplitImage heroSubtitle={heroSubtitle} heroTitle={heroTitle} buttons={buttons} image={heroImage?.responsiveImage as any} />,
   }
 
-  if (slug === 'home' && isSignedIn) return;
+  // if (slug === 'home' && isSignedIn) return;
 
   return (
     <>
