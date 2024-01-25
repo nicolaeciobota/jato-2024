@@ -418,6 +418,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         minHeightDimensionUnit
         widthDimensionUnit
         heightDimensionUnit
+        align
       }
       ... on BannerBlockRecord {
         _modelApiKey
