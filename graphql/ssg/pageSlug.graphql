@@ -1,0 +1,8 @@
+query PageSlug($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
+  allPages(
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    slug
+  }
+}
