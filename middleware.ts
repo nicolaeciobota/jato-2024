@@ -65,7 +65,7 @@ export default authMiddleware({
     const locale = pathname.split('/')[1];
     return (req.url.includes(`/${locale}/home`) || req.url.includes('/api/revalidateCache'))
   },
-  publicRoutes: ['/api/revalidateCache']
+  publicRoutes: ['/api/revalidateCache', '/en/test']
 })
 
 export const config = {
