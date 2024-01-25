@@ -57,7 +57,6 @@ import MUXliveStream from "../Home/MUXliveStream/MUXliveStream";
 import IframeBlock from "../Home/Iframe Block/IframeBlock";
 import BannerBlock from "../Home/Banner Block/BannerBlock";
 import FeaturedPosts from "../Home/Featured Posts";
-import Script from "next/script";
 import Spacer from "../Common/Spacer";
 
 type Props = {
@@ -73,16 +72,6 @@ export default function Section({
 }: Props) {
   return (
     <div className="min-h-[calc(100vh-320px)]">
-      {
-        slug === 'home'
-          ? <Script
-            defer
-            id="cookieyes"
-            type="text/javascript"
-            src="https://cdn-cookieyes.com/client_data/38dd9bcb9ab1dc9ac5706bcb/script.js"
-          ></Script>
-          : null
-      }
       {sections.map((section) => {
         switch (section._modelApiKey) {
           case "spacer":
