@@ -5,10 +5,12 @@ import RealTimeSections from "@/components/Sections/RealTimeSections";
 import {
   PageDocument,
   PageModelSectionsField,
+  PageSlugDocument,
   SiteLocale,
 } from "@/graphql/generated";
 import { notFound } from "next/navigation";
 import { getFallbackLocale } from "@/app/i18n/settings";
+import { getSlugs } from "@/ssg";
 
 type Params = {
   params: {
@@ -16,6 +18,11 @@ type Params = {
     slug: string;
   };
 };
+
+export async function generateStaticParams() {
+  const paths = await getSlugs(PageSlugDocument, 'allPages');
+  return paths
+}
 
 export default async function Home({ params: { lng, slug } }: Params) {
   const fallbackLng = await getFallbackLocale();
