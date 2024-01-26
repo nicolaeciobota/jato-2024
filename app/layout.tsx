@@ -26,7 +26,7 @@ export default async function RootLayout({
   params: { lng },
 }: Params) {
   return (
-    <ClerkProvider>
+    <ClerkProvider afterSignInUrl="https://social.jato-live.com/">
       <html lang={lng || 'en'}>
         <Head />
         <body className={`tracking-tight antialiased`}>

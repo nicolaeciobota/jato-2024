@@ -31,7 +31,7 @@ const Header = ({ lng, data }: Props) => {
   const [notificationStrip, setNotificationStrip] = useState(false);
   const [sticky, setSticky] = useState(false);
 
-  const menuItems = data.layout!.menu;
+  const menuItems = data?.layout!.menu || [];
 
   for (let i = 0; i < menuItems.length; i++) {
     if (menuItems[i]._modelApiKey === 'menu_dropdown') {
@@ -113,12 +113,12 @@ const Header = ({ lng, data }: Props) => {
           <div className="flex w-full items-center justify-between xl:pl-4 sm:pl-6">
             <div className="sm:-mx-4 mx-0">
               <Link
-                href={`/${lng}/about`}
+                href={isSignedIn ? `/${lng}/about` : '/sign-in'}
                 className={`header-logo block w-full ${sticky ? "py-5 lg:py-2" : "py-8"
                   } `}
               >
                 <div className="lg:w-32 sm:w-28 w-24">
-                  {data.layout?.logo.url && (
+                  {data?.layout?.logo.url && (
                     <Image
                       src={theme === 'dark'
                         ? '/jato-logo-crop-for-web-dark-theme.png'
@@ -239,8 +239,8 @@ const Header = ({ lng, data }: Props) => {
               </button>
               {
                 isSignedIn
-                  ? <div className="h-9 relative w-9 flex justify-center items-center"><UserButton /></div>
-                  : <Link href={process.env.NEXT_PUBLIC_CLERK_SIGNIN || '#'}>
+                  ? <div className="h-9 relative w-9 flex justify-center items-center"><UserButton afterSignOutUrl={`/${lng}/home`} /></div>
+                  : <Link href={'/sign-in'}>
                     <p className="flex font-semibold xl:text-base text-sm text-primary group-hover:opacity-70 dark:text-toruquise lg:px-0">Log In</p>
                   </Link>
               }
