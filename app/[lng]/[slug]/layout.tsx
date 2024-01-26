@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-before-interactive-script-outside-document */
 import Footer from '@/components/Footer';
 import 'node_modules/react-modal-video/css/modal-video.css';
 import '@/styles/global.css';
