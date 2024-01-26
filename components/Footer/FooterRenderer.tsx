@@ -9,6 +9,7 @@ import {
 import ReactMarkdown from "react-markdown";
 import { useContext } from "react";
 import { AppContext } from "@/context/App";
+import { useAuth } from "@clerk/nextjs";
 
 type Props = {
   data: FooterQuery;
@@ -17,6 +18,7 @@ type Props = {
 
 const Footer = ({ data, lng }: Props) => {
 
+  const { isSignedIn } = useAuth();
   const { theme } = useContext(AppContext);
 
   return (
@@ -26,7 +28,7 @@ const Footer = ({ data, lng }: Props) => {
           <div className="flex w-full flex-col justify-between md:flex-row md:px-16">
             <div className="w-full">
               <div className="md:mb-12 sm:mb-8 mb-5 lg:mb-16">
-                <Link href={`/${lng}/about`} className="mb-8 inline-block">
+                <Link href={isSignedIn ? `/${lng}/about` : '/sign-in'} className="mb-8 inline-block">
                   {data.layout?.footerLogo && (
                     <Image
                       src={
@@ -60,7 +62,7 @@ const Footer = ({ data, lng }: Props) => {
                       return (
                         <li key={pageLink.id}>
                           <Link
-                            href={"/" + lng + "/legal/" + pageLink.slug}
+                            href={isSignedIn ? "/" + lng + "/legal/" + pageLink.slug : '/sign-in'}
                             className="mb-4 inline-block text-base font-medium text-body-color dark:text-darktext hover:text-primary"
                           >
                             {" "}
