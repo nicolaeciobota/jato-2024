@@ -1,6 +1,7 @@
 'use client'
 // import LoadingSkeleton from "@/components/Common/LoadingSkeleton";
 import { IframeBlockRecord } from "@/graphql/generated";
+import useWindowSize from "@/utils/useWindowSize";
 import IframeResizer from "iframe-resizer-react";
 // import { useState } from "react";
 
@@ -12,6 +13,7 @@ const IframeBlock = ({
     iframeBlock
 }: Props) => {
 
+    const { width : windowWidth } = useWindowSize();
     // const [loading, setLoading] = useState<boolean>(true);
 
     // const handleIframeLoad = () => {
@@ -43,10 +45,10 @@ const IframeBlock = ({
                 <IframeResizer
                     // onLoad={handleIframeLoad}
                     src={iframeUrl}
-                    width={`${width}${widthDimensionUnit}`}
+                    width={`${windowWidth < 768 ? '100' : width}${widthDimensionUnit}`}
                     height={`${height}${heightDimensionUnit}`}
                     style={{
-                        width: `${width}${widthDimensionUnit}`,
+                        width: `${windowWidth < 768 ? '100' :width}${widthDimensionUnit}`,
                         height: `${height}${heightDimensionUnit}`,
                         minHeight: `${minHeight}${minHeightDimensionUnit}`
                     }}
