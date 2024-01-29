@@ -42,7 +42,7 @@ const BigImageVerticalFeatures = ({
                       <DatoImage
                         className="h-full w-full object-cover"
                         layout="fill"
-                        objectFit="crop"
+                        objectFit="contain"
                         objectPosition="50% 50%"
                         data={feature.featureIcon.responsiveImage}
                       />
