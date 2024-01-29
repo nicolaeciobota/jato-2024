@@ -55,12 +55,6 @@ const BigImageVerticalFeatures = ({
                       {feature.featureTitle}
                     </div>
                   </h2>
-
-                  <div className="mb-8 text-gray-500 dark:text-darktext">
-                    <ReactMarkdown>
-                      {feature.featureDescription || ""}
-                    </ReactMarkdown>
-                  </div>
                 </div>
               </div>
             );
