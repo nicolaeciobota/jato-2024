@@ -19,11 +19,11 @@ const BigImageVerticalFeatures = ({
     <div className="bg-white py-8 sm:py-10 lg:py-15 dark:bg-dark-background mt-12">
       <div className="py-12 md:py-20  mx-auto max-w-screen-2xl px-4 md:px-8">
         <div className="md:mb-16 sm:mb-10 mb-6">
-          <h2 className="text-center text-2xl font-bold text-gray-800 dark:text-darktext md:mb-6 lg:text-3xl">
+          <h2 className="text-center text-3xl font-bold text-[#4392b5] dark:text-darktext md:mb-6 lg:text-3xl">
             {featuresHeader}
           </h2>
 
-          <div className="mx-auto max-w-screen-md text-center text-gray-500 dark:text-darktext md:text-lg">
+          <div className="mx-auto max-w-screen-md text-center text-gray-500 dark:text-darktext md:text-xl">
             <ReactMarkdown>{featuresSubheader || ""}</ReactMarkdown>
           </div>
         </div>
