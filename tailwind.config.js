@@ -41,7 +41,7 @@ module.exports = {
         yellow: '#FBB040',
         'body-color': '#959CB1',
         darktext: '#ffffff',
-        toruquise: '#08e8de',
+        toruquise: '#726cae',
       },
       backgroundColor: {
         'dark-background': '#181724',
