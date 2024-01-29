@@ -7,6 +7,7 @@ import BackgroundImageHero from './BackgroundImage';
 import SplitImage from './SplitImage';
 import Hero from './Hero';
 import { useAuth } from '@clerk/nextjs';
+import HeroEmpty from './HeroEmpty';
 
 type Props = {
   heroSectionRecord: HeroSectionRecord
@@ -22,6 +23,7 @@ const Index = ({ heroSectionRecord, slug }: Props) => {
     'gradient': <GradientHero heroSubtitle={heroSubtitle} heroTitle={heroTitle} buttons={buttons} />,
     'right_image': <RightImageHero heroSubtitle={heroSubtitle} heroTitle={heroTitle} buttons={buttons} image={heroImage as any} />,
     'background_image': <BackgroundImageHero heroSubtitle={heroSubtitle} heroTitle={heroTitle} buttons={buttons} image={heroImage as any} />,
+    'hero_empty': <HeroEmpty image={heroImage as any} />,
     'split_image': <SplitImage heroSubtitle={heroSubtitle} heroTitle={heroTitle} buttons={buttons} image={heroImage as any} />,
   }
 
