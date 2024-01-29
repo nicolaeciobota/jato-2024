@@ -36,7 +36,7 @@ const BigImageVerticalFeatures = ({
                 className="flex flex-col overflow-hidden rounded-lg border dark:border-none bg-white dark:bg-gray-800 w-full max-w-[310px]"
               >
                 {" "}
-                <div className="group relative block h-48 overflow-hidden bg-gray-100 md:h-64">
+                <div className="group relative block h-64 overflow-hidden bg-gray-100 md:h-64">
                   <div className="absolute inset-0 h-full w-full overflow-hidden object-cover object-center">
                     <Link href={feature?.link || '#'}>
                       <DatoImage
