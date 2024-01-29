@@ -52,10 +52,7 @@ const Footer = ({ data, lng }: Props) => {
 
             <div className="flex w-full md:text-end">
               <div className="w-full">
-                {/* <div className="lg:mb-16 md:mb-12 mb-8">
-                  <h2 className="md:mb-10 mb-6 text-xl font-bold text-black dark:text-darktext">
-                    Legal
-                  </h2>
+                <div className="lg:mb-16 md:mb-12 mb-8">
                   <ul>
                     {data.layout!.footerLinks.map((link) => {
                       const pageLink = link as LegalPageRecord; // The field has a "at least one" validation
@@ -72,7 +69,7 @@ const Footer = ({ data, lng }: Props) => {
                       );
                     })}
                   </ul>
-                </div> */}
+                </div>
               </div>
             </div>
           </div>
