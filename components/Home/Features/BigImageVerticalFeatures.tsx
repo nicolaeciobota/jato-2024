@@ -28,12 +28,12 @@ const BigImageVerticalFeatures = ({
           </div>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8">
+        <div className="flex justify-center items-center flex-wrap gap-4 md:gap-6 xl:gap-8">
           {features.map((feature) => {
             return (
               <div
                 key={feature.id}
-                className="group flex flex-col overflow-hidden rounded-lg border dark:border-none bg-white dark:bg-gray-800"
+                className="flex flex-col overflow-hidden rounded-lg border dark:border-none bg-white dark:bg-gray-800 w-full max-w-[310px]"
               >
                 {" "}
                 <div className="group relative block h-48 overflow-hidden bg-gray-100 md:h-64">

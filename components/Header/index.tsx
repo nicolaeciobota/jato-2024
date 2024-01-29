@@ -146,7 +146,7 @@ const Header = ({ lng, data }: Props) => {
                         {menuItem.path ? (
                           <Link
                             href={"/" + lng + menuItem.path}
-                            className={`flex py-2 xl:text-base text-sm text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${menuItem.title.length > 10 ? 'xl:w-[130px] lg:w-[78px]' : ''}`}
+                            className={`flex py-2 xl:text-base text-sm text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6`}
                           >
                             {menuItem.title}
                           </Link>
@@ -154,10 +154,10 @@ const Header = ({ lng, data }: Props) => {
                           <>
                             <div
                               onClick={() => handleSubmenu(index)}
-                              className="flex cursor-pointer items-center justify-between py-2 xl:text-base text-sm text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 xl:w-[10rem] lg:w-[9rem]"
+                              className="flex cursor-pointer items-center gap-3 py-2 xl:text-base text-sm text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6"
                             >
-                              {menuItem.title}
-                              <span className="">
+                              <span>{menuItem.title}</span>
+                              <span>
                                 <svg width="15" height="14" viewBox="0 0 15 14">
                                   <path
                                     d="M7.81602 9.97495C7.68477 9.97495 7.57539 9.9312 7.46602 9.8437L2.43477 4.89995C2.23789 4.70308 2.23789 4.39683 2.43477 4.19995C2.63164 4.00308 2.93789 4.00308 3.13477 4.19995L7.81602 8.77183L12.4973 4.1562C12.6941 3.95933 13.0004 3.95933 13.1973 4.1562C13.3941 4.35308 13.3941 4.65933 13.1973 4.8562L8.16601 9.79995C8.05664 9.90933 7.94727 9.97495 7.81602 9.97495Z"
@@ -192,7 +192,7 @@ const Header = ({ lng, data }: Props) => {
                             onClick={() => {
                               window.open(item.redirectUrl, '_self')
                             }}
-                            className={`cursor-pointer flex py-2 xl:text-base text-sm text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${item.title.length > 10 ? 'xl:w-[125px] lg:w-[78px]' : ''}`}
+                            className={`cursor-pointer flex py-2 xl:text-base text-sm text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6`}
                           >
                             {item.title}
                           </div>

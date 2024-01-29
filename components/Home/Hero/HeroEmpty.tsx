@@ -1,5 +1,6 @@
 import { FileField } from '@/graphql/generated';
 import { Maybe } from 'graphql/jsutils/Maybe';
+import { Image as DatoImage } from 'react-datocms';
 
 type Props = {
   image: Maybe<FileField> | undefined;
@@ -9,16 +10,16 @@ const HeroEmpty = ({
   image,
 }: Props) => {
   return (
-    <div
-      className="mt-20 w-full bg-cover bg-center object-cover"
-      style={{
-        backgroundSize: 'cover',
-        backgroundImage: `url('${image?.responsiveImage?.src}')`,
-        height: image?.responsiveImage?.height,
-        width: '100%',
-      }}
-    >
-    </div>
+    <>
+      {image?.responsiveImage && (
+        <DatoImage
+          objectFit="cover"
+          objectPosition="left"
+          className='h-auto w-full mt-20'
+          data={image?.responsiveImage}
+        />
+      )}
+    </>
   );
 };
 
