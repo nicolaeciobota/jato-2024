@@ -71,7 +71,7 @@ export default function Section({
   slug = '',
 }: Props) {
   return (
-    <div className="min-h-[calc(100vh-320px)]">
+    <div className="min-h-[calc(100vh-280px)]">
       {sections.map((section) => {
         switch (section._modelApiKey) {
           case "spacer":

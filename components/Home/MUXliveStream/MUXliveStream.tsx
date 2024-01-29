@@ -22,7 +22,7 @@ const MUXliveStream = ({
     return (
         <section
             id="IVSplayer"
-            className="bg-primary/[.03] pt-28 pb-10 dark:bg-dark-background opacity-95 min-h-[calc(100vh-320px)]"
+            className="bg-primary/[.03] pt-28 pb-10 dark:bg-dark-background opacity-95 min-h-[calc(100vh-280px)]"
         >
             <div className="container">
                 <div className="flex lg:flex-row flex-col h-[90vh]">

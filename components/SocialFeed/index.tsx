@@ -14,7 +14,7 @@ const SocialFeed = ({
   return (
     <section
       id="socialfeed"
-      className="bg-primary bg-opacity-5 py-16 md:py-20 lg:py-28 min-h-[calc(100vh-320px)]"
+      className="bg-primary bg-opacity-5 py-16 md:py-20 lg:py-28 min-h-[calc(100vh-280px)]"
     >
       <div className="container">
         <div>

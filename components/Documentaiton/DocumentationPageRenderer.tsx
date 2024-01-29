@@ -25,7 +25,7 @@ type Props = {
 
 const DocumentaitonPageRenderer = ({ data }: Props) => {
   return (
-    <div className="px-24 py-8 min-h-[calc(100vh-320px)]">
+    <div className="px-24 py-8 min-h-[calc(100vh-280px)]">
       <StructuredText
         data={
           (

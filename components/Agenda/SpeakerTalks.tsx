@@ -13,7 +13,7 @@ const SpeakerTalks = ({ data, lng }: Props) => {
   if (!data.speaker) notFound();
 
   return (
-    <section className="mt-16 flex w-full flex-col items-center md:py-8 py-4 dark:bg-dark-background min-h-[calc(100vh-320px)]">
+    <section className="mt-16 flex w-full flex-col items-center md:py-8 py-4 dark:bg-dark-background min-h-[calc(100vh-280px)]">
       <section className="px-auto mx-auto mb-8 flex  w-full justify-center bg-white px-4 dark:bg-gray-900 lg:h-auto">
         {" "}
         <div className="md:py-10 py-6">

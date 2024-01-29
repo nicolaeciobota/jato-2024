@@ -41,7 +41,7 @@ type Props = {
 const Post = ({ data, lng }: Props) => {
   if (!data.post) notFound();
   return (
-    <section className="lg:pt-36 lg:pb-[120px] pt-24 md:pb-24 pb-12 dark:bg-dark-background min-h-[calc(100vh-320px)]">
+    <section className="lg:pt-36 lg:pb-[120px] pt-24 md:pb-24 pb-12 dark:bg-dark-background min-h-[calc(100vh-280px)]">
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-center">
           <div className="w-full px-4 lg:w-8/12">
