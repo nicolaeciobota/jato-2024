@@ -13,7 +13,7 @@ const TagAwards = ({ data, lng }: Props) => {
     notFound();
   }
   return (
-    <section className="lg:py-[32px] py-14 px-4 dark:bg-dark-background min-h-[calc(100vh-320px)]">
+    <section className="lg:py-[32px] py-14 px-4 dark:bg-dark-background min-h-[calc(100vh-280px)]">
       <div className='flex width-full justify-center items-center gap-5 lg:py-16 py-8'>
         <svg
           stroke="currentColor"

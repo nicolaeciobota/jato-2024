@@ -28,7 +28,7 @@ const Documentation = async ({ params: { lng } }: Params) => {
 
   return (
     <article className="not-prose w-full max-w-none">
-      <section className="not-prose relative mx-auto max-w-6xl px-6 py-16 min-h-[calc(100vh-320px)]">
+      <section className="not-prose relative mx-auto max-w-6xl px-6 py-16 min-h-[calc(100vh-280px)]">
         <h1 className="2xl:px-30 mb-4 text-4xl font-black text-slate-900 dark:text-white md:text-6xl lg:mb-8 lg:text-center lg:leading-tight">
           {titleWords.join(' ')}
           <span className="text-primary opacity-90"> {lastWord}</span>

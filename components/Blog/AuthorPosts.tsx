@@ -12,7 +12,7 @@ type Props = {
 const AuthorPosts = ({ data, lng }: Props) => {
   if (!data.author) notFound();
   return (
-    <section className="mt-16 flex flex-col items-center justify-center py-[32px] dark:bg-dark-background min-h-[calc(100vh-320px)]">
+    <section className="mt-16 flex flex-col items-center justify-center py-[32px] dark:bg-dark-background min-h-[calc(100vh-280px)]">
       <section className="px-auto mx-auto mb-8 flex items-center justify-center bg-white sm:px-16 px-4 dark:bg-dark-background">
         <div className="md:py-10 py-5">
           <div className="flex flex-col items-center justify-center gap-8 sm:p-4 text-center md:flex-row md:text-start dark:bg-gray-800">

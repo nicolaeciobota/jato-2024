@@ -40,7 +40,7 @@ const ChangelogPage = async ({ params: { slug, lng } }: Params) => {
   if (!data || !data.changeLog) notFound();
 
   return (
-    <section className="py-32 text-gray-700 min-h-[calc(100vh-320px)]">
+    <section className="py-32 text-gray-700 min-h-[calc(100vh-280px)]">
       <div className=" mx-auto flex flex-col items-center px-5 py-8 lg:px-24">
         <div>
           <div className="flex flex-wrap py-8 md:flex-nowrap">

@@ -11,7 +11,7 @@ type Props = {
 
 const TalksPage = ({ data, lng, page }: Props) => {
   return (
-    <section className="pb-[120px] pt-[120px] min-h-[calc(100vh-320px)]">
+    <section className="pb-[120px] pt-[120px] min-h-[calc(100vh-280px)]">
       <div className="container">
         <div className="lg:-mx-4 flex h-full flex-wrap w-full justify-center pt-8">
           {data.allTalks.map((talk) => (

@@ -12,7 +12,7 @@ const TagPosts = ({ data, lng }: Props) => {
     notFound();
   }
   return (
-    <section className="py-[32px] dark:bg-dark-background min-h-[calc(100vh-320px)]">
+    <section className="py-[32px] dark:bg-dark-background min-h-[calc(100vh-280px)]">
       <div className='flex width-full justify-center items-center gap-4 lg:py-24 py-12'>
         <svg
           xmlns="http://www.w3.org/2000/svg"

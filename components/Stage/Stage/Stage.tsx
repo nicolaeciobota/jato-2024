@@ -22,7 +22,7 @@ type Props = {
 const Stage = ({ data, lng }: Props) => {
   if (!data.stage) notFound();
   return (
-    <section className="bg-primary/[.03] lg:py-[120px] md:py-24 py-20 dark:bg-dark-background min-h-[calc(100vh-320px)]">
+    <section className="bg-primary/[.03] lg:py-[120px] md:py-24 py-20 dark:bg-dark-background min-h-[calc(100vh-280px)]">
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-start">
           <div className="w-full px-4 lg:w-8/12">

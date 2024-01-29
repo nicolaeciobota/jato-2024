@@ -142,7 +142,7 @@ const Header = ({ lng, data }: Props) => {
                 >
                   <ul className="block items-center lg:flex xl:gap-3 gap-2.5">
                     {menuData.map((menuItem, index) => (
-                      <li key={menuItem.id} className="group relative">
+                      <li key={menuItem.id+menuItem.title} className="group relative">
                         {menuItem.path ? (
                           <Link
                             href={"/" + lng + menuItem.path}

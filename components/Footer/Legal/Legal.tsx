@@ -16,7 +16,7 @@ type Props = {
 const Legal = ({ data, lng }: Props) => {
   if (!data.legalPage) notFound();
   return (
-    <section className="pt-24 pb-[120px] dark:bg-dark-background min-h-[calc(100vh-320px)]">
+    <section className="pt-24 pb-[120px] dark:bg-dark-background min-h-[calc(100vh-280px)]">
       <div className="container">
         <div className="-mx-4 flex flex-wrap justify-center">
           <div className="w-full px-4 lg:w-8/12">
