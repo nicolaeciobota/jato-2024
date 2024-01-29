@@ -54,7 +54,7 @@ const AboutIntro = ({
           </div>
           <h2 className="mb-6 max-w-lg font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 dark:text-darktext sm:text-4xl md:mx-auto">
             <span className="relative inline-block text-primary">
-              <motion.svg
+              {/* <motion.svg
                 style={{ y, x }}
                 viewBox="0 0 52 24"
                 className="text-blue-gray-100 absolute left-0 top-0 z-0 -ml-20 -mt-8 hidden w-32 sm:block lg:-ml-28 lg:-mt-10 lg:w-32 fill-current dark:fill-toruquise"
@@ -75,7 +75,7 @@ const AboutIntro = ({
                   width="52"
                   height="24"
                 />
-              </motion.svg>
+              </motion.svg> */}
               <span className="relative text-gray-700 dark:text-darktext">{firstWord}</span>
             </span>{' '}
             {restOfTheString}
