@@ -12,19 +12,13 @@ const HeroEmpty = ({
   return (
    <>
       {image?.responsiveImage && (
-        <div
-          className="relative w-full h-0"
-          style={{
-            paddingTop: `${(image?.responsiveImage.height / image?.responsiveImage.width) * 100}%`,
-          }}
-        >
-          <DatoImage
-            objectFit="cover"
-            layout="fill"
-            className="absolute top-0 left-0"
-            data={image?.responsiveImage}
-          />
-        </div>
+        <DatoImage
+          objectFit="cover"
+          layout="responsive"
+          objectPosition="center"
+          className='h-auto w-full mt-20'
+           data={image?.responsiveImage}
+        />
       )}
     </>
   );
