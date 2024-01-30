@@ -10,14 +10,14 @@ const HeroEmpty = ({
   image,
 }: Props) => {
   return (
-    <>
+   <>
       {image?.responsiveImage && (
         <DatoImage
           objectFit="cover"
           layout="responsive"
-          objectPosition="center"
+          objectPosition="50% 50%" // Center position for left and right cropping
           className='h-auto w-full mt-20'
-           data={image?.responsiveImage}
+          data={image?.responsiveImage}
         />
       )}
     </>
