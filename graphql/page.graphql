@@ -254,6 +254,13 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
           responsiveImage(imgixParams: {fit: crop, auto: format, crop: focalpoint, w: 530, h: 450}) {
             ...DatoImage_responsiveImage
             webpSrcSet
+srcSet
+sizes
+src
+width
+height
+base64
+aspectRatio
           }
         }
       }
