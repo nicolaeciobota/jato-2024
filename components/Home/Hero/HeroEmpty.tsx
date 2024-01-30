@@ -12,13 +12,14 @@ const HeroEmpty = ({
   return (
    <>
       {image?.responsiveImage && (
-        <DatoImage
-          objectFit="cover"
-          layout="responsive"
-          objectPosition="50% 50%" // Center position for left and right cropping
-          className='h-auto w-full mt-20'
-          data={image?.responsiveImage}
-        />
+        <div className='relative h-0 overflow-hidden aspect-ratio'>
+          <DatoImage
+            objectFit="cover"
+            layout="fill"
+            className='object-cover'
+            data={image?.responsiveImage}
+          />
+        </div>
       )}
     </>
   );
