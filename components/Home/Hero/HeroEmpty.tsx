@@ -13,8 +13,8 @@ const HeroEmpty = ({
     <>
       {image?.responsiveImage && (
         <DatoImage
-          objectFit="cover"
-          objectPosition="left"
+          objectFit="none"
+          objectPosition="center"
           className='h-auto w-full mt-20'
           data={image?.responsiveImage}
         />
