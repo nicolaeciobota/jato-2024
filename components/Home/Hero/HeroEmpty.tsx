@@ -12,11 +12,16 @@ const HeroEmpty = ({
   return (
    <>
       {image?.responsiveImage && (
-        <div className='relative h-0 overflow-hidden aspect-ratio'>
+        <div
+          className="relative w-full h-0"
+          style={{
+            paddingTop: `${(image?.responsiveImage.height / image?.responsiveImage.width) * 100}%`,
+          }}
+        >
           <DatoImage
             objectFit="cover"
             layout="fill"
-            className='object-cover'
+            className="absolute top-0 left-0"
             data={image?.responsiveImage}
           />
         </div>
