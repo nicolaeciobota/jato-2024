@@ -251,7 +251,7 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         heroTitle
         displayOptions
         heroImage {
-          responsiveImage(imgixParams: { fit: crop }) {
+          responsiveImage(imgixParams: {fit: crop, auto: format, crop: focalpoint, w: 530, h: 450}) {
             ...DatoImage_responsiveImage
             webpSrcSet
           }
