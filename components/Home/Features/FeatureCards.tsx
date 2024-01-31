@@ -50,10 +50,10 @@ const FeatureCards = ({
                         objectPosition="50% 50%"
                       />
                     </Link>
-                  </div>
+                  </div> <Link href={feature?.link || '#'}>
                   <h4 className="mb-1 text-xl font-bold leading-snug tracking-tight dark:text-darktext">
                     {feature.featureTitle}
-                  </h4>
+                  </h4></Link>
                   <div className="text-center text-gray-600 dark:text-darktext">
                     <ReactMarkdown>
                       {feature.featureDescription || ""}
