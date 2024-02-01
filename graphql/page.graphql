@@ -251,16 +251,47 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         heroTitle
         displayOptions
         heroImage {
-          responsiveImage(imgixParams: {fit: crop, auto: format, crop: focalpoint, w: "530", h: "450"}) {
+          responsiveImage(
+            imgixParams: { fit: crop, auto: format, crop: focalpoint }
+          ) {
             ...DatoImage_responsiveImage
             webpSrcSet
-srcSet
-sizes
-src
-width
-height
-base64
-aspectRatio
+            srcSet
+            sizes
+            src
+            width
+            height
+            base64
+            aspectRatio
+          }
+        }
+      }
+      ... on EmptyHeroSectionRecord {
+        _modelApiKey
+        id
+        displayOptions
+        bannerImageDesktop {
+          responsiveImage(
+            imgixParams: { fit: crop, auto: format, crop: focalpoint }
+          ) {
+            ...DatoImage_responsiveImage
+            webpSrcSet
+          }
+        }
+        bannerImageTablet {
+          responsiveImage(
+            imgixParams: { fit: crop, auto: format, crop: focalpoint }
+          ) {
+            ...DatoImage_responsiveImage
+            webpSrcSet
+          }
+        }
+        bannerImageMobile {
+          responsiveImage(
+            imgixParams: { fit: crop, auto: format, crop: focalpoint }
+          ) {
+            ...DatoImage_responsiveImage
+            webpSrcSet
           }
         }
       }

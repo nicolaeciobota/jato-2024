@@ -1,6 +1,7 @@
 import Brands from "../Home/Brands";
 import Features from "../Home/Features";
 import Hero from "../Home/Hero";
+import EmptyHero from "../Home/EmptyHero";
 import Pricing from "../Home/Pricing";
 import Testimonials from "../Home/Testimonials";
 import Video from "../Home/Video";
@@ -39,6 +40,7 @@ import {
   IframeBlockRecord,
   BannerBlockRecord,
   SpacerRecord,
+  EmptyHeroSectionRecord,
 } from "@/graphql/generated";
 import { redirect } from "next/navigation";
 import GradientCards from "../Home/Pricing/GradientCards";
@@ -103,6 +105,15 @@ export default function Section({
             const muxLiveStreamRecord = section as MuxLiveStreamRecord;
             return (
               <MUXliveStream key={section.id} muxLiveStreamRecord={muxLiveStreamRecord} />
+            );
+          case "empty_hero_section":
+            const emptyHeroSectionRecord = section as EmptyHeroSectionRecord;
+            return (
+              <EmptyHero
+                key={section.id}
+                slug={slug}
+                emptyHeroSectionRecord={emptyHeroSectionRecord}
+              />
             );
           case "hero_section":
             const heroSectionRecord = section as HeroSectionRecord;
