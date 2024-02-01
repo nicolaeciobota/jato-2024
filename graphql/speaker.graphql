@@ -37,10 +37,18 @@ query Speaker(
           eventDate
           slug
         }
+        pageType
+        buttonName
         stage {
-          id
-          name
-          slug
+          ... on StageRecord {
+            id
+            name
+            slug
+          }
+          ... on PageRecord {
+            id
+            slug
+          }
         }
         seoTags {
           description
@@ -200,10 +208,18 @@ query Speaker(
                   eventDate
                   slug
                 }
+                pageType
+                buttonName
                 stage {
-                  id
-                  name
-                  slug
+                  ... on StageRecord {
+                    id
+                    name
+                    slug
+                  }
+                  ... on PageRecord {
+                    id
+                    slug
+                  }
                 }
                 seoTags {
                   description
@@ -390,10 +406,18 @@ query Speaker(
         eventDate
         slug
       }
+      pageType
+      buttonName
       stage {
-        id
-        name
-        slug
+        ... on StageRecord {
+          id
+          name
+          slug
+        }
+        ... on PageRecord {
+          id
+          slug
+        }
       }
       seoTags {
         description

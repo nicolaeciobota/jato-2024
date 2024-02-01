@@ -62,10 +62,18 @@ query Talks(
                 eventDate
                 slug
               }
+              pageType
+              buttonName
               stage {
-                id
-                name
-                slug
+                ... on StageRecord {
+                  id
+                  name
+                  slug
+                }
+                ... on PageRecord {
+                  id
+                  slug
+                }
               }
               seoTags {
                 description
@@ -250,10 +258,18 @@ query Talks(
     dateTags {
       eventDate
     }
+    pageType
+    buttonName
     stage {
-      id
-      name
-      slug
+      ... on StageRecord {
+        id
+        name
+        slug
+      }
+      ... on PageRecord {
+        id
+        slug
+      }
     }
     seoTags {
       description
