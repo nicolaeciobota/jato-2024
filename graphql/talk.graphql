@@ -8,10 +8,18 @@ query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
     title
     start
     end
+    pageType
+    buttonName
     stage {
-      id
-      name
-      slug
+      ... on StageRecord {
+        id
+        name
+        slug
+      }
+      ... on PageRecord {
+        id
+        slug
+      }
     }
     speaker {
       name
@@ -30,10 +38,18 @@ query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
             eventDate
             slug
           }
+          pageType
+          buttonName
           stage {
-            id
-            name
-            slug
+            ... on StageRecord {
+              id
+              name
+              slug
+            }
+            ... on PageRecord {
+              id
+              slug
+            }
           }
           seoTags {
             description
@@ -204,10 +220,18 @@ query Talk($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
                 eventDate
                 slug
               }
+              pageType
+              buttonName
               stage {
-                id
-                name
-                slug
+                ... on StageRecord {
+                  id
+                  name
+                  slug
+                }
+                ... on PageRecord {
+                  id
+                  slug
+                }
               }
               seoTags {
                 description

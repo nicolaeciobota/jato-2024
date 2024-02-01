@@ -53,10 +53,18 @@ query SpeakerPage($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
                 eventDate
                 slug
               }
+              pageType
+              buttonName
               stage {
-                id
-                name
-                slug
+                ... on StageRecord {
+                  id
+                  name
+                  slug
+                }
+                ... on PageRecord {
+                  id
+                  slug
+                }
               }
               seoTags {
                 description

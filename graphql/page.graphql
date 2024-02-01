@@ -109,10 +109,18 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
                 eventDate
                 slug
               }
+              pageType
+              buttonName
               stage {
-                id
-                name
-                slug
+                ... on StageRecord {
+                  id
+                  name
+                  slug
+                }
+                ... on PageRecord {
+                  id
+                  slug
+                }
               }
               seoTags {
                 description
