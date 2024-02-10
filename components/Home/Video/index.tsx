@@ -70,8 +70,6 @@ const Video = ({
 
       <ModalVideo
         channel={videoProvider}
-        player_id="0"
-        byline="false"
         isOpen={isOpen}
         videoId={videoUid}
         onClose={() => setOpen(false)}
