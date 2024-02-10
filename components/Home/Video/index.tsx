@@ -69,6 +69,7 @@ const Video = ({
       </div>
 
       <ModalVideo
+        channel="vimeo"
         isOpen={isOpen}
         videoId={videoUid}
         onClose={() => setOpen(false)}
