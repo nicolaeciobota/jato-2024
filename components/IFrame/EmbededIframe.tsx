@@ -57,7 +57,7 @@ const EmbededIframe: FC<Props> = ({ iframeUrl, iframeStyles, iframeHeight, shado
                     src={iframeUrl}
                     scrolling={true}
                     onLoad={handleIframeLoad}
-                    allow=”autoplay; camera; microphone”
+                    allow={autoplay; camera; microphone}
                     style={{
                         minHeight: `${iframeHeight}vh`,
                         minWidth: '100%',
