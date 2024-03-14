@@ -34,7 +34,7 @@ const IframeBlock = ({
                     src={iframeUrl}
                     width={`${windowWidth < 768 ? '100' : width}${widthDimensionUnit}`}
                     height={`${height}${heightDimensionUnit}`}
-                    allow={camera}
+                    allow="camera"
                     style={{
                         width: `${windowWidth < 768 ? '100' :width}${widthDimensionUnit}`,
                         height: `${height}${heightDimensionUnit}`,
