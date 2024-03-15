@@ -80,6 +80,7 @@ const IFrame: FC<Props> = ({
                     src={iframeUrl}
                     scrolling={true}
                     className="min-h-[76vh] sm:min-h-[90vh]"
+                    allow="camera; microphone"
                     style={{
                         minWidth: '96%',
                         overflow: 'auto',
