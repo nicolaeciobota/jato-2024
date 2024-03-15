@@ -56,6 +56,7 @@ const EmbededIframe: FC<Props> = ({ iframeUrl, iframeStyles, iframeHeight, shado
                     inPageLinks
                     src={iframeUrl}
                     scrolling={true}
+                      allow="camera; microphone"
                     onLoad={handleIframeLoad}
                     style={{
                         minHeight: `${iframeHeight}vh`,
