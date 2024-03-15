@@ -23,6 +23,7 @@ const SocialFeed = ({
               ? <IFrame
                 iframeUrl={data?.socialFeed?.iframe || ''}
                 btnText="Close Social"
+                  allow="camera; microphone"
                 lng={lng}
               />
               : <div>Not found!</div>
