@@ -30,7 +30,7 @@ const BannerBlock = ({
     return (
         <section
             id="BannerBlock"
-            className="dark:bg-dark-background min-h-[calc(100vh-280px)]"
+            className="dark:bg-dark-background min-h-[220px]"
         >
             <div className="container">
                 <Link href={bannerUrl}>

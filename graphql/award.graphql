@@ -301,4 +301,9 @@ query Award(
       }
     }
   }
+  allAtags(locale: $locale, fallbackLocales: $fallbackLocale) {
+    id
+    atag
+    slug
+  }
 }

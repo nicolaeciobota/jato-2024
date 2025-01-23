@@ -41,12 +41,12 @@ const GalleryBlock: FC<Props> = ({ galleryRecords }) => {
         {extractImages.map((image: ImageFileField, index: number) => (
           <SwiperSlide key={index}>
             <div
-              className="relative aspect-square sm:w-56 mx-auto w-full overflow-hidden rounded-xl drop-shadow-xl md:w-72 lg:w-96"
+              className="relative aspect-square mx-auto w-full !overflow-hidden  h-full max-h-[220px] sm:max-h-[300px] md:max-h-[400px] xl:max-h-[440px]"
             >
               <DatoImage
                 className="rounded"
                 layout="fill"
-                objectFit="contain"
+                objectFit="cover"
                 data={image.responsiveImage}
               />
 
@@ -57,11 +57,10 @@ const GalleryBlock: FC<Props> = ({ galleryRecords }) => {
       <Swiper
         onSwiper={setThumbsSwiper}
         loop={true}
-        slidesPerView={4}
-        freeMode={true}
+        slidesPerView={12}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="thumbnailSwiper !m-0"
+        className="thumbnailSwiper mt-1.5"
         spaceBetween={4}
       >
         {extractImages.map((image: ImageFileField, index: number) => (
