@@ -29,24 +29,25 @@ const BannerBlock = ({
 
     return (
         <section
-            id="BannerBlock"
-            className="dark:bg-dark-background min-h-[calc(100vh-280px)]"
-        >
-            <div className="container">
-                <Link href={bannerUrl}>
-                    <div
-                        className={`relative overflow-hidden rounded-md shadow-md h-[35vh] sm:h-[50vh] lg:h-[${heightWithUnit}] w-[${widthWithUnit}] min-h-[${minHeightWithUnit}]`}
-                    >
-                        <DatoImage
-                            data={bannerImage.responsiveImage}
-                            layout={layout as any}
-                            objectFit={objectFit as any}
-                            objectPosition="50% 50%"
-                        />
-                    </div>
-                </Link>
+    id="BannerBlock"
+    className="dark:bg-dark-background min-h-[calc(100vh-280px)] flex items-center"
+>
+    <div className="container flex justify-center items-center mx-auto p-0">
+        <Link href={bannerUrl}>
+            <div
+                className={`relative overflow-hidden rounded-md shadow-md h-[35vh] sm:h-[50vh] lg:h-[60vh] w-full min-h-[200px]`}
+            >
+                <DatoImage
+                    data={bannerImage.responsiveImage}
+                    layout={layout as any}
+                    objectFit={objectFit as any}
+                    objectPosition="50% 50%"
+                    className="w-full h-full"
+                />
             </div>
-        </section>
+        </Link>
+    </div>
+</section>
     );
 }
 
