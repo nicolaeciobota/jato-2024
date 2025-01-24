@@ -112,7 +112,7 @@ const Header = ({ lng, data }: Props) => {
           : `absolute ${notificationStrip ? "top-10" : "top-0"}`
           }`}
       >
-        <div className="max-w-[1440px] relative flex items-center justify-between w-full xl:px-8 px-4 mx-auto">
+        <div className="w-full relative flex items-center justify-between xl:px-8 px-4 mx-auto">
           <div className="flex w-full items-center justify-between xl:pl-4 sm:pl-6 py-2">
             <div className="sm:-mx-4 mx-0">
               <Link
@@ -149,7 +149,7 @@ const Header = ({ lng, data }: Props) => {
                         {menuItem.path ? (
                           <Link
                             href={"/" + lng + menuItem.path}
-                            className={`flex py-1.5 rounded-full font-medium hover:dark:bg-[#201f2f] hover:dark:text-darktext hover:bg-[#f0f3f5] text-[13px] px-3 text-[#1D2144] dark:text-darktext mb-0.5 lg:mb-0 lg:mr-0 lg:inline-flex ${menuItem.path === `/${currentSlug}` ? 'bg-[#f0f3f5] dark:bg-[#201f2f] dark:text-darktext' : ''}`}
+                            className={`flex py-1.5 rounded-full font-medium hover:dark:bg-[#201f2f] hover:dark:text-darktext hover:bg-[#f0f3f5] text-center leading-4 text-[13px] px-3 text-[#1D2144] dark:text-darktext mb-0.5 lg:mb-0 lg:mr-0 lg:inline-flex ${menuItem.path === `/${currentSlug}` ? 'bg-[#f0f3f5] dark:bg-[#201f2f] dark:text-darktext' : ''}`}
                           >
                             {menuItem.title}
                           </Link>
@@ -177,7 +177,7 @@ const Header = ({ lng, data }: Props) => {
                                 <Link
                                   href={"/" + lng + submenuItem.path}
                                   key={submenuItem.id}
-                                  className="block rounded-lg py-2 text-[13px] font-medium text-[#1D2144]  dark:hover:bg-[#201f2f] hover:bg-[#F0F3F5] dark:text-white px-4"
+                                  className="block rounded-lg py-2 text-[13px] leading-4 font-medium text-[#1D2144]  dark:hover:bg-[#201f2f] hover:bg-[#F0F3F5] dark:text-white px-4"
                                 >
                                   {submenuItem.title}
                                 </Link>
