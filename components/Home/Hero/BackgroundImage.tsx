@@ -24,7 +24,7 @@ const BackgroundImageHero = ({
         backgroundImage: `url('${image?.responsiveImage?.src}')`,
       }}
     >
-      <div className="flex h-full w-full flex-col items-center justify-center bg-gray-900/30 sm:px-6 px-6 lg:px-16">
+      <div className="flex h-full w-full flex-col items-center justify-center bg-gray-900/30 sm:px-6 px-6 lg:px-6">
         <div className="flex flex-col items-center sm:gap-8 gap-5 text-center">
           <h1 className="md:text-7xl sm:text-6xl text-[34px] leading-none font-bold text-white">{heroTitle}</h1>
           <div className="leading-relaxed text-white xl:text-xl sm:text-base text-sm ">
