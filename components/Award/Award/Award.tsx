@@ -41,7 +41,7 @@ const Award = ({ data, lng }: Props) => {
                 </div>
               </Link>
             </div>
-            <div className="flex items-center justify-center space-x-4 mb-3">
+            <div className="flex items-center justify-center space-x-4 mb-3 text-center">
               <h2 className="text-base sm:text-2xl md:text-3xl font-bold leading-tight text-black dark:text-darktext  sm:leading-tight">
                 {data?.award?.title}
               </h2>

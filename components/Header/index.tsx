@@ -15,14 +15,11 @@ import { Menu } from "./HeaderRenderer";
 import { UserButton, useAuth } from "@clerk/nextjs";
 import { AppContext } from "@/context/App";
 import { usePathname } from "next/navigation";
-
 type Props = {
   lng: SiteLocale;
   data: MenuQuery;
 };
-
 const Header = ({ lng, data }: Props) => {
-
   const pathname = usePathname();
   const currentSlug = pathname.split('/')[pathname.split('/').length - 1];
   const menuData: Menu[] = [];
@@ -33,9 +30,7 @@ const Header = ({ lng, data }: Props) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [notificationStrip, setNotificationStrip] = useState(false);
   const [sticky, setSticky] = useState(false);
-
   const menuItems = data?.layout!.menu || [];
-
   for (let i = 0; i < menuItems.length; i++) {
     if (menuItems[i]._modelApiKey === 'menu_dropdown') {
       const dropdownItem = menuItems[i] as MenuDropdownRecord;
@@ -71,11 +66,9 @@ const Header = ({ lng, data }: Props) => {
       });
     }
   }
-
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen);
   };
-
   const handleStickyNavbar = () => {
     if (window.scrollY >= 80) {
       setSticky(true);
@@ -86,7 +79,6 @@ const Header = ({ lng, data }: Props) => {
   useEffect(() => {
     window.addEventListener("scroll", handleStickyNavbar);
   });
-
   const handleSubmenu = (index: number) => {
     if (openIndex === index) {
       setOpenIndex(-1);
@@ -94,7 +86,6 @@ const Header = ({ lng, data }: Props) => {
       setOpenIndex(index);
     }
   };
-
   return (
     <>
       {notificationStrip && (
@@ -112,7 +103,7 @@ const Header = ({ lng, data }: Props) => {
           : `absolute ${notificationStrip ? "top-10" : "top-0"}`
           }`}
       >
-        <div className="max-w-[1440px] relative flex items-center justify-between w-full xl:px-8 px-4 mx-auto">
+        <div className="w-full relative flex items-center justify-between  xl:px-8 px-4 mx-auto">
           <div className="flex w-full items-center justify-between xl:pl-4 sm:pl-6 py-2">
             <div className="sm:-mx-4 mx-0">
               <Link
@@ -149,7 +140,7 @@ const Header = ({ lng, data }: Props) => {
                         {menuItem.path ? (
                           <Link
                             href={"/" + lng + menuItem.path}
-                            className={`flex py-1.5 rounded-full font-medium hover:dark:bg-[#201f2f] hover:dark:text-darktext hover:bg-[#f0f3f5] text-[13px] px-3 text-[#1D2144] dark:text-darktext mb-0.5 lg:mb-0 lg:mr-0 lg:inline-flex ${menuItem.path === `/${currentSlug}` ? 'bg-[#f0f3f5] dark:bg-[#201f2f] dark:text-darktext' : ''}`}
+                            className={`flex py-1.5 rounded-full font-medium hover:dark:bg-[#201F2F] hover:dark:text-darktext hover:bg-[#F0F3F5] text-[13px] px-3 text-[#1D2144] dark:text-darktext mb-0.5 lg:mb-0 lg:mr-0 lg:inline-flex ${menuItem.path === `/${currentSlug}` ? 'bg-[#F0F3F5] dark:bg-[#201F2F] dark:text-darktext' : ''}`}
                           >
                             {menuItem.title}
                           </Link>
@@ -157,7 +148,7 @@ const Header = ({ lng, data }: Props) => {
                           <>
                             <div
                               onClick={() => handleSubmenu(index)}
-                              className={`flex cursor-pointer items-center font-medium hover:bg-[#f0f3f5] hover:dark:bg-[#201f2f] hover:dark:text-darktext  text-[#1D2144] gap-2 rounded-full py-1.5 px-3 text-[13px] mb-0.5 lg:mb-0 dark:text-darktext lg:mr-0 lg:inline-flex ${menuItem.submenu?.map(m => m.path).includes(`/${currentSlug}`) ? 'bg-[#f0f3f5] dark:bg-[#201f2f] dark:text-darktext' : ''}`}
+                              className={`flex cursor-pointer items-center font-medium hover:bg-[#F0F3F5] hover:dark:bg-[#201F2F] hover:dark:text-darktext  text-[#1D2144] gap-2 rounded-full py-1.5 px-3 text-[13px] mb-0.5 lg:mb-0 dark:text-darktext lg:mr-0 lg:inline-flex ${menuItem.submenu?.map(m => m.path).includes(`/${currentSlug}`) ? 'bg-[#F0F3F5] dark:bg-[#201F2F] dark:text-darktext' : ''}`}
                             >
                               <span>{menuItem.title}</span>
                               <span>
@@ -177,7 +168,7 @@ const Header = ({ lng, data }: Props) => {
                                 <Link
                                   href={"/" + lng + submenuItem.path}
                                   key={submenuItem.id}
-                                  className="block rounded-lg py-2 text-[13px] font-medium text-[#1D2144]  dark:hover:bg-[#201f2f] hover:bg-[#F0F3F5] dark:text-white px-4"
+                                  className="block rounded-lg py-2 text-[13px] font-medium text-[#1D2144]  dark:hover:bg-[#201F2F] hover:bg-[#F0F3F5] dark:text-white px-4"
                                 >
                                   {submenuItem.title}
                                 </Link>
@@ -187,7 +178,6 @@ const Header = ({ lng, data }: Props) => {
                         )}
                       </li>
                     ))}
-
                     {
                       circleMenuData.map((item) => (
                         <li key={item.id} className="group relative">
@@ -195,7 +185,7 @@ const Header = ({ lng, data }: Props) => {
                             onClick={() => {
                               window.open(item.redirectUrl, '_self')
                             }}
-                            className={`cursor-pointer flex py-2 xl:text-base text-sm text-dark group-hover:opacity-70 dark:text-darktext lg:mr-0 lg:inline-flex lg:px-0 lg:py-6`}
+                            className={`flex py-1.5 rounded-full font-medium hover:dark:bg-[#201F2F] hover:dark:text-darktext hover:bg-[#F0F3F5] text-[13px] px-3 text-[#1D2144] dark:text-darktext mb-0.5 lg:mb-0 lg:mr-0 lg:inline-flex cursor-pointer`}
                           >
                             {item.title}
                           </div>
@@ -254,5 +244,4 @@ const Header = ({ lng, data }: Props) => {
     </>
   );
 };
-
 export default Header;
