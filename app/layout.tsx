@@ -26,7 +26,7 @@ export default async function RootLayout({
   params: { lng },
 }: Params) {
   return (
-    <ClerkProvider afterSignInUrl="https://jato-live.com/en/home">
+    <ClerkProvider signInFallbackRedirectUrl="https://jato-live.com/en/home">
       <html lang={lng || 'en'}>
         <Head />
         <body className={`tracking-tight antialiased`}>

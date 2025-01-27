@@ -114,6 +114,11 @@
   height: 100%;
   opacity: 0.4;
 }
+.thumbnailSwiper .swiper-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .thumbnailSwiper .swiper-slide-thumb-active {
   opacity: 1;
