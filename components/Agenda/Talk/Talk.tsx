@@ -11,7 +11,7 @@ import {
 import { notFound } from "next/navigation";
 import React from "react";
 import agendaTime from "@/utils/agendaTime";
-import StructuredTextSection from "@/components/Award/Award/StructuredTextBlocks/QuoteBlock";
+import StructuredTextSection from "@/components/Award/Award/StructuredTextBlocks";
 type Props = {
   data: TalkQuery;
   lng: SiteLocale;
