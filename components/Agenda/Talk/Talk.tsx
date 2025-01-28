@@ -11,6 +11,12 @@ import {
 import { notFound } from "next/navigation";
 import React from "react";
 import agendaTime from "@/utils/agendaTime";
+import {
+  isBlockquote,
+  isHeading,
+  isLink,
+  isParagraph,
+} from "datocms-structured-text-utils";
 import StructuredTextSection from "@/components/Agenda/Talk/StructuredTextBlocks/QuoteBlock";
 type Props = {
   data: TalkQuery;
