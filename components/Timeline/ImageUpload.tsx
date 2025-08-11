@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useCallback } from 'react';
-import { UploadcareWidget } from '@uploadcare/react-widget';
+import { Widget } from '@uploadcare/react-widget';
 import { UPLOADCARE_CONFIG, UploadResult, getFileInfo, validateFile } from '../../utils/uploadcare';
 
 interface ImageUploadProps {
@@ -60,7 +60,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   return (
     <div className={`relative ${className}`}>
       {/* Uploadcare Widget */}
-      <UploadcareWidget
+      <Widget
         publicKey={UPLOADCARE_CONFIG.publicKey}
         onUploadComplete={handleUpload}
         onError={handleUploadError}
@@ -79,7 +79,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
             </span>
           </button>
         )}
-      </UploadcareWidget>
+      </Widget>
 
       {/* Upload Progress */}
       {isUploading && uploadProgress > 0 && (

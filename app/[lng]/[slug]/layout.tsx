@@ -10,23 +10,25 @@ import Script from 'next/script';
 
 type Params = {
   children: React.ReactNode;
-  params: {
+  params: Promise<{
     lng: SiteLocale;
     slug: string;
-  };
+  }>;
 };
 
 export async function generateStaticParams() {
   const languages = await getAvailableLocales();
-  return languages.map((language) => {
-    language;
-  });
+  return languages.map((language) => ({
+    lng: language,
+    slug: 'home'
+  }));
 }
 
 export default async function RootLayout({
   children,
-  params: { lng, slug },
+  params,
 }: Params) {
+  const { lng, slug } = await params;
   const { isEnabled } = draftMode();
   
   return (
