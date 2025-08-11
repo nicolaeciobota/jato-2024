@@ -8,10 +8,10 @@ import { draftMode } from 'next/headers';
 import { notFound } from 'next/navigation';
 
 type Params = {
-  params: {
+  params: Promise<{
     slug: string;
     lng: SiteLocale;
-  };
+  }>;
 };
 
 export async function generateStaticParams() {
@@ -19,7 +19,8 @@ export async function generateStaticParams() {
   return paths
 }
 
-const DocumentaitonPage = async ({ params: { slug, lng } }: Params) => {
+const DocumentaitonPage = async ({ params }: Params) => {
+  const { slug, lng } = await params;
   const fallbackLng = await getFallbackLocale();
   const { isEnabled } = draftMode();
 
