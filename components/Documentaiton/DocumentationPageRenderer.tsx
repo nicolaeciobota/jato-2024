@@ -2,7 +2,7 @@
 
 import { StructuredText, renderNodeRule } from 'react-datocms/structured-text';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/docco';
 import {
   isBlockquote,
   isCode,

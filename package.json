@@ -2,6 +2,10 @@
   "name": "startup-nextjs-template",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=10.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "dev:custom": "node server.js",
@@ -40,12 +44,12 @@
     "language-name-map": "^0.3.0",
     "lucide-react": "^0.268.0",
     "negotiator": "^0.6.3",
-    "next": "^14.1.0",
+    "next": "^15.4.6",
     "next-themes": "^0.2.1",
     "popmotion": "^11.0.5",
-    "react": "18.2.0",
+    "react": "^19.1.1",
     "react-datocms": "^4.1.3",
-    "react-dom": "18.2.0",
+    "react-dom": "^19.1.1",
     "react-i18next": "^13.0.3",
     "react-markdown": "^8.0.7",
     "react-modal-video": "^2.0.0",
