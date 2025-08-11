@@ -28,7 +28,7 @@ export async function generateStaticParams() {
 
 const ChangelogPage = async ({ params }: Params) => {
   const { slug, lng } = await params;
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
 
   const data = await queryDatoCMS(
     ChangelogDocument,

@@ -18,7 +18,7 @@ type Params = {
 
 const Documentation = async ({ params }: Params) => {
   const { lng } = await params;
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
 
   const data = await queryDatoCMS(DocumentationHomePageDocument, {}, isEnabled);
 

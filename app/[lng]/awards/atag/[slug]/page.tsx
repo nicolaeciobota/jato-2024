@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 const TagAwardsPage = async ({ params }: Params) => {
   const fallbackLng = await getFallbackLocale();
   const { lng, slug } = await params;
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
 
   const data = await queryDatoCMS(
     AwardTagDocument,

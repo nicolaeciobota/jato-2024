@@ -12,7 +12,7 @@ type Params = {
 const SocialFeedPage = async ({ params }: Params) => {
   const { lng } = await params;
   const fallbackLng = await getFallbackLocale();
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
 
   return (
     <>

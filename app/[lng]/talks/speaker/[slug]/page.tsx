@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 const SpeakerPage = async ({ params }: Params) => {
   const { slug, lng } = await params;
   const fallbackLng = await getFallbackLocale();
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
 
   const data = await queryDatoCMS(
     SpeakerDocument,

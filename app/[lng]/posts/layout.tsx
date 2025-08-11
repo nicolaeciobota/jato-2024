@@ -26,7 +26,7 @@ export default async function RootLayout({
   params,
 }: Params) {
   const { lng } = await params;
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
 
   return (
     <>

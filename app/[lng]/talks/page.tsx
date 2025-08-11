@@ -16,7 +16,7 @@ type Params = {
 const Page = async ({ params }: Params) => {
   const { page, lng } = await params;
   const fallbackLng = await getFallbackLocale();
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
 
   const data = await queryDatoCMS(
     TalksDocument,

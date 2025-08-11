@@ -25,7 +25,7 @@ export default async function RootLayout({
   children,
   params: { lng },
 }: Params) {
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
   const data = await queryDatoCMS(CustomColorDocument, {}, isEnabled);
 
   return (
