@@ -11,12 +11,13 @@ import { notFound } from 'next/navigation';
 import FeaturedSection from '@/components/Documentaiton/FeaturedSection';
 
 type Params = {
-  params: {
+  params: Promise<{
     lng: SiteLocale;
-  };
+  }>;
 };
 
-const Documentation = async ({ params: { lng } }: Params) => {
+const Documentation = async ({ params }: Params) => {
+  const { lng } = await params;
   const { isEnabled } = draftMode();
 
   const data = await queryDatoCMS(DocumentationHomePageDocument, {}, isEnabled);
