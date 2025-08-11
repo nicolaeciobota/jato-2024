@@ -7,10 +7,10 @@ import queryDatoCMS from '@/utils/queryDatoCMS';
 import { draftMode } from 'next/headers';
 
 type Params = {
-  params: {
+  params: Promise<{
     slug: string;
     lng: SiteLocale;
-  };
+  }>;
 };
 
 export async function generateStaticParams() {
@@ -19,8 +19,8 @@ export async function generateStaticParams() {
 }
 
 const TagPage = async ({ params }: Params) => {
+  const { slug, lng } = await params;
   const fallbackLng = await getFallbackLocale();
-  const { lng } = params;
   const { isEnabled } = draftMode();
 
   const data = await queryDatoCMS(
@@ -28,7 +28,7 @@ const TagPage = async ({ params }: Params) => {
     {
       locale: lng,
       fallbackLocale: fallbackLng,
-      slug: params.slug,
+      slug: slug,
     },
     isEnabled
   );
@@ -45,7 +45,7 @@ const TagPage = async ({ params }: Params) => {
           variables={{
             locale: lng,
             fallbackLocale: fallbackLng,
-            slug: params.slug,
+            slug: slug,
           }}
         />
       )}
