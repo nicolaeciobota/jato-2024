@@ -5,15 +5,15 @@ import queryDatoCMS from "@/utils/queryDatoCMS";
 import { draftMode } from "next/headers";
 
 type Params = {
-  params: {
+  params: Promise<{
     page: number;
     lng: SiteLocale;
-  };
+  }>;
 };
 
 const Page = async ({ params }: Params) => {
   const fallbackLng = await getFallbackLocale();
-  const { lng } = params;
+  const { lng } = await params;
   const { isEnabled } = draftMode();
 
   const data = await queryDatoCMS(
