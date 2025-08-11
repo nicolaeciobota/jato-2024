@@ -4,14 +4,14 @@ import { SiteLocale } from "@/graphql/generated";
 import { draftMode } from "next/headers";
 
 type Params = {
-  params: {
+  params: Promise<{
     lng: SiteLocale;
-  };
+  }>;
 };
 
 const SocialFeedPage = async ({ params }: Params) => {
+  const { lng } = await params;
   const fallbackLng = await getFallbackLocale();
-  const { lng } = params;
   const { isEnabled } = draftMode();
 
   return (
