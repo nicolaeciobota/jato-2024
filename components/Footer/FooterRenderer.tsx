@@ -9,7 +9,7 @@ import {
 import ReactMarkdown from "react-markdown";
 import { useContext } from "react";
 import { AppContext } from "@/context/App";
-import { useAuth } from "@clerk/nextjs";
+// import { useAuth } from "@clerk/nextjs";
 
 type Props = {
   data: FooterQuery;
@@ -18,7 +18,8 @@ type Props = {
 
 const Footer = ({ data, lng }: Props) => {
 
-  const { isSignedIn } = useAuth();
+  // const { isSignedIn } = useAuth();
+  const isSignedIn = false; // Authentication disabled
   const { theme } = useContext(AppContext);
 
   return (

@@ -11,7 +11,7 @@ const PageIndicatorList = ({ agendaTabCount, lng }: Props) => {
 
   for (let i = 0; i * 9 < agendaTabCount; i++) {
     listOfPages.push(
-      <li className="mx-1">
+      <li key={i} className="mx-1">
         <Link
           href={
             i === 0

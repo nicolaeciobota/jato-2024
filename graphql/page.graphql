@@ -522,6 +522,49 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
         _modelApiKey
         slugToRedirectTo
       }
+      ... on StageScehduleItemRecord {
+        id
+        _modelApiKey
+        featuredTalksHeading
+        returnToAgenda {
+          id
+          label
+          url
+          primary
+        }
+        talks {
+          id
+          title
+          slug
+          start
+          end
+          content {
+            value
+          }
+          stage {
+            ... on StageRecord {
+              slug
+            }
+            ... on PageRecord {
+              slug
+            }
+          }
+          pageType
+          buttonName
+          speaker {
+            name
+            jobTitle
+            picture {
+              responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
+                src
+                width
+                height
+                alt
+              }
+            }
+          }
+        }
+      }
     }
     id
     label

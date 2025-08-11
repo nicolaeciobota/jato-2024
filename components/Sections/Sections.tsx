@@ -41,6 +41,7 @@ import {
   BannerBlockRecord,
   SpacerRecord,
   EmptyHeroSectionRecord,
+  StageScehduleItemRecord,
 } from "@/graphql/generated";
 import { redirect } from "next/navigation";
 import GradientCards from "../Home/Pricing/GradientCards";
@@ -60,6 +61,7 @@ import IframeBlock from "../Home/Iframe Block/IframeBlock";
 import BannerBlock from "../Home/Banner Block/BannerBlock";
 import FeaturedPosts from "../Home/Featured Posts";
 import Spacer from "../Common/Spacer";
+import FeaturedTalksSection from "../Home/FeaturedTalksSection";
 
 type Props = {
   sections: Array<PageModelSectionsField>;
@@ -72,6 +74,8 @@ export default function Section({
   locale,
   slug = '',
 }: Props) {
+  console.log("Sections being rendered:", sections.map(s => ({ id: s.id, modelApiKey: s._modelApiKey })));
+  
   return (
     <div className="min-h-[calc(100vh-280px)]">
       {sections.map((section) => {
@@ -81,8 +85,8 @@ export default function Section({
             return (
               <Spacer
                 key={section.id}
-                space={spacer.space}
-                extraMargin={spacer.extraMargin || null}
+                space={spacer.space ?? ""}
+                extraMargin={spacer.extraMargin ?? undefined}
               />
             );
           case "changelog_section":
@@ -90,9 +94,9 @@ export default function Section({
             return (
               <Changelog
                 key={section.id}
-                title={changeLogSection.title}
-                subtitle={changeLogSection.subtitle}
-                featuredChangeLogs={changeLogSection.featuredVersions}
+                title={changeLogSection.title ?? ""}
+                subtitle={changeLogSection.subtitle ?? ""}
+                featuredChangeLogs={changeLogSection.featuredVersions ?? []}
                 locale={locale}
               />
             );
@@ -153,11 +157,11 @@ export default function Section({
             return (
               <Video
                 key={section.id}
-                videoHeader={videoSectionRecord.videoHeader}
-                videoSubheader={videoSectionRecord.videoSubheader}
-                videoUid={videoSectionRecord.video?.providerUid}
-                videoThumbnail={videoSectionRecord.videoThumbnail}
-                videoProvider={videoSectionRecord.video?.provider}
+                videoHeader={videoSectionRecord.videoHeader ?? ""}
+                videoSubheader={videoSectionRecord.videoSubheader ?? ""}
+                videoUid={videoSectionRecord.video?.providerUid ?? ""}
+                videoThumbnail={videoSectionRecord.videoThumbnail ?? ""}
+                videoProvider={videoSectionRecord.video?.provider ?? ""}
               />
             );
           case "brand_section":
@@ -174,8 +178,8 @@ export default function Section({
               <DetailSection
                 key={section.id}
                 imagePosition={detailSectionRecord.imagePosition as boolean}
-                image={detailSectionRecord.image}
-                details={detailSectionRecord.details}
+                image={detailSectionRecord.image ?? undefined}
+                details={detailSectionRecord.details as any}
               />
             );
           case "review_section":
@@ -185,45 +189,45 @@ export default function Section({
                 return (
                   <Carrousel
                     key={section.id}
-                    header={reviewSectionRecord.reviewSectionHeader}
-                    subheader={reviewSectionRecord.reviewSectionSubheader}
-                    reviews={reviewSectionRecord.reviews}
+                    header={reviewSectionRecord.reviewSectionHeader ?? ""}
+                    subheader={reviewSectionRecord.reviewSectionSubheader ?? ""}
+                    reviews={reviewSectionRecord.reviews ?? []}
                   />
                 );
               case "modern_carrousel":
                 return (
                   <ModernCarrousel
                     key={section.id}
-                    header={reviewSectionRecord.reviewSectionHeader}
-                    subheader={reviewSectionRecord.reviewSectionSubheader}
-                    reviews={reviewSectionRecord.reviews}
+                    header={reviewSectionRecord.reviewSectionHeader ?? ""}
+                    subheader={reviewSectionRecord.reviewSectionSubheader ?? ""}
+                    reviews={reviewSectionRecord.reviews ?? []}
                   />
                 );
               case "minimal_carrousel":
                 return (
                   <MinimalCarrousel
                     key={section.id}
-                    header={reviewSectionRecord.reviewSectionHeader}
-                    subheader={reviewSectionRecord.reviewSectionSubheader}
-                    reviews={reviewSectionRecord.reviews}
+                    header={reviewSectionRecord.reviewSectionHeader ?? ""}
+                    subheader={reviewSectionRecord.reviewSectionSubheader ?? ""}
+                    reviews={reviewSectionRecord.reviews ?? []}
                   />
                 );
               case "minimal_cards":
                 return (
                   <MinimalReviewCards
                     key={section.id}
-                    header={reviewSectionRecord.reviewSectionHeader}
-                    subheader={reviewSectionRecord.reviewSectionSubheader}
-                    reviews={reviewSectionRecord.reviews}
+                    header={reviewSectionRecord.reviewSectionHeader ?? ""}
+                    subheader={reviewSectionRecord.reviewSectionSubheader ?? ""}
+                    reviews={reviewSectionRecord.reviews ?? []}
                   />
                 );
               default:
                 return (
                   <Testimonials
                     key={section.id}
-                    header={reviewSectionRecord.reviewSectionHeader}
-                    subheader={reviewSectionRecord.reviewSectionSubheader}
-                    reviews={reviewSectionRecord.reviews}
+                    header={reviewSectionRecord.reviewSectionHeader ?? ""}
+                    subheader={reviewSectionRecord.reviewSectionSubheader ?? ""}
+                    reviews={reviewSectionRecord.reviews ?? []}
                   />
                 );
             }
@@ -235,45 +239,45 @@ export default function Section({
                 return (
                   <GradientCards
                     key={section.id}
-                    header={pricingSectionRecord.pricingSectionHeader}
-                    subheader={pricingSectionRecord.pricingSectionSubheader}
-                    plans={pricingSectionRecord.plans}
+                    header={pricingSectionRecord.pricingSectionHeader ?? ""}
+                    subheader={pricingSectionRecord.pricingSectionSubheader ?? ""}
+                    plans={pricingSectionRecord.plans ?? []}
                   />
                 );
               case "minimal":
                 return (
                   <Minimal
                     key={section.id}
-                    header={pricingSectionRecord.pricingSectionHeader}
-                    subheader={pricingSectionRecord.pricingSectionSubheader}
-                    plans={pricingSectionRecord.plans}
+                    header={pricingSectionRecord.pricingSectionHeader ?? ""}
+                    subheader={pricingSectionRecord.pricingSectionSubheader ?? ""}
+                    plans={pricingSectionRecord.plans ?? []}
                   />
                 );
               case "feature_list":
                 return (
                   <FeatureListSelector
                     key={section.id}
-                    header={pricingSectionRecord.pricingSectionHeader}
-                    subheader={pricingSectionRecord.pricingSectionSubheader}
-                    plans={pricingSectionRecord.plans}
+                    header={pricingSectionRecord.pricingSectionHeader ?? ""}
+                    subheader={pricingSectionRecord.pricingSectionSubheader ?? ""}
+                    plans={pricingSectionRecord.plans ?? []}
                   />
                 );
               case "mini_cards":
                 return (
                   <SmallCards
                     key={section.id}
-                    header={pricingSectionRecord.pricingSectionHeader}
-                    subheader={pricingSectionRecord.pricingSectionSubheader}
-                    plans={pricingSectionRecord.plans}
+                    header={pricingSectionRecord.pricingSectionHeader ?? ""}
+                    subheader={pricingSectionRecord.pricingSectionSubheader ?? ""}
+                    plans={pricingSectionRecord.plans ?? []}
                   />
                 );
               default:
                 return (
                   <Pricing
                     key={section.id}
-                    header={pricingSectionRecord.pricingSectionHeader}
-                    subheader={pricingSectionRecord.pricingSectionSubheader}
-                    plans={pricingSectionRecord.plans}
+                    header={pricingSectionRecord.pricingSectionHeader ?? ""}
+                    subheader={pricingSectionRecord.pricingSectionSubheader ?? ""}
+                    plans={pricingSectionRecord.plans ?? []}
                   />
                 );
             }
@@ -347,9 +351,9 @@ export default function Section({
             return (
               <StatsSection
                 key={section.id}
-                title={statsSectionRecord.title}
-                subtitle={statsSectionRecord.subtitle}
-                statistic={statsSectionRecord.statistic}
+                title={statsSectionRecord.title ?? ""}
+                subtitle={statsSectionRecord.subtitle ?? ""}
+                statistic={statsSectionRecord.statistic ?? []}
               />
             );
           case "about_intro":
@@ -357,11 +361,11 @@ export default function Section({
             return (
               <AboutIntro
                 key={section.id}
-                header={aboutIntroSectionRecord.header}
-                subheader={aboutIntroSectionRecord.subheader}
+                header={aboutIntroSectionRecord.header ?? ""}
+                subheader={aboutIntroSectionRecord.subheader ?? ""}
                 introduction={aboutIntroSectionRecord.introductionText}
-                images={aboutIntroSectionRecord.images}
-                preHeader={aboutIntroSectionRecord.preHeader}
+                images={aboutIntroSectionRecord.images ?? []}
+                preHeader={aboutIntroSectionRecord.preHeader ?? ""}
               />
             );
           case "speakers_intro":
@@ -369,16 +373,28 @@ export default function Section({
             return (
               <SpeakersIntro
                 key={section.id}
-                header={speakersIntroSectionRecord.header}
-                subheader={speakersIntroSectionRecord.subheader}
+                header={speakersIntroSectionRecord.header ?? ""}
+                subheader={speakersIntroSectionRecord.subheader ?? ""}
                 introduction={speakersIntroSectionRecord.introductionText}
-                preHeader={speakersIntroSectionRecord.preHeader}
+                preHeader={speakersIntroSectionRecord.preHeader ?? ""}
               />
             );
 
           case "redirect_section":
             const redirectSectionRecord = section as RedirectSectionRecord;
             redirect(`/${locale}/${redirectSectionRecord.slugToRedirectTo}`);
+          case "stage_scehdule_item":
+            const stageScheduleItemRecord = section as StageScehduleItemRecord;
+            return (
+              <FeaturedTalksSection
+                key={section.id}
+                title={stageScheduleItemRecord.featuredTalksHeading || undefined}
+                subtitle={undefined}
+                selectedTalks={stageScheduleItemRecord.talks || []}
+                lng={locale}
+                returnToAgenda={stageScheduleItemRecord.returnToAgenda}
+              />
+            );
           default:
             return <></>;
         }

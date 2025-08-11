@@ -13,20 +13,21 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
-  BooleanType: { input: any; output: any; }
-  CustomData: { input: any; output: any; }
-  DateTime: { input: any; output: any; }
-  FloatType: { input: any; output: any; }
-  IntType: { input: any; output: any; }
-  ItemId: { input: any; output: any; }
-  JsonField: { input: any; output: any; }
-  MetaTagAttributes: { input: any; output: any; }
-  UploadId: { input: any; output: any; }
+  BooleanType: { input: boolean; output: boolean; }
+  CustomData: { input: Record<string, unknown>; output: Record<string, unknown>; }
+  DateTime: { input: string; output: string; }
+  FloatType: { input: number; output: number; }
+  IntType: { input: number; output: number; }
+  ItemId: { input: string; output: string; }
+  JsonField: { input: unknown; output: unknown; }
+  MetaTagAttributes: { input: Record<string, string>; output: Record<string, string>; }
+  UploadId: { input: string; output: string; }
 };
 
 export type AboutIntroModelIntroductionTextField = {
   __typename?: 'AboutIntroModelIntroductionTextField';
   blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 };
@@ -37,19 +38,19 @@ export type AboutIntroRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  header: Scalars['String']['output'];
+  header?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
-  images: Array<ImageFileField>;
+  images: Array<FileField>;
   introductionText?: Maybe<AboutIntroModelIntroductionTextField>;
   preHeader?: Maybe<Scalars['String']['output']>;
   subheader?: Maybe<Scalars['String']['output']>;
@@ -120,8 +121,8 @@ export type AcategoryRecord = RecordInterface & {
   __typename?: 'AcategoryRecord';
   _allAreaOfInterestLocales?: Maybe<Array<StringMultiLocaleField>>;
   _allBioLocales?: Maybe<Array<StringMultiLocaleField>>;
-  _allDescriptionLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
-  _allNameLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _allDescriptionLocales?: Maybe<Array<StringMultiLocaleField>>;
+  _allNameLocales?: Maybe<Array<StringMultiLocaleField>>;
   _allReferencingAwards: Array<AwardRecord>;
   /** Returns meta information regarding a record collection */
   _allReferencingAwardsMeta: CollectionMetadata;
@@ -134,12 +135,12 @@ export type AcategoryRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -147,11 +148,11 @@ export type AcategoryRecord = RecordInterface & {
   _updatedAt: Scalars['DateTime']['output'];
   areaOfInterest?: Maybe<Scalars['String']['output']>;
   bio?: Maybe<Scalars['String']['output']>;
-  description: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
-  name: Scalars['String']['output'];
-  picture: ImageFileField;
-  slug: Scalars['String']['output'];
+  name?: Maybe<Scalars['String']['output']>;
+  picture?: Maybe<FileField>;
+  slug?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -326,26 +327,26 @@ export enum AgendaTabModelOrderBy {
 /** Record of type Agenda Tab (agenda_tab) */
 export type AgendaTabRecord = RecordInterface & {
   __typename?: 'AgendaTabRecord';
-  _allTitleLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  date: Scalars['DateTime']['output'];
+  date?: Maybe<Scalars['DateTime']['output']>;
   id: Scalars['ItemId']['output'];
-  slug: Scalars['String']['output'];
+  slug?: Maybe<Scalars['String']['output']>;
   talk: Array<TalkRecord>;
-  title: Scalars['String']['output'];
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -373,11 +374,11 @@ export type AllAgendaTabsSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -398,11 +399,11 @@ export type AllAwardsSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -423,11 +424,11 @@ export type AllCategoryAwardsSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -448,11 +449,11 @@ export type AllPostsSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -473,11 +474,11 @@ export type AllStagesSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -498,11 +499,11 @@ export type AllTalksSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -523,11 +524,11 @@ export type AppCtaRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -537,7 +538,7 @@ export type AppCtaRecord = RecordInterface & {
   googlePlayUrl?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
   text?: Maybe<Scalars['String']['output']>;
-  title: Scalars['String']['output'];
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -595,27 +596,27 @@ export enum AtagModelOrderBy {
 /** Record of type 🏷️ Award Tag (atag) */
 export type AtagRecord = RecordInterface & {
   __typename?: 'AtagRecord';
-  _allAtagLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _allAtagLocales?: Maybe<Array<StringMultiLocaleField>>;
   _allReferencingAwards: Array<AwardRecord>;
   /** Returns meta information regarding a record collection */
   _allReferencingAwardsMeta: CollectionMetadata;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  atag: Scalars['String']['output'];
+  atag?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
-  slug: Scalars['String']['output'];
+  slug?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -709,9 +710,9 @@ export enum AuthorModelOrderBy {
 export type AuthorRecord = RecordInterface & {
   __typename?: 'AuthorRecord';
   _allAreaOfInterestLocales?: Maybe<Array<StringMultiLocaleField>>;
-  _allBioLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
-  _allDescriptionLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
-  _allNameLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _allBioLocales?: Maybe<Array<StringMultiLocaleField>>;
+  _allDescriptionLocales?: Maybe<Array<StringMultiLocaleField>>;
+  _allNameLocales?: Maybe<Array<StringMultiLocaleField>>;
   _allReferencingPages: Array<PageRecord>;
   /** Returns meta information regarding a record collection */
   _allReferencingPagesMeta: CollectionMetadata;
@@ -721,24 +722,24 @@ export type AuthorRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   areaOfInterest?: Maybe<Scalars['String']['output']>;
-  bio: Scalars['String']['output'];
-  description: Scalars['String']['output'];
+  bio?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
-  name: Scalars['String']['output'];
-  picture: ImageFileField;
-  slug: Scalars['String']['output'];
+  name?: Maybe<Scalars['String']['output']>;
+  picture?: Maybe<FileField>;
+  slug?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -846,6 +847,7 @@ export type AwardModelBiographyBlocksField = AppCtaRecord | CtaButtonWithImageRe
 export type AwardModelBiographyField = {
   __typename?: 'AwardModelBiographyField';
   blocks: Array<AwardModelBiographyBlocksField>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<AwardRecord>;
   value: Scalars['JsonField']['output'];
 };
@@ -855,6 +857,7 @@ export type AwardModelContentBlocksField = AppCtaRecord | CtaButtonWithImageReco
 export type AwardModelContentField = {
   __typename?: 'AwardModelContentField';
   blocks: Array<AwardModelContentBlocksField>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<AwardRecord>;
   value: Scalars['JsonField']['output'];
 };
@@ -924,16 +927,16 @@ export enum AwardModelOrderBy {
 /** Record of type 📝 Award  (award) */
 export type AwardRecord = RecordInterface & {
   __typename?: 'AwardRecord';
-  _allTitleLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -941,15 +944,15 @@ export type AwardRecord = RecordInterface & {
   _updatedAt: Scalars['DateTime']['output'];
   acategory?: Maybe<AcategoryRecord>;
   atags: Array<AtagRecord>;
-  biography: AwardModelBiographyField;
-  content: AwardModelContentField;
+  biography?: Maybe<AwardModelBiographyField>;
+  content?: Maybe<AwardModelContentField>;
   id: Scalars['ItemId']['output'];
   iframe?: Maybe<Scalars['String']['output']>;
   jobTitle?: Maybe<Scalars['String']['output']>;
   seoAnalysis?: Maybe<Scalars['JsonField']['output']>;
   seoTags?: Maybe<SeoField>;
-  slug: Scalars['String']['output'];
-  title: Scalars['String']['output'];
+  slug?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -977,27 +980,27 @@ export type BannerBlockRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  bannerImage: ImageFileField;
-  bannerUrl: Scalars['String']['output'];
-  height: Scalars['String']['output'];
-  heightDimensionUnit: Scalars['String']['output'];
+  bannerImage?: Maybe<FileField>;
+  bannerUrl?: Maybe<Scalars['String']['output']>;
+  height?: Maybe<Scalars['String']['output']>;
+  heightDimensionUnit?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
-  layout: Scalars['String']['output'];
-  minHeight: Scalars['String']['output'];
-  minHeightDimensionUnit: Scalars['String']['output'];
-  objectFit: Scalars['String']['output'];
-  width: Scalars['String']['output'];
-  widthDimensionUnit: Scalars['String']['output'];
+  layout?: Maybe<Scalars['String']['output']>;
+  minHeight?: Maybe<Scalars['String']['output']>;
+  minHeightDimensionUnit?: Maybe<Scalars['String']['output']>;
+  objectFit?: Maybe<Scalars['String']['output']>;
+  width?: Maybe<Scalars['String']['output']>;
+  widthDimensionUnit?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -1018,18 +1021,18 @@ export type BrandRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  brandLogo: FileField;
-  brandName: Scalars['String']['output'];
+  brandLogo?: Maybe<FileField>;
+  brandName?: Maybe<Scalars['String']['output']>;
   brandUrl?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
 };
@@ -1046,18 +1049,18 @@ export type BrandSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   brand: Array<BrandRecord>;
-  displayOptions: Scalars['String']['output'];
+  displayOptions?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
 };
 
@@ -1073,18 +1076,18 @@ export type ButtonRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
-  label: Scalars['String']['output'];
+  label?: Maybe<Scalars['String']['output']>;
   primary?: Maybe<Scalars['BooleanType']['output']>;
   url?: Maybe<Scalars['String']['output']>;
 };
@@ -1145,16 +1148,16 @@ export enum CategoryAwardModelOrderBy {
 /** Record of type Category Award (category_award) */
 export type CategoryAwardRecord = RecordInterface & {
   __typename?: 'CategoryAwardRecord';
-  _allTitleLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -1163,8 +1166,8 @@ export type CategoryAwardRecord = RecordInterface & {
   award: Array<AwardRecord>;
   category?: Maybe<AcategoryRecord>;
   id: Scalars['ItemId']['output'];
-  slug: Scalars['String']['output'];
-  title: Scalars['String']['output'];
+  slug?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -1189,6 +1192,7 @@ export type CategoryAwardRecordTitleArgs = {
 export type ChangeLogModelContentField = {
   __typename?: 'ChangeLogModelContentField';
   blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 };
@@ -1242,21 +1246,21 @@ export type ChangeLogRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  content: ChangeLogModelContentField;
+  content?: Maybe<ChangeLogModelContentField>;
   id: Scalars['ItemId']['output'];
-  slug: Scalars['String']['output'];
-  timeOfRelease: Scalars['DateTime']['output'];
-  versionName: Scalars['String']['output'];
+  slug?: Maybe<Scalars['String']['output']>;
+  timeOfRelease?: Maybe<Scalars['DateTime']['output']>;
+  versionName?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -1271,11 +1275,11 @@ export type ChangelogSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -1284,7 +1288,7 @@ export type ChangelogSectionRecord = RecordInterface & {
   featuredVersions: Array<ChangeLogRecord>;
   id: Scalars['ItemId']['output'];
   subtitle?: Maybe<Scalars['String']['output']>;
-  title: Scalars['String']['output'];
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -1305,19 +1309,19 @@ export type CircleMenuItemRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
-  redirectUrl: Scalars['String']['output'];
-  title: Scalars['String']['output'];
+  redirectUrl?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -1380,21 +1384,21 @@ export type CtaButtonWithImageRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  buttonLabel: Scalars['String']['output'];
+  buttonLabel?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
-  image: ImageFileField;
-  subtitle: Scalars['String']['output'];
-  title: Scalars['String']['output'];
+  image?: Maybe<FileField>;
+  subtitle?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -1457,19 +1461,19 @@ export type DateTagRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  eventDate: Scalars['String']['output'];
+  eventDate?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
-  slug: Scalars['String']['output'];
+  slug?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -1519,6 +1523,7 @@ export type DateTimeFilter = {
 export type DetailSectionModelDetailsField = {
   __typename?: 'DetailSectionModelDetailsField';
   blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 };
@@ -1529,19 +1534,19 @@ export type DetailSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  details: DetailSectionModelDetailsField;
+  details?: Maybe<DetailSectionModelDetailsField>;
   id: Scalars['ItemId']['output'];
-  image: ImageFileField;
+  image?: Maybe<FileField>;
   imagePosition?: Maybe<Scalars['BooleanType']['output']>;
 };
 
@@ -1557,11 +1562,11 @@ export type DocumentationHomeRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -1570,9 +1575,9 @@ export type DocumentationHomeRecord = RecordInterface & {
   featuredPages: Array<DocumentationPageRecord>;
   footerText?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
-  logo: FileField;
+  logo?: Maybe<FileField>;
   subheader?: Maybe<Scalars['String']['output']>;
-  title: Scalars['String']['output'];
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -1584,6 +1589,7 @@ export type DocumentationHomeRecord_SeoMetaTagsArgs = {
 export type DocumentationPageModelContentField = {
   __typename?: 'DocumentationPageModelContentField';
   blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 };
@@ -1642,25 +1648,25 @@ export type DocumentationPageRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   children: Array<DocumentationPageRecord>;
-  content: DocumentationPageModelContentField;
+  content?: Maybe<DocumentationPageModelContentField>;
   id: Scalars['ItemId']['output'];
   parent?: Maybe<DocumentationPageRecord>;
   position?: Maybe<Scalars['IntType']['output']>;
   seoMeta?: Maybe<SeoField>;
-  slug: Scalars['String']['output'];
+  slug?: Maybe<Scalars['String']['output']>;
   subtitle?: Maybe<Scalars['String']['output']>;
-  title: Scalars['String']['output'];
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -1675,20 +1681,20 @@ export type EmptyHeroSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  bannerImageDesktop: ImageFileField;
-  bannerImageMobile: ImageFileField;
-  bannerImageTablet: ImageFileField;
-  displayOptions: Scalars['String']['output'];
+  bannerImageDesktop?: Maybe<FileField>;
+  bannerImageMobile?: Maybe<FileField>;
+  bannerImageTablet?: Maybe<FileField>;
+  displayOptions?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
 };
 
@@ -1704,21 +1710,21 @@ export type FaqSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  displayOptions: Scalars['String']['output'];
+  displayOptions?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
   questions: Array<QuestionRecord>;
   subtitle?: Maybe<Scalars['String']['output']>;
-  title: Scalars['String']['output'];
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -1745,19 +1751,19 @@ export type FeatureListSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  displayOption: Scalars['String']['output'];
+  displayOption?: Maybe<Scalars['String']['output']>;
   feature: Array<FeatureRecord>;
-  featuresHeader: Scalars['String']['output'];
+  featuresHeader?: Maybe<Scalars['String']['output']>;
   featuresSubheader?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
 };
@@ -1780,19 +1786,19 @@ export type FeatureRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  featureDescription: Scalars['String']['output'];
-  featureIcon: ImageFileField;
-  featureTitle: Scalars['String']['output'];
+  featureDescription?: Maybe<Scalars['String']['output']>;
+  featureIcon?: Maybe<FileField>;
+  featureTitle?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
   link?: Maybe<Scalars['String']['output']>;
 };
@@ -1815,19 +1821,19 @@ export type FeaturedAcategorySectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  displayOption: Scalars['String']['output'];
+  displayOption?: Maybe<Scalars['String']['output']>;
   featuredAcategory: Array<AcategoryRecord>;
-  featuredAcategoryHeader: Scalars['String']['output'];
+  featuredAcategoryHeader?: Maybe<Scalars['String']['output']>;
   featuredAcategorySubheader?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
 };
@@ -1850,19 +1856,19 @@ export type FeaturedPostsSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  displayOptions: Scalars['String']['output'];
+  displayOptions?: Maybe<Scalars['String']['output']>;
   featuredPosts: Array<PostRecord>;
-  featuredPostsHeader: Scalars['String']['output'];
+  featuredPostsHeader?: Maybe<Scalars['String']['output']>;
   featuredPostsSubheader?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
 };
@@ -1885,11 +1891,11 @@ export type FeaturedStageRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -1910,19 +1916,19 @@ export type FeaturedTalksSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  displayOptions: Scalars['String']['output'];
+  displayOptions?: Maybe<Scalars['String']['output']>;
   featuredTalks: Array<TalkRecord>;
-  featuredTalksHeader: Scalars['String']['output'];
+  featuredTalksHeader?: Maybe<Scalars['String']['output']>;
   featuredTalksSubheader?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
 };
@@ -2134,18 +2140,18 @@ export type GalleryRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
-  imageGallery: Array<ImageFileField>;
+  imageGallery: Array<FileField>;
 };
 
 
@@ -2169,21 +2175,21 @@ export type HeroSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   buttons: Array<ButtonRecord>;
-  displayOptions: Scalars['String']['output'];
-  heroImage?: Maybe<ImageFileField>;
+  displayOptions?: Maybe<Scalars['String']['output']>;
+  heroImage?: Maybe<FileField>;
   heroSubtitle?: Maybe<Scalars['String']['output']>;
-  heroTitle: Scalars['String']['output'];
+  heroTitle?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
 };
 
@@ -2205,25 +2211,25 @@ export type IframeBlockRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  align: Scalars['String']['output'];
-  height: Scalars['String']['output'];
-  heightDimensionUnit: Scalars['String']['output'];
+  align?: Maybe<Scalars['String']['output']>;
+  height?: Maybe<Scalars['String']['output']>;
+  heightDimensionUnit?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
-  iframeUrl: Scalars['String']['output'];
-  minHeight: Scalars['String']['output'];
-  minHeightDimensionUnit: Scalars['String']['output'];
-  width: Scalars['String']['output'];
-  widthDimensionUnit: Scalars['String']['output'];
+  iframeUrl?: Maybe<Scalars['String']['output']>;
+  minHeight?: Maybe<Scalars['String']['output']>;
+  minHeightDimensionUnit?: Maybe<Scalars['String']['output']>;
+  width?: Maybe<Scalars['String']['output']>;
+  widthDimensionUnit?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -2238,11 +2244,11 @@ export type IframeRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -2264,103 +2270,24 @@ export type ImageBlockRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
-  image: ImageFileField;
+  image?: Maybe<FileField>;
 };
 
 
 /** Block of type 🌅 Image block (image_block) */
 export type ImageBlockRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
-};
-
-export type ImageFileField = FileFieldInterface & {
-  __typename?: 'ImageFileField';
-  _createdAt: Scalars['DateTime']['output'];
-  /** The DatoCMS URL where you can edit this entity. To use this field, you need to set a X-Base-Editing-Url header in the request */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  alt?: Maybe<Scalars['String']['output']>;
-  author?: Maybe<Scalars['String']['output']>;
-  basename: Scalars['String']['output'];
-  blurUpThumb?: Maybe<Scalars['String']['output']>;
-  blurhash?: Maybe<Scalars['String']['output']>;
-  colors: Array<ColorField>;
-  copyright?: Maybe<Scalars['String']['output']>;
-  customData: Scalars['CustomData']['output'];
-  exifInfo: Scalars['CustomData']['output'];
-  filename: Scalars['String']['output'];
-  focalPoint: FocalPoint;
-  format: Scalars['String']['output'];
-  height: Scalars['IntType']['output'];
-  id: Scalars['UploadId']['output'];
-  md5: Scalars['String']['output'];
-  mimeType: Scalars['String']['output'];
-  notes?: Maybe<Scalars['String']['output']>;
-  responsiveImage: ResponsiveImage;
-  size: Scalars['IntType']['output'];
-  smartTags: Array<Scalars['String']['output']>;
-  tags: Array<Scalars['String']['output']>;
-  thumbhash?: Maybe<Scalars['String']['output']>;
-  title?: Maybe<Scalars['String']['output']>;
-  url: Scalars['String']['output'];
-  video?: Maybe<UploadVideoField>;
-  width: Scalars['IntType']['output'];
-};
-
-
-export type ImageFileFieldAltArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-export type ImageFileFieldBlurUpThumbArgs = {
-  imgixParams?: InputMaybe<ImgixParams>;
-  punch?: Scalars['Float']['input'];
-  quality?: Scalars['Int']['input'];
-  size?: Scalars['Int']['input'];
-};
-
-
-export type ImageFileFieldCustomDataArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-export type ImageFileFieldFocalPointArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-export type ImageFileFieldResponsiveImageArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  imgixParams?: InputMaybe<ImgixParams>;
-  locale?: InputMaybe<SiteLocale>;
-  sizes?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type ImageFileFieldTitleArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-export type ImageFileFieldUrlArgs = {
-  imgixParams?: InputMaybe<ImgixParams>;
 };
 
 export type ImgixParams = {
@@ -2371,7 +2298,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=crop`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/size/ar)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/size/aspect-ratio)
    */
   ar?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -2379,7 +2306,7 @@ export type ImgixParams = {
    *
    * Applies automatic enhancements to images.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/auto)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/automatic)
    */
   auto?: InputMaybe<Array<ImgixParamsAuto>>;
   /**
@@ -2387,7 +2314,7 @@ export type ImgixParams = {
    *
    * Colors the background of padded and partially-transparent images.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/bg)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/background-color)
    */
   bg?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -2395,7 +2322,7 @@ export type ImgixParams = {
    *
    * Removes background from image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/background/bg-remove)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/background/background-removal)
    */
   bgRemove?: InputMaybe<Scalars['BooleanType']['input']>;
   /**
@@ -2403,23 +2330,41 @@ export type ImgixParams = {
    *
    * Overrides default fallback behavior for bg-remove failures.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/background/bg-remove)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/background/background-removal-fallback)
    */
   bgRemoveFallback?: InputMaybe<Scalars['BooleanType']['input']>;
+  /**
+   * Background Removal Foreground Type
+   *
+   * Specifies the image foreground type for background removal.
+   *
+   * Depends on: `bg-remove=true`
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/background/background-removal-foreground-type)
+   */
+  bgRemoveFgType?: InputMaybe<Array<ImgixParamsBgRemoveFgType>>;
+  /**
+   * Background Removal Semi Transparency
+   *
+   * Enables background removal while retaining semi-transparent areas.
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/background/background-removal-semi-transparency)
+   */
+  bgRemoveSemiTransparency?: InputMaybe<Scalars['BooleanType']['input']>;
   /**
    * Background Replacement
    *
    * Replaces background from image using a string based prompt.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/background/bg-replace)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/background/background-replacement)
    */
   bgReplace?: InputMaybe<Scalars['String']['input']>;
   /**
-   * Background Removal Fallback
+   * Background Replace Fallback
    *
    * Overrides default fallback behavior for bg-replace failures.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/background/bg-replace)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/background/background-replace-fallback)
    */
   bgReplaceFallback?: InputMaybe<Scalars['BooleanType']['input']>;
   /**
@@ -2427,7 +2372,7 @@ export type ImgixParams = {
    *
    * Provides a negative text suggestion for background replacement.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/background/bg-replace-neg-prompt)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/background/background-replacement-negative-prompt)
    */
   bgReplaceNegPrompt?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -2435,7 +2380,7 @@ export type ImgixParams = {
    *
    * Specifies the location of the blend image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/blending/blend)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/blending/blend)
    */
   blend?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -2445,7 +2390,7 @@ export type ImgixParams = {
    *
    * Depends on: `blend`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/blending/blend-align)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/blending/blend-align)
    */
   blendAlign?: InputMaybe<Array<ImgixParamsBlendAlign>>;
   /**
@@ -2455,7 +2400,7 @@ export type ImgixParams = {
    *
    * Depends on: `blend`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/blending/blend-alpha)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/blending/blend-alpha)
    */
   blendAlpha?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2463,7 +2408,7 @@ export type ImgixParams = {
    *
    * Specifies a color to use when applying the blend.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/blending/blend-color)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/blending/blend-color)
    */
   blendColor?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -2473,7 +2418,7 @@ export type ImgixParams = {
    *
    * Depends on: `blend`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/blending/blend-crop)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/blending/blend-crop)
    */
   blendCrop?: InputMaybe<Array<ImgixParamsBlendCrop>>;
   /**
@@ -2483,7 +2428,7 @@ export type ImgixParams = {
    *
    * Depends on: `blend`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/blending/blend-fit)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/blending/blend-fit)
    */
   blendFit?: InputMaybe<ImgixParamsBlendFit>;
   /**
@@ -2493,7 +2438,7 @@ export type ImgixParams = {
    *
    * Depends on: `blend`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/blending/blend-h)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/blending/blend-height)
    */
   blendH?: InputMaybe<Scalars['FloatType']['input']>;
   /**
@@ -2503,7 +2448,7 @@ export type ImgixParams = {
    *
    * Depends on: `blend`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/blending/blend-mode)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/blending/blend-mode)
    */
   blendMode?: InputMaybe<ImgixParamsBlendMode>;
   /**
@@ -2513,7 +2458,7 @@ export type ImgixParams = {
    *
    * Depends on: `blend`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/blending/blend-pad)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/blending/blend-padding)
    */
   blendPad?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2523,7 +2468,7 @@ export type ImgixParams = {
    *
    * Depends on: `blend`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/blending/blend-size)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/blending/blend-size)
    */
   blendSize?: InputMaybe<ImgixParamsBlendSize>;
   /**
@@ -2533,7 +2478,7 @@ export type ImgixParams = {
    *
    * Depends on: `blend`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/blending/blend-w)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/blending/blend-width)
    */
   blendW?: InputMaybe<Scalars['FloatType']['input']>;
   /**
@@ -2543,7 +2488,7 @@ export type ImgixParams = {
    *
    * Depends on: `blend`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/blending/blend-x)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/blending/blend-x-position)
    */
   blendX?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2553,7 +2498,7 @@ export type ImgixParams = {
    *
    * Depends on: `blend`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/blending/blend-y)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/blending/blend-y-position)
    */
   blendY?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2561,7 +2506,7 @@ export type ImgixParams = {
    *
    * Applies a gaussian blur to an image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/stylize/blur)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/stylize/gaussian-blur)
    */
   blur?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2569,7 +2514,7 @@ export type ImgixParams = {
    *
    * Applies a border to an image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/border-and-padding/border)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/size)
    */
   border?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -2579,7 +2524,7 @@ export type ImgixParams = {
    *
    * Depends on: `border`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/border-and-padding/border-bottom)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/border-and-padding/border-bottom)
    */
   borderBottom?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2589,7 +2534,7 @@ export type ImgixParams = {
    *
    * Depends on: `border`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/border-and-padding/border-left)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/border-and-padding/border-left)
    */
   borderLeft?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2599,7 +2544,7 @@ export type ImgixParams = {
    *
    * Depends on: `border`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/border-and-padding/border-radius)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/border-and-padding/outer-border-radius)
    */
   borderRadius?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -2609,7 +2554,7 @@ export type ImgixParams = {
    *
    * Depends on: `border`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/border-and-padding/border-radius-inner)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/border-and-padding/inner-border-radius)
    */
   borderRadiusInner?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -2619,7 +2564,7 @@ export type ImgixParams = {
    *
    * Depends on: `border`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/border-and-padding/border-right)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/border-and-padding/border-right)
    */
   borderRight?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2629,7 +2574,7 @@ export type ImgixParams = {
    *
    * Depends on: `border`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/border-and-padding/border-top)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/border-and-padding/border-top)
    */
   borderTop?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2637,7 +2582,7 @@ export type ImgixParams = {
    *
    * Adjusts the brightness of the source image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/adjustment/bri)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/adjustment/brightness)
    */
   bri?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2645,7 +2590,7 @@ export type ImgixParams = {
    *
    * Sets one or more Client-Hints headers
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/format/ch)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/format/client-hints)
    */
   ch?: InputMaybe<Array<ImgixParamsCh>>;
   /**
@@ -2653,7 +2598,7 @@ export type ImgixParams = {
    *
    * Specifies the output chroma subsampling rate.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/format/chromasub)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/format/chroma-subsampling)
    */
   chromasub?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2661,7 +2606,7 @@ export type ImgixParams = {
    *
    * Limits the number of unique colors in an image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/format/colorquant)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/format/color-quantization)
    */
   colorquant?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2671,7 +2616,7 @@ export type ImgixParams = {
    *
    * Depends on: `palette`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/color-palette/colors)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/color-palette/palette-color-count)
    */
   colors?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2679,7 +2624,7 @@ export type ImgixParams = {
    *
    * Adjusts the contrast of the source image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/adjustment/con)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/adjustment/contrast)
    */
   con?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2689,7 +2634,7 @@ export type ImgixParams = {
    *
    * Depends on: `mask=corners`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/mask/corner-radius)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/mask-image/mask-corner-radius)
    */
   cornerRadius?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -2699,7 +2644,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=crop`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/size/crop)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/size/crop-mode)
    */
   crop?: InputMaybe<Array<ImgixParamsCrop>>;
   /**
@@ -2707,7 +2652,7 @@ export type ImgixParams = {
    *
    * Specifies the color space of the output image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/format/cs)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/format/color-space)
    */
   cs?: InputMaybe<ImgixParamsCs>;
   /**
@@ -2715,7 +2660,7 @@ export type ImgixParams = {
    *
    * Forces a URL to use send-file in its response.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/format/dl)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/format/download)
    */
   dl?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -2723,7 +2668,7 @@ export type ImgixParams = {
    *
    * Sets the DPI value in the EXIF header.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/format/dpi)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/format/dots-per-inch)
    */
   dpi?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2731,7 +2676,7 @@ export type ImgixParams = {
    *
    * Adjusts the device-pixel ratio of the output image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/dpr)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/device-pixel-ratio)
    */
   dpr?: InputMaybe<Scalars['FloatType']['input']>;
   /**
@@ -2739,7 +2684,7 @@ export type ImgixParams = {
    *
    * Applies a duotone effect to the source image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/stylize/duotone)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/stylize/duotone)
    */
   duotone?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -2749,7 +2694,7 @@ export type ImgixParams = {
    *
    * Depends on: `duotone`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/stylize/duotone-alpha)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/stylize/duotone-alpha)
    */
   duotoneAlpha?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2757,7 +2702,7 @@ export type ImgixParams = {
    *
    * Adjusts the exposure of the output image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/adjustment/exp)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/adjustment/exposure)
    */
   exp?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2765,9 +2710,25 @@ export type ImgixParams = {
    *
    * A Unix timestamp specifying a UTC time. Requests made to this URL after that time will output a 404 status code.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/expires)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/expiration)
    */
   expires?: InputMaybe<Scalars['IntType']['input']>;
+  /**
+   * Face Blur
+   *
+   * Specifies the amount of blur to apply to detected faces. Defaults to 0.
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/face-detection/face-blur)
+   */
+  faceBlur?: InputMaybe<Scalars['IntType']['input']>;
+  /**
+   * Face Pixelation
+   *
+   * Specifies the pixelation amount of the face.
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/face-detection/face-pixelation)
+   */
+  facePixel?: InputMaybe<Scalars['IntType']['input']>;
   /**
    * Face Index
    *
@@ -2775,7 +2736,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=facearea`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/face-detection/faceindex)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/face-detection/face-index)
    */
   faceindex?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2785,7 +2746,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=facearea`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/face-detection/facepad)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/face-detection/face-padding)
    */
   facepad?: InputMaybe<Scalars['FloatType']['input']>;
   /**
@@ -2795,7 +2756,7 @@ export type ImgixParams = {
    *
    * Depends on: `fm=json`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/face-detection/faces)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/face-detection/json-face-data)
    */
   faces?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2805,7 +2766,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/fill/fill)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/fill-mode)
    */
   fill?: InputMaybe<ImgixParamsFill>;
   /**
@@ -2815,7 +2776,7 @@ export type ImgixParams = {
    *
    * Depends on: `fill=solid`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/fill/fill-color)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/fill-color)
    */
   fillColor?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -2825,7 +2786,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=fill`, `fill=gen`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/fill/fill-gen-fallback)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/fill-generative-fallback)
    */
   fillGenFallback?: InputMaybe<Scalars['BooleanType']['input']>;
   /**
@@ -2835,7 +2796,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=fill`, `fill=gen`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/fill/fill-gen-neg-prompt)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/fill-generative-negative-prompt)
    */
   fillGenNegPrompt?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -2845,7 +2806,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=fill`, `fill=gen`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/fill/fill-gen-pos)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/fill-generative-position)
    */
   fillGenPos?: InputMaybe<Array<ImgixParamsFillGenPos>>;
   /**
@@ -2855,7 +2816,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=fill`, `fill=gen`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/fill/fill-gen-prompt)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/fill-generative-prompt)
    */
   fillGenPrompt?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -2865,7 +2826,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=fill`, `fill=gen`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/fill/fill-gen-seed)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/fill-generative-seed)
    */
   fillGenSeed?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -2875,7 +2836,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=fill`, `fill=gradient`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/fill/fill-gradient-cs)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/fill-gradient-color-space)
    */
   fillGradientCs?: InputMaybe<ImgixParamsFillGradientCs>;
   /**
@@ -2885,7 +2846,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=fill`, `fill=gradient`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/fill/fill-gradient-linear)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/fill-gradient-linear)
    */
   fillGradientLinear?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -2895,7 +2856,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=fill`, `fill=gen`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/fill/fill-gradient-linear-direction)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/fill-gradient-linear-direction)
    */
   fillGradientLinearDirection?: InputMaybe<Array<ImgixParamsFillGradientLinearDirection>>;
   /**
@@ -2905,7 +2866,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=fill`, `fill=gradient`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/fill/fill-gradient-radial)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/fill-gradient-radial)
    */
   fillGradientRadial?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -2915,7 +2876,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=fill`, `fill=gradient`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/fill/fill-gradient-radial-radius)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/fill-gradient-radial-radius)
    */
   fillGradientRadialRadius?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -2925,7 +2886,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=fill`, `fill=gradient`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/fill/fill-gradient-radial-x)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/fill-gradient-radial-x)
    */
   fillGradientRadialX?: InputMaybe<Scalars['FloatType']['input']>;
   /**
@@ -2935,7 +2896,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=fill`, `fill=gradient`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/fill/fill-gradient-radial-y)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/fill-gradient-radial-y)
    */
   fillGradientRadialY?: InputMaybe<Scalars['FloatType']['input']>;
   /**
@@ -2945,7 +2906,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=fill`, `fill=gradient`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/fill/fill-gradient-type)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/fill-gradient-type)
    */
   fillGradientType?: InputMaybe<ImgixParamsFillGradientType>;
   /**
@@ -2953,7 +2914,7 @@ export type ImgixParams = {
    *
    * Specifies how to map the source image to the output image dimensions.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/size/fit)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/size/resize-fit-mode)
    */
   fit?: InputMaybe<ImgixParamsFit>;
   /**
@@ -2961,7 +2922,7 @@ export type ImgixParams = {
    *
    * Flips an image on a specified axis.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/rotation/flip)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/rotation/flip-axis)
    */
   flip?: InputMaybe<ImgixParamsFlip>;
   /**
@@ -2969,7 +2930,7 @@ export type ImgixParams = {
    *
    * Changes the format of the output image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/format/fm)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/format/output-format)
    */
   fm?: InputMaybe<ImgixParamsFm>;
   /**
@@ -2979,7 +2940,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=crop`, `crop=focalpoint`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/focalpoint-crop/fp-debug)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/focal-point-crop/focal-point-debug)
    */
   fpDebug?: InputMaybe<Scalars['BooleanType']['input']>;
   /**
@@ -2989,7 +2950,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=crop`, `crop=focalpoint`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/focalpoint-crop/fp-x)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/focal-point-crop/focal-point-x-position)
    */
   fpX?: InputMaybe<Scalars['FloatType']['input']>;
   /**
@@ -2999,7 +2960,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=crop`, `crop=focalpoint`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/focalpoint-crop/fp-y)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/focal-point-crop/focal-point-y-position)
    */
   fpY?: InputMaybe<Scalars['FloatType']['input']>;
   /**
@@ -3009,19 +2970,23 @@ export type ImgixParams = {
    *
    * Depends on: `fit=crop`, `crop=focalpoint`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/focalpoint-crop/fp-z)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/focal-point-crop/focal-point-zoom)
    */
   fpZ?: InputMaybe<Scalars['FloatType']['input']>;
   /**
    * Frames Per Second
    *
    * Specifies the framerate of the generated image.
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/animation/frames-per-second)
    */
   fps?: InputMaybe<Scalars['IntType']['input']>;
   /**
    * Frame Selection
    *
    * Specifies the frame of an animated image to use.
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/animation/frame-selection)
    */
   frame?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -3029,7 +2994,7 @@ export type ImgixParams = {
    *
    * Adjusts the gamma of the source image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/adjustment/gam)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/adjustment/gamma)
    */
   gam?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3038,6 +3003,8 @@ export type ImgixParams = {
    * Specifies the quality of the animated gif. The higher the value, the better more compression is applied.
    *
    * Depends on: `fm=gif`
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/animation/animated-gif-quality)
    */
   gifQ?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3046,6 +3013,8 @@ export type ImgixParams = {
    * Sets grid colors for the transparency checkerboard grid.
    *
    * Depends on: `transparency`
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/grid-colors)
    */
   gridColors?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -3054,6 +3023,8 @@ export type ImgixParams = {
    * Sets grid size for the transparency checkerboard grid.
    *
    * Depends on: `transparency`
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/grid-size)
    */
   gridSize?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3061,7 +3032,7 @@ export type ImgixParams = {
    *
    * Adjusts the height of the output image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/size/h)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/size/image-height)
    */
   h?: InputMaybe<Scalars['FloatType']['input']>;
   /**
@@ -3069,7 +3040,7 @@ export type ImgixParams = {
    *
    * Adjusts the highlights of the source image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/adjustment/high)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/adjustment/highlight)
    */
   high?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3077,7 +3048,7 @@ export type ImgixParams = {
    *
    * Applies a half-tone effect to the source image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/stylize/htn)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/stylize/halftone)
    */
   htn?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3085,13 +3056,15 @@ export type ImgixParams = {
    *
    * Adjusts the hue of the source image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/adjustment/hue)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/adjustment/hue-shift)
    */
   hue?: InputMaybe<Scalars['IntType']['input']>;
   /**
    * Frame Interval
    *
    * Displays every Nth frame starting with the first frame.
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/animation/frame-interval)
    */
   interval?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3099,25 +3072,31 @@ export type ImgixParams = {
    *
    * Inverts the colors on the source image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/adjustment/invert)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/adjustment/invert)
    */
   invert?: InputMaybe<Scalars['BooleanType']['input']>;
   /**
    * Iptc Passthrough
    *
    * Determine if IPTC data should be passed for JPEG images.
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/format/iptc-passthrough)
    */
   iptc?: InputMaybe<ImgixParamsIptc>;
   /**
    * Jpg Progressive
    *
    * Specifies whether or not a jpg/jpeg uses progressive (true) or baseline (false)
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/format/jpg-progressive)
    */
   jpgProgressive?: InputMaybe<Scalars['BooleanType']['input']>;
   /**
    * Animation Loop Count
    *
    * Specifies the number of times an animated image should repeat. A value of 0 means infinite looping.
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/animation)
    */
   loop?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3127,15 +3106,23 @@ export type ImgixParams = {
    *
    * Depends on: `fm=webp`, `fm=jxr`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/format/lossless)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/format/lossless-compression)
    */
   lossless?: InputMaybe<Scalars['BooleanType']['input']>;
+  /**
+   * License Plate Blur
+   *
+   * Specifies the amount of blur to apply to detected license plates. Defaults to 0.
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/license-plate-detection/license-plate-blur)
+   */
+  lpBlur?: InputMaybe<Scalars['IntType']['input']>;
   /**
    * Watermark Image Url
    *
    * Specifies the location of the watermark image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/watermark/mark)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/watermark/watermark-image-url)
    */
   mark?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -3145,7 +3132,7 @@ export type ImgixParams = {
    *
    * Depends on: `mark`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/watermark/mark-align)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/watermark/watermark-alignment-mode)
    */
   markAlign?: InputMaybe<Array<ImgixParamsMarkAlign>>;
   /**
@@ -3155,7 +3142,7 @@ export type ImgixParams = {
    *
    * Depends on: `mark`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/watermark/mark-alpha)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/watermark/watermark-alpha)
    */
   markAlpha?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3165,7 +3152,7 @@ export type ImgixParams = {
    *
    * Depends on: `mark`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/watermark/mark-base)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/watermark/watermark-base-url)
    */
   markBase?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -3175,7 +3162,7 @@ export type ImgixParams = {
    *
    * Depends on: `mark`, `markw`, `markh`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/watermark/mark-fit)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/watermark/watermark-fit-mode)
    */
   markFit?: InputMaybe<ImgixParamsMarkFit>;
   /**
@@ -3185,9 +3172,29 @@ export type ImgixParams = {
    *
    * Depends on: `mark`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/watermark/mark-h)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/watermark/watermark-height)
    */
   markH?: InputMaybe<Scalars['FloatType']['input']>;
+  /**
+   * Watermark If Minimum Height
+   *
+   * Displays the watermark if rendered base image pixel height is equal to or larger than the supplied value
+   *
+   * Depends on: `mark`
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/watermark/watermark-if-minimum-height)
+   */
+  markIfMinHeight?: InputMaybe<Scalars['IntType']['input']>;
+  /**
+   * Watermark If Minimum Width
+   *
+   * Displays the watermark if rendered base image pixel width is equal to or larger than the supplied value
+   *
+   * Depends on: `mark`
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/watermark/watermark-if-minimum-width)
+   */
+  markIfMinWidth?: InputMaybe<Scalars['IntType']['input']>;
   /**
    * Watermark Padding
    *
@@ -3195,7 +3202,7 @@ export type ImgixParams = {
    *
    * Depends on: `mark`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/watermark/mark-pad)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/watermark/watermark-padding)
    */
   markPad?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3203,7 +3210,7 @@ export type ImgixParams = {
    *
    * Rotates a watermark or tiled watermarks by a specified number of degrees.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/watermark/mark-rot)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/watermark/watermark-rotation)
    */
   markRot?: InputMaybe<Scalars['FloatType']['input']>;
   /**
@@ -3213,7 +3220,7 @@ export type ImgixParams = {
    *
    * Depends on: `mark`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/watermark/mark-scale)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/watermark/watermark-scale)
    */
   markScale?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3223,7 +3230,7 @@ export type ImgixParams = {
    *
    * Depends on: `mark`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/watermark/mark-tile)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/watermark/watermark-tile)
    */
   markTile?: InputMaybe<ImgixParamsMarkTile>;
   /**
@@ -3233,7 +3240,7 @@ export type ImgixParams = {
    *
    * Depends on: `mark`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/watermark/mark-w)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/watermark/watermark-width)
    */
   markW?: InputMaybe<Scalars['FloatType']['input']>;
   /**
@@ -3243,7 +3250,7 @@ export type ImgixParams = {
    *
    * Depends on: `mark`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/watermark/mark-x)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/watermark/watermark-x-position)
    */
   markX?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3253,7 +3260,7 @@ export type ImgixParams = {
    *
    * Depends on: `mark`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/watermark/mark-y)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/watermark/watermark-y-position)
    */
   markY?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3261,7 +3268,7 @@ export type ImgixParams = {
    *
    * Defines the type of mask and specifies the URL if that type is selected.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/mask)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/mask-image/mask-type)
    */
   mask?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -3271,7 +3278,7 @@ export type ImgixParams = {
    *
    * Depends on: `mask`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/mask/mask-bg)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/mask-image/mask-background-color)
    */
   maskBg?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -3281,7 +3288,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=crop`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/size/max-height)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/size/maximum-height)
    */
   maxH?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3291,7 +3298,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=crop`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/size/max-width)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/size/maximum-width)
    */
   maxW?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3301,7 +3308,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=crop`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/size/min-height)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/size/minimum-height)
    */
   minH?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3311,7 +3318,7 @@ export type ImgixParams = {
    *
    * Depends on: `fit=crop`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/size/min-width)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/size/minimum-width)
    */
   minW?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3319,7 +3326,7 @@ export type ImgixParams = {
    *
    * Applies a monochrome effect to the source image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/stylize/monochrome)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/stylize/monochrome)
    */
   monochrome?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -3327,7 +3334,7 @@ export type ImgixParams = {
    *
    * Reduces the noise in an image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/noise-reduction/nr)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/noise-reduction/noise-reduction-bound)
    */
   nr?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3335,15 +3342,53 @@ export type ImgixParams = {
    *
    * Provides a threshold by which to sharpen an image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/noise-reduction/nrs)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/noise-reduction/noise-reduction-sharpen)
    */
   nrs?: InputMaybe<Scalars['IntType']['input']>;
+  /**
+   * Object Removal Negative Prompt
+   *
+   * Provides a negative text suggestion to object-removal-prompt. Used to reduce the probability of a subject, detail, or object appearing in generative output.
+   *
+   * Depends on: `object-removal-rect`
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/object-manipulation/object-removal-negative-prompt)
+   */
+  objectRemovalNegativePrompt?: InputMaybe<Scalars['String']['input']>;
+  /**
+   * Object Removal Prompt
+   *
+   * Suggest auto generative fill for the object-removal-rect parameter
+   *
+   * Depends on: `object-removal-rect`
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/object-manipulation/object-removal-prompt)
+   */
+  objectRemovalPrompt?: InputMaybe<Scalars['String']['input']>;
+  /**
+   * Object Removal
+   *
+   * Using a specified rectangle, an object is removed from the image
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/object-manipulation/object-removal)
+   */
+  objectRemovalRect?: InputMaybe<Scalars['String']['input']>;
+  /**
+   * Object Removal Seed
+   *
+   * Sets the generative seed value for object-removal. Used to generate new outputs from the same prompt
+   *
+   * Depends on: `object-removal-rect`, `object-removal-prompt`
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/object-manipulation/object-removal-seed)
+   */
+  objectRemovalSeed?: InputMaybe<Scalars['IntType']['input']>;
   /**
    * Orientation
    *
    * Changes the image orientation.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/rotation/orient)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/rotation/orientation)
    */
   orient?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3351,7 +3396,7 @@ export type ImgixParams = {
    *
    * Pads an image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/border-and-padding/pad)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/border-and-padding/padding)
    */
   pad?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3359,7 +3404,7 @@ export type ImgixParams = {
    *
    * Sets bottom padding of an image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/border-and-padding/pad-bottom)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/border-and-padding/padding-bottom)
    */
   padBottom?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3367,7 +3412,7 @@ export type ImgixParams = {
    *
    * Sets left padding of an image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/border-and-padding/pad-left)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/border-and-padding/padding-left)
    */
   padLeft?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3375,7 +3420,7 @@ export type ImgixParams = {
    *
    * Sets right padding of an image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/border-and-padding/pad-right)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/border-and-padding/padding-right)
    */
   padRight?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3383,7 +3428,7 @@ export type ImgixParams = {
    *
    * Sets top padding of an image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/border-and-padding/pad-top)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/border-and-padding/padding-top)
    */
   padTop?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3391,7 +3436,7 @@ export type ImgixParams = {
    *
    * Selects a page from a PDF for display.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/pdf/page)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/pdf/pdf-page-number)
    */
   page?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3399,7 +3444,7 @@ export type ImgixParams = {
    *
    * Specifies an output format for palette-extraction.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/color-palette/palette)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/color-palette/color-palette-extraction)
    */
   palette?: InputMaybe<ImgixParamsPalette>;
   /**
@@ -3407,7 +3452,7 @@ export type ImgixParams = {
    *
    * Enables or disables PDF annotation.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/pdf/pdf-annotation)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/pdf/pdf-annotation)
    */
   pdfAnnotation?: InputMaybe<Scalars['BooleanType']['input']>;
   /**
@@ -3417,7 +3462,7 @@ export type ImgixParams = {
    *
    * Depends on: `palette=css`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/color-palette/prefix)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/color-palette/css-prefix)
    */
   prefix?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -3425,7 +3470,7 @@ export type ImgixParams = {
    *
    * Applies a pixelation effect to an image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/stylize/px)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/stylize/pixellate)
    */
   px?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3433,23 +3478,31 @@ export type ImgixParams = {
    *
    * Adjusts the quality of an output image.
    *
-   * Depends on: `fm=jpg`, `fm=pjpg`, `fm=webp`, `fm=jxr`
+   * Depends on: `fm=avif`, `fm=jpg`, `fm=pjpg`, `fm=webp`, `fm=jxr`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/format/q)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/format/output-quality)
    */
   q?: InputMaybe<Scalars['IntType']['input']>;
+  /**
+   * Rasterize Bypass
+   *
+   * Bypasses all rendering parameters (including default parameters) and serves the original image. Works for svg+xml,x-eps,pdf, and vnd.adobe.illustrator.
+   */
+  rasterizeBypass?: InputMaybe<Scalars['BooleanType']['input']>;
   /**
    * Source Rectangle Region
    *
    * Crops an image to a specified rectangle.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/size/rect)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/size/source-rectangle-region)
    */
   rect?: InputMaybe<Scalars['String']['input']>;
   /**
    * Reverse
    *
    * Reverses the frame order on the source animation.
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/animation/reverse)
    */
   reverse?: InputMaybe<Scalars['BooleanType']['input']>;
   /**
@@ -3457,15 +3510,23 @@ export type ImgixParams = {
    *
    * Rotates an image by a specified number of degrees.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/rotation/rot)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/rotation/rotation)
    */
   rot?: InputMaybe<Scalars['FloatType']['input']>;
+  /**
+   * Rotation Type
+   *
+   * Changes the rotation type.
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/rotation/rotation-type)
+   */
+  rotType?: InputMaybe<ImgixParamsRotType>;
   /**
    * Saturation
    *
    * Adjusts the saturation of an image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/adjustment/sat)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/adjustment/saturation)
    */
   sat?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3473,7 +3534,7 @@ export type ImgixParams = {
    *
    * Applies a sepia effect to an image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/stylize/sepia)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/stylize/sepia-tone)
    */
   sepia?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3481,7 +3542,7 @@ export type ImgixParams = {
    *
    * Adjusts the highlights of the source image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/adjustment/shad)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/adjustment/shadow)
    */
   shad?: InputMaybe<Scalars['FloatType']['input']>;
   /**
@@ -3489,13 +3550,15 @@ export type ImgixParams = {
    *
    * Adjusts the sharpness of the source image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/adjustment/sharp)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/adjustment/sharpen)
    */
   sharp?: InputMaybe<Scalars['FloatType']['input']>;
   /**
    * Frame Skip
    *
    * Skips every Nth frame starting with the first frame.
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/animation/frame-skip)
    */
   skip?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3508,6 +3571,8 @@ export type ImgixParams = {
    * Sanitize Svg
    *
    * Specifies whether to sanitize an SVG.
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/format/sanitize-svg)
    */
   svgSanitize?: InputMaybe<Scalars['BooleanType']['input']>;
   /**
@@ -3515,7 +3580,7 @@ export type ImgixParams = {
    *
    * Adds checkerboard behind images which support transparency.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/fill/transparency)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/fill/transparency)
    */
   transparency?: InputMaybe<ImgixParamsTransparency>;
   /**
@@ -3523,9 +3588,19 @@ export type ImgixParams = {
    *
    * Trims the source image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/trim/trim)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/trim/trim-image)
    */
   trim?: InputMaybe<ImgixParamsTrim>;
+  /**
+   * Trim Alpha
+   *
+   * Specifies a trim alpha on a trim operation.
+   *
+   * Depends on: `trim=alpha`
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/trim/trim-alpha)
+   */
+  trimAlpha?: InputMaybe<Scalars['FloatType']['input']>;
   /**
    * Trim Color
    *
@@ -3533,7 +3608,7 @@ export type ImgixParams = {
    *
    * Depends on: `trim=color`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/trim/trim-color)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/trim/trim-color)
    */
   trimColor?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -3543,7 +3618,7 @@ export type ImgixParams = {
    *
    * Depends on: `trim=auto`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/trim/trim-md)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/trim/trim-mean-difference)
    */
   trimMd?: InputMaybe<Scalars['FloatType']['input']>;
   /**
@@ -3553,7 +3628,7 @@ export type ImgixParams = {
    *
    * Depends on: `trim`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/trim/trim-pad)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/trim/trim-padding)
    */
   trimPad?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3563,7 +3638,7 @@ export type ImgixParams = {
    *
    * Depends on: `trim=auto`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/trim/trim-sd)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/trim/trim-standard-deviation)
    */
   trimSd?: InputMaybe<Scalars['FloatType']['input']>;
   /**
@@ -3573,7 +3648,7 @@ export type ImgixParams = {
    *
    * Depends on: `trim=color`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/trim/trim-tol)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/trim/trim-tolerance)
    */
   trimTol?: InputMaybe<Scalars['FloatType']['input']>;
   /**
@@ -3581,7 +3656,7 @@ export type ImgixParams = {
    *
    * Sets the text string to render.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/text/txt)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/text/text-string)
    */
   txt?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -3591,7 +3666,7 @@ export type ImgixParams = {
    *
    * Depends on: `txt`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/text/txt-align)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/text/text-align)
    */
   txtAlign?: InputMaybe<Array<ImgixParamsTxtAlign>>;
   /**
@@ -3601,7 +3676,7 @@ export type ImgixParams = {
    *
    * Depends on: `txt`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/text/txt-clip)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/text/text-clipping-mode)
    */
   txtClip?: InputMaybe<Array<ImgixParamsTxtClip>>;
   /**
@@ -3611,7 +3686,7 @@ export type ImgixParams = {
    *
    * Depends on: `txt`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/text/txt-color)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/text/text-color)
    */
   txtColor?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -3621,7 +3696,7 @@ export type ImgixParams = {
    *
    * Depends on: `txt`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/text/txt-fit)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/text/text-fit-mode)
    */
   txtFit?: InputMaybe<ImgixParamsTxtFit>;
   /**
@@ -3631,7 +3706,7 @@ export type ImgixParams = {
    *
    * Depends on: `txt`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/text/txt-font)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/text/text-font)
    */
   txtFont?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -3641,7 +3716,7 @@ export type ImgixParams = {
    *
    * Depends on: `txt`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/typesetting/txt-lead)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/typesetting-endpoint/text-leading)
    */
   txtLead?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3651,7 +3726,7 @@ export type ImgixParams = {
    *
    * Depends on: `txt`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/text/txt-line)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/text/text-outline)
    */
   txtLine?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3661,7 +3736,7 @@ export type ImgixParams = {
    *
    * Depends on: `txt`, `txtline`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/text/txt-line-color)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/text/text-outline-color)
    */
   txtLineColor?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -3671,7 +3746,7 @@ export type ImgixParams = {
    *
    * Depends on: `txt`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/text/txt-pad)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/text/text-padding)
    */
   txtPad?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3681,7 +3756,7 @@ export type ImgixParams = {
    *
    * Depends on: `txt`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/text/txt-shad)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/text/text-shadow)
    */
   txtShad?: InputMaybe<Scalars['FloatType']['input']>;
   /**
@@ -3691,7 +3766,7 @@ export type ImgixParams = {
    *
    * Depends on: `txt`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/text/txt-size)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/text/text-font-size)
    */
   txtSize?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3701,7 +3776,7 @@ export type ImgixParams = {
    *
    * Depends on: `txt`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/typesetting/txt-track)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/typesetting-endpoint/text-tracking)
    */
   txtTrack?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3711,7 +3786,7 @@ export type ImgixParams = {
    *
    * Depends on: `txt`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/text/txt-width)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/text/text-width)
    */
   txtWidth?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3721,7 +3796,7 @@ export type ImgixParams = {
    *
    * Depends on: `txt`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/text/txt-x)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/text/text-x-position)
    */
   txtX?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3731,7 +3806,7 @@ export type ImgixParams = {
    *
    * Depends on: `txt`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/text/txt-y)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/text/text-y-position)
    */
   txtY?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3739,7 +3814,7 @@ export type ImgixParams = {
    *
    * Uses generative AI fill to upscale low resolution images.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/super-resolution/upscale)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/super-resolution)
    */
   upscale?: InputMaybe<Scalars['BooleanType']['input']>;
   /**
@@ -3747,7 +3822,7 @@ export type ImgixParams = {
    *
    * Overrides default fallback behavior for super resolution failures
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/super-resolution/upscale-fallback)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/super-resolution)
    */
   upscaleFallback?: InputMaybe<Scalars['BooleanType']['input']>;
   /**
@@ -3755,7 +3830,7 @@ export type ImgixParams = {
    *
    * Sharpens the source image using an unsharp mask.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/adjustment/usm)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/adjustment/unsharp-mask)
    */
   usm?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3765,7 +3840,7 @@ export type ImgixParams = {
    *
    * Depends on: `usm`
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/adjustment/usmrad)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/adjustment/unsharp-mask-radius)
    */
   usmrad?: InputMaybe<Scalars['FloatType']['input']>;
   /**
@@ -3773,7 +3848,7 @@ export type ImgixParams = {
    *
    * Adjusts the vibrance of an image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/adjustment/vib)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/adjustment/vibrance)
    */
   vib?: InputMaybe<Scalars['IntType']['input']>;
   /**
@@ -3781,7 +3856,7 @@ export type ImgixParams = {
    *
    * Adjusts the width of the output image.
    *
-   * [Open Imgix reference »](https://docs.imgix.com/apis/url/size/w)
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/size/image-width)
    */
   w?: InputMaybe<Scalars['FloatType']['input']>;
 };
@@ -3791,6 +3866,11 @@ export enum ImgixParamsAuto {
   Enhance = 'enhance',
   Format = 'format',
   Redeye = 'redeye'
+}
+
+export enum ImgixParamsBgRemoveFgType {
+  Auto = 'auto',
+  Car = 'car'
 }
 
 export enum ImgixParamsBlendAlign {
@@ -3860,6 +3940,7 @@ export enum ImgixParamsCrop {
 
 export enum ImgixParamsCs {
   Adobergb1998 = 'adobergb1998',
+  Origin = 'origin',
   Srgb = 'srgb',
   Strip = 'strip',
   Tinysrgb = 'tinysrgb'
@@ -3968,11 +4049,17 @@ export enum ImgixParamsPalette {
   Json = 'json'
 }
 
+export enum ImgixParamsRotType {
+  Pivot = 'pivot',
+  Straighten = 'straighten'
+}
+
 export enum ImgixParamsTransparency {
   Grid = 'grid'
 }
 
 export enum ImgixParamsTrim {
+  Alpha = 'alpha',
   Auto = 'auto',
   Color = 'color'
 }
@@ -4075,6 +4162,14 @@ export type InverseRelationshipFieldFilterBetweenPageAndSpeaker = {
   anyIn?: InputMaybe<Array<PageModelFieldsReferencingSpeakerModel>>;
   /** Filter linking records that do not reference current record in any of the specified fields */
   notIn?: InputMaybe<Array<PageModelFieldsReferencingSpeakerModel>>;
+};
+
+/** Specifies how to filter by linking fields */
+export type InverseRelationshipFieldFilterBetweenPageAndTalk = {
+  /** Filter linking records that reference current record in at least one of the specified fields */
+  anyIn?: InputMaybe<Array<PageModelFieldsReferencingTalkModel>>;
+  /** Filter linking records that do not reference current record in any of the specified fields */
+  notIn?: InputMaybe<Array<PageModelFieldsReferencingTalkModel>>;
 };
 
 /** Specifies how to filter by linking fields */
@@ -4198,6 +4293,14 @@ export type InverseRelationshipFilterBetweenPageAndSpeaker = {
 };
 
 /** Specifies how to filter linking records */
+export type InverseRelationshipFilterBetweenPageAndTalk = {
+  /** Specifies how to filter by linking fields */
+  fields?: InputMaybe<InverseRelationshipFieldFilterBetweenPageAndTalk>;
+  /** Specifies how to filter by linking locales */
+  locales?: InputMaybe<LinkingLocalesFilter>;
+};
+
+/** Specifies how to filter linking records */
 export type InverseRelationshipFilterBetweenPostAndAuthor = {
   /** Specifies how to filter by linking fields */
   fields?: InputMaybe<InverseRelationshipFieldFilterBetweenPostAndAuthor>;
@@ -4285,23 +4388,23 @@ export type IvsLiveStageRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
-  iframeHeight: Scalars['String']['output'];
-  iframeMinHeight: Scalars['String']['output'];
-  iframeUrl: Scalars['String']['output'];
-  iframeWidth: Scalars['String']['output'];
-  rtmpUrl: Scalars['String']['output'];
-  title: Scalars['String']['output'];
+  iframeHeight?: Maybe<Scalars['String']['output']>;
+  iframeMinHeight?: Maybe<Scalars['String']['output']>;
+  iframeUrl?: Maybe<Scalars['String']['output']>;
+  iframeWidth?: Maybe<Scalars['String']['output']>;
+  rtmpUrl?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -4321,6 +4424,7 @@ export type LayoutModelMenuField = CircleMenuItemRecord | MenuDropdownRecord | M
 export type LayoutModelNotificationField = {
   __typename?: 'LayoutModelNotificationField';
   blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 };
@@ -4332,12 +4436,12 @@ export type LayoutRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -4347,8 +4451,8 @@ export type LayoutRecord = RecordInterface & {
   footerLogo?: Maybe<FileField>;
   footerSubtitle?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
-  logo: FileField;
-  mainColor: ColorField;
+  logo?: Maybe<FileField>;
+  mainColor?: Maybe<ColorField>;
   menu: Array<LayoutModelMenuField>;
   notification?: Maybe<LayoutModelNotificationField>;
   socialMediaLinks: Array<SocialMediaIconRecord>;
@@ -4378,14 +4482,15 @@ export type LayoutRecordFooterSubtitleArgs = {
 export type LegalPageModelContentField = {
   __typename?: 'LegalPageModelContentField';
   blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 };
 
-export type LegalPageModelContentFieldNonNullMultiLocaleField = {
-  __typename?: 'LegalPageModelContentFieldNonNullMultiLocaleField';
+export type LegalPageModelContentFieldMultiLocaleField = {
+  __typename?: 'LegalPageModelContentFieldMultiLocaleField';
   locale?: Maybe<SiteLocale>;
-  value: LegalPageModelContentField;
+  value?: Maybe<LegalPageModelContentField>;
 };
 
 export type LegalPageModelFilter = {
@@ -4432,26 +4537,26 @@ export enum LegalPageModelOrderBy {
 /** Record of type 🏛️ Legal Page (legal_page) */
 export type LegalPageRecord = RecordInterface & {
   __typename?: 'LegalPageRecord';
-  _allContentLocales?: Maybe<Array<LegalPageModelContentFieldNonNullMultiLocaleField>>;
-  _allTitleLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _allContentLocales?: Maybe<Array<LegalPageModelContentFieldMultiLocaleField>>;
+  _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  content: LegalPageModelContentField;
+  content?: Maybe<LegalPageModelContentField>;
   id: Scalars['ItemId']['output'];
-  slug: Scalars['String']['output'];
-  title: Scalars['String']['output'];
+  slug?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -4506,19 +4611,19 @@ export type LinkRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  externalLinks: Scalars['String']['output'];
+  externalLinks?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
-  name: Scalars['String']['output'];
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -4616,11 +4721,11 @@ export type MemberRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -4642,11 +4747,11 @@ export type MenuDropdownRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -4654,7 +4759,7 @@ export type MenuDropdownRecord = RecordInterface & {
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
   items: Array<MenuItemRecord>;
-  title: Scalars['String']['output'];
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -4669,19 +4774,19 @@ export type MenuItemRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
-  page: PageRecord;
-  title: Scalars['String']['output'];
+  page?: Maybe<PageRecord>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -4696,25 +4801,25 @@ export type MuxLiveStreamRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
-  iframeHeight: Scalars['String']['output'];
-  iframeMinHeight: Scalars['String']['output'];
-  iframeUrl: Scalars['String']['output'];
-  iframeWidth: Scalars['String']['output'];
-  placeholderUrl: Scalars['String']['output'];
-  playbackId: Scalars['String']['output'];
-  streamType: Scalars['String']['output'];
-  title: Scalars['String']['output'];
+  iframeHeight?: Maybe<Scalars['String']['output']>;
+  iframeMinHeight?: Maybe<Scalars['String']['output']>;
+  iframeUrl?: Maybe<Scalars['String']['output']>;
+  iframeWidth?: Maybe<Scalars['String']['output']>;
+  placeholderUrl?: Maybe<Scalars['String']['output']>;
+  playbackId?: Maybe<Scalars['String']['output']>;
+  streamType?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -4735,11 +4840,11 @@ export type MuxVideoRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -4747,8 +4852,8 @@ export type MuxVideoRecord = RecordInterface & {
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
   placeholderUrl?: Maybe<Scalars['String']['output']>;
-  playbackId: Scalars['String']['output'];
-  streamType: Scalars['String']['output'];
+  playbackId?: Maybe<Scalars['String']['output']>;
+  streamType?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -4763,20 +4868,20 @@ export type NewsletterSubscriptionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  buttonLabel: Scalars['String']['output'];
+  buttonLabel?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
-  subtitle: Scalars['String']['output'];
-  title: Scalars['String']['output'];
+  subtitle?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -4815,6 +4920,13 @@ export enum PageModelFieldsReferencingAuthorModel {
 export enum PageModelFieldsReferencingSpeakerModel {
   PageSections = 'page_sections',
   PageSectionsSpeakerSectionShowcasedSpeakers = 'page_sections__speakerSection_showcasedSpeakers'
+}
+
+/** Linking fields */
+export enum PageModelFieldsReferencingTalkModel {
+  PageSections = 'page_sections',
+  PageSectionsFeaturedTalksSectionFeaturedTalks = 'page_sections__featuredTalksSection_featuredTalks',
+  PageSectionsStageScehduleItemTalks = 'page_sections__stageScehduleItem_talks'
 }
 
 export type PageModelFilter = {
@@ -4859,7 +4971,7 @@ export enum PageModelOrderBy {
   LabelDesc = 'label_DESC'
 }
 
-export type PageModelSectionsField = AboutIntroRecord | AllAgendaTabsSectionRecord | AllCategoryAwardsSectionRecord | BannerBlockRecord | BrandSectionRecord | ChangelogSectionRecord | DetailSectionRecord | EmptyHeroSectionRecord | FaqSectionRecord | FeatureListSectionRecord | FeaturedAcategorySectionRecord | FeaturedPostsSectionRecord | HeroSectionRecord | IframeBlockRecord | IvsLiveStageRecord | MuxLiveStreamRecord | PricingSectionRecord | RedirectSectionRecord | ReviewSectionRecord | SpacerRecord | SpeakerSectionRecord | SpeakersIntroRecord | StatsSectionRecord | TeamSectionRecord | VideoBlockRecord | VideoSectionRecord;
+export type PageModelSectionsField = AboutIntroRecord | AllAgendaTabsSectionRecord | AllCategoryAwardsSectionRecord | BannerBlockRecord | BrandSectionRecord | ChangelogSectionRecord | DetailSectionRecord | EmptyHeroSectionRecord | FaqSectionRecord | FeatureListSectionRecord | FeaturedAcategorySectionRecord | FeaturedPostsSectionRecord | FeaturedTalksSectionRecord | HeroSectionRecord | IframeBlockRecord | IvsLiveStageRecord | MuxLiveStreamRecord | PricingSectionRecord | RedirectSectionRecord | ReviewSectionRecord | SpacerRecord | SpeakerSectionRecord | SpeakersIntroRecord | StageScehduleItemRecord | StatsSectionRecord | TeamSectionRecord | VideoBlockRecord | VideoSectionRecord;
 
 export type PageModelSectionsFieldListListNonNullMultiLocaleField = {
   __typename?: 'PageModelSectionsFieldListListNonNullMultiLocaleField';
@@ -4875,23 +4987,23 @@ export type PageRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
-  label: Scalars['String']['output'];
+  label?: Maybe<Scalars['String']['output']>;
   sections: Array<PageModelSectionsField>;
   seoAnalysis?: Maybe<Scalars['JsonField']['output']>;
   seoMeta?: Maybe<SeoField>;
-  slug: Scalars['String']['output'];
+  slug?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -4955,14 +5067,15 @@ export type PostModelContentBlocksField = AppCtaRecord | CtaButtonWithImageRecor
 export type PostModelContentField = {
   __typename?: 'PostModelContentField';
   blocks: Array<PostModelContentBlocksField>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<PostRecord>;
   value: Scalars['JsonField']['output'];
 };
 
-export type PostModelContentFieldNonNullMultiLocaleField = {
-  __typename?: 'PostModelContentFieldNonNullMultiLocaleField';
+export type PostModelContentFieldMultiLocaleField = {
+  __typename?: 'PostModelContentFieldMultiLocaleField';
   locale?: Maybe<SiteLocale>;
-  value: PostModelContentField;
+  value?: Maybe<PostModelContentField>;
 };
 
 /** Linking fields */
@@ -5023,31 +5136,31 @@ export enum PostModelOrderBy {
 /** Record of type 📝 Blog Post (post) */
 export type PostRecord = RecordInterface & {
   __typename?: 'PostRecord';
-  _allContentLocales?: Maybe<Array<PostModelContentFieldNonNullMultiLocaleField>>;
+  _allContentLocales?: Maybe<Array<PostModelContentFieldMultiLocaleField>>;
   _allSeoTagsLocales?: Maybe<Array<SeoFieldMultiLocaleField>>;
-  _allTitleLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   author?: Maybe<AuthorRecord>;
-  content: PostModelContentField;
+  content?: Maybe<PostModelContentField>;
   id: Scalars['ItemId']['output'];
   seoAnalysis?: Maybe<Scalars['JsonField']['output']>;
   seoTags?: Maybe<SeoField>;
-  slug: Scalars['String']['output'];
+  slug?: Maybe<Scalars['String']['output']>;
   tags: Array<TagRecord>;
-  title: Scalars['String']['output'];
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -5101,20 +5214,20 @@ export type PricingSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  displayOption: Scalars['String']['output'];
+  displayOption?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
   plans: Array<PricingTierRecord>;
-  pricingSectionHeader: Scalars['String']['output'];
+  pricingSectionHeader?: Maybe<Scalars['String']['output']>;
   pricingSectionSubheader?: Maybe<Scalars['String']['output']>;
 };
 
@@ -5183,41 +5296,42 @@ export enum PricingTierModelOrderBy {
 export type PricingTierModelTierDescriptionField = {
   __typename?: 'PricingTierModelTierDescriptionField';
   blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 };
 
-export type PricingTierModelTierDescriptionFieldNonNullMultiLocaleField = {
-  __typename?: 'PricingTierModelTierDescriptionFieldNonNullMultiLocaleField';
+export type PricingTierModelTierDescriptionFieldMultiLocaleField = {
+  __typename?: 'PricingTierModelTierDescriptionFieldMultiLocaleField';
   locale?: Maybe<SiteLocale>;
-  value: PricingTierModelTierDescriptionField;
+  value?: Maybe<PricingTierModelTierDescriptionField>;
 };
 
 /** Record of type 💰 Pricing Tier (pricing_tier) */
 export type PricingTierRecord = RecordInterface & {
   __typename?: 'PricingTierRecord';
-  _allTierDescriptionLocales?: Maybe<Array<PricingTierModelTierDescriptionFieldNonNullMultiLocaleField>>;
+  _allTierDescriptionLocales?: Maybe<Array<PricingTierModelTierDescriptionFieldMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
-  monthlyPrice: Scalars['IntType']['output'];
-  planFeatures: Scalars['String']['output'];
-  slug: Scalars['String']['output'];
-  tierDescription: PricingTierModelTierDescriptionField;
-  tierName: Scalars['String']['output'];
-  yearlyPrice: Scalars['FloatType']['output'];
+  monthlyPrice?: Maybe<Scalars['IntType']['output']>;
+  planFeatures?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  tierDescription?: Maybe<PricingTierModelTierDescriptionField>;
+  tierName?: Maybe<Scalars['String']['output']>;
+  yearlyPrice?: Maybe<Scalars['FloatType']['output']>;
 };
 
 
@@ -5987,6 +6101,7 @@ export type QuestionModelAnswerBlocksField = CtaButtonWithImageRecord | Newslett
 export type QuestionModelAnswerField = {
   __typename?: 'QuestionModelAnswerField';
   blocks: Array<QuestionModelAnswerBlocksField>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 };
@@ -5997,19 +6112,19 @@ export type QuestionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  answer: QuestionModelAnswerField;
+  answer?: Maybe<QuestionModelAnswerField>;
   id: Scalars['ItemId']['output'];
-  question: Scalars['String']['output'];
+  question?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -6022,11 +6137,11 @@ export type RecordInterface = {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -6046,18 +6161,18 @@ export type RedirectSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
-  slugToRedirectTo: Scalars['String']['output'];
+  slugToRedirectTo?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -6106,19 +6221,19 @@ export type ReviewSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  displayOptions: Scalars['String']['output'];
+  displayOptions?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
-  reviewSectionHeader: Scalars['String']['output'];
+  reviewSectionHeader?: Maybe<Scalars['String']['output']>;
   reviewSectionSubheader?: Maybe<Scalars['String']['output']>;
   reviews: Array<TestimonialRecord>;
 };
@@ -6141,11 +6256,11 @@ export type ScheduleRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -6154,7 +6269,7 @@ export type ScheduleRecord = RecordInterface & {
   id: Scalars['ItemId']['output'];
   scheduleItems: Array<TalkRecord>;
   subtitle?: Maybe<Scalars['String']['output']>;
-  title: Scalars['String']['output'];
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -6277,11 +6392,11 @@ export type SocialFeedRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -6303,20 +6418,20 @@ export type SocialMediaIconRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  icon: FileField;
+  icon?: Maybe<FileField>;
   id: Scalars['ItemId']['output'];
   name?: Maybe<Scalars['String']['output']>;
-  url: Scalars['String']['output'];
+  url?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -6331,11 +6446,11 @@ export type SpacerRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -6343,7 +6458,7 @@ export type SpacerRecord = RecordInterface & {
   _updatedAt: Scalars['DateTime']['output'];
   extraMargin?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
-  space: Scalars['String']['output'];
+  space?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -6357,6 +6472,7 @@ export type SpeakerModelBiographyBlocksField = AppCtaRecord | CtaButtonWithImage
 export type SpeakerModelBiographyField = {
   __typename?: 'SpeakerModelBiographyField';
   blocks: Array<SpeakerModelBiographyBlocksField>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<TalkRecord>;
   value: Scalars['JsonField']['output'];
 };
@@ -6416,8 +6532,8 @@ export enum SpeakerModelOrderBy {
 /** Record of type 👩‍🏫 Speaker (speaker) */
 export type SpeakerRecord = RecordInterface & {
   __typename?: 'SpeakerRecord';
-  _allJobTitleLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
-  _allNameLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _allJobTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
+  _allNameLocales?: Maybe<Array<StringMultiLocaleField>>;
   _allReferencingPages: Array<PageRecord>;
   /** Returns meta information regarding a record collection */
   _allReferencingPagesMeta: CollectionMetadata;
@@ -6427,23 +6543,23 @@ export type SpeakerRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  biography: SpeakerModelBiographyField;
+  biography?: Maybe<SpeakerModelBiographyField>;
   id: Scalars['ItemId']['output'];
-  jobTitle: Scalars['String']['output'];
-  name: Scalars['String']['output'];
-  picture: FileField;
-  slug: Scalars['String']['output'];
+  jobTitle?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  picture?: Maybe<FileField>;
+  slug?: Maybe<Scalars['String']['output']>;
   talk: Array<TalkRecord>;
 };
 
@@ -6525,21 +6641,21 @@ export type SpeakerSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  displayOptions: Scalars['String']['output'];
+  displayOptions?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
   showcasedSpeakers: Array<SpeakerRecord>;
   subtitle?: Maybe<Scalars['String']['output']>;
-  title: Scalars['String']['output'];
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -6557,6 +6673,7 @@ export type SpeakerSectionRecordSubtitleArgs = {
 export type SpeakersIntroModelIntroductionTextField = {
   __typename?: 'SpeakersIntroModelIntroductionTextField';
   blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 };
@@ -6567,17 +6684,17 @@ export type SpeakersIntroRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  header: Scalars['String']['output'];
+  header?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
   introductionText?: Maybe<SpeakersIntroModelIntroductionTextField>;
   preHeader?: Maybe<Scalars['String']['output']>;
@@ -6653,7 +6770,7 @@ export enum StageModelOrderBy {
 /** Record of type 🎥 Stage (stage) */
 export type StageRecord = RecordInterface & {
   __typename?: 'StageRecord';
-  _allNameLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _allNameLocales?: Maybe<Array<StringMultiLocaleField>>;
   _allReferencingTalks: Array<TalkRecord>;
   /** Returns meta information regarding a record collection */
   _allReferencingTalksMeta: CollectionMetadata;
@@ -6661,12 +6778,12 @@ export type StageRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -6674,10 +6791,10 @@ export type StageRecord = RecordInterface & {
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
   iframeUrl?: Maybe<Scalars['String']['output']>;
-  name: Scalars['String']['output'];
+  name?: Maybe<Scalars['String']['output']>;
   seoAnalysis?: Maybe<Scalars['JsonField']['output']>;
   seoTags?: Maybe<SeoField>;
-  slug: Scalars['String']['output'];
+  slug?: Maybe<Scalars['String']['output']>;
   streamKey?: Maybe<Scalars['String']['output']>;
   talk: Array<TalkRecord>;
 };
@@ -6740,18 +6857,19 @@ export type StageScehduleItemRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  featuredTalksHeading: Scalars['String']['output'];
+  featuredTalksHeading?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
+  returnToAgenda?: Maybe<ButtonRecord>;
   talks: Array<TalkRecord>;
 };
 
@@ -6767,20 +6885,20 @@ export type StatisticRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  icon: FileField;
+  icon?: Maybe<FileField>;
   id: Scalars['ItemId']['output'];
-  label: Scalars['String']['output'];
-  quantity: Scalars['IntType']['output'];
+  label?: Maybe<Scalars['String']['output']>;
+  quantity?: Maybe<Scalars['IntType']['output']>;
 };
 
 
@@ -6795,11 +6913,11 @@ export type StatsSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
@@ -6808,7 +6926,7 @@ export type StatsSectionRecord = RecordInterface & {
   id: Scalars['ItemId']['output'];
   statistic: Array<StatisticRecord>;
   subtitle?: Maybe<Scalars['String']['output']>;
-  title: Scalars['String']['output'];
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -6841,18 +6959,18 @@ export type StreamPlayerRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
-  videoPlayer: Scalars['String']['output'];
+  videoPlayer?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -6899,12 +7017,6 @@ export type StringMultiLocaleField = {
   __typename?: 'StringMultiLocaleField';
   locale?: Maybe<SiteLocale>;
   value?: Maybe<Scalars['String']['output']>;
-};
-
-export type StringNonNullMultiLocaleField = {
-  __typename?: 'StringNonNullMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value: Scalars['String']['output'];
 };
 
 /** Specifies how to filter Structured Text fields values */
@@ -6974,24 +7086,24 @@ export type TagRecord = RecordInterface & {
   _allReferencingPosts: Array<PostRecord>;
   /** Returns meta information regarding a record collection */
   _allReferencingPostsMeta: CollectionMetadata;
-  _allTagLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _allTagLocales?: Maybe<Array<StringMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
-  slug: Scalars['String']['output'];
-  tag: Scalars['String']['output'];
+  slug?: Maybe<Scalars['String']['output']>;
+  tag?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -7038,14 +7150,15 @@ export type TalkModelContentBlocksField = AppCtaRecord | CtaButtonWithImageRecor
 export type TalkModelContentField = {
   __typename?: 'TalkModelContentField';
   blocks: Array<TalkModelContentBlocksField>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<TalkRecord>;
   value: Scalars['JsonField']['output'];
 };
 
-export type TalkModelContentFieldNonNullMultiLocaleField = {
-  __typename?: 'TalkModelContentFieldNonNullMultiLocaleField';
+export type TalkModelContentFieldMultiLocaleField = {
+  __typename?: 'TalkModelContentFieldMultiLocaleField';
   locale?: Maybe<SiteLocale>;
-  value: TalkModelContentField;
+  value?: Maybe<TalkModelContentField>;
 };
 
 /** Linking fields */
@@ -7132,10 +7245,13 @@ export type TalkModelStageField = PageRecord | StageRecord;
 /** Record of type 🕟 Talk (talk) */
 export type TalkRecord = RecordInterface & {
   __typename?: 'TalkRecord';
-  _allContentLocales?: Maybe<Array<TalkModelContentFieldNonNullMultiLocaleField>>;
+  _allContentLocales?: Maybe<Array<TalkModelContentFieldMultiLocaleField>>;
   _allReferencingAgendaTabs: Array<AgendaTabRecord>;
   /** Returns meta information regarding a record collection */
   _allReferencingAgendaTabsMeta: CollectionMetadata;
+  _allReferencingPages: Array<PageRecord>;
+  /** Returns meta information regarding a record collection */
+  _allReferencingPagesMeta: CollectionMetadata;
   _allReferencingSpeakers: Array<SpeakerRecord>;
   /** Returns meta information regarding a record collection */
   _allReferencingSpeakersMeta: CollectionMetadata;
@@ -7145,35 +7261,35 @@ export type TalkRecord = RecordInterface & {
   _allReferencingTalks: Array<TalkRecord>;
   /** Returns meta information regarding a record collection */
   _allReferencingTalksMeta: CollectionMetadata;
-  _allTitleLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   agendaTag: Array<AgendaTabRecord>;
-  buttonName: Scalars['String']['output'];
-  content: TalkModelContentField;
+  buttonName?: Maybe<Scalars['String']['output']>;
+  content?: Maybe<TalkModelContentField>;
   dateTags: Array<DateTagRecord>;
   end?: Maybe<Scalars['DateTime']['output']>;
   id: Scalars['ItemId']['output'];
-  pageType: Scalars['String']['output'];
+  pageType?: Maybe<Scalars['String']['output']>;
   seoAnalysis?: Maybe<Scalars['JsonField']['output']>;
   seoTags?: Maybe<SeoField>;
-  slug: Scalars['String']['output'];
+  slug?: Maybe<Scalars['String']['output']>;
   speaker: Array<SpeakerRecord>;
-  stage: TalkModelStageField;
-  start: Scalars['DateTime']['output'];
-  title: Scalars['String']['output'];
+  stage?: Maybe<TalkModelStageField>;
+  start?: Maybe<Scalars['DateTime']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -7200,6 +7316,26 @@ export type TalkRecord_AllReferencingAgendaTabsMetaArgs = {
   filter?: InputMaybe<AgendaTabModelFilter>;
   locale?: InputMaybe<SiteLocale>;
   through?: InputMaybe<InverseRelationshipFilterBetweenAgendaTabAndTalk>;
+};
+
+
+/** Record of type 🕟 Talk (talk) */
+export type TalkRecord_AllReferencingPagesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<PageModelFilter>;
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<PageModelOrderBy>>>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+  through?: InputMaybe<InverseRelationshipFilterBetweenPageAndTalk>;
+};
+
+
+/** Record of type 🕟 Talk (talk) */
+export type TalkRecord_AllReferencingPagesMetaArgs = {
+  filter?: InputMaybe<PageModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+  through?: InputMaybe<InverseRelationshipFilterBetweenPageAndTalk>;
 };
 
 
@@ -7300,21 +7436,21 @@ export type TeamSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  displayOptions: Scalars['String']['output'];
+  displayOptions?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
   showcasedMembers: Array<AuthorRecord>;
   subtitle?: Maybe<Scalars['String']['output']>;
-  title: Scalars['String']['output'];
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -7379,39 +7515,40 @@ export enum TestimonialModelOrderBy {
 export type TestimonialModelReviewField = {
   __typename?: 'TestimonialModelReviewField';
   blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 };
 
-export type TestimonialModelReviewFieldNonNullMultiLocaleField = {
-  __typename?: 'TestimonialModelReviewFieldNonNullMultiLocaleField';
+export type TestimonialModelReviewFieldMultiLocaleField = {
+  __typename?: 'TestimonialModelReviewFieldMultiLocaleField';
   locale?: Maybe<SiteLocale>;
-  value: TestimonialModelReviewField;
+  value?: Maybe<TestimonialModelReviewField>;
 };
 
 /** Record of type ⭐️ Testimonial (testimonial) */
 export type TestimonialRecord = RecordInterface & {
   __typename?: 'TestimonialRecord';
-  _allReviewLocales?: Maybe<Array<TestimonialModelReviewFieldNonNullMultiLocaleField>>;
+  _allReviewLocales?: Maybe<Array<TestimonialModelReviewFieldMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
-  rating: Scalars['IntType']['output'];
-  review: TestimonialModelReviewField;
-  reviewerName: Scalars['String']['output'];
-  reviewerPicture: ImageFileField;
+  rating?: Maybe<Scalars['IntType']['output']>;
+  review?: Maybe<TestimonialModelReviewField>;
+  reviewerName?: Maybe<Scalars['String']['output']>;
+  reviewerPicture?: Maybe<FileField>;
   reviewerTitle?: Maybe<Scalars['String']['output']>;
 };
 
@@ -7841,18 +7978,18 @@ export type VideoBlockRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
-  videoIframeUrl: Scalars['String']['output'];
+  videoIframeUrl?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -7884,21 +8021,21 @@ export type VideoSectionRecord = RecordInterface & {
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   /** Generates SEO and Social card meta tags to be used in your frontend */
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
-  video: VideoField;
-  videoHeader: Scalars['String']['output'];
+  video?: Maybe<VideoField>;
+  videoHeader?: Maybe<Scalars['String']['output']>;
   videoSubheader?: Maybe<Scalars['String']['output']>;
-  videoThumbnail: ImageFileField;
+  videoThumbnail?: Maybe<FileField>;
 };
 
 
@@ -7925,7 +8062,7 @@ export type AboutQueryVariables = Exact<{
 }>;
 
 
-export type AboutQuery = { __typename?: 'Query', page?: { __typename?: 'PageRecord', sections: Array<{ __typename?: 'AboutIntroRecord', id: string, _modelApiKey: string, preHeader?: string | null, header: string, subheader?: string | null, introductionText?: { __typename?: 'AboutIntroModelIntroductionTextField', value: unknown } | null, images: Array<{ __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } }> } | { __typename?: 'AllAgendaTabsSectionRecord' } | { __typename?: 'AllCategoryAwardsSectionRecord' } | { __typename?: 'BannerBlockRecord' } | { __typename?: 'BrandSectionRecord' } | { __typename?: 'ChangelogSectionRecord' } | { __typename?: 'DetailSectionRecord' } | { __typename?: 'EmptyHeroSectionRecord' } | { __typename?: 'FaqSectionRecord', _modelApiKey: string, displayOptions: string, id: string, title: string, subtitle?: string | null, questions: Array<{ __typename?: 'QuestionRecord', question: string, id: string, answer: { __typename?: 'QuestionModelAnswerField', value: unknown } }> } | { __typename?: 'FeatureListSectionRecord' } | { __typename?: 'FeaturedAcategorySectionRecord' } | { __typename?: 'FeaturedPostsSectionRecord' } | { __typename?: 'HeroSectionRecord' } | { __typename?: 'IframeBlockRecord' } | { __typename?: 'IvsLiveStageRecord' } | { __typename?: 'MuxLiveStreamRecord' } | { __typename?: 'PricingSectionRecord' } | { __typename?: 'RedirectSectionRecord' } | { __typename?: 'ReviewSectionRecord' } | { __typename?: 'SpacerRecord' } | { __typename?: 'SpeakerSectionRecord' } | { __typename?: 'SpeakersIntroRecord' } | { __typename?: 'StatsSectionRecord', _modelApiKey: string, id: string, title: string, subtitle?: string | null, statistic: Array<{ __typename?: 'StatisticRecord', id: string, label: string, quantity: number, icon: { __typename?: 'FileField', url: string } }> } | { __typename?: 'TeamSectionRecord', _modelApiKey: string, id: string, displayOptions: string, title: string, subtitle?: string | null, showcasedMembers: Array<{ __typename?: 'AuthorRecord', name: string, id: string, slug: string, bio: string, description: string, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } } }> } | { __typename?: 'VideoBlockRecord' } | { __typename?: 'VideoSectionRecord' }> } | null };
+export type AboutQuery = { __typename?: 'Query', page?: { __typename?: 'PageRecord', sections: Array<{ __typename?: 'AboutIntroRecord', id: string, _modelApiKey: string, preHeader?: string | null, header?: string | null, subheader?: string | null, introductionText?: { __typename?: 'AboutIntroModelIntroductionTextField', value: unknown } | null, images: Array<{ __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null }> } | { __typename?: 'AllAgendaTabsSectionRecord' } | { __typename?: 'AllCategoryAwardsSectionRecord' } | { __typename?: 'BannerBlockRecord' } | { __typename?: 'BrandSectionRecord' } | { __typename?: 'ChangelogSectionRecord' } | { __typename?: 'DetailSectionRecord' } | { __typename?: 'EmptyHeroSectionRecord' } | { __typename?: 'FaqSectionRecord', _modelApiKey: string, displayOptions?: string | null, id: string, title?: string | null, subtitle?: string | null, questions: Array<{ __typename?: 'QuestionRecord', question?: string | null, id: string, answer?: { __typename?: 'QuestionModelAnswerField', value: unknown } | null }> } | { __typename?: 'FeatureListSectionRecord' } | { __typename?: 'FeaturedAcategorySectionRecord' } | { __typename?: 'FeaturedPostsSectionRecord' } | { __typename?: 'FeaturedTalksSectionRecord' } | { __typename?: 'HeroSectionRecord' } | { __typename?: 'IframeBlockRecord' } | { __typename?: 'IvsLiveStageRecord' } | { __typename?: 'MuxLiveStreamRecord' } | { __typename?: 'PricingSectionRecord' } | { __typename?: 'RedirectSectionRecord' } | { __typename?: 'ReviewSectionRecord' } | { __typename?: 'SpacerRecord' } | { __typename?: 'SpeakerSectionRecord' } | { __typename?: 'SpeakersIntroRecord' } | { __typename?: 'StageScehduleItemRecord' } | { __typename?: 'StatsSectionRecord', _modelApiKey: string, id: string, title?: string | null, subtitle?: string | null, statistic: Array<{ __typename?: 'StatisticRecord', id: string, label?: string | null, quantity?: number | null, icon?: { __typename?: 'FileField', url: string } | null }> } | { __typename?: 'TeamSectionRecord', _modelApiKey: string, id: string, displayOptions?: string | null, title?: string | null, subtitle?: string | null, showcasedMembers: Array<{ __typename?: 'AuthorRecord', name?: string | null, id: string, slug?: string | null, bio?: string | null, description?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> } | { __typename?: 'VideoBlockRecord' } | { __typename?: 'VideoSectionRecord' }> } | null };
 
 export type AgendaTabQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -7935,7 +8072,7 @@ export type AgendaTabQueryVariables = Exact<{
 }>;
 
 
-export type AgendaTabQuery = { __typename?: 'Query', allAgendaTabs: Array<{ __typename?: 'AgendaTabRecord', _publishedAt?: string | null, date: string, title: string, id: string, talk: Array<{ __typename?: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, start: string, end?: string | null, pageType: string, buttonName: string, content: { __typename?: 'TalkModelContentField', value: unknown, links: Array<{ __typename: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, dateTags: Array<{ __typename?: 'DateTagRecord', eventDate: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, biography: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, start: string, end?: string | null, pageType: string, buttonName: string, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate: string, slug: string }>, stage: { __typename?: 'PageRecord', id: string, slug: string } | { __typename?: 'StageRecord', id: string, name: string, slug: string }, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> }, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> }, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate: string, slug: string }>, stage: { __typename?: 'PageRecord', id: string, slug: string } | { __typename?: 'StageRecord', id: string, name: string, slug: string }, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }> }>, _allAgendaTabsMeta: { __typename?: 'CollectionMetadata', count: number } };
+export type AgendaTabQuery = { __typename?: 'Query', allAgendaTabs: Array<{ __typename?: 'AgendaTabRecord', _publishedAt: string, date?: string | null, title?: string | null, id: string, talk: Array<{ __typename?: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, start?: string | null, end?: string | null, pageType?: string | null, buttonName?: string | null, content?: { __typename?: 'TalkModelContentField', value: unknown, links: Array<{ __typename: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, dateTags: Array<{ __typename?: 'DateTagRecord', eventDate?: string | null }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, biography?: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, start?: string | null, end?: string | null, pageType?: string | null, buttonName?: string | null, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate?: string | null, slug?: string | null }>, stage?: { __typename?: 'PageRecord', id: string, slug?: string | null } | { __typename?: 'StageRecord', id: string, name?: string | null, slug?: string | null } | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate?: string | null, slug?: string | null }>, stage?: { __typename?: 'PageRecord', id: string, slug?: string | null } | { __typename?: 'StageRecord', id: string, name?: string | null, slug?: string | null } | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }> }>, _allAgendaTabsMeta: { __typename?: 'CollectionMetadata', count: number } };
 
 export type AuthorQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -7945,7 +8082,7 @@ export type AuthorQueryVariables = Exact<{
 }>;
 
 
-export type AuthorQuery = { __typename?: 'Query', author?: { __typename?: 'AuthorRecord', name: string, bio: string, description: string, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } }, _allReferencingPosts: Array<{ __typename?: 'PostRecord', _publishedAt?: string | null, slug: string, id: string, title: string, tags: Array<{ __typename?: 'TagRecord', tag: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, author?: { __typename?: 'AuthorRecord', name: string, bio: string, slug: string, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } } } | null }>, _allReferencingPostsMeta: { __typename?: 'CollectionMetadata', count: number } } | null };
+export type AuthorQuery = { __typename?: 'Query', author?: { __typename?: 'AuthorRecord', name?: string | null, bio?: string | null, description?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null, _allReferencingPosts: Array<{ __typename?: 'PostRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, tags: Array<{ __typename?: 'TagRecord', tag?: string | null }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, author?: { __typename?: 'AuthorRecord', name?: string | null, bio?: string | null, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null }>, _allReferencingPostsMeta: { __typename?: 'CollectionMetadata', count: number } } | null };
 
 export type AwardQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -7954,7 +8091,7 @@ export type AwardQueryVariables = Exact<{
 }>;
 
 
-export type AwardQuery = { __typename?: 'Query', award?: { __typename?: 'AwardRecord', _publishedAt?: string | null, title: string, jobTitle?: string | null, iframe?: string | null, acategory?: { __typename?: 'AcategoryRecord', name: string, bio?: string | null, slug: string, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } } } | null, atags: Array<{ __typename?: 'AtagRecord', id: string, atag: string, slug: string }>, biography: { __typename?: 'AwardModelBiographyField', value: unknown, links: Array<{ __typename: 'AwardRecord', _publishedAt?: string | null, slug: string, id: string, title: string, atags: Array<{ __typename?: 'AtagRecord', atag: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, acategory?: { __typename?: 'AcategoryRecord', name: string, bio?: string | null, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } } } | null }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'GalleryRecord', id: string, imageGallery: Array<{ __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } }> } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> }, content: { __typename?: 'AwardModelContentField', value: unknown, links: Array<{ __typename: 'AwardRecord', _publishedAt?: string | null, slug: string, id: string, title: string, atags: Array<{ __typename?: 'AtagRecord', atag: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, acategory?: { __typename?: 'AcategoryRecord', name: string, bio?: string | null, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } } } | null }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'GalleryRecord', id: string, imageGallery: Array<{ __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } }> } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'MuxVideoRecord', id: string, streamType: string, playbackId: string, placeholderUrl?: string | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> } } | null, allAtags: Array<{ __typename?: 'AtagRecord', id: string, atag: string, slug: string }> };
+export type AwardQuery = { __typename?: 'Query', award?: { __typename?: 'AwardRecord', _publishedAt: string, title?: string | null, jobTitle?: string | null, iframe?: string | null, acategory?: { __typename?: 'AcategoryRecord', name?: string | null, bio?: string | null, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, atags: Array<{ __typename?: 'AtagRecord', id: string, atag?: string | null, slug?: string | null }>, biography?: { __typename?: 'AwardModelBiographyField', value: unknown, links: Array<{ __typename: 'AwardRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, atags: Array<{ __typename?: 'AtagRecord', atag?: string | null }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, acategory?: { __typename?: 'AcategoryRecord', name?: string | null, bio?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'GalleryRecord', id: string, imageGallery: Array<{ __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null }> } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null, content?: { __typename?: 'AwardModelContentField', value: unknown, links: Array<{ __typename: 'AwardRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, atags: Array<{ __typename?: 'AtagRecord', atag?: string | null }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, acategory?: { __typename?: 'AcategoryRecord', name?: string | null, bio?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'GalleryRecord', id: string, imageGallery: Array<{ __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null }> } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'MuxVideoRecord', id: string, streamType?: string | null, playbackId?: string | null, placeholderUrl?: string | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null } | null, allAtags: Array<{ __typename?: 'AtagRecord', id: string, atag?: string | null, slug?: string | null }> };
 
 export type AwardCategoryQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -7964,7 +8101,7 @@ export type AwardCategoryQueryVariables = Exact<{
 }>;
 
 
-export type AwardCategoryQuery = { __typename?: 'Query', acategory?: { __typename?: 'AcategoryRecord', name: string, bio?: string | null, description: string, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } }, _allReferencingAwards: Array<{ __typename?: 'AwardRecord', _publishedAt?: string | null, slug: string, id: string, title: string, jobTitle?: string | null, atags: Array<{ __typename?: 'AtagRecord', atag: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, acategory?: { __typename?: 'AcategoryRecord', name: string, bio?: string | null, slug: string, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } } } | null }>, _allReferencingAwardsMeta: { __typename?: 'CollectionMetadata', count: number } } | null };
+export type AwardCategoryQuery = { __typename?: 'Query', acategory?: { __typename?: 'AcategoryRecord', name?: string | null, bio?: string | null, description?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null, _allReferencingAwards: Array<{ __typename?: 'AwardRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, jobTitle?: string | null, atags: Array<{ __typename?: 'AtagRecord', atag?: string | null }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, acategory?: { __typename?: 'AcategoryRecord', name?: string | null, bio?: string | null, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null }>, _allReferencingAwardsMeta: { __typename?: 'CollectionMetadata', count: number } } | null };
 
 export type AwardsQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -7973,7 +8110,7 @@ export type AwardsQueryVariables = Exact<{
 }>;
 
 
-export type AwardsQuery = { __typename?: 'Query', allAwards: Array<{ __typename?: 'AwardRecord', _publishedAt?: string | null, slug: string, id: string, title: string, jobTitle?: string | null, atags: Array<{ __typename?: 'AtagRecord', atag: string, slug: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, acategory?: { __typename?: 'AcategoryRecord', name: string, slug: string, bio?: string | null, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } } } | null }>, _allAwardsMeta: { __typename?: 'CollectionMetadata', count: number } };
+export type AwardsQuery = { __typename?: 'Query', allAwards: Array<{ __typename?: 'AwardRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, jobTitle?: string | null, atags: Array<{ __typename?: 'AtagRecord', atag?: string | null, slug?: string | null }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, acategory?: { __typename?: 'AcategoryRecord', name?: string | null, slug?: string | null, bio?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null }>, _allAwardsMeta: { __typename?: 'CollectionMetadata', count: number } };
 
 export type AwardTagQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -7983,7 +8120,7 @@ export type AwardTagQueryVariables = Exact<{
 }>;
 
 
-export type AwardTagQuery = { __typename?: 'Query', atag?: { __typename?: 'AtagRecord', atag: string, _allReferencingAwards: Array<{ __typename?: 'AwardRecord', _publishedAt?: string | null, slug: string, id: string, title: string, jobTitle?: string | null, atags: Array<{ __typename?: 'AtagRecord', atag: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, acategory?: { __typename?: 'AcategoryRecord', name: string, bio?: string | null, slug: string, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } } } | null }>, _allReferencingAwardsMeta: { __typename?: 'CollectionMetadata', count: number } } | null };
+export type AwardTagQuery = { __typename?: 'Query', atag?: { __typename?: 'AtagRecord', atag?: string | null, _allReferencingAwards: Array<{ __typename?: 'AwardRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, jobTitle?: string | null, atags: Array<{ __typename?: 'AtagRecord', atag?: string | null }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, acategory?: { __typename?: 'AcategoryRecord', name?: string | null, bio?: string | null, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null }>, _allReferencingAwardsMeta: { __typename?: 'CollectionMetadata', count: number } } | null };
 
 export type CategoryAwardQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -7992,19 +8129,19 @@ export type CategoryAwardQueryVariables = Exact<{
 }>;
 
 
-export type CategoryAwardQuery = { __typename?: 'Query', allCategoryAwards: Array<{ __typename?: 'CategoryAwardRecord', _publishedAt?: string | null, title: string, id: string, category?: { __typename?: 'AcategoryRecord', name: string, slug: string, bio?: string | null, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } } } | null, award: Array<{ __typename?: 'AwardRecord', _publishedAt?: string | null, slug: string, id: string, title: string, jobTitle?: string | null, atags: Array<{ __typename?: 'AtagRecord', atag: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, acategory?: { __typename?: 'AcategoryRecord', name: string, slug: string, bio?: string | null, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } } } | null }> }>, _allCategoryAwardsMeta: { __typename?: 'CollectionMetadata', count: number } };
+export type CategoryAwardQuery = { __typename?: 'Query', allCategoryAwards: Array<{ __typename?: 'CategoryAwardRecord', _publishedAt: string, title?: string | null, id: string, category?: { __typename?: 'AcategoryRecord', name?: string | null, slug?: string | null, bio?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, award: Array<{ __typename?: 'AwardRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, jobTitle?: string | null, atags: Array<{ __typename?: 'AtagRecord', atag?: string | null }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, acategory?: { __typename?: 'AcategoryRecord', name?: string | null, slug?: string | null, bio?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null }> }>, _allCategoryAwardsMeta: { __typename?: 'CollectionMetadata', count: number } };
 
 export type ChangelogQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 
-export type ChangelogQuery = { __typename?: 'Query', changeLog?: { __typename?: 'ChangeLogRecord', timeOfRelease: string, versionName: string, slug: string, content: { __typename?: 'ChangeLogModelContentField', value: unknown } } | null };
+export type ChangelogQuery = { __typename?: 'Query', changeLog?: { __typename?: 'ChangeLogRecord', timeOfRelease?: string | null, versionName?: string | null, slug?: string | null, content?: { __typename?: 'ChangeLogModelContentField', value: unknown } | null } | null };
 
 export type CustomColorQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CustomColorQuery = { __typename?: 'Query', layout?: { __typename?: 'LayoutRecord', mainColor: { __typename?: 'ColorField', red: number, blue: number, green: number } } | null };
+export type CustomColorQuery = { __typename?: 'Query', layout?: { __typename?: 'LayoutRecord', mainColor?: { __typename?: 'ColorField', red: number, blue: number, green: number } | null } | null };
 
 export type DatetagQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -8014,12 +8151,12 @@ export type DatetagQueryVariables = Exact<{
 }>;
 
 
-export type DatetagQuery = { __typename?: 'Query', dateTag?: { __typename?: 'DateTagRecord', eventDate: string, _allReferencingTalks: Array<{ __typename?: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, start: string, end?: string | null, pageType: string, buttonName: string, dateTags: Array<{ __typename?: 'DateTagRecord', eventDate: string }>, stage: { __typename?: 'PageRecord', id: string, slug: string } | { __typename?: 'StageRecord', id: string, name: string, slug: string }, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, biography: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, start: string, end?: string | null, pageType: string, buttonName: string, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate: string, slug: string }>, stage: { __typename?: 'PageRecord', id: string, slug: string } | { __typename?: 'StageRecord', id: string, name: string, slug: string }, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> }, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, _allReferencingTalksMeta: { __typename?: 'CollectionMetadata', count: number } } | null };
+export type DatetagQuery = { __typename?: 'Query', dateTag?: { __typename?: 'DateTagRecord', eventDate?: string | null, _allReferencingTalks: Array<{ __typename?: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, start?: string | null, end?: string | null, pageType?: string | null, buttonName?: string | null, dateTags: Array<{ __typename?: 'DateTagRecord', eventDate?: string | null }>, stage?: { __typename?: 'PageRecord', id: string, slug?: string | null } | { __typename?: 'StageRecord', id: string, name?: string | null, slug?: string | null } | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, biography?: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, start?: string | null, end?: string | null, pageType?: string | null, buttonName?: string | null, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate?: string | null, slug?: string | null }>, stage?: { __typename?: 'PageRecord', id: string, slug?: string | null } | { __typename?: 'StageRecord', id: string, name?: string | null, slug?: string | null } | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, _allReferencingTalksMeta: { __typename?: 'CollectionMetadata', count: number } } | null };
 
 export type DocumentationHomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type DocumentationHomePageQuery = { __typename?: 'Query', documentationHome?: { __typename?: 'DocumentationHomeRecord', title: string, subheader?: string | null, _modelApiKey: string, id: string, featuredPages: Array<{ __typename?: 'DocumentationPageRecord', id: string, _modelApiKey: string, title: string, subtitle?: string | null, slug: string }> } | null };
+export type DocumentationHomePageQuery = { __typename?: 'Query', documentationHome?: { __typename?: 'DocumentationHomeRecord', title?: string | null, subheader?: string | null, _modelApiKey: string, id: string, featuredPages: Array<{ __typename?: 'DocumentationPageRecord', id: string, _modelApiKey: string, title?: string | null, subtitle?: string | null, slug?: string | null }> } | null };
 
 export type DocumentationPageQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -8028,12 +8165,21 @@ export type DocumentationPageQueryVariables = Exact<{
 }>;
 
 
-export type DocumentationPageQuery = { __typename?: 'Query', documentationPage?: { __typename?: 'DocumentationPageRecord', title: string, _modelApiKey: string, id: string, content: { __typename?: 'DocumentationPageModelContentField', value: unknown } } | null };
+export type DocumentationPageQuery = { __typename?: 'Query', documentationPage?: { __typename?: 'DocumentationPageRecord', title?: string | null, _modelApiKey: string, id: string, content?: { __typename?: 'DocumentationPageModelContentField', value: unknown } | null } | null };
 
 export type DocumentationSidebarQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type DocumentationSidebarQuery = { __typename?: 'Query', allDocumentationPages: Array<{ __typename?: 'DocumentationPageRecord', title: string, subtitle?: string | null, slug: string, id: string, _modelApiKey: string, children: Array<{ __typename?: 'DocumentationPageRecord', title: string, subtitle?: string | null, slug: string, id: string, _modelApiKey: string, content: { __typename?: 'DocumentationPageModelContentField', value: unknown }, children: Array<{ __typename?: 'DocumentationPageRecord', title: string, subtitle?: string | null, slug: string, id: string, _modelApiKey: string, content: { __typename?: 'DocumentationPageModelContentField', value: unknown }, children: Array<{ __typename?: 'DocumentationPageRecord', title: string, subtitle?: string | null, slug: string, id: string, _modelApiKey: string, content: { __typename?: 'DocumentationPageModelContentField', value: unknown }, children: Array<{ __typename?: 'DocumentationPageRecord', title: string, subtitle?: string | null, slug: string, id: string, _modelApiKey: string, content: { __typename?: 'DocumentationPageModelContentField', value: unknown } }> }> }> }> }>, documentationHome?: { __typename?: 'DocumentationHomeRecord', footerText?: string | null, logo: { __typename?: 'FileField', url: string, width?: number | null, height?: number | null } } | null };
+export type DocumentationSidebarQuery = { __typename?: 'Query', allDocumentationPages: Array<{ __typename?: 'DocumentationPageRecord', title?: string | null, subtitle?: string | null, slug?: string | null, id: string, _modelApiKey: string, children: Array<{ __typename?: 'DocumentationPageRecord', title?: string | null, subtitle?: string | null, slug?: string | null, id: string, _modelApiKey: string, content?: { __typename?: 'DocumentationPageModelContentField', value: unknown } | null, children: Array<{ __typename?: 'DocumentationPageRecord', title?: string | null, subtitle?: string | null, slug?: string | null, id: string, _modelApiKey: string, content?: { __typename?: 'DocumentationPageModelContentField', value: unknown } | null, children: Array<{ __typename?: 'DocumentationPageRecord', title?: string | null, subtitle?: string | null, slug?: string | null, id: string, _modelApiKey: string, content?: { __typename?: 'DocumentationPageModelContentField', value: unknown } | null, children: Array<{ __typename?: 'DocumentationPageRecord', title?: string | null, subtitle?: string | null, slug?: string | null, id: string, _modelApiKey: string, content?: { __typename?: 'DocumentationPageModelContentField', value: unknown } | null }> }> }> }> }>, documentationHome?: { __typename?: 'DocumentationHomeRecord', footerText?: string | null, logo?: { __typename?: 'FileField', url: string, width?: number | null, height?: number | null } | null } | null };
+
+export type FeaturedTalksSectionQueryVariables = Exact<{
+  ids?: InputMaybe<Array<InputMaybe<Scalars['ItemId']['input']>> | InputMaybe<Scalars['ItemId']['input']>>;
+  locale?: InputMaybe<SiteLocale>;
+  fallbackLocale?: InputMaybe<Array<SiteLocale> | SiteLocale>;
+}>;
+
+
+export type FeaturedTalksSectionQuery = { __typename?: 'Query', allTalks: Array<{ __typename?: 'TalkRecord', id: string, title?: string | null, slug?: string | null, start?: string | null, end?: string | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: number, height: number, alt?: string | null } | null } | null }> }> };
 
 export type FooterQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8041,7 +8187,7 @@ export type FooterQueryVariables = Exact<{
 }>;
 
 
-export type FooterQuery = { __typename?: 'Query', layout?: { __typename?: 'LayoutRecord', footerSubtitle?: string | null, footerLogo?: { __typename?: 'FileField', url: string, height?: number | null, width?: number | null } | null, socialMediaLinks: Array<{ __typename?: 'SocialMediaIconRecord', url: string, name?: string | null, id: string, icon: { __typename?: 'FileField', url: string, height?: number | null, width?: number | null } }>, footerLinks: Array<{ __typename?: 'LegalPageRecord', id: string, slug: string, title: string }> } | null };
+export type FooterQuery = { __typename?: 'Query', layout?: { __typename?: 'LayoutRecord', footerSubtitle?: string | null, footerLogo?: { __typename?: 'FileField', url: string, height?: number | null, width?: number | null } | null, socialMediaLinks: Array<{ __typename?: 'SocialMediaIconRecord', url?: string | null, name?: string | null, id: string, icon?: { __typename?: 'FileField', url: string, height?: number | null, width?: number | null } | null }>, footerLinks: Array<{ __typename?: 'LegalPageRecord', id: string, slug?: string | null, title?: string | null }> } | null };
 
 export type LegalQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -8050,7 +8196,7 @@ export type LegalQueryVariables = Exact<{
 }>;
 
 
-export type LegalQuery = { __typename?: 'Query', legalPage?: { __typename?: 'LegalPageRecord', content: { __typename?: 'LegalPageModelContentField', value: unknown } } | null };
+export type LegalQuery = { __typename?: 'Query', legalPage?: { __typename?: 'LegalPageRecord', content?: { __typename?: 'LegalPageModelContentField', value: unknown } | null } | null };
 
 export type LocalesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -8063,7 +8209,7 @@ export type MemberQueryVariables = Exact<{
 }>;
 
 
-export type MemberQuery = { __typename?: 'Query', member?: { __typename?: 'MemberRecord', _publishedAt?: string | null, iframeUrl?: string | null } | null };
+export type MemberQuery = { __typename?: 'Query', member?: { __typename?: 'MemberRecord', _publishedAt: string, iframeUrl?: string | null } | null };
 
 export type MenuQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8071,7 +8217,7 @@ export type MenuQueryVariables = Exact<{
 }>;
 
 
-export type MenuQuery = { __typename?: 'Query', layout?: { __typename?: 'LayoutRecord', logo: { __typename?: 'FileField', url: string, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null }, menu: Array<{ __typename?: 'CircleMenuItemRecord', id: string, _modelApiKey: string, title: string, redirectUrl: string } | { __typename?: 'MenuDropdownRecord', id: string, title: string, _modelApiKey: string, items: Array<{ __typename?: 'MenuItemRecord', id: string, title: string, _modelApiKey: string, page: { __typename?: 'PageRecord', slug: string } }> } | { __typename?: 'MenuItemRecord', id: string, title: string, _modelApiKey: string, page: { __typename?: 'PageRecord', slug: string } }>, notification?: { __typename?: 'LayoutModelNotificationField', value: unknown } | null } | null, _site: { __typename?: 'Site', locales: Array<SiteLocale> } };
+export type MenuQuery = { __typename?: 'Query', layout?: { __typename?: 'LayoutRecord', logo?: { __typename?: 'FileField', url: string, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } | null, menu: Array<{ __typename?: 'CircleMenuItemRecord', id: string, _modelApiKey: string, title?: string | null, redirectUrl?: string | null } | { __typename?: 'MenuDropdownRecord', id: string, title?: string | null, _modelApiKey: string, items: Array<{ __typename?: 'MenuItemRecord', id: string, title?: string | null, _modelApiKey: string, page?: { __typename?: 'PageRecord', slug?: string | null } | null }> } | { __typename?: 'MenuItemRecord', id: string, title?: string | null, _modelApiKey: string, page?: { __typename?: 'PageRecord', slug?: string | null } | null }>, notification?: { __typename?: 'LayoutModelNotificationField', value: unknown } | null } | null, _site: { __typename?: 'Site', locales: Array<SiteLocale> } };
 
 export type DatoImage_ResponsiveImageFragment = { __typename?: 'ResponsiveImage', src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null };
 
@@ -8082,7 +8228,7 @@ export type PageQueryVariables = Exact<{
 }>;
 
 
-export type PageQuery = { __typename?: 'Query', page?: { __typename?: 'PageRecord', id: string, label: string, _modelApiKey: string, sections: Array<{ __typename?: 'AboutIntroRecord', id: string, _modelApiKey: string, preHeader?: string | null, header: string, subheader?: string | null, introductionText?: { __typename?: 'AboutIntroModelIntroductionTextField', value: unknown } | null, images: Array<{ __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } }> } | { __typename?: 'AllAgendaTabsSectionRecord' } | { __typename?: 'AllCategoryAwardsSectionRecord' } | { __typename?: 'BannerBlockRecord', _modelApiKey: string, id: string, objectFit: string, layout: string, height: string, width: string, minHeight: string, minHeightDimensionUnit: string, widthDimensionUnit: string, heightDimensionUnit: string, bannerUrl: string, bannerImage: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } } | { __typename?: 'BrandSectionRecord', _modelApiKey: string, id: string, displayOptions: string, brand: Array<{ __typename?: 'BrandRecord', _modelApiKey: string, brandName: string, brandUrl?: string | null, id: string, brandLogo: { __typename?: 'FileField', url: string } }> } | { __typename?: 'ChangelogSectionRecord', id: string, _modelApiKey: string, subtitle?: string | null, title: string, featuredVersions: Array<{ __typename?: 'ChangeLogRecord', timeOfRelease: string, versionName: string, slug: string, id: string, _modelApiKey: string }> } | { __typename?: 'DetailSectionRecord', _modelApiKey: string, id: string, imagePosition?: boolean | null, details: { __typename?: 'DetailSectionModelDetailsField', value: unknown }, image: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } } | { __typename?: 'EmptyHeroSectionRecord', _modelApiKey: string, id: string, displayOptions: string, bannerImageDesktop: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } }, bannerImageTablet: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } }, bannerImageMobile: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } } | { __typename?: 'FaqSectionRecord', _modelApiKey: string, displayOptions: string, id: string, title: string, subtitle?: string | null, questions: Array<{ __typename?: 'QuestionRecord', question: string, id: string, answer: { __typename?: 'QuestionModelAnswerField', value: unknown } }> } | { __typename?: 'FeatureListSectionRecord', _modelApiKey: string, id: string, featuresHeader: string, featuresSubheader?: string | null, displayOption: string, feature: Array<{ __typename?: 'FeatureRecord', _modelApiKey: string, id: string, link?: string | null, featureTitle: string, featureDescription: string, featureIcon: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename?: 'FeaturedAcategorySectionRecord', _modelApiKey: string, id: string, featuredAcategoryHeader: string, featuredAcategorySubheader?: string | null, displayOption: string, featuredAcategory: Array<{ __typename?: 'AcategoryRecord', name: string, slug: string, description: string, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename?: 'FeaturedPostsSectionRecord', _modelApiKey: string, id: string, featuredPostsHeader: string, featuredPostsSubheader?: string | null, displayOptions: string, featuredPosts: Array<{ __typename?: 'PostRecord', _publishedAt?: string | null, slug: string, id: string, title: string, tags: Array<{ __typename?: 'TagRecord', tag: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } | null } | null, author?: { __typename?: 'AuthorRecord', name: string, bio: string, slug: string, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } } | null }> } | { __typename?: 'HeroSectionRecord', _modelApiKey: string, id: string, heroSubtitle?: string | null, heroTitle: string, displayOptions: string, buttons: Array<{ __typename?: 'ButtonRecord', id: string, label: string, primary?: boolean | null, url?: string | null }>, heroImage?: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', webpSrcSet: string, srcSet: string, sizes: string, src: string, width: number, height: number, base64?: string | null, aspectRatio: number, alt?: string | null, title?: string | null } } | null } | { __typename?: 'IframeBlockRecord', _modelApiKey: string, id: string, iframeUrl: string, height: string, width: string, minHeight: string, minHeightDimensionUnit: string, widthDimensionUnit: string, heightDimensionUnit: string, align: string } | { __typename?: 'IvsLiveStageRecord', _modelApiKey: string, id: string, title: string, rtmpUrl: string, iframeUrl: string, iframeHeight: string, iframeWidth: string, iframeMinHeight: string } | { __typename?: 'MuxLiveStreamRecord', _modelApiKey: string, id: string, title: string, playbackId: string, placeholderUrl: string, streamType: string, iframeUrl: string, iframeHeight: string, iframeWidth: string, iframeMinHeight: string } | { __typename?: 'PricingSectionRecord', _modelApiKey: string, id: string, pricingSectionHeader: string, pricingSectionSubheader?: string | null, displayOption: string, plans: Array<{ __typename?: 'PricingTierRecord', id: string, yearlyPrice: number, monthlyPrice: number, tierName: string, slug: string, planFeatures: string, tierDescription: { __typename?: 'PricingTierModelTierDescriptionField', value: unknown } }> } | { __typename?: 'RedirectSectionRecord', id: string, _modelApiKey: string, slugToRedirectTo: string } | { __typename?: 'ReviewSectionRecord', _modelApiKey: string, id: string, reviewSectionHeader: string, reviewSectionSubheader?: string | null, displayOptions: string, reviews: Array<{ __typename?: 'TestimonialRecord', id: string, rating: number, reviewerName: string, reviewerTitle?: string | null, review: { __typename?: 'TestimonialModelReviewField', value: unknown, links: Array<string>, blocks: Array<string> }, reviewerPicture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename?: 'SpacerRecord', id: string, _modelApiKey: string, space: string, extraMargin?: string | null } | { __typename?: 'SpeakerSectionRecord', _modelApiKey: string, id: string, displayOptions: string, title: string, subtitle?: string | null, showcasedSpeakers: Array<{ __typename?: 'SpeakerRecord', name: string, id: string, slug: string, jobTitle: string, biography: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, start: string, end?: string | null, pageType: string, buttonName: string, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate: string, slug: string }>, stage: { __typename?: 'PageRecord', id: string, slug: string } | { __typename?: 'StageRecord', id: string, name: string, slug: string }, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> }, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } }> } | { __typename?: 'SpeakersIntroRecord', id: string, _modelApiKey: string, preHeader?: string | null, header: string, subheader?: string | null, introductionText?: { __typename?: 'SpeakersIntroModelIntroductionTextField', value: unknown } | null } | { __typename?: 'StatsSectionRecord', _modelApiKey: string, id: string, title: string, subtitle?: string | null, statistic: Array<{ __typename?: 'StatisticRecord', id: string, label: string, quantity: number, icon: { __typename?: 'FileField', url: string } }> } | { __typename?: 'TeamSectionRecord', _modelApiKey: string, id: string, displayOptions: string, title: string, subtitle?: string | null, showcasedMembers: Array<{ __typename?: 'AuthorRecord', name: string, id: string, slug: string, bio: string, description: string, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | { __typename?: 'VideoBlockRecord' } | { __typename?: 'VideoSectionRecord', _modelApiKey: string, id: string, videoHeader: string, videoSubheader?: string | null, video: { __typename?: 'VideoField', providerUid: string, provider: string, thumbnailUrl: string }, videoThumbnail: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } } }> } | null };
+export type PageQuery = { __typename?: 'Query', page?: { __typename?: 'PageRecord', id: string, label?: string | null, _modelApiKey: string, sections: Array<{ __typename?: 'AboutIntroRecord', id: string, _modelApiKey: string, preHeader?: string | null, header?: string | null, subheader?: string | null, introductionText?: { __typename?: 'AboutIntroModelIntroductionTextField', value: unknown } | null, images: Array<{ __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null }> } | { __typename?: 'AllAgendaTabsSectionRecord' } | { __typename?: 'AllCategoryAwardsSectionRecord' } | { __typename?: 'BannerBlockRecord', _modelApiKey: string, id: string, objectFit?: string | null, layout?: string | null, height?: string | null, width?: string | null, minHeight?: string | null, minHeightDimensionUnit?: string | null, widthDimensionUnit?: string | null, heightDimensionUnit?: string | null, bannerUrl?: string | null, bannerImage?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } | null } | { __typename?: 'BrandSectionRecord', _modelApiKey: string, id: string, displayOptions?: string | null, brand: Array<{ __typename?: 'BrandRecord', _modelApiKey: string, brandName?: string | null, brandUrl?: string | null, id: string, brandLogo?: { __typename?: 'FileField', url: string } | null }> } | { __typename?: 'ChangelogSectionRecord', id: string, _modelApiKey: string, subtitle?: string | null, title?: string | null, featuredVersions: Array<{ __typename?: 'ChangeLogRecord', timeOfRelease?: string | null, versionName?: string | null, slug?: string | null, id: string, _modelApiKey: string }> } | { __typename?: 'DetailSectionRecord', _modelApiKey: string, id: string, imagePosition?: boolean | null, details?: { __typename?: 'DetailSectionModelDetailsField', value: unknown } | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } | null } | { __typename?: 'EmptyHeroSectionRecord', _modelApiKey: string, id: string, displayOptions?: string | null, bannerImageDesktop?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } | null, bannerImageTablet?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } | null, bannerImageMobile?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } | null } | { __typename?: 'FaqSectionRecord', _modelApiKey: string, displayOptions?: string | null, id: string, title?: string | null, subtitle?: string | null, questions: Array<{ __typename?: 'QuestionRecord', question?: string | null, id: string, answer?: { __typename?: 'QuestionModelAnswerField', value: unknown } | null }> } | { __typename?: 'FeatureListSectionRecord', _modelApiKey: string, id: string, featuresHeader?: string | null, featuresSubheader?: string | null, displayOption?: string | null, feature: Array<{ __typename?: 'FeatureRecord', _modelApiKey: string, id: string, link?: string | null, featureTitle?: string | null, featureDescription?: string | null, featureIcon?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } | null }> } | { __typename?: 'FeaturedAcategorySectionRecord', _modelApiKey: string, id: string, featuredAcategoryHeader?: string | null, featuredAcategorySubheader?: string | null, displayOption?: string | null, featuredAcategory: Array<{ __typename?: 'AcategoryRecord', name?: string | null, slug?: string | null, description?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } | null }> } | { __typename?: 'FeaturedPostsSectionRecord', _modelApiKey: string, id: string, featuredPostsHeader?: string | null, featuredPostsSubheader?: string | null, displayOptions?: string | null, featuredPosts: Array<{ __typename?: 'PostRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, tags: Array<{ __typename?: 'TagRecord', tag?: string | null }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } | null } | null, author?: { __typename?: 'AuthorRecord', name?: string | null, bio?: string | null, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } | null } | null }> } | { __typename?: 'FeaturedTalksSectionRecord' } | { __typename?: 'HeroSectionRecord', _modelApiKey: string, id: string, heroSubtitle?: string | null, heroTitle?: string | null, displayOptions?: string | null, buttons: Array<{ __typename?: 'ButtonRecord', id: string, label?: string | null, primary?: boolean | null, url?: string | null }>, heroImage?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', webpSrcSet: string, srcSet: string, sizes: string, src: string, width: number, height: number, base64?: string | null, aspectRatio: number, alt?: string | null, title?: string | null } | null } | null } | { __typename?: 'IframeBlockRecord', _modelApiKey: string, id: string, iframeUrl?: string | null, height?: string | null, width?: string | null, minHeight?: string | null, minHeightDimensionUnit?: string | null, widthDimensionUnit?: string | null, heightDimensionUnit?: string | null, align?: string | null } | { __typename?: 'IvsLiveStageRecord', _modelApiKey: string, id: string, title?: string | null, rtmpUrl?: string | null, iframeUrl?: string | null, iframeHeight?: string | null, iframeWidth?: string | null, iframeMinHeight?: string | null } | { __typename?: 'MuxLiveStreamRecord', _modelApiKey: string, id: string, title?: string | null, playbackId?: string | null, placeholderUrl?: string | null, streamType?: string | null, iframeUrl?: string | null, iframeHeight?: string | null, iframeWidth?: string | null, iframeMinHeight?: string | null } | { __typename?: 'PricingSectionRecord', _modelApiKey: string, id: string, pricingSectionHeader?: string | null, pricingSectionSubheader?: string | null, displayOption?: string | null, plans: Array<{ __typename?: 'PricingTierRecord', id: string, yearlyPrice?: number | null, monthlyPrice?: number | null, tierName?: string | null, slug?: string | null, planFeatures?: string | null, tierDescription?: { __typename?: 'PricingTierModelTierDescriptionField', value: unknown } | null }> } | { __typename?: 'RedirectSectionRecord', id: string, _modelApiKey: string, slugToRedirectTo?: string | null } | { __typename?: 'ReviewSectionRecord', _modelApiKey: string, id: string, reviewSectionHeader?: string | null, reviewSectionSubheader?: string | null, displayOptions?: string | null, reviews: Array<{ __typename?: 'TestimonialRecord', id: string, rating?: number | null, reviewerName?: string | null, reviewerTitle?: string | null, review?: { __typename?: 'TestimonialModelReviewField', value: unknown, links: Array<string>, blocks: Array<string> } | null, reviewerPicture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } | null }> } | { __typename?: 'SpacerRecord', id: string, _modelApiKey: string, space?: string | null, extraMargin?: string | null } | { __typename?: 'SpeakerSectionRecord', _modelApiKey: string, id: string, displayOptions?: string | null, title?: string | null, subtitle?: string | null, showcasedSpeakers: Array<{ __typename?: 'SpeakerRecord', name?: string | null, id: string, slug?: string | null, jobTitle?: string | null, biography?: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, start?: string | null, end?: string | null, pageType?: string | null, buttonName?: string | null, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate?: string | null, slug?: string | null }>, stage?: { __typename?: 'PageRecord', id: string, slug?: string | null } | { __typename?: 'StageRecord', id: string, name?: string | null, slug?: string | null } | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } | null }> } | { __typename?: 'SpeakersIntroRecord', id: string, _modelApiKey: string, preHeader?: string | null, header?: string | null, subheader?: string | null, introductionText?: { __typename?: 'SpeakersIntroModelIntroductionTextField', value: unknown } | null } | { __typename?: 'StageScehduleItemRecord', id: string, _modelApiKey: string, featuredTalksHeading?: string | null, returnToAgenda?: { __typename?: 'ButtonRecord', id: string, label?: string | null, url?: string | null, primary?: boolean | null } | null, talks: Array<{ __typename?: 'TalkRecord', id: string, title?: string | null, slug?: string | null, start?: string | null, end?: string | null, pageType?: string | null, buttonName?: string | null, content?: { __typename?: 'TalkModelContentField', value: unknown } | null, stage?: { __typename?: 'PageRecord', slug?: string | null } | { __typename?: 'StageRecord', slug?: string | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: number, height: number, alt?: string | null } | null } | null }> }> } | { __typename?: 'StatsSectionRecord', _modelApiKey: string, id: string, title?: string | null, subtitle?: string | null, statistic: Array<{ __typename?: 'StatisticRecord', id: string, label?: string | null, quantity?: number | null, icon?: { __typename?: 'FileField', url: string } | null }> } | { __typename?: 'TeamSectionRecord', _modelApiKey: string, id: string, displayOptions?: string | null, title?: string | null, subtitle?: string | null, showcasedMembers: Array<{ __typename?: 'AuthorRecord', name?: string | null, id: string, slug?: string | null, bio?: string | null, description?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } | null }> } | { __typename?: 'VideoBlockRecord' } | { __typename?: 'VideoSectionRecord', _modelApiKey: string, id: string, videoHeader?: string | null, videoSubheader?: string | null, video?: { __typename?: 'VideoField', providerUid: string, provider: string, thumbnailUrl: string } | null, videoThumbnail?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', webpSrcSet: string, src: string, srcSet: string, base64?: string | null, width: number, height: number, alt?: string | null, title?: string | null } | null } | null }> } | null };
 
 export type PostQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -8091,7 +8237,7 @@ export type PostQueryVariables = Exact<{
 }>;
 
 
-export type PostQuery = { __typename?: 'Query', post?: { __typename?: 'PostRecord', _publishedAt?: string | null, title: string, author?: { __typename?: 'AuthorRecord', name: string, bio: string, slug: string, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } } } | null, tags: Array<{ __typename?: 'TagRecord', id: string, tag: string, slug: string }>, content: { __typename?: 'PostModelContentField', value: unknown, links: Array<{ __typename: 'PostRecord', _publishedAt?: string | null, slug: string, id: string, title: string, tags: Array<{ __typename?: 'TagRecord', tag: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, author?: { __typename?: 'AuthorRecord', name: string, bio: string, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } } } | null }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> } } | null };
+export type PostQuery = { __typename?: 'Query', post?: { __typename?: 'PostRecord', _publishedAt: string, title?: string | null, author?: { __typename?: 'AuthorRecord', name?: string | null, bio?: string | null, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, tags: Array<{ __typename?: 'TagRecord', id: string, tag?: string | null, slug?: string | null }>, content?: { __typename?: 'PostModelContentField', value: unknown, links: Array<{ __typename: 'PostRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, tags: Array<{ __typename?: 'TagRecord', tag?: string | null }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, author?: { __typename?: 'AuthorRecord', name?: string | null, bio?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null } | null };
 
 export type PostsQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8100,7 +8246,7 @@ export type PostsQueryVariables = Exact<{
 }>;
 
 
-export type PostsQuery = { __typename?: 'Query', allPosts: Array<{ __typename?: 'PostRecord', _publishedAt?: string | null, slug: string, id: string, title: string, tags: Array<{ __typename?: 'TagRecord', tag: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, author?: { __typename?: 'AuthorRecord', name: string, slug: string, bio: string, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } } } | null }>, _allPostsMeta: { __typename?: 'CollectionMetadata', count: number } };
+export type PostsQuery = { __typename?: 'Query', allPosts: Array<{ __typename?: 'PostRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, tags: Array<{ __typename?: 'TagRecord', tag?: string | null }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, author?: { __typename?: 'AuthorRecord', name?: string | null, slug?: string | null, bio?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null }>, _allPostsMeta: { __typename?: 'CollectionMetadata', count: number } };
 
 export type SocialFeedQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8108,7 +8254,7 @@ export type SocialFeedQueryVariables = Exact<{
 }>;
 
 
-export type SocialFeedQuery = { __typename?: 'Query', socialFeed?: { __typename?: 'SocialFeedRecord', _publishedAt?: string | null, iframe?: string | null } | null };
+export type SocialFeedQuery = { __typename?: 'Query', socialFeed?: { __typename?: 'SocialFeedRecord', _publishedAt: string, iframe?: string | null } | null };
 
 export type SpeakerQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -8118,7 +8264,7 @@ export type SpeakerQueryVariables = Exact<{
 }>;
 
 
-export type SpeakerQuery = { __typename?: 'Query', speaker?: { __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null }, biography: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, start: string, end?: string | null, pageType: string, buttonName: string, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate: string, slug: string }>, stage: { __typename?: 'PageRecord', id: string, slug: string } | { __typename?: 'StageRecord', id: string, name: string, slug: string }, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> }, _allReferencingTalks: Array<{ __typename?: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, start: string, end?: string | null, pageType: string, buttonName: string, content: { __typename?: 'TalkModelContentField', value: unknown, links: Array<{ __typename: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, dateTags: Array<{ __typename?: 'DateTagRecord', eventDate: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, biography: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, start: string, end?: string | null, pageType: string, buttonName: string, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate: string, slug: string }>, stage: { __typename?: 'PageRecord', id: string, slug: string } | { __typename?: 'StageRecord', id: string, name: string, slug: string }, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> }, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> }, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate: string, slug: string }>, stage: { __typename?: 'PageRecord', id: string, slug: string } | { __typename?: 'StageRecord', id: string, name: string, slug: string }, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, _allReferencingTalksMeta: { __typename?: 'CollectionMetadata', count: number } } | null };
+export type SpeakerQuery = { __typename?: 'Query', speaker?: { __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null, biography?: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, start?: string | null, end?: string | null, pageType?: string | null, buttonName?: string | null, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate?: string | null, slug?: string | null }>, stage?: { __typename?: 'PageRecord', id: string, slug?: string | null } | { __typename?: 'StageRecord', id: string, name?: string | null, slug?: string | null } | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null, _allReferencingTalks: Array<{ __typename?: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, start?: string | null, end?: string | null, pageType?: string | null, buttonName?: string | null, content?: { __typename?: 'TalkModelContentField', value: unknown, links: Array<{ __typename: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, dateTags: Array<{ __typename?: 'DateTagRecord', eventDate?: string | null }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, biography?: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, start?: string | null, end?: string | null, pageType?: string | null, buttonName?: string | null, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate?: string | null, slug?: string | null }>, stage?: { __typename?: 'PageRecord', id: string, slug?: string | null } | { __typename?: 'StageRecord', id: string, name?: string | null, slug?: string | null } | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate?: string | null, slug?: string | null }>, stage?: { __typename?: 'PageRecord', id: string, slug?: string | null } | { __typename?: 'StageRecord', id: string, name?: string | null, slug?: string | null } | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, _allReferencingTalksMeta: { __typename?: 'CollectionMetadata', count: number } } | null };
 
 export type SpeakerPageQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8126,7 +8272,7 @@ export type SpeakerPageQueryVariables = Exact<{
 }>;
 
 
-export type SpeakerPageQuery = { __typename?: 'Query', page?: { __typename?: 'PageRecord', sections: Array<{ __typename?: 'AboutIntroRecord' } | { __typename?: 'AllAgendaTabsSectionRecord' } | { __typename?: 'AllCategoryAwardsSectionRecord' } | { __typename?: 'BannerBlockRecord' } | { __typename?: 'BrandSectionRecord' } | { __typename?: 'ChangelogSectionRecord' } | { __typename?: 'DetailSectionRecord' } | { __typename?: 'EmptyHeroSectionRecord' } | { __typename?: 'FaqSectionRecord', _modelApiKey: string, displayOptions: string, id: string, title: string, subtitle?: string | null, questions: Array<{ __typename?: 'QuestionRecord', question: string, id: string, answer: { __typename?: 'QuestionModelAnswerField', value: unknown } }> } | { __typename?: 'FeatureListSectionRecord' } | { __typename?: 'FeaturedAcategorySectionRecord' } | { __typename?: 'FeaturedPostsSectionRecord' } | { __typename?: 'HeroSectionRecord' } | { __typename?: 'IframeBlockRecord' } | { __typename?: 'IvsLiveStageRecord' } | { __typename?: 'MuxLiveStreamRecord' } | { __typename?: 'PricingSectionRecord' } | { __typename?: 'RedirectSectionRecord' } | { __typename?: 'ReviewSectionRecord' } | { __typename?: 'SpacerRecord' } | { __typename?: 'SpeakerSectionRecord', _modelApiKey: string, id: string, displayOptions: string, title: string, subtitle?: string | null, showcasedSpeakers: Array<{ __typename?: 'SpeakerRecord', name: string, id: string, slug: string, jobTitle: string, biography: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, start: string, end?: string | null, pageType: string, buttonName: string, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate: string, slug: string }>, stage: { __typename?: 'PageRecord', id: string, slug: string } | { __typename?: 'StageRecord', id: string, name: string, slug: string }, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> }, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> } | { __typename?: 'SpeakersIntroRecord', id: string, _modelApiKey: string, preHeader?: string | null, header: string, subheader?: string | null, introductionText?: { __typename?: 'SpeakersIntroModelIntroductionTextField', value: unknown } | null } | { __typename?: 'StatsSectionRecord', _modelApiKey: string, id: string, title: string, subtitle?: string | null, statistic: Array<{ __typename?: 'StatisticRecord', id: string, label: string, quantity: number, icon: { __typename?: 'FileField', url: string } }> } | { __typename?: 'TeamSectionRecord' } | { __typename?: 'VideoBlockRecord' } | { __typename?: 'VideoSectionRecord' }> } | null };
+export type SpeakerPageQuery = { __typename?: 'Query', page?: { __typename?: 'PageRecord', sections: Array<{ __typename?: 'AboutIntroRecord' } | { __typename?: 'AllAgendaTabsSectionRecord' } | { __typename?: 'AllCategoryAwardsSectionRecord' } | { __typename?: 'BannerBlockRecord' } | { __typename?: 'BrandSectionRecord' } | { __typename?: 'ChangelogSectionRecord' } | { __typename?: 'DetailSectionRecord' } | { __typename?: 'EmptyHeroSectionRecord' } | { __typename?: 'FaqSectionRecord', _modelApiKey: string, displayOptions?: string | null, id: string, title?: string | null, subtitle?: string | null, questions: Array<{ __typename?: 'QuestionRecord', question?: string | null, id: string, answer?: { __typename?: 'QuestionModelAnswerField', value: unknown } | null }> } | { __typename?: 'FeatureListSectionRecord' } | { __typename?: 'FeaturedAcategorySectionRecord' } | { __typename?: 'FeaturedPostsSectionRecord' } | { __typename?: 'FeaturedTalksSectionRecord' } | { __typename?: 'HeroSectionRecord' } | { __typename?: 'IframeBlockRecord' } | { __typename?: 'IvsLiveStageRecord' } | { __typename?: 'MuxLiveStreamRecord' } | { __typename?: 'PricingSectionRecord' } | { __typename?: 'RedirectSectionRecord' } | { __typename?: 'ReviewSectionRecord' } | { __typename?: 'SpacerRecord' } | { __typename?: 'SpeakerSectionRecord', _modelApiKey: string, id: string, displayOptions?: string | null, title?: string | null, subtitle?: string | null, showcasedSpeakers: Array<{ __typename?: 'SpeakerRecord', name?: string | null, id: string, slug?: string | null, jobTitle?: string | null, biography?: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, start?: string | null, end?: string | null, pageType?: string | null, buttonName?: string | null, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate?: string | null, slug?: string | null }>, stage?: { __typename?: 'PageRecord', id: string, slug?: string | null } | { __typename?: 'StageRecord', id: string, name?: string | null, slug?: string | null } | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> } | { __typename?: 'SpeakersIntroRecord', id: string, _modelApiKey: string, preHeader?: string | null, header?: string | null, subheader?: string | null, introductionText?: { __typename?: 'SpeakersIntroModelIntroductionTextField', value: unknown } | null } | { __typename?: 'StageScehduleItemRecord' } | { __typename?: 'StatsSectionRecord', _modelApiKey: string, id: string, title?: string | null, subtitle?: string | null, statistic: Array<{ __typename?: 'StatisticRecord', id: string, label?: string | null, quantity?: number | null, icon?: { __typename?: 'FileField', url: string } | null }> } | { __typename?: 'TeamSectionRecord' } | { __typename?: 'VideoBlockRecord' } | { __typename?: 'VideoSectionRecord' }> } | null };
 
 export type AwardsCategorySlugQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8135,7 +8281,7 @@ export type AwardsCategorySlugQueryVariables = Exact<{
 }>;
 
 
-export type AwardsCategorySlugQuery = { __typename?: 'Query', allAcategories: Array<{ __typename?: 'AcategoryRecord', _publishedAt?: string | null, slug: string, id: string, name: string }>, _allAcategoriesMeta: { __typename?: 'CollectionMetadata', count: number } };
+export type AwardsCategorySlugQuery = { __typename?: 'Query', allAcategories: Array<{ __typename?: 'AcategoryRecord', _publishedAt: string, slug?: string | null, id: string, name?: string | null }>, _allAcategoriesMeta: { __typename?: 'CollectionMetadata', count: number } };
 
 export type AwardsAtagSlugQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8143,7 +8289,7 @@ export type AwardsAtagSlugQueryVariables = Exact<{
 }>;
 
 
-export type AwardsAtagSlugQuery = { __typename?: 'Query', allAtags: Array<{ __typename?: 'AtagRecord', _publishedAt?: string | null, slug: string, id: string }>, _allAtagsMeta: { __typename?: 'CollectionMetadata', count: number } };
+export type AwardsAtagSlugQuery = { __typename?: 'Query', allAtags: Array<{ __typename?: 'AtagRecord', _publishedAt: string, slug?: string | null, id: string }>, _allAtagsMeta: { __typename?: 'CollectionMetadata', count: number } };
 
 export type AuthorsSlugQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8151,7 +8297,7 @@ export type AuthorsSlugQueryVariables = Exact<{
 }>;
 
 
-export type AuthorsSlugQuery = { __typename?: 'Query', allAuthors: Array<{ __typename?: 'AuthorRecord', slug: string }> };
+export type AuthorsSlugQuery = { __typename?: 'Query', allAuthors: Array<{ __typename?: 'AuthorRecord', slug?: string | null }> };
 
 export type AwardsSlugQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8159,7 +8305,7 @@ export type AwardsSlugQueryVariables = Exact<{
 }>;
 
 
-export type AwardsSlugQuery = { __typename?: 'Query', allAwards: Array<{ __typename?: 'AwardRecord', _publishedAt?: string | null, slug: string, id: string, title: string }>, _allAwardsMeta: { __typename?: 'CollectionMetadata', count: number } };
+export type AwardsSlugQuery = { __typename?: 'Query', allAwards: Array<{ __typename?: 'AwardRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null }>, _allAwardsMeta: { __typename?: 'CollectionMetadata', count: number } };
 
 export type ChangeLogSlugQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8167,7 +8313,7 @@ export type ChangeLogSlugQueryVariables = Exact<{
 }>;
 
 
-export type ChangeLogSlugQuery = { __typename?: 'Query', allChangeLogs: Array<{ __typename?: 'ChangeLogRecord', slug: string }> };
+export type ChangeLogSlugQuery = { __typename?: 'Query', allChangeLogs: Array<{ __typename?: 'ChangeLogRecord', slug?: string | null }> };
 
 export type DocumentationSlugQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8175,7 +8321,7 @@ export type DocumentationSlugQueryVariables = Exact<{
 }>;
 
 
-export type DocumentationSlugQuery = { __typename?: 'Query', allDocumentationPages: Array<{ __typename?: 'DocumentationPageRecord', title: string, slug: string }> };
+export type DocumentationSlugQuery = { __typename?: 'Query', allDocumentationPages: Array<{ __typename?: 'DocumentationPageRecord', title?: string | null, slug?: string | null }> };
 
 export type PageSlugQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8183,7 +8329,7 @@ export type PageSlugQueryVariables = Exact<{
 }>;
 
 
-export type PageSlugQuery = { __typename?: 'Query', allPages: Array<{ __typename?: 'PageRecord', slug: string }> };
+export type PageSlugQuery = { __typename?: 'Query', allPages: Array<{ __typename?: 'PageRecord', slug?: string | null }> };
 
 export type PostsSlugQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8191,7 +8337,7 @@ export type PostsSlugQueryVariables = Exact<{
 }>;
 
 
-export type PostsSlugQuery = { __typename?: 'Query', allPosts: Array<{ __typename?: 'PostRecord', _publishedAt?: string | null, slug: string }> };
+export type PostsSlugQuery = { __typename?: 'Query', allPosts: Array<{ __typename?: 'PostRecord', _publishedAt: string, slug?: string | null }> };
 
 export type SpeakerSlugQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8199,7 +8345,7 @@ export type SpeakerSlugQueryVariables = Exact<{
 }>;
 
 
-export type SpeakerSlugQuery = { __typename?: 'Query', allSpeakers: Array<{ __typename?: 'SpeakerRecord', slug: string }> };
+export type SpeakerSlugQuery = { __typename?: 'Query', allSpeakers: Array<{ __typename?: 'SpeakerRecord', slug?: string | null }> };
 
 export type StageSlugQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8207,7 +8353,7 @@ export type StageSlugQueryVariables = Exact<{
 }>;
 
 
-export type StageSlugQuery = { __typename?: 'Query', allStages: Array<{ __typename?: 'StageRecord', slug: string }> };
+export type StageSlugQuery = { __typename?: 'Query', allStages: Array<{ __typename?: 'StageRecord', slug?: string | null }> };
 
 export type TagsSlugQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8215,7 +8361,7 @@ export type TagsSlugQueryVariables = Exact<{
 }>;
 
 
-export type TagsSlugQuery = { __typename?: 'Query', allTags: Array<{ __typename?: 'TagRecord', slug: string }> };
+export type TagsSlugQuery = { __typename?: 'Query', allTags: Array<{ __typename?: 'TagRecord', slug?: string | null }> };
 
 export type TalkSlugQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8223,7 +8369,7 @@ export type TalkSlugQueryVariables = Exact<{
 }>;
 
 
-export type TalkSlugQuery = { __typename?: 'Query', allTalks: Array<{ __typename?: 'TalkRecord', slug: string }> };
+export type TalkSlugQuery = { __typename?: 'Query', allTalks: Array<{ __typename?: 'TalkRecord', slug?: string | null }> };
 
 export type StageQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -8232,7 +8378,7 @@ export type StageQueryVariables = Exact<{
 }>;
 
 
-export type StageQuery = { __typename?: 'Query', stage?: { __typename?: 'StageRecord', _publishedAt?: string | null, name: string, streamKey?: string | null, iframeUrl?: string | null, talk: Array<{ __typename?: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, start: string, end?: string | null, pageType: string, buttonName: string, content: { __typename?: 'TalkModelContentField', value: unknown, links: Array<{ __typename: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, dateTags: Array<{ __typename?: 'DateTagRecord', eventDate: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, biography: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, start: string, end?: string | null, pageType: string, buttonName: string, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate: string, slug: string }>, stage: { __typename?: 'PageRecord', id: string, slug: string } | { __typename?: 'StageRecord', id: string, name: string, slug: string }, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> }, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> }, stage: { __typename?: 'PageRecord', id: string, slug: string } | { __typename?: 'StageRecord', id: string, name: string, slug: string }, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate: string, slug: string }>, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, biography: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, start: string, end?: string | null, pageType: string, buttonName: string, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate: string, slug: string }>, stage: { __typename?: 'PageRecord', id: string, slug: string } | { __typename?: 'StageRecord', id: string, name: string, slug: string }, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> }, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }> } | null };
+export type StageQuery = { __typename?: 'Query', stage?: { __typename?: 'StageRecord', _publishedAt: string, name?: string | null, streamKey?: string | null, iframeUrl?: string | null, talk: Array<{ __typename?: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, start?: string | null, end?: string | null, pageType?: string | null, buttonName?: string | null, content?: { __typename?: 'TalkModelContentField', value: unknown, links: Array<{ __typename: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, dateTags: Array<{ __typename?: 'DateTagRecord', eventDate?: string | null }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, biography?: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, start?: string | null, end?: string | null, pageType?: string | null, buttonName?: string | null, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate?: string | null, slug?: string | null }>, stage?: { __typename?: 'PageRecord', id: string, slug?: string | null } | { __typename?: 'StageRecord', id: string, name?: string | null, slug?: string | null } | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null, stage?: { __typename?: 'PageRecord', id: string, slug?: string | null } | { __typename?: 'StageRecord', id: string, name?: string | null, slug?: string | null } | null, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate?: string | null, slug?: string | null }>, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, biography?: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, start?: string | null, end?: string | null, pageType?: string | null, buttonName?: string | null, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate?: string | null, slug?: string | null }>, stage?: { __typename?: 'PageRecord', id: string, slug?: string | null } | { __typename?: 'StageRecord', id: string, name?: string | null, slug?: string | null } | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }> } | null };
 
 export type StagesQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8241,7 +8387,7 @@ export type StagesQueryVariables = Exact<{
 }>;
 
 
-export type StagesQuery = { __typename?: 'Query', allStages: Array<{ __typename?: 'StageRecord', _publishedAt?: string | null, slug: string, id: string, name: string, streamKey?: string | null, iframeUrl?: string | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null }>, _allStagesMeta: { __typename?: 'CollectionMetadata', count: number } };
+export type StagesQuery = { __typename?: 'Query', allStages: Array<{ __typename?: 'StageRecord', _publishedAt: string, slug?: string | null, id: string, name?: string | null, streamKey?: string | null, iframeUrl?: string | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null }>, _allStagesMeta: { __typename?: 'CollectionMetadata', count: number } };
 
 export type TagQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -8251,7 +8397,7 @@ export type TagQueryVariables = Exact<{
 }>;
 
 
-export type TagQuery = { __typename?: 'Query', tag?: { __typename?: 'TagRecord', tag: string, _allReferencingPosts: Array<{ __typename?: 'PostRecord', _publishedAt?: string | null, slug: string, id: string, title: string, tags: Array<{ __typename?: 'TagRecord', tag: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, author?: { __typename?: 'AuthorRecord', name: string, bio: string, slug: string, picture: { __typename?: 'ImageFileField', responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } } } | null }>, _allReferencingPostsMeta: { __typename?: 'CollectionMetadata', count: number } } | null };
+export type TagQuery = { __typename?: 'Query', tag?: { __typename?: 'TagRecord', tag?: string | null, _allReferencingPosts: Array<{ __typename?: 'PostRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, tags: Array<{ __typename?: 'TagRecord', tag?: string | null }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, author?: { __typename?: 'AuthorRecord', name?: string | null, bio?: string | null, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null }>, _allReferencingPostsMeta: { __typename?: 'CollectionMetadata', count: number } } | null };
 
 export type TalkQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -8260,7 +8406,7 @@ export type TalkQueryVariables = Exact<{
 }>;
 
 
-export type TalkQuery = { __typename?: 'Query', talk?: { __typename?: 'TalkRecord', _publishedAt?: string | null, title: string, start: string, end?: string | null, pageType: string, buttonName: string, stage: { __typename?: 'PageRecord', id: string, slug: string } | { __typename?: 'StageRecord', id: string, name: string, slug: string }, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, slug: string, id: string, biography: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, start: string, end?: string | null, pageType: string, buttonName: string, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate: string, slug: string }>, stage: { __typename?: 'PageRecord', id: string, slug: string } | { __typename?: 'StageRecord', id: string, name: string, slug: string }, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> }, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }>, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate: string, slug: string }>, content: { __typename?: 'TalkModelContentField', value: unknown, links: Array<{ __typename: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, dateTags: Array<{ __typename?: 'DateTagRecord', eventDate: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, biography: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, start: string, end?: string | null, pageType: string, buttonName: string, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate: string, slug: string }>, stage: { __typename?: 'PageRecord', id: string, slug: string } | { __typename?: 'StageRecord', id: string, name: string, slug: string }, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> }, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> } } | null };
+export type TalkQuery = { __typename?: 'Query', talk?: { __typename?: 'TalkRecord', _publishedAt: string, title?: string | null, start?: string | null, end?: string | null, pageType?: string | null, buttonName?: string | null, stage?: { __typename?: 'PageRecord', id: string, slug?: string | null } | { __typename?: 'StageRecord', id: string, name?: string | null, slug?: string | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, slug?: string | null, id: string, biography?: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, start?: string | null, end?: string | null, pageType?: string | null, buttonName?: string | null, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate?: string | null, slug?: string | null }>, stage?: { __typename?: 'PageRecord', id: string, slug?: string | null } | { __typename?: 'StageRecord', id: string, name?: string | null, slug?: string | null } | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }>, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate?: string | null, slug?: string | null }>, content?: { __typename?: 'TalkModelContentField', value: unknown, links: Array<{ __typename: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, dateTags: Array<{ __typename?: 'DateTagRecord', eventDate?: string | null }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, biography?: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, start?: string | null, end?: string | null, pageType?: string | null, buttonName?: string | null, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate?: string | null, slug?: string | null }>, stage?: { __typename?: 'PageRecord', id: string, slug?: string | null } | { __typename?: 'StageRecord', id: string, name?: string | null, slug?: string | null } | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null } | null };
 
 export type TalksQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -8269,7 +8415,7 @@ export type TalksQueryVariables = Exact<{
 }>;
 
 
-export type TalksQuery = { __typename?: 'Query', allTalks: Array<{ __typename?: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, start: string, end?: string | null, pageType: string, buttonName: string, content: { __typename?: 'TalkModelContentField', value: unknown, links: Array<{ __typename: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, dateTags: Array<{ __typename?: 'DateTagRecord', eventDate: string }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, biography: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt?: string | null, slug: string, id: string, title: string, start: string, end?: string | null, pageType: string, buttonName: string, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate: string, slug: string }>, stage: { __typename?: 'PageRecord', id: string, slug: string } | { __typename?: 'StageRecord', id: string, name: string, slug: string }, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, id: string, slug: string, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> }, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title: string, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title: string, subtitle: string, buttonLabel: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'ImageBlockRecord', id: string, image: { __typename?: 'ImageFileField', id: string, responsiveImage: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } } } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel: string, subtitle: string, title: string }> }, dateTags: Array<{ __typename?: 'DateTagRecord', eventDate: string }>, stage: { __typename?: 'PageRecord', id: string, slug: string } | { __typename?: 'StageRecord', id: string, name: string, slug: string }, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name: string, jobTitle: string, slug: string, id: string, picture: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } }> }>, _allTalksMeta: { __typename?: 'CollectionMetadata', count: number } };
+export type TalksQuery = { __typename?: 'Query', allTalks: Array<{ __typename?: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, start?: string | null, end?: string | null, pageType?: string | null, buttonName?: string | null, content?: { __typename?: 'TalkModelContentField', value: unknown, links: Array<{ __typename: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, dateTags: Array<{ __typename?: 'DateTagRecord', eventDate?: string | null }>, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, biography?: { __typename?: 'SpeakerModelBiographyField', value: unknown, links: Array<{ __typename?: 'TalkRecord', _publishedAt: string, slug?: string | null, id: string, title?: string | null, start?: string | null, end?: string | null, pageType?: string | null, buttonName?: string | null, dateTags: Array<{ __typename?: 'DateTagRecord', id: string, eventDate?: string | null, slug?: string | null }>, stage?: { __typename?: 'PageRecord', id: string, slug?: string | null } | { __typename?: 'StageRecord', id: string, name?: string | null, slug?: string | null } | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, id: string, slug?: string | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, blocks: Array<{ __typename: 'AppCtaRecord', id: string, text?: string | null, title?: string | null, googlePlayUrl?: string | null, appstoreUrl?: string | null } | { __typename: 'CtaButtonWithImageRecord', id: string, title?: string | null, subtitle?: string | null, buttonLabel?: string | null, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'ImageBlockRecord', id: string, image?: { __typename?: 'FileField', id: string, responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, base64?: string | null } | null } | null } | { __typename: 'NewsletterSubscriptionRecord', id: string, buttonLabel?: string | null, subtitle?: string | null, title?: string | null }> } | null, dateTags: Array<{ __typename?: 'DateTagRecord', eventDate?: string | null }>, stage?: { __typename?: 'PageRecord', id: string, slug?: string | null } | { __typename?: 'StageRecord', id: string, name?: string | null, slug?: string | null } | null, seoTags?: { __typename?: 'SeoField', description?: string | null, image?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null } | null, speaker: Array<{ __typename?: 'SpeakerRecord', name?: string | null, jobTitle?: string | null, slug?: string | null, id: string, picture?: { __typename?: 'FileField', responsiveImage?: { __typename?: 'ResponsiveImage', srcSet: string, webpSrcSet: string, sizes: string, src: string, width: number, height: number, aspectRatio: number, alt?: string | null, title?: string | null, bgColor?: string | null, base64?: string | null } | null } | null }> }>, _allTalksMeta: { __typename?: 'CollectionMetadata', count: number } };
 
 export const DatoImage_ResponsiveImageFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"DatoImage_responsiveImage"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ResponsiveImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]} as unknown as DocumentNode<DatoImage_ResponsiveImageFragment, unknown>;
 export const AboutDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"About"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"label"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"StringValue","value":"About","block":false}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"fallbackLocales"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sections"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AboutIntroRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"preHeader"}},{"kind":"Field","name":{"kind":"Name","value":"header"}},{"kind":"Field","name":{"kind":"Name","value":"subheader"}},{"kind":"Field","name":{"kind":"Name","value":"introductionText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"bgColor"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"StatsSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"statistic"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"TeamSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"displayOptions"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"showcasedMembers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"picture"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"bgColor"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}}]}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"FaqSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"displayOptions"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"questions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"question"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"answer"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<AboutQuery, AboutQueryVariables>;
@@ -8286,12 +8432,13 @@ export const DatetagDocument = {"kind":"Document","definitions":[{"kind":"Operat
 export const DocumentationHomePageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"DocumentationHomePage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"documentationHome"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subheader"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"featuredPages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]}}]} as unknown as DocumentNode<DocumentationHomePageQuery, DocumentationHomePageQueryVariables>;
 export const DocumentationPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"DocumentationPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"documentationPage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"fallbackLocales"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}}]}}]} as unknown as DocumentNode<DocumentationPageQuery, DocumentationPageQueryVariables>;
 export const DocumentationSidebarDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"DocumentationSidebar"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"allDocumentationPages"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"parent"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"exists"},"value":{"kind":"StringValue","value":"false","block":false}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"children"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"Field","name":{"kind":"Name","value":"children"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"Field","name":{"kind":"Name","value":"children"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"Field","name":{"kind":"Name","value":"children"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}}]}},{"kind":"Field","name":{"kind":"Name","value":"documentationHome"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"footerText"}},{"kind":"Field","name":{"kind":"Name","value":"logo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}}]}}]} as unknown as DocumentNode<DocumentationSidebarQuery, DocumentationSidebarQueryVariables>;
+export const FeaturedTalksSectionDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"FeaturedTalksSection"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"ids"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ItemId"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"allTalks"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"in"},"value":{"kind":"Variable","name":{"kind":"Name","value":"ids"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"fallbackLocales"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"start"}},{"kind":"Field","name":{"kind":"Name","value":"end"}},{"kind":"Field","name":{"kind":"Name","value":"speaker"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"jobTitle"}},{"kind":"Field","name":{"kind":"Name","value":"picture"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"w"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"h"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<FeaturedTalksSectionQuery, FeaturedTalksSectionQueryVariables>;
 export const FooterDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Footer"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"layout"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"fallbackLocales"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"footerSubtitle"}},{"kind":"Field","name":{"kind":"Name","value":"footerLogo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"width"}}]}},{"kind":"Field","name":{"kind":"Name","value":"socialMediaLinks"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"width"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"footerLinks"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"LegalPageRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]}}]} as unknown as DocumentNode<FooterQuery, FooterQueryVariables>;
 export const LegalDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Legal"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"legalPage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"fallbackLocales"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}}]}}]} as unknown as DocumentNode<LegalQuery, LegalQueryVariables>;
 export const LocalesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Locales"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_site"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"locales"}}]}}]}}]} as unknown as DocumentNode<LocalesQuery, LocalesQueryVariables>;
 export const MemberDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"member"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"member"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"fallbackLocales"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_publishedAt"}},{"kind":"Field","name":{"kind":"Name","value":"iframeUrl"}}]}}]}}]} as unknown as DocumentNode<MemberQuery, MemberQueryVariables>;
 export const MenuDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Menu"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"layout"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"fallbackLocales"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"logo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"menu"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"MenuItemRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CircleMenuItemRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"redirectUrl"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"MenuDropdownRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"MenuItemRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"notification"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"_site"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"locales"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"DatoImage_responsiveImage"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ResponsiveImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]} as unknown as DocumentNode<MenuQuery, MenuQueryVariables>;
-export const PageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Page"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"fallbackLocales"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sections"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SpacerRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"space"}},{"kind":"Field","name":{"kind":"Name","value":"extraMargin"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AboutIntroRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"preHeader"}},{"kind":"Field","name":{"kind":"Name","value":"header"}},{"kind":"Field","name":{"kind":"Name","value":"subheader"}},{"kind":"Field","name":{"kind":"Name","value":"introductionText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SpeakersIntroRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"preHeader"}},{"kind":"Field","name":{"kind":"Name","value":"header"}},{"kind":"Field","name":{"kind":"Name","value":"subheader"}},{"kind":"Field","name":{"kind":"Name","value":"introductionText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ChangelogSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"featuredVersions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"timeOfRelease"}},{"kind":"Field","name":{"kind":"Name","value":"versionName"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"StatsSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"statistic"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"TeamSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"displayOptions"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"showcasedMembers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"picture"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SpeakerSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"displayOptions"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"showcasedSpeakers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"biography"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"links"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_publishedAt"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"start"}},{"kind":"Field","name":{"kind":"Name","value":"end"}},{"kind":"Field","name":{"kind":"Name","value":"dateTags"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"eventDate"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}},{"kind":"Field","name":{"kind":"Name","value":"pageType"}},{"kind":"Field","name":{"kind":"Name","value":"buttonName"}},{"kind":"Field","name":{"kind":"Name","value":"stage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"StageRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PageRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"seoTags"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"bgColor"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"speaker"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"jobTitle"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"picture"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"w"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"h"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"bgColor"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"blocks"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ImageBlockRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AppCtaRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"googlePlayUrl"}},{"kind":"Field","name":{"kind":"Name","value":"appstoreUrl"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"NewsletterSubscriptionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"buttonLabel"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CtaButtonWithImageRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"buttonLabel"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"jobTitle"}},{"kind":"Field","name":{"kind":"Name","value":"picture"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"FaqSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"displayOptions"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"questions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"question"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"answer"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"HeroSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"buttons"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"primary"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"heroSubtitle"}},{"kind":"Field","name":{"kind":"Name","value":"heroTitle"}},{"kind":"Field","name":{"kind":"Name","value":"displayOptions"}},{"kind":"Field","name":{"kind":"Name","value":"heroImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}},{"kind":"ObjectField","name":{"kind":"Name","value":"auto"},"value":{"kind":"EnumValue","value":"format"}},{"kind":"ObjectField","name":{"kind":"Name","value":"crop"},"value":{"kind":"EnumValue","value":"focalpoint"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"EmptyHeroSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"displayOptions"}},{"kind":"Field","name":{"kind":"Name","value":"bannerImageDesktop"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}},{"kind":"ObjectField","name":{"kind":"Name","value":"auto"},"value":{"kind":"EnumValue","value":"format"}},{"kind":"ObjectField","name":{"kind":"Name","value":"crop"},"value":{"kind":"EnumValue","value":"focalpoint"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"bannerImageTablet"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}},{"kind":"ObjectField","name":{"kind":"Name","value":"auto"},"value":{"kind":"EnumValue","value":"format"}},{"kind":"ObjectField","name":{"kind":"Name","value":"crop"},"value":{"kind":"EnumValue","value":"focalpoint"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"bannerImageMobile"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}},{"kind":"ObjectField","name":{"kind":"Name","value":"auto"},"value":{"kind":"EnumValue","value":"format"}},{"kind":"ObjectField","name":{"kind":"Name","value":"crop"},"value":{"kind":"EnumValue","value":"focalpoint"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"VideoSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"videoHeader"}},{"kind":"Field","name":{"kind":"Name","value":"videoSubheader"}},{"kind":"Field","name":{"kind":"Name","value":"video"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"providerUid"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnailUrl"}}]}},{"kind":"Field","name":{"kind":"Name","value":"videoThumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DetailSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"details"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"Field","name":{"kind":"Name","value":"imagePosition"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ReviewSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"reviewSectionHeader"}},{"kind":"Field","name":{"kind":"Name","value":"reviewSectionSubheader"}},{"kind":"Field","name":{"kind":"Name","value":"displayOptions"}},{"kind":"Field","name":{"kind":"Name","value":"reviews"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"rating"}},{"kind":"Field","name":{"kind":"Name","value":"review"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"links"}},{"kind":"Field","name":{"kind":"Name","value":"blocks"}}]}},{"kind":"Field","name":{"kind":"Name","value":"reviewerName"}},{"kind":"Field","name":{"kind":"Name","value":"reviewerPicture"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"reviewerTitle"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PricingSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"pricingSectionHeader"}},{"kind":"Field","name":{"kind":"Name","value":"pricingSectionSubheader"}},{"kind":"Field","name":{"kind":"Name","value":"displayOption"}},{"kind":"Field","name":{"kind":"Name","value":"plans"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"yearlyPrice"}},{"kind":"Field","name":{"kind":"Name","value":"monthlyPrice"}},{"kind":"Field","name":{"kind":"Name","value":"tierName"}},{"kind":"Field","name":{"kind":"Name","value":"tierDescription"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"planFeatures"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BrandSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"displayOptions"}},{"kind":"Field","name":{"kind":"Name","value":"brand"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"brandName"}},{"kind":"Field","name":{"kind":"Name","value":"brandUrl"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"brandLogo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"FeaturedPostsSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"featuredPostsHeader"}},{"kind":"Field","name":{"kind":"Name","value":"featuredPostsSubheader"}},{"kind":"Field","name":{"kind":"Name","value":"displayOptions"}},{"kind":"Field","name":{"kind":"Name","value":"featuredPosts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_publishedAt"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"tags"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tag"}}]}},{"kind":"Field","name":{"kind":"Name","value":"seoTags"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"author"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"picture"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"w"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"h"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"FeaturedAcategorySectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"featuredAcategoryHeader"}},{"kind":"Field","name":{"kind":"Name","value":"featuredAcategorySubheader"}},{"kind":"Field","name":{"kind":"Name","value":"displayOption"}},{"kind":"Field","name":{"kind":"Name","value":"featuredAcategory"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"picture"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"w"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"h"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IvsLiveStageRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"rtmpUrl"}},{"kind":"Field","name":{"kind":"Name","value":"iframeUrl"}},{"kind":"Field","name":{"kind":"Name","value":"iframeHeight"}},{"kind":"Field","name":{"kind":"Name","value":"iframeWidth"}},{"kind":"Field","name":{"kind":"Name","value":"iframeMinHeight"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IframeBlockRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"iframeUrl"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"minHeight"}},{"kind":"Field","name":{"kind":"Name","value":"minHeightDimensionUnit"}},{"kind":"Field","name":{"kind":"Name","value":"widthDimensionUnit"}},{"kind":"Field","name":{"kind":"Name","value":"heightDimensionUnit"}},{"kind":"Field","name":{"kind":"Name","value":"align"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BannerBlockRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"objectFit"}},{"kind":"Field","name":{"kind":"Name","value":"layout"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"minHeight"}},{"kind":"Field","name":{"kind":"Name","value":"minHeightDimensionUnit"}},{"kind":"Field","name":{"kind":"Name","value":"widthDimensionUnit"}},{"kind":"Field","name":{"kind":"Name","value":"heightDimensionUnit"}},{"kind":"Field","name":{"kind":"Name","value":"bannerUrl"}},{"kind":"Field","name":{"kind":"Name","value":"bannerImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"MuxLiveStreamRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"playbackId"}},{"kind":"Field","name":{"kind":"Name","value":"placeholderUrl"}},{"kind":"Field","name":{"kind":"Name","value":"streamType"}},{"kind":"Field","name":{"kind":"Name","value":"iframeUrl"}},{"kind":"Field","name":{"kind":"Name","value":"iframeHeight"}},{"kind":"Field","name":{"kind":"Name","value":"iframeWidth"}},{"kind":"Field","name":{"kind":"Name","value":"iframeMinHeight"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"FeatureListSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"featuresHeader"}},{"kind":"Field","name":{"kind":"Name","value":"featuresSubheader"}},{"kind":"Field","name":{"kind":"Name","value":"displayOption"}},{"kind":"Field","name":{"kind":"Name","value":"feature"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"link"}},{"kind":"Field","name":{"kind":"Name","value":"featureTitle"}},{"kind":"Field","name":{"kind":"Name","value":"featureDescription"}},{"kind":"Field","name":{"kind":"Name","value":"featureIcon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"RedirectSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"slugToRedirectTo"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"DatoImage_responsiveImage"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ResponsiveImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]} as unknown as DocumentNode<PageQuery, PageQueryVariables>;
+export const PageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Page"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"fallbackLocales"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sections"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SpacerRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"space"}},{"kind":"Field","name":{"kind":"Name","value":"extraMargin"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AboutIntroRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"preHeader"}},{"kind":"Field","name":{"kind":"Name","value":"header"}},{"kind":"Field","name":{"kind":"Name","value":"subheader"}},{"kind":"Field","name":{"kind":"Name","value":"introductionText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SpeakersIntroRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"preHeader"}},{"kind":"Field","name":{"kind":"Name","value":"header"}},{"kind":"Field","name":{"kind":"Name","value":"subheader"}},{"kind":"Field","name":{"kind":"Name","value":"introductionText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ChangelogSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"featuredVersions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"timeOfRelease"}},{"kind":"Field","name":{"kind":"Name","value":"versionName"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"StatsSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"statistic"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"TeamSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"displayOptions"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"showcasedMembers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"picture"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SpeakerSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"displayOptions"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"showcasedSpeakers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"biography"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"links"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_publishedAt"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"start"}},{"kind":"Field","name":{"kind":"Name","value":"end"}},{"kind":"Field","name":{"kind":"Name","value":"dateTags"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"eventDate"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}},{"kind":"Field","name":{"kind":"Name","value":"pageType"}},{"kind":"Field","name":{"kind":"Name","value":"buttonName"}},{"kind":"Field","name":{"kind":"Name","value":"stage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"StageRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PageRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"seoTags"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"bgColor"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"speaker"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"jobTitle"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"picture"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"w"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"h"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"bgColor"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"blocks"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ImageBlockRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AppCtaRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"googlePlayUrl"}},{"kind":"Field","name":{"kind":"Name","value":"appstoreUrl"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"NewsletterSubscriptionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"buttonLabel"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CtaButtonWithImageRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"buttonLabel"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"jobTitle"}},{"kind":"Field","name":{"kind":"Name","value":"picture"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"FaqSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"displayOptions"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"questions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"question"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"answer"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"HeroSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"buttons"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"primary"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"heroSubtitle"}},{"kind":"Field","name":{"kind":"Name","value":"heroTitle"}},{"kind":"Field","name":{"kind":"Name","value":"displayOptions"}},{"kind":"Field","name":{"kind":"Name","value":"heroImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}},{"kind":"ObjectField","name":{"kind":"Name","value":"auto"},"value":{"kind":"EnumValue","value":"format"}},{"kind":"ObjectField","name":{"kind":"Name","value":"crop"},"value":{"kind":"EnumValue","value":"focalpoint"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"EmptyHeroSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"displayOptions"}},{"kind":"Field","name":{"kind":"Name","value":"bannerImageDesktop"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}},{"kind":"ObjectField","name":{"kind":"Name","value":"auto"},"value":{"kind":"EnumValue","value":"format"}},{"kind":"ObjectField","name":{"kind":"Name","value":"crop"},"value":{"kind":"EnumValue","value":"focalpoint"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"bannerImageTablet"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}},{"kind":"ObjectField","name":{"kind":"Name","value":"auto"},"value":{"kind":"EnumValue","value":"format"}},{"kind":"ObjectField","name":{"kind":"Name","value":"crop"},"value":{"kind":"EnumValue","value":"focalpoint"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"bannerImageMobile"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}},{"kind":"ObjectField","name":{"kind":"Name","value":"auto"},"value":{"kind":"EnumValue","value":"format"}},{"kind":"ObjectField","name":{"kind":"Name","value":"crop"},"value":{"kind":"EnumValue","value":"focalpoint"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"VideoSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"videoHeader"}},{"kind":"Field","name":{"kind":"Name","value":"videoSubheader"}},{"kind":"Field","name":{"kind":"Name","value":"video"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"providerUid"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnailUrl"}}]}},{"kind":"Field","name":{"kind":"Name","value":"videoThumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DetailSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"details"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"Field","name":{"kind":"Name","value":"imagePosition"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ReviewSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"reviewSectionHeader"}},{"kind":"Field","name":{"kind":"Name","value":"reviewSectionSubheader"}},{"kind":"Field","name":{"kind":"Name","value":"displayOptions"}},{"kind":"Field","name":{"kind":"Name","value":"reviews"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"rating"}},{"kind":"Field","name":{"kind":"Name","value":"review"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"links"}},{"kind":"Field","name":{"kind":"Name","value":"blocks"}}]}},{"kind":"Field","name":{"kind":"Name","value":"reviewerName"}},{"kind":"Field","name":{"kind":"Name","value":"reviewerPicture"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"reviewerTitle"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PricingSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"pricingSectionHeader"}},{"kind":"Field","name":{"kind":"Name","value":"pricingSectionSubheader"}},{"kind":"Field","name":{"kind":"Name","value":"displayOption"}},{"kind":"Field","name":{"kind":"Name","value":"plans"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"yearlyPrice"}},{"kind":"Field","name":{"kind":"Name","value":"monthlyPrice"}},{"kind":"Field","name":{"kind":"Name","value":"tierName"}},{"kind":"Field","name":{"kind":"Name","value":"tierDescription"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"planFeatures"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BrandSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"displayOptions"}},{"kind":"Field","name":{"kind":"Name","value":"brand"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"brandName"}},{"kind":"Field","name":{"kind":"Name","value":"brandUrl"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"brandLogo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"FeaturedPostsSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"featuredPostsHeader"}},{"kind":"Field","name":{"kind":"Name","value":"featuredPostsSubheader"}},{"kind":"Field","name":{"kind":"Name","value":"displayOptions"}},{"kind":"Field","name":{"kind":"Name","value":"featuredPosts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_publishedAt"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"tags"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tag"}}]}},{"kind":"Field","name":{"kind":"Name","value":"seoTags"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"author"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"picture"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"w"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"h"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"FeaturedAcategorySectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"featuredAcategoryHeader"}},{"kind":"Field","name":{"kind":"Name","value":"featuredAcategorySubheader"}},{"kind":"Field","name":{"kind":"Name","value":"displayOption"}},{"kind":"Field","name":{"kind":"Name","value":"featuredAcategory"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"picture"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"w"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"h"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IvsLiveStageRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"rtmpUrl"}},{"kind":"Field","name":{"kind":"Name","value":"iframeUrl"}},{"kind":"Field","name":{"kind":"Name","value":"iframeHeight"}},{"kind":"Field","name":{"kind":"Name","value":"iframeWidth"}},{"kind":"Field","name":{"kind":"Name","value":"iframeMinHeight"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IframeBlockRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"iframeUrl"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"minHeight"}},{"kind":"Field","name":{"kind":"Name","value":"minHeightDimensionUnit"}},{"kind":"Field","name":{"kind":"Name","value":"widthDimensionUnit"}},{"kind":"Field","name":{"kind":"Name","value":"heightDimensionUnit"}},{"kind":"Field","name":{"kind":"Name","value":"align"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BannerBlockRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"objectFit"}},{"kind":"Field","name":{"kind":"Name","value":"layout"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"minHeight"}},{"kind":"Field","name":{"kind":"Name","value":"minHeightDimensionUnit"}},{"kind":"Field","name":{"kind":"Name","value":"widthDimensionUnit"}},{"kind":"Field","name":{"kind":"Name","value":"heightDimensionUnit"}},{"kind":"Field","name":{"kind":"Name","value":"bannerUrl"}},{"kind":"Field","name":{"kind":"Name","value":"bannerImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"MuxLiveStreamRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"playbackId"}},{"kind":"Field","name":{"kind":"Name","value":"placeholderUrl"}},{"kind":"Field","name":{"kind":"Name","value":"streamType"}},{"kind":"Field","name":{"kind":"Name","value":"iframeUrl"}},{"kind":"Field","name":{"kind":"Name","value":"iframeHeight"}},{"kind":"Field","name":{"kind":"Name","value":"iframeWidth"}},{"kind":"Field","name":{"kind":"Name","value":"iframeMinHeight"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"FeatureListSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"featuresHeader"}},{"kind":"Field","name":{"kind":"Name","value":"featuresSubheader"}},{"kind":"Field","name":{"kind":"Name","value":"displayOption"}},{"kind":"Field","name":{"kind":"Name","value":"feature"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"link"}},{"kind":"Field","name":{"kind":"Name","value":"featureTitle"}},{"kind":"Field","name":{"kind":"Name","value":"featureDescription"}},{"kind":"Field","name":{"kind":"Name","value":"featureIcon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"DatoImage_responsiveImage"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}}]}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"RedirectSectionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"slugToRedirectTo"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"StageScehduleItemRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"featuredTalksHeading"}},{"kind":"Field","name":{"kind":"Name","value":"returnToAgenda"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"primary"}}]}},{"kind":"Field","name":{"kind":"Name","value":"talks"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"start"}},{"kind":"Field","name":{"kind":"Name","value":"end"}},{"kind":"Field","name":{"kind":"Name","value":"content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"Field","name":{"kind":"Name","value":"stage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"StageRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PageRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"pageType"}},{"kind":"Field","name":{"kind":"Name","value":"buttonName"}},{"kind":"Field","name":{"kind":"Name","value":"speaker"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"jobTitle"}},{"kind":"Field","name":{"kind":"Name","value":"picture"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"w"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"h"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}}]}}]}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"_modelApiKey"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"DatoImage_responsiveImage"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ResponsiveImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]} as unknown as DocumentNode<PageQuery, PageQueryVariables>;
 export const PostDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Post"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"post"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"title"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"isBlank"},"value":{"kind":"StringValue","value":"false","block":false}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"fallbackLocales"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_publishedAt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"author"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"picture"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"w"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"h"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}},{"kind":"ObjectField","name":{"kind":"Name","value":"auto"},"value":{"kind":"EnumValue","value":"format"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"bgColor"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"tags"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"tag"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}},{"kind":"Field","name":{"kind":"Name","value":"content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"links"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_publishedAt"}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"tags"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tag"}}]}},{"kind":"Field","name":{"kind":"Name","value":"seoTags"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"bgColor"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"author"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"picture"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"w"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"h"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"bgColor"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"blocks"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ImageBlockRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AppCtaRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"googlePlayUrl"}},{"kind":"Field","name":{"kind":"Name","value":"appstoreUrl"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"NewsletterSubscriptionRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"buttonLabel"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CtaButtonWithImageRecord"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"buttonLabel"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<PostQuery, PostQueryVariables>;
 export const PostsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Posts"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"skip"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"IntType"}},"defaultValue":{"kind":"StringValue","value":"0","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"allPosts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"title"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"isBlank"},"value":{"kind":"StringValue","value":"false","block":false}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"EnumValue","value":"_createdAt_DESC"}},{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"StringValue","value":"9","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"fallbackLocales"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}}},{"kind":"Argument","name":{"kind":"Name","value":"skip"},"value":{"kind":"Variable","name":{"kind":"Name","value":"skip"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_publishedAt"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"tags"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tag"}}]}},{"kind":"Field","name":{"kind":"Name","value":"seoTags"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"bgColor"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"author"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"picture"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"responsiveImage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"imgixParams"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"w"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"h"},"value":{"kind":"StringValue","value":"64","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"fit"},"value":{"kind":"EnumValue","value":"crop"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"srcSet"}},{"kind":"Field","name":{"kind":"Name","value":"webpSrcSet"}},{"kind":"Field","name":{"kind":"Name","value":"sizes"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"aspectRatio"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"bgColor"}},{"kind":"Field","name":{"kind":"Name","value":"base64"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"_allPostsMeta"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"title"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"isBlank"},"value":{"kind":"StringValue","value":"false","block":false}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]} as unknown as DocumentNode<PostsQuery, PostsQueryVariables>;
 export const SocialFeedDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"socialFeed"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"SiteLocale"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"socialFeed"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"fallbackLocales"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fallbackLocale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_publishedAt"}},{"kind":"Field","name":{"kind":"Name","value":"iframe"}}]}}]}}]} as unknown as DocumentNode<SocialFeedQuery, SocialFeedQueryVariables>;

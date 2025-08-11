@@ -1,0 +1,21 @@
+query FeaturedTalksSection($ids: [ItemId], $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
+  allTalks(filter: { id: { in: $ids } }, locale: $locale, fallbackLocales: $fallbackLocale) {
+    id
+    title
+    slug
+    start
+    end
+    speaker {
+      name
+      jobTitle
+      picture {
+        responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
+          src
+          width
+          height
+          alt
+        }
+      }
+    }
+  }
+} 

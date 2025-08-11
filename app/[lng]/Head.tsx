@@ -1,9 +1,10 @@
 "use client";
-import { useAuth } from "@clerk/nextjs";
+// import { useAuth } from "@clerk/nextjs";
 
 export default function Head() {
 
-  const { isSignedIn } = useAuth();
+  // const { isSignedIn } = useAuth();
+  const isSignedIn = false; // Authentication disabled
   return (
     <head lang='en'>
       <title>JATO Virtual Event Platform</title>

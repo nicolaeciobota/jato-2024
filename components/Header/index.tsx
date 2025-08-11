@@ -15,16 +15,18 @@ import { Menu } from "./HeaderRenderer";
 import { UserButton, useAuth } from "@clerk/nextjs";
 import { AppContext } from "@/context/App";
 import { usePathname } from "next/navigation";
+
 type Props = {
   lng: SiteLocale;
   data: MenuQuery;
 };
+
 const Header = ({ lng, data }: Props) => {
   const pathname = usePathname();
   const currentSlug = pathname.split('/')[pathname.split('/').length - 1];
   const menuData: Menu[] = [];
   const circleMenuData: { [key: string]: string }[] = [];
-  const { isSignedIn } = useAuth();
+  const { isSignedIn, userId } = useAuth();
   const { theme, themeHandler } = useContext(AppContext)
   const [openIndex, setOpenIndex] = useState(-1);
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -38,31 +40,33 @@ const Header = ({ lng, data }: Props) => {
         id: "1",
         title: dropdownItem.title || "Other Items",
         newTab: false,
-        submenu: dropdownItem.items.map((item) => {
+        submenu: dropdownItem.items?.map((item) => {
           return {
             id: item.id,
-            title: item.title,
-            path: `/${item.page.slug}`,
+            title: item.title || "Untitled",
+            path: item.page?.slug ? `/${item.page.slug}` : "#",
             newTab: true,
           };
-        }),
+        }) || [],
       });
     }
     if (menuItems[i]._modelApiKey === 'menu_item') {
       const menuItem = menuItems[i] as MenuItemRecord;
-      menuData.push({
-        id: menuItem.id,
-        title: menuItem.title,
-        path: `/${menuItem.page.slug}`,
-        newTab: false,
-      });
+      if (menuItem.page?.slug) {
+        menuData.push({
+          id: menuItem.id,
+          title: menuItem.title || "Untitled",
+          path: `/${menuItem.page.slug}`,
+          newTab: false,
+        });
+      }
     }
     if (menuItems[i]._modelApiKey === 'circle_menu_item') {
       const menuItem = menuItems[i] as CircleMenuItemRecord;
       circleMenuData.push({
         id: menuItem.id,
-        title: menuItem.title,
-        redirectUrl: menuItem.redirectUrl,
+        title: menuItem.title || "Untitled",
+        redirectUrl: menuItem.redirectUrl || "#",
       });
     }
   }
@@ -112,7 +116,7 @@ const Header = ({ lng, data }: Props) => {
                   } `}
               >
                 <div className="lg:w-32 sm:w-28 w-24">
-                  {data?.layout?.logo.url && (
+                  {data?.layout?.logo?.url && (
                     <Image
                       src={theme === 'dark'
                         ? '/jato-logo-crop-for-web-dark-theme.png'
@@ -230,13 +234,41 @@ const Header = ({ lng, data }: Props) => {
                     }`}
                 />
               </button>
-              {
-                isSignedIn
-                  ? <div className="h-9 relative w-9 flex justify-center items-center"><UserButton afterSignOutUrl={`/${lng}/home`} /></div>
-                  : <Link href={'/sign-in'}>
-                    <p className="flex font-semibold xl:text-base text-sm text-primary group-hover:opacity-70 dark:text-toruquise lg:px-0">Log In</p>
+              {/* Authentication disabled - removed UserButton and sign-in link */}
+              <div className="h-9 relative w-9 flex justify-center items-center">
+                {isSignedIn ? (
+                  <div className="relative group">
+                    <UserButton afterSignOutUrl={`/${lng}/home`} />
+                    {/* Profile Dropdown */}
+                    <div className="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                      <Link
+                        href={`/${lng}/profile/${userId}`}
+                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-t-lg"
+                      >
+                        👤 View Profile
+                      </Link>
+                      <Link
+                        href={`/${lng}/social-feed`}
+                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        📱 Social Feed
+                      </Link>
+                      <div className="border-t border-gray-200 dark:border-gray-700">
+                        <button className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-b-lg">
+                          ⚙️ Settings
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    href="/sign-in"
+                    className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-medium hover:bg-primary/90 transition-colors"
+                  >
+                    Sign In
                   </Link>
-              }
+                )}
+              </div>
             </div>
           </div>
         </div>

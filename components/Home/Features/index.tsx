@@ -6,7 +6,7 @@ import Features from "./Features";
 import BigImageHorizontalFeatures from "./BigImageHorizontalFeatures";
 import BigImageVerticalFeatures from "./BigImageVerticalFeatures";
 import FeatureCards from "./FeatureCards";
-import { useAuth } from "@clerk/nextjs";
+// import { useAuth } from "@clerk/nextjs";
 
 type Props = {
   featureListSectionRecord: FeatureListSectionRecord
@@ -15,7 +15,8 @@ type Props = {
 
 const Index = ({ featureListSectionRecord, slug }: Props) => {
 
-  const { isSignedIn } = useAuth();
+  // const { isSignedIn } = useAuth();
+  const isSignedIn = false; // Authentication disabled
   const { feature, featuresHeader, featuresSubheader, displayOption } = featureListSectionRecord;
 
   const displayContentMapper: { [key: string]: ReactNode } = {

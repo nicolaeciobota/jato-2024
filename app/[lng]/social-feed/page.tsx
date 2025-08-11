@@ -1,12 +1,10 @@
 import { getFallbackLocale } from "@/app/i18n/settings";
-import SocialFeed from "@/components/SocialFeed";
-import { SocialFeedDocument, SiteLocale } from "@/graphql/generated";
-import queryDatoCMS from "@/utils/queryDatoCMS";
+import Timeline from "@/components/Timeline";
+import { SiteLocale } from "@/graphql/generated";
 import { draftMode } from "next/headers";
 
 type Params = {
   params: {
-    page: number;
     lng: SiteLocale;
   };
 };
@@ -16,19 +14,23 @@ const SocialFeedPage = async ({ params }: Params) => {
   const { lng } = params;
   const { isEnabled } = draftMode();
 
-  const data = await queryDatoCMS(
-    SocialFeedDocument,
-    {
-      locale: lng,
-      fallbackLocale: fallbackLng,
-      skip: (params.page - 1) * 9,
-    },
-    isEnabled
-  );
-
   return (
     <>
-      {!isEnabled && <SocialFeed data={data} lng={lng}/>}
+      {!isEnabled && (
+        <section className="bg-primary bg-opacity-5 py-16 md:py-20 lg:py-28 min-h-[calc(100vh-280px)]">
+          <div className="container">
+            <div className="text-center mb-12">
+              <h1 className="text-3xl lg:text-4xl font-bold text-black dark:text-white mb-4">
+                Social Feed
+              </h1>
+              <p className="text-lg text-gray-600 dark:text-gray-300">
+                Connect with the community and share your thoughts
+              </p>
+            </div>
+            <Timeline />
+          </div>
+        </section>
+      )}
     </>
   );
 };

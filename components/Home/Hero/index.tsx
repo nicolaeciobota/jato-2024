@@ -6,7 +6,7 @@ import RightImageHero from './RightImageHero';
 import BackgroundImageHero from './BackgroundImage';
 import SplitImage from './SplitImage';
 import Hero from './Hero';
-import { useAuth } from '@clerk/nextjs';
+// import { useAuth } from '@clerk/nextjs';
 import HeroEmpty from './HeroEmpty';
 
 type Props = {
@@ -16,7 +16,8 @@ type Props = {
 
 const Index = ({ heroSectionRecord, slug }: Props) => {
 
-  const { isSignedIn } = useAuth();
+  // const { isSignedIn } = useAuth();
+  const isSignedIn = false; // Authentication disabled
   const { displayOptions, heroTitle, heroSubtitle, buttons, heroImage } = heroSectionRecord;
 
   const displayedConentMapper: { [key: string]: ReactNode } = {

@@ -1,20 +1,23 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    appDir: true,
+  },
   images: {
-    remotePatterns: [
+    domains: ['ucarecdn.com', 'images.unsplash.com'],
+  },
+  // Custom server configuration
+  async rewrites() {
+    return [
       {
-        protocol: 'https',
-        hostname: 'i.ytimg.com',
-        port: '',
-        pathname: '/**',
+        source: '/api/:path*',
+        destination: '/api/:path*',
       },
-      {
-        protocol: 'https',
-        hostname: 'www.datocms-assets.com',
-        port: '',
-        pathname: '/**',
-      },
-    ],
+    ];
+  },
+  // Development server options
+  devIndicators: {
+    buildActivity: true,
   },
 };
 

@@ -1,11 +1,8 @@
-import { auth } from '@clerk/nextjs/server';
+// import { auth } from '@clerk/nextjs/server';
 
 export async function GET() {
 
-    const { userId } = await auth();
-
-    if (!userId) {
-        return new Response("Unauthorized", { status: 401 });
-    }
-    return new Response("Authorized", { status: 200 });
+    // const { userId } = await auth();
+    // Authentication disabled - always return authorized
+    return new Response("Authorized (Auth Disabled)", { status: 200 });
 }

@@ -6,6 +6,7 @@ import { SiteLocale } from "@/graphql/generated";
 import getAvailableLocales from "@/app/i18n/settings";
 import Head from "./[lng]/Head";
 import { ClerkProvider } from '@clerk/nextjs'
+
 type Params = {
   children: React.ReactNode;
   params: {
