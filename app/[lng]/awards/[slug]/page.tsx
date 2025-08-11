@@ -9,10 +9,10 @@ import { AwardsSlugDocument } from "@/graphql/generated";
 import { getSlugs } from "@/ssg";
 
 type Params = {
-  params: {
+  params: Promise<{
     slug: string;
     lng: SiteLocale;
-  };
+  }>;
 };
 
 export async function generateStaticParams() {
@@ -20,8 +20,9 @@ export async function generateStaticParams() {
   return paths
 }
 
-const AwardsDetailsPage = async ({ params: { slug, lng } }: Params) => {
+const AwardsDetailsPage = async ({ params }: Params) => {
   const fallbackLng = await getFallbackLocale();
+  const { slug, lng } = await params;
   const { isEnabled } = draftMode();
 
   const data = await queryDatoCMS(
