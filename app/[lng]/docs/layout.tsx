@@ -14,15 +14,16 @@ import DocumentationSidebarItem from '@/components/Documentaiton/DocumentationSi
 
 type Params = {
   children: React.ReactNode;
-  params: {
+  params: Promise<{
     lng: SiteLocale;
-  };
+  }>;
 };
 
 export default async function RootLayout({
   children,
-  params: { lng },
+  params,
 }: Params) {
+  const { lng } = await params;
   const { isEnabled } = draftMode();
 
   const data = await queryDatoCMS(DocumentationSidebarDocument, {}, isEnabled);
