@@ -7,15 +7,15 @@ import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
 type Params = {
-  params: {
+  params: Promise<{
     page: number;
     lng: SiteLocale;
-  };
+  }>;
 };
 
 const Awards = async ({ params }: Params) => {
   const fallbackLng = await getFallbackLocale();
-  const { lng } = params;
+  const { lng, page } = await params;
   const { isEnabled } = draftMode();
 
   const data = await queryDatoCMS(
@@ -34,7 +34,7 @@ const Awards = async ({ params }: Params) => {
 
   return (
     <>
-      {!isEnabled && <AwardsPage data={data} lng={lng} page={params.page} />}
+      {!isEnabled && <AwardsPage data={data} lng={lng} page={page} />}
       {isEnabled && (
         <RealTimeAwardsPage
           initialData={data}
@@ -46,7 +46,7 @@ const Awards = async ({ params }: Params) => {
             fallbackLocale: fallbackLng,
             skip: 0,
           }}
-          page={params.page}
+          page={page}
         />
       )}
     </>
