@@ -9,22 +9,23 @@ import HeaderRenderer from '@/components/Header/HeaderRenderer';
 
 type Params = {
   children: React.ReactNode;
-  params: {
+  params: Promise<{
     lng: SiteLocale;
-  };
+  }>;
 };
 
 export async function generateStaticParams() {
   const languages = await getAvailableLocales();
-  return languages.map((language) => {
-    language;
-  });
+  return languages.map((language) => ({
+    lng: language
+  }));
 }
 
 export default async function RootLayout({
   children,
-  params: { lng },
+  params,
 }: Params) {
+  const { lng } = await params;
   const { isEnabled } = draftMode();
 
   return (
