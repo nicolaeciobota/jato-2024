@@ -6,13 +6,14 @@ import queryDatoCMS from '@/utils/queryDatoCMS';
 import { draftMode } from 'next/headers';
 
 type Params = {
-  params: {
+  params: Promise<{
     slug: string;
     lng: SiteLocale;
-  };
+  }>;
 };
 
-const BlogDetailsPage = async ({ params: { slug, lng } }: Params) => {
+const BlogDetailsPage = async ({ params }: Params) => {
+  const { slug, lng } = await params;
   const fallbackLng = await getFallbackLocale();
   const { isEnabled } = draftMode();
 
