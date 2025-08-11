@@ -27,7 +27,7 @@ export async function generateStaticParams() {
 export default async function Home({ params }: Params) {
   const { lng, slug } = await params;
   const fallbackLng = await getFallbackLocale();
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
 
   const data = await queryDatoCMS(
     PageDocument,
