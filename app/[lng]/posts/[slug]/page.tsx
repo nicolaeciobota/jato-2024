@@ -8,10 +8,10 @@ import { PostDocument, PostsSlugDocument, SiteLocale } from '@/graphql/generated
 import { getSlugs } from '@/ssg';
 
 type Params = {
-  params: {
+  params: Promise<{
     slug: string;
     lng: SiteLocale;
-  };
+  }>;
 };
 
 export async function generateStaticParams() {
@@ -19,7 +19,8 @@ export async function generateStaticParams() {
   return paths
 }
 
-const BlogDetailsPage = async ({ params: { slug, lng } }: Params) => {
+const BlogDetailsPage = async ({ params }: Params) => {
+  const { slug, lng } = await params;
   const fallbackLng = await getFallbackLocale();
   const { isEnabled } = draftMode();
 
