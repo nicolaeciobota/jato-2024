@@ -13,10 +13,10 @@ import { getFallbackLocale } from "@/app/i18n/settings";
 import { getSlugs } from "@/ssg";
 
 type Params = {
-  params: {
+  params: Promise<{
     lng: SiteLocale;
     slug: string;
-  };
+  }>;
 };
 
 export async function generateStaticParams() {
@@ -24,7 +24,8 @@ export async function generateStaticParams() {
   return paths
 }
 
-export default async function Home({ params: { lng, slug } }: Params) {
+export default async function Home({ params }: Params) {
+  const { lng, slug } = await params;
   const fallbackLng = await getFallbackLocale();
   const { isEnabled } = draftMode();
 
