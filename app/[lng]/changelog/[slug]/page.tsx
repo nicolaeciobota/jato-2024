@@ -15,10 +15,10 @@ import React from 'react';
 import { StructuredText, renderNodeRule } from 'react-datocms/structured-text';
 
 type Params = {
-  params: {
+  params: Promise<{
     slug: string;
     lng: SiteLocale;
-  };
+  }>;
 };
 
 export async function generateStaticParams() {
@@ -26,7 +26,8 @@ export async function generateStaticParams() {
   return paths
 }
 
-const ChangelogPage = async ({ params: { slug, lng } }: Params) => {
+const ChangelogPage = async ({ params }: Params) => {
+  const { slug, lng } = await params;
   const { isEnabled } = draftMode();
 
   const data = await queryDatoCMS(
