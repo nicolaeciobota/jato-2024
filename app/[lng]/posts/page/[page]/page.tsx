@@ -7,15 +7,15 @@ import { draftMode } from 'next/headers';
 import { notFound } from 'next/navigation';
 
 type Params = {
-  params: {
+  params: Promise<{
     page: number;
     lng: SiteLocale;
-  };
+  }>;
 };
 
 const Blog = async ({ params }: Params) => {
+  const { page, lng } = await params;
   const fallbackLng = await getFallbackLocale();
-  const { lng } = params;
   const { isEnabled } = draftMode();
 
   const data = await queryDatoCMS(
@@ -23,7 +23,7 @@ const Blog = async ({ params }: Params) => {
     {
       locale: lng,
       fallbackLocale: fallbackLng,
-      skip: (params.page - 1) * 9,
+      skip: (page - 1) * 9,
     },
     isEnabled
   );
@@ -34,7 +34,7 @@ const Blog = async ({ params }: Params) => {
 
   return (
     <>
-      {!isEnabled && <PostsPage data={data} lng={lng} page={params.page} />}
+      {!isEnabled && <PostsPage data={data} lng={lng} page={page} />}
       {isEnabled && (
         <RealTimePostsPage
           initialData={data}
@@ -44,9 +44,9 @@ const Blog = async ({ params }: Params) => {
           variables={{
             locale: lng,
             fallbackLocale: fallbackLng,
-            skip: (params.page - 1) * 9,
+            skip: (page - 1) * 9,
           }}
-          page={params.page}
+          page={page}
         />
       )}
     </>
