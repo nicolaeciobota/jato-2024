@@ -12,10 +12,6 @@ const nextConfig = {
       },
     ];
   },
-  // Development server options
-  devIndicators: {
-    buildActivity: true,
-  },
 };
 
 module.exports = nextConfig;
