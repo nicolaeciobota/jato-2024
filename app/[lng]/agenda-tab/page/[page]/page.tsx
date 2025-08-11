@@ -6,15 +6,15 @@ import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
 type Params = {
-  params: {
+  params: Promise<{
     page: number;
     lng: SiteLocale;
-  };
+  }>;
 };
 
 const Page = async ({ params }: Params) => {
   const fallbackLng = await getFallbackLocale();
-  const { lng } = params;
+  const { lng, page } = await params;
   const { isEnabled } = draftMode();
 
   const data = await queryDatoCMS(
@@ -22,7 +22,7 @@ const Page = async ({ params }: Params) => {
     {
       locale: lng,
       fallbackLocale: fallbackLng,
-      skip: (params.page - 1) * 9,
+      skip: (page - 1) * 9,
       first: 9
     },
     isEnabled
@@ -34,7 +34,7 @@ const Page = async ({ params }: Params) => {
 
   return (
     <>
-      {!isEnabled && <AgendaTabPage data={data} lng={lng} page={params.page} />}
+      {!isEnabled && <AgendaTabPage data={data} lng={lng} page={page} />}
     </>
   );
 };
