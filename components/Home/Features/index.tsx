@@ -20,10 +20,10 @@ const Index = ({ featureListSectionRecord, slug }: Props) => {
   const { feature, featuresHeader, featuresSubheader, displayOption } = featureListSectionRecord;
 
   const displayContentMapper: { [key: string]: ReactNode } = {
-    card_minimal: <MinimalCardsFeature features={feature} featuresHeader={featuresHeader} featuresSubheader={featuresSubheader} />,
-    grid: <Features features={feature} featuresHeader={featuresHeader} featuresSubheader={featuresSubheader} />,
-    big_image_horizontal: <BigImageHorizontalFeatures features={feature} featuresHeader={featuresHeader} featuresSubheader={featuresSubheader} />,
-    big_image_vertical: <BigImageVerticalFeatures features={feature} featuresHeader={featuresHeader} featuresSubheader={featuresSubheader} />
+    card_minimal: <MinimalCardsFeature features={feature} featuresHeader={featuresHeader ?? ''} featuresSubheader={featuresSubheader ?? ''} />,
+    grid: <Features features={feature} featuresHeader={featuresHeader ?? ''} featuresSubheader={featuresSubheader ?? ''} />,
+    big_image_horizontal: <BigImageHorizontalFeatures features={feature} featuresHeader={featuresHeader ?? ''} featuresSubheader={featuresSubheader ?? ''} />,
+    big_image_vertical: <BigImageVerticalFeatures features={feature} featuresHeader={featuresHeader ?? ''} featuresSubheader={featuresSubheader ?? ''} />
   }
 
   if(slug === 'home' && !isSignedIn) return;
@@ -31,7 +31,7 @@ const Index = ({ featureListSectionRecord, slug }: Props) => {
   return (
     <>
       {
-        displayContentMapper[displayOption] || <FeatureCards features={feature} featuresHeader={featuresHeader} featuresSubheader={featuresSubheader} />
+        (displayOption && displayContentMapper[displayOption]) || <FeatureCards features={feature} featuresHeader={featuresHeader ?? ''} featuresSubheader={featuresSubheader ?? ''} />
       }
     </>
   );

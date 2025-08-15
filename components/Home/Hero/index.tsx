@@ -21,11 +21,11 @@ const Index = ({ heroSectionRecord, slug }: Props) => {
   const { displayOptions, heroTitle, heroSubtitle, buttons, heroImage } = heroSectionRecord;
 
   const displayedConentMapper: { [key: string]: ReactNode } = {
-    'gradient': <GradientHero heroSubtitle={heroSubtitle} heroTitle={heroTitle} buttons={buttons} />,
-    'right_image': <RightImageHero heroSubtitle={heroSubtitle} heroTitle={heroTitle} buttons={buttons} image={heroImage as any} />,
-    'background_image': <BackgroundImageHero heroSubtitle={heroSubtitle} heroTitle={heroTitle} buttons={buttons} image={heroImage as any} />,
+    'gradient': <GradientHero heroSubtitle={heroSubtitle ?? ''} heroTitle={heroTitle ?? ''} buttons={buttons} />,
+    'right_image': <RightImageHero heroSubtitle={heroSubtitle ?? ''} heroTitle={heroTitle ?? ''} buttons={buttons} image={heroImage as any} />,
+    'background_image': <BackgroundImageHero heroSubtitle={heroSubtitle ?? ''} heroTitle={heroTitle ?? ''} buttons={buttons} image={heroImage as any} />,
     'hero_empty': <HeroEmpty image={heroImage as any} />,
-    'split_image': <SplitImage heroSubtitle={heroSubtitle} heroTitle={heroTitle} buttons={buttons} image={heroImage as any} />,
+    'split_image': <SplitImage heroSubtitle={heroSubtitle ?? ''} heroTitle={heroTitle ?? ''} buttons={buttons} image={heroImage as any} />,
   }
 
   if (slug === 'home' && isSignedIn) return;
@@ -33,7 +33,7 @@ const Index = ({ heroSectionRecord, slug }: Props) => {
   return (
     <>
       {
-        displayedConentMapper[displayOptions] || <Hero heroSubtitle={heroSubtitle} heroTitle={heroTitle} buttons={buttons} />
+        (displayOptions && displayedConentMapper[displayOptions]) || <Hero heroSubtitle={heroSubtitle ?? ''} heroTitle={heroTitle ?? ''} buttons={buttons} />
       }
     </>
   );
